@@ -1,0 +1,1021 @@
+/*
+Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+Copyright (C) 2021 Znuny GmbH, https://znuny.org/
+
+This software comes with ABSOLUTELY NO WARRANTY. For details, see
+the enclosed file COPYING for license information (GPL). If you
+did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+*/
+
+/**
+ * @package     OTRS Framework - Skin "Default"
+ * @section     Customer
+ */
+
+/* button,
+.Button,
+.cke_dialog_footer_buttons a.cke_dialog_ui_button {
+    padding: 4px 11px !important;
+    color: #333;
+    font-size: 12px;
+    background: #eee;
+    border: 1px solid #ccc;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.cke_dialog_footer_buttons a.cke_dialog_ui_button {
+    font-weight: bold !important;
+}
+
+.cke_dialog_footer_buttons a.cke_dialog_ui_button:hover {
+    background-color: #e5e5e5;
+    border-color: #999;
+}
+
+button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+button:hover,
+.Button:hover,
+button:active,
+.Button:active {
+    border-color: #888;
+    color: #333;
+}
+
+.SmallButton {
+    padding: 0 8px;
+    margin: 0 2px;
+    color: #797979;
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: bold;
+    background: #F9F9F9;
+    background: -moz-linear-gradient(top,  #ffffff 0%, #eeeeee 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#eeeeee));
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#eeeeee 100%);
+    background: -o-linear-gradient(top,  #ffffff 0%,#eeeeee 100%);
+    background: -ms-linear-gradient(top,  #ffffff 0%,#eeeeee 100%);
+    background: linear-gradient(to bottom,  #ffffff 0%,#eeeeee 100%);
+    border: 1px solid #DDD;
+    border-bottom: 1px solid #CCC;
+    text-shadow: 0 1px 0 #FFF;
+}
+
+.SmallButton:hover {
+    color: #555;
+}
+
+.SmallButton:active {
+    background: #EEE;
+    background: -moz-linear-gradient(top,  #cccccc 0%, #eeeeee 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cccccc), color-stop(100%,#eeeeee));
+    background: -webkit-linear-gradient(top,  #cccccc 0%,#eeeeee 100%);
+    background: -o-linear-gradient(top,  #cccccc 0%,#eeeeee 100%);
+    background: -ms-linear-gradient(top,  #cccccc 0%,#eeeeee 100%);
+    background: linear-gradient(to bottom,  #cccccc 0%,#eeeeee 100%);
+    border-color: #CCC #CCC #D9D9D9;
+    text-shadow: 0 1px 0 #EEE;
+} */
+
+
+label {
+    cursor: pointer;
+    font-size: var(--main-font-size);
+    font-weight: var(--medium);
+    letter-spacing: 0.2px;
+    color: var(--gray-semi-dark);
+}
+
+.RTL label {
+    float: right;
+    text-align: left;
+}
+
+/* Fix bug#8673: labels in CKEditor  popups should be ignored by our css */
+.cke label {
+    float: none;
+}
+
+/**
+ * @note        Give the user a hint about linked label elements (they are clickable and
+ *              give focus to the linked element.
+ */
+
+form label[for] {
+    cursor: pointer;
+}
+
+input[type=text],
+input[type=email],
+input[type=password] {
+    min-width: 100%;
+    padding: 6px var(--padding-sm);
+    font-size: var(--font-size-sm);
+    color: var(--black);
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+textarea,
+select[multiple=multiple] {
+    border: var(--border-width) var(--border-solid) var(--border-color);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: var(--white);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    margin: 0;
+    padding: var(--padding-xs) var(--padding-sm);
+    font-size: var(--font-size-sm);
+    color: var(--black);
+    border-radius: var(--border-radius-sm);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    line-height: var(--input-line-height);
+    transition: var(--main-transition);
+}
+
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=password]:focus,
+textarea:focus {
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-color: var(--black);
+}
+
+input[type=text].TicketFreeKey,
+input[type=text].ArticleFreeKey {
+    width: 80%;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #555;
+    transition: color ease 0.3s;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: #555;
+   transition: color ease 0.3s;
+   opacity: 1;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: var(--gray-semi-dark);
+   transition: color ease 0.3s;
+   opacity: 1;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #555;
+   transition: color ease 0.3s;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+   color: #555;
+   transition: color ease 0.3s;
+}
+
+:focus::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #ccc;
+}
+
+:focus:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: #ccc;
+   opacity: 1;
+}
+
+:focus::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: #ccc;
+   opacity: 1;
+}
+
+:focus:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #ccc;
+}
+
+:focus::-ms-input-placeholder { /* Microsoft Edge */
+   color: #ccc;
+}
+
+input.DateSelection {
+    width: auto;
+}
+
+select.TicketFreeKey,
+select.ArticleFreeKey {
+    margin-top: -2px;
+    max-width: 90%;
+}
+
+#RichText {
+    margin: 7px;
+    border: 1px solid #D6D6D6;
+}
+
+/* .TicketCompose .Content,
+.Preferences .Content,
+.Search .Content {
+    margin: 0;
+    display: block;
+} */
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--gap-md);
+}
+
+
+fieldset div:first-child not:(.div.DnDUploadBox) {
+
+}
+
+fieldset h2 {
+
+}
+
+fieldset h2 + p.Description {
+
+}
+
+fieldset h2 + div {
+
+}
+
+fieldset p {
+
+}
+
+.AsteriskExplanationCustomer{
+    margin-left: 235px;
+}
+
+.RTL fieldset p {
+    margin: 1px 140px 0 0;
+}
+
+fieldset label {
+    display: flex;
+}
+
+.RTL fieldset label {
+    padding: 4px 0 3px 9px;
+    margin-right: 0;
+    margin-left: 8px;
+}
+
+fieldset select {
+
+}
+
+.TicketCompose fieldset #Subject {
+    width: 50%;
+    max-width: 614px;
+}
+
+fieldset.Columns .Column {
+    width: 50%;
+    padding: 0;
+    float: left;
+    border: none;
+}
+
+.RTL fieldset.Columns .Column {
+    float: right;
+}
+
+fieldset.Columns .Column div {
+    padding: 13px 8px 3px;
+    overflow: auto;
+}
+
+fieldset.Columns label,
+.TimeSearchType label {
+    padding: 0;
+    color: #000;
+    font-size: 12px;
+    float: none;
+    border: none;
+    background: none;
+}
+
+fieldset .RichTextHolder {
+
+}
+
+fieldset div.Field {
+    padding: 0 !important;
+}
+
+fieldset .title-wrapper,
+fieldset .field-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-sm);
+    width: 100%;
+} 
+
+.field-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-sm);
+  }
+
+.card-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--main-bg-color);
+    padding: var(--padding-lg);
+    border: var(--border-width) var(--border-solid) var(--border-color);
+    border-radius: var(--border-radius-sm);
+    margin: var(--margin-sm);
+    gap: var(--gap-md);
+}
+
+@media (min-width: 1025px) and (max-width: 1400px) {
+    .Card fieldset .card-item {
+        background: transparent;
+        padding: var(--padding-lg) 0;
+        border: 0;
+        border-radius: 0;
+        margin: 0;
+    }
+
+    .Card fieldset .card-item::after {
+        content: '';
+        width: calc(100% + 200px);
+        height: 1px;
+        position: absolute;
+        left: -100px;
+        bottom: 0;
+        background: var(--border-color);
+      }
+
+      .Card fieldset .card-item:nth-last-child(1)::after {
+        background: transparent;
+      }
+
+}
+
+.card-item form {
+    display: flex;
+    flex: 1;
+}
+
+
+.card-item input[type=password] {
+    width: 100%;
+}
+
+.Card .Form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-self: center;
+}
+
+@media (min-width: 1025px) and (max-width: 1400px) {
+    .Card .Form {
+        max-width: 800px;
+    }  
+}
+
+.Card .Form fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: initial;
+}
+
+.Card .Form fieldset .Field .icon-hover {
+    display: inline-flex;
+}
+
+/**
+ * @subsection  Block Divider
+ */
+
+.sections-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: var(--padding-md);
+    border: var(--border-width) var(--border-solid) var(--border-color);
+    border-radius: var(--border-radius-sm);
+}
+
+.section-block {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-md);
+    padding: var(--padding-xl) 0;
+}
+
+.section-block.first {
+    padding: 0 0 var(--padding-xl);
+}
+
+.section-block.last {
+    padding: var(--padding-xl) 0 0;
+}
+
+.section-block::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--border-color);
+}
+
+.section-block.last::after {
+    background: transparent;
+}
+
+/**
+ * @subsection  Input Wrapper
+ */
+
+.Field {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-sm);
+}
+
+.Field .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: var(--gap-sm);
+}
+
+.widget-search-tpl .Field .content-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--gap-sm);
+}
+
+
+fieldset .Field > div:not(.TooltipErrorMessage) {
+    display: flex;
+    gap: var(--gap-sm);
+    /*align-items: center;*/
+}
+
+
+
+
+/**
+ * @subsection  Textarea
+ * @note        Fixed font needed in textareas because otherwise the line wrapping is incorrect.
+ */
+textarea {
+    font-family: monospace,fixed;
+}
+
+/**
+ * @subsection  Input Readonly
+ */
+input[type=text][readonly],
+input[type=password][readonly],
+input[type=email][readonly],
+textarea[readonly] {
+    background-color: #DDD;
+}
+
+/**
+* @note         Validation
+*/
+form label.Mandatory {
+    color: black !important;
+}
+
+form label.Mandatory span.Marker {
+    font-size: 18px;
+    font-weight: bold;
+    position: relative;
+    top: 0.35em;
+    line-height: 1px;
+    display: none;
+}
+
+form label.LabelError {
+    color: #ff505e !important;
+}
+
+/*
+ * @note    Special case: do display
+ *          ServerError message divs when JavaScript is not active,
+ *          otherwise the user will not see these messages
+ */
+.NoJavaScript .NoJavaScriptMessageServerError {
+    display: block;
+    padding: 2px 5px;
+}
+
+.NoJavaScript .NoJavaScriptMessageServerError,
+.NoJavaScript .NoJavaScriptMessageServerError * {
+    color: #ff505e;
+}
+
+/**
+ * @subsection AJAX Loader
+ */
+
+.AJAXLoader {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin: 4px;
+    position: relative;
+    vertical-align: bottom;
+}
+
+.AJAXLoader:after {
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    line-height: 14px;
+    content: "\f1ce";
+    font-family: FontAwesome;
+    font-size: 14px;
+    color: #777;
+}
+
+/**
+ * @subsection    Tree selection icon and overlay for select boxes
+ */
+
+.ShowTreeSelection {
+    width: 16px;
+    height: 16px;
+    margin-left: 1px;
+    display: inline-block;
+    position: relative;
+    color: #333;
+}
+
+.ShowTreeSelection span {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+}
+
+.ShowTreeSelection:focus {
+    color: #f92;
+}
+
+fieldset .ShowTreeSelection {
+    display: inline-block;
+}
+
+#TreeContainer #TreeSearch {
+    position: relative;
+}
+
+#TreeContainer #TreeSearch span {
+    color: #AAAAAA;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    height: 12px;
+    position: absolute;
+    right: 9px;
+    top: 4px;
+    width: 16px;
+}
+
+#TreeContainer #TreeSearch input {
+    display: block;
+    margin: 10px 12px 0px 12px;
+    width: 92%;
+}
+
+.JSTreeField {
+    background-color: #FFFFFF;
+    border: 1px solid #ccc;
+    height: 72%;
+    margin: 10px 12px;
+    -moz-box-shadow: inset 0px 0px 6px #ccc;
+    -webkit-box-shadow: inset 0px 0px 6px #ccc;
+    box-shadow: inset 0px 0px 6px #ccc;
+    overflow: auto;
+    padding: 0px 10px 10px 10px;
+}
+
+.JSTreeField.InOverlay {
+    margin: 5px 5px 5px 0px;
+    width: 85%;
+    float: left;
+}
+
+.JSTreeField .Disabled > a {
+    color: #aaa;
+    font-style: italic;
+}
+
+.JSTreeField .jstree-search {
+    color: #E07006;
+}
+
+.JSTreeField .jstree-search.jstree-clicked {
+    color: #000;
+}
+
+.JSTreeField .jstree-clicked {
+    background: #f3960d;
+    background: -moz-linear-gradient(top,  #ffe7bd 0%, #fbba49 20%, #f6ad3e 51%, #f3960d 51%, #e98207 95%, #e07006 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffe7bd), color-stop(20%,#fbba49), color-stop(51%,#f6ad3e), color-stop(51%,#f3960d), color-stop(95%,#e98207), color-stop(100%,#e07006));
+    background: -webkit-linear-gradient(top,  #ffe7bd 0%,#fbba49 20%,#f6ad3e 51%,#f3960d 51%,#e98207 95%,#e07006 100%);
+    background: -o-linear-gradient(top,  #ffe7bd 0%,#fbba49 20%,#f6ad3e 51%,#f3960d 51%,#e98207 95%,#e07006 100%);
+    background: -ms-linear-gradient(top,  #ffe7bd 0%,#fbba49 20%,#f6ad3e 51%,#f3960d 51%,#e98207 95%,#e07006 100%);
+    background: linear-gradient(to bottom,  #ffe7bd 0%,#fbba49 20%,#f6ad3e 51%,#f3960d 51%,#e98207 95%,#e07006 100%);
+    border-color: #f3960d;
+    padding: 0px 3px;
+}
+
+.JSTreeField .jstree-hovered {
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.JSTreeField a:focus {
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+#SubmitTree {
+    display: block;
+    width: 120px;
+    margin: 0px auto;
+}
+
+.RTL .ShowTreeSelection {
+    margin: 0 3px 0 0;
+}
+
+.OverlayTreeSelector {
+    width: 400px;
+    height: 300px;
+    margin: -10px -15px;
+}
+
+/**
+ * @subsection Chat
+ */
+
+.ArticleChat {
+    padding: 2px 5px;
+    font-size: 11px;
+    max-height: 100px;
+    overflow: auto;
+    background: #fff;
+    border: 1px solid #eee;
+}
+
+.ArticleMailContent .ArticleChat {
+    max-height: none;
+    font-size: 12px;
+    padding: 10px;
+}
+
+
+/*
+.AttachmentListContainer {
+    position: relative;
+    width: 100%;
+}
+
+.AttachmentListContainer table {
+    margin-bottom: var(--margin-md);
+}
+
+.AttachmentListContainer table:empty {
+    margin: 0;
+} 
+.AttachmentListContainer .Busy {
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    box-sizing: border-box;
+    display: none;
+}
+
+.AttachmentListContainer .Busy i {
+    vertical-align: middle;
+    line-height: 100%;
+    position: absolute;
+    top: 50%;
+    font-size: 20px;
+    margin-top: -10px;
+}
+
+table.AttachmentList {
+    width: 100%;
+    table-layout: fixed;
+    border: 0;
+    background-color: transparent;
+}
+
+table.AttachmentList thead {
+    display: none;
+}
+
+table.AttachmentList tbody tr {
+    display: block;
+    border-radius: var(--border-radius-sm);
+    border: 0;
+    border-radius: var(--border-radius-xs);
+    line-height: normal;
+    transition: var(--main-transition);
+}
+
+table.AttachmentList tbody tr:hover {
+    background: var(--table-td-even-bg);
+}
+
+table.AttachmentList tbody tr:hover td {
+    border-right-color: #fff;
+  }
+
+/* table.AttachmentList tbody tr,
+table.AttachmentList tbody tr td {
+    max-height: 50px;
+
+} */
+
+/*
+table.AttachmentList tbody tr td {
+    padding: 0 var(--padding-sm);
+    font-size: var(--font-size-sm);
+    font-weight: var(--medium);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: pre;
+    min-width: 125px;
+    max-width: 125px;
+    border: 0;
+    line-height: normal;
+}
+
+table.AttachmentList tbody tr:nth-child(2n) td {
+    background-color: transparent;
+}
+
+table.AttachmentList tbody tr:hover td {
+    background: transparent;
+}
+
+table.AttachmentList tbody tr td:last-child {
+    width: 100%;
+    text-align: right;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+table.AttachmentList .Filename {
+    color: var(--primary-color);
+}
+
+table.AttachmentList .Progress {
+    display: block;
+    height: 4px;
+    margin: 3px 0px;
+    background: #f92;
+    width: 0px;
+}
+
+table.AttachmentList .Filetype {
+    display: none;
+}
+
+table.AttachmentList .Filesize {
+    color: var(--gray-semi-dark);
+}
+
+table.AttachmentList .AttachmentDelete {
+    display: inline-flex;
+  }
+
+table.AttachmentList.DataTable thead th {
+    line-height: 12px;
+}
+*/
+
+/**
+ * @subsection  Vacations
+ */
+
+.label-wrapper  {
+    display: flex;
+    gap: 10px;
+}
+
+.label-wrapper label {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.label-wrapper label input {
+    margin-right: 10px;
+}
+
+.FieldHelpContainer {
+    margin-left: 10px;
+}
+
+.content-wrapper div {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-sm);
+}
+
+/*
+ * @note    This will be displayed by Core.UI.Tooltips
+ */
+div.TooltipErrorMessage {
+    display: none;
+}
+
+
+/******************************/
+/*        Date Picker UI      */
+/******************************/
+
+.ui-datepicker-title {
+    font-size: var(--font-size-md);
+    font-weight: var(--medium);
+    color: var(--black);
+}
+
+.ui-datepicker-calendar thead {
+    font-size: var(--font-size-sm);
+    font-weight: var(--medium);
+    color: var(--gray-semi-dark);
+    letter-spacing: .86px;
+}
+
+.ui-datepicker-calendar th {
+    width: 50px;
+}
+
+.ui-datepicker td {
+    padding: 0;
+}
+
+/*.ui-datepicker td a,
+.ui-datepicker td span {
+    background: none !important;
+    border: 0;
+    border-radius: var(--border-radius-sm);
+    color: var(--black);
+    font-weight: var(--normal);
+    font-size: 14px;
+    line-height: 32px;
+    text-align: center;
+}*/
+
+.ui-datepicker td a:hover,
+.ui-datepicker td span:hover,
+.ui-state-hover,
+.ui-state-hover.ui-datepicker-prev-hover,
+.ui-state-hover.ui-datepicker-next-hover {
+    left: unset !important;
+    top: 0 !important;
+    border: none !important;
+    color: var(--gray-semi-dark) !important;
+    background: var(--gray-semi-light) !important;
+    cursor: pointer;
+}
+
+.ui-corner-all.ui-datepicker-prev,
+.ui-corner-all.ui-datepicker-next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-lg);
+    width: 32px !important;
+    height: 32px !important;
+    left: unset !important;
+    top: 0 !important;
+    background: none;
+    color: var(--gray-semi-dark);
+    border: var(--border-width) var(--border-solid) var(--border-color);
+    padding: 8px;
+    border-radius: 8px !important;
+}
+
+.ui-corner-all.ui-datepicker-next,
+.ui-state-hover.ui-datepicker-next-hover {
+    right: 0 !important;
+}
+
+.ui-datepicker td a:active {
+    color: var(--white);
+    background: var(--primary-color) !important;
+}
+
+
+.ui-datepicker .ui-datepicker-days-cell-over {
+    background: var(--primary-color);
+    border-radius: var(--border-radius-sm);
+    pointer-events: none;
+}
+
+
+
+
+
+
+.ui-widget.ui-widget-content {
+    /*font-family: Inter;*/
+    border-radius: var(--border-radius-sm) !important;
+    padding: var(--padding-md) !important;
+    margin-top: 22px;
+    margin-left: -2px !important;
+    border: var(--border-width) var(--border-solid) var(--border-color) !important;
+    width: 100%;
+    max-width: 300px;
+}
+
+
+.ui-widget-header {
+    background: none !important;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
+    border: 0 !important;
+    padding: 0 0 var(--padding-md) 0 !important;
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+    background: none !important;
+    border: 0 !important;
+    border-radius: var(--border-radius-sm);
+    color: var(--black);
+    font-weight: var(--normal);
+    font-size: 14px;
+    line-height: 32px;
+    text-align: center;
+}
+
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+    background: var(--gray-semi-light);
+}
+
+
+.ui-datepicker .ui-datepicker-days-cell-over .ui-state-default, 
+.ui-datepicker .ui-datepicker-days-cell-over .ui-widget-content .ui-state-default, 
+.ui-datepicker .ui-datepicker-days-cell-over .ui-widget-header .ui-state-default,
+.ui-datepicker .ui-datepicker-days-cell-over .ui-state-highlight{
+    color: var(--white) !important;
+}
+
+
+/**
+ * @subsection Select Group
+ */
+
+.outer-select-date {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-sm);
+}
+
+.outer-select-date div:not(.TooltipErrorMessage) {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: var(--gap-sm);
+    align-items: center;
+}

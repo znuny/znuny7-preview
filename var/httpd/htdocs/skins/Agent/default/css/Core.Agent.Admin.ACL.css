@@ -1,0 +1,358 @@
+/*
+Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+Copyright (C) 2021 Znuny GmbH, https://znuny.org/
+
+This software comes with ABSOLUTELY NO WARRANTY. For details, see
+the enclosed file COPYING for license information (GPL). If you
+did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+
+
+
+*/
+
+/**
+ * @package     Skin "Default"
+ * @section     Application
+ * @subsection  ACL Administration
+
+
+ test ed
+ */
+
+@media screen,projection,tv,handheld {
+
+.WidgetSimple .Content fieldset.Separated {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--gap-xs);
+}
+
+a.Copy {
+    background: url(../img/icons/reports.png) no-repeat left center;
+    padding-left: 24px;
+}
+
+.ACLStructure {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: var(--padding-xxl);
+}
+
+.ACLStructure + .ACLStructure{
+    border-bottom: none;
+}
+
+/*.ACLFields {
+    width: 600px;
+    margin: 0px auto;
+}
+
+.ACLFields > h4 {
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+fieldset:first-child .ACLFields > h4 {
+    margin-top: 0px;
+}
+
+.ACLFields > p {
+    font-size: 11px;
+    width: 450px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.ACLFields > p a {
+    color: #000;
+    text-decoration: underline;
+}
+
+.ACLFields > p a:hover {
+    text-decoration: none;
+}*/
+
+.ACLFieldGroup {
+    padding: var(--padding-sm) 0;
+}
+
+.ItemAddLevel1 {
+    min-width: 150px;
+}
+
+.ACLFieldGroup input {
+    border: var(--border-width) var(--border-solid) var(--border-color);
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    margin: 0 0 var(--margin-xs) 0;
+    padding: var(--padding-xs) var(--padding-sm);
+    font-size: var(--font-size-sm);
+    color: var(--black);
+    border-radius: var(--border-radius-sm);
+    box-sizing: border-box;
+    line-height: var(--input-line-height);
+    transition: var(--main-transition);
+    height: 30px;
+    width: auto !important;
+}
+
+.AddAll {
+    padding: var(--padding-sm);
+    border-radius: var(--border-radius-xs);
+    font-size: var(--font-size-sm);
+    background-color: var(--gray-light);
+    border: var(--border-width) var(--border-solid) var(--border-color);
+    color: var(--black);
+    line-height: normal;
+    transition: var(--main-transition);
+    cursor: pointer;
+}
+
+.AddAll:hover {
+    background-color: var(--icon-hover-color-light);
+}
+
+/*.ACLFieldGroup input.NewDataItem {
+    font-size: 11px;
+}
+
+.ACLFieldGroup input.LiveEdit {
+    margin-right: 5px;
+    margin-left: 3px;
+    font-size: 11px;
+    padding: 3px 5px;
+    margin-bottom: 4px;
+}
+
+.ACLFieldGroup input.LiveEdit.Big {
+    font-size: 12px;
+    padding: 3px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.ACLFieldGroup li {
+    line-height: 30px;
+    position: relative;
+}*/
+
+/*.ACLFieldGroup li .Trigger {
+    position: absolute;
+    width: 12px;
+    height: 13px;
+    left: -17px;
+    top: -1px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.ACLFieldGroup li .Trigger .fa-caret-right {
+    display: inline-block;
+}
+
+.ACLFieldGroup .DataItem strong {
+    cursor: pointer;
+}
+
+.ACLFieldGroup ul li .Trigger {
+    left: 2px;
+    top: 0px;
+}
+
+.ACLFieldGroup > li .Trigger.Collapse .fa-caret-down {
+    display: inline-block;
+}
+
+.ACLFieldGroup > li .Trigger.Collapse .fa-caret-right {
+    display: none;
+}
+
+.ACLFieldGroup li ul li {
+    line-height: 25px;
+    padding-left: 20px;
+}
+
+.ACLFieldGroup > li > ul > li > ul {
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+
+.ACLFieldGroup > li > ul > li > ul > li > ul {
+    margin-bottom: 2px;
+}
+
+.ACLFieldGroup > li > ul > li > ul > li > ul.Boolean {
+    margin-bottom: 4px;
+}
+
+.ACLFieldGroup li ul li ul li .Icon {
+    margin-right: 5px;
+}
+
+.ItemPrefix {
+    width: 140px;
+}
+
+.ACLFieldGroup > li.DataItem:first-child {
+    margin-top: -3px;
+}
+
+.ACLFieldGroup li ul li ul li ul {
+    margin-left: 22px;
+}
+
+.ACLFieldGroup .LastLevel {
+    margin-left: 23px;
+    margin-top: 5px;
+}
+
+.ACLFieldGroup li ul li ul li ul.Boolean {
+    display: inline-block;
+    margin-left: 0px;
+}*/
+
+/*.ACLFieldGroup li ul li ul li ul.Boolean li.DataItem select {
+    display: none;
+}
+
+.ACLFieldGroup li ul li ul li ul li,
+.ACLFieldGroup .LastLevel li {
+    display: inline-block;
+    padding: 0px;
+}
+
+.ACLFieldGroup li ul li ul li ul li.DataItem,
+.ACLFieldGroup .LastLevel li.DataItem {
+    padding: 5px 25px 5px 7px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    line-height: 12px;
+    font-size: 11px;
+    background-color: #F1F1F5;
+    border: 1px solid #B5B5BE;
+    position: relative;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.ACLFieldGroup li ul li ul li ul.Boolean li.DataItem {
+    padding: 0px;
+    background: none;
+    margin: 0px;
+}
+
+.ACLFieldGroup li ul li ul li ul li em,
+.ACLFieldGroup .LastLevel li em {
+    display: block;
+    position: absolute;
+    -moz-border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 5px 5px 0px;
+    background-color: transparent;
+    right: 0px;
+    top: 0px;
+    font-style: normal;
+    padding: 4px 6px 6px 6px;
+    color: #000;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+#ACLForm .fa{
+    color: #B5B5BE;
+}
+
+.ACLFieldGroup li ul li ul li ul li em:hover {
+    background-color: #777;
+    color: #fff;
+}
+
+.Icon {
+    height: 16px;
+    width: 16px;
+    padding: 1px;
+    margin-top: -1px;
+    margin-right: -2px;
+    border-style: none;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+#ACLForm .Icon.AddButton {
+    position: relative;
+    height: 30px;
+    margin: 0;
+    background: transparent;
+    padding: 9px;
+    width: 30px;
+    box-sizing: border-box;
+    line-height: 100%;
+    text-align: center;
+    border-radius: var(--border-radius-xs);
+    transition: var(--main-transition);
+}
+
+#ACLForm .Icon.AddButton:hover {
+    background: var(--gray-light);
+}
+
+#ACLForm .NewDataItem {
+    margin-right: var(--margin-sm);
+}
+
+#ACLForm > .ACLFields > div.InputField_Container {
+    width: 100%;
+}
+
+#ACLForm .ACLFields ul.ACLFieldGroup .Last .InputField_Container {
+    width: auto !important;
+}*/
+
+.Icon.NoMargin {
+    margin: 0 !important;
+}
+
+.Icon.Boolean {
+    cursor: pointer;
+}
+
+.Icon.True {
+    background: url(../img/icons/tick.png) no-repeat center;
+}
+
+.Icon.False {
+    background: url(../img/icons/cross.png) no-repeat center;
+}
+
+.Icon.Add {
+    cursor: default;
+    background: url(../img/filter_add.png) no-repeat center;
+}
+
+.Icon.Add.AddDataItem {
+    cursor: pointer;
+}
+
+.Icon.Add.AddDataItem:hover {
+    background: url(../img/filter_add_hover.png) no-repeat center;
+}
+
+.Icon.Remove {
+    background: url(../img/filter_remove.png) no-repeat center;
+}
+
+.Icon.Remove:hover {
+    background: url(../img/filter_remove_hover.png) no-repeat center;
+}
+
+.WidgetSimple .Content .ACLNote,
+.ACLNote {
+    padding: var(--padding-sm) var(--padding-lg);
+    margin: var(--margin-lg);
+    gap: var(--gap-md);
+}
+
+}

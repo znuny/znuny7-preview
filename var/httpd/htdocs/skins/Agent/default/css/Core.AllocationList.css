@@ -1,0 +1,55 @@
+/*
+Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+Copyright (C) 2021 Znuny GmbH, https://znuny.org/
+
+This software comes with ABSOLUTELY NO WARRANTY. For details, see
+the enclosed file COPYING for license information (GPL). If you
+did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+*/
+
+/**
+ * @package     Skin "Default"
+ * @section     Allocation List, based on Tablelike lists
+ */
+
+@media screen,projection,tv,handheld {
+
+/**
+ * @subsection     Allocation List
+ */
+ul.AllocationList {
+    min-height: 25px;
+    max-height: 300px;
+    overflow-y: auto;
+    border-bottom-left-radius: var(--border-radius-sm);
+    border-bottom-right-radius: var(--border-radius-sm);
+}
+
+ul.AllocationList:hover {
+    cursor: grab;
+}
+
+/* Overwritten by 'ul.Tablelike li' in Core.Widget */
+ul.AllocationList li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+ul.AllocationList li span.Functions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--gap-sm);
+    min-width: 58px;
+}
+
+ul.AllocationList li span.Functions a.Icon {
+    margin-left: 0;
+}
+
+ul.AllocationList li label {
+    display: -webkit-inline-box;
+}
+
+}/* end @media */

@@ -1,0 +1,5 @@
+image: $JOB_IMAGE
+
+include:
+  - project: $INCLUDE_PROJECT
+    file: '/templates/gitlab/Znuny/gui_redesign.yml'

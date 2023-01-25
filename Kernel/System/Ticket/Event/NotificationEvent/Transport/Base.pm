@@ -1,0 +1,256 @@
+# --
+# Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Znuny GmbH, https://znuny.org/
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+# --
+
+package Kernel::System::Ticket::Event::NotificationEvent::Transport::Base;
+
+use strict;
+use warnings;
+
+use Kernel::System::VariableCheck qw(:all);
+
+our @ObjectDependencies = (
+    'Kernel::System::DynamicField',
+    'Kernel::System::DynamicField::Backend',
+);
+
+=head1 NAME
+
+Kernel::System::Ticket::Event::NotificationEvent::Transport::Base - common notification event transport functions
+
+=head1 PUBLIC INTERFACE
+
+=head2 SendNotification()
+
+send a notification using an specified transport
+
+    my $Success = $TransportObject->SendNotification(
+        TicketID     => $Param{Data}->{TicketID},
+        UserID       => $Param{UserID},
+        Notification => \%Notification,
+        Recipient    => {
+            UserID        => 123,
+            UserLogin     => 'some login',
+            UserTitle     => 'some title',
+            UserFirstname => 'some first name',
+            UserLastname  => 'some last name'.
+            # ...
+        },
+        Event                 => $Param{Event},
+        Attachments           => \@Attachments,         # optional
+    );
+
+returns
+
+    $Success = 1;       # or false in case of an error
+
+=cut
+
+=head2 GetTransportRecipients()
+
+generates a list of recipients exclusive for a determined transport, the content of the list is
+usually an attribute of an Agent or Customer and it depends on each transport
+
+    my @TransportRecipients = $TransportObject->GetTransportRecipients(
+        Notification => \%Notification,
+    );
+
+returns:
+
+    @TransportRecipents = (
+        {
+            UserEmail     => 'some email',       # optional
+            UserFirstname => 'some name',        # optional
+            # ...                                # optional
+        }
+    );
+
+or
+    @TransportRecipients = undef;   in case of an error
+
+=cut
+
+sub GetTransportRecipients {
+    my ( $Self, %Param ) = @_;
+
+    return [];
+}
+
+=head2 TransportSettingsDisplayGet()
+
+generates and returns the HTML code to display exclusive settings for each transport.
+
+    my $HTMLOutput = $TransportObject->TransportSettingsDisplayGet(
+        Data => $NotificationDataAttribute,           # as retrieved from Kernel::System::NotificationEvent::NotificationGet()
+    );
+
+returns
+
+    $HTMLOutput = 'some HTML code';
+
+=cut
+
+sub TransportSettingsDisplayGet {
+    my ( $Self, %Param ) = @_;
+
+    return '';
+}
+
+=head2 TransportParamSettingsGet()
+
+gets specific parameters from the web request and put them back in the GetParam attribute to be
+saved in the notification as the standard parameters
+
+    my $Success = $TransportObject->TransportParamSettingsGet(
+        GetParam => $ParmHashRef,
+    );
+
+returns
+
+    $Success = 1;       # or false in case of a failure
+
+=cut
+
+sub TransportParamSettingsGet {
+    my ( $Self, %Param ) = @_;
+    return 1;
+}
+
+=head2 IsUsable();
+
+returns if the transport can be used in the system environment,
+
+    my $Success = $TransportObject->IsUsable();
+
+returns
+
+    $Success = 1;       # or false
+
+=cut
+
+sub IsUsable {
+    my ( $Self, %Param ) = @_;
+
+    return 1;
+}
+
+=head2 GetTransportEventData()
+
+returns the needed event information after a notification has been sent
+
+    my $EventData = $TransportObject-> GetTransportEventData();
+
+returns:
+
+    $EventData = {
+        Event => 'ArticleAgentNotification',    # or 'ArticleCustomerNotification'
+        Data  => {
+            TicketID  => 123,
+            ArticleID => 123,                   # optional
+        },
+        UserID => 123,
+    );
+
+=cut
+
+sub GetTransportEventData {
+    my ( $Self, %Param ) = @_;
+
+    return $Self->{EventData} // {};
+}
+
+=head2 _ReplaceTicketAttributes()
+
+returns the specified field with replaced OTRS tags
+
+    my $RecipientEmail = $Self->_ReplaceTicketAttributes(
+        Ticket => $Param{Ticket},
+        Field  => '<OTRS_TICKET_DynamicField_Name1>',       # value of DynamicField_Name1 is 'two@stars.com'
+    );
+
+returns:
+
+    my $RecipientEmail = 'two@stars.com';
+
+=cut
+
+sub _ReplaceTicketAttributes {
+    my ( $Self, %Param ) = @_;
+
+    return if !$Param{Field};
+
+    my $DynamicFieldObject        = $Kernel::OM->Get('Kernel::System::DynamicField');
+    my $DynamicFieldBackendObject = $Kernel::OM->Get('Kernel::System::DynamicField::Backend');
+
+    # replace ticket attributes such as <OTRS_Ticket_DynamicField_Name1> or
+    # <OTRS_TICKET_DynamicField_Name1>
+    # <OTRS_Ticket_*> is deprecated and should be removed in further versions of OTRS
+    my $Count = 0;
+    REPLACEMENT:
+    while (
+        $Param{Field}
+        && $Param{Field} =~ m{<OTRS_TICKET_([A-Za-z0-9_]+)>}msi
+        && $Count++ < 1000
+        )
+    {
+        my $TicketAttribute = $1;
+
+        if ( $TicketAttribute =~ m{DynamicField_(\S+?)_Value} ) {
+            my $DynamicFieldName = $1;
+
+            my $DynamicFieldConfig = $DynamicFieldObject->DynamicFieldGet(
+                Name => $DynamicFieldName,
+            );
+            next REPLACEMENT if !$DynamicFieldConfig;
+
+            # get the display value for each dynamic field
+            my $DisplayValue = $DynamicFieldBackendObject->ValueLookup(
+                DynamicFieldConfig => $DynamicFieldConfig,
+                Key                => $Param{Ticket}->{"DynamicField_$DynamicFieldName"},
+            );
+
+            my $DisplayValueStrg = $DynamicFieldBackendObject->ReadableValueRender(
+                DynamicFieldConfig => $DynamicFieldConfig,
+                Value              => $DisplayValue,
+            );
+
+            $Param{Field} =~ s{<OTRS_TICKET_$TicketAttribute>}{$DisplayValueStrg->{Value} // ''}ig;
+
+            next REPLACEMENT;
+        }
+
+        my $TicketAttributeValue = '';
+
+        # if ticket value is scalar, substitute all instances (as strings)
+        # this will allow replacements for "<OTRS_TICKET_Title> <OTRS_TICKET_Queue"
+        if ( IsStringWithData( $Param{Ticket}->{$TicketAttribute} ) ) {
+            $TicketAttributeValue = $Param{Ticket}->{$TicketAttribute};
+        }
+
+        # if the value is an array (e.g. a multi select dynamic field) replace the value as 'joined' string
+        elsif ( IsArrayRefWithData( $Param{Ticket}->{$TicketAttribute} ) ) {
+            $TicketAttributeValue = join ', ', grep { defined $_ && length $_ } @{ $Param{Ticket}->{$TicketAttribute} };
+        }
+
+        $Param{Field} =~ s{<OTRS_TICKET_$TicketAttribute>}{$TicketAttributeValue}ig;
+    }
+
+    return $Param{Field};
+}
+
+1;
+
+=head1 TERMS AND CONDITIONS
+
+This software is part of the OTRS project (L<https://otrs.org/>).
+
+This software comes with ABSOLUTELY NO WARRANTY. For details, see
+the enclosed file COPYING for license information (GPL). If you
+did not receive this file, see L<https://www.gnu.org/licenses/gpl-3.0.txt>.
+
+=cut

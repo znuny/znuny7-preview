@@ -1,0 +1,203 @@
+/*
+Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+Copyright (C) 2021 Znuny GmbH, https://znuny.org/
+
+This software comes with ABSOLUTELY NO WARRANTY. For details, see
+the enclosed file COPYING for license information (GPL). If you
+did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+*/
+
+/**
+ * @package     Skin "Default"
+ * @section     Application
+ * @subsection  AgentTicketQueue
+ */
+
+@media screen,projection,tv,handheld {
+
+/**
+ * @subsubsection     General
+ */
+
+ /* OVERVIEW BOX - Element Tree */
+
+/*.QueueOverview{
+    font-size: initial;
+    margin: 0;
+    padding: 20px 20px 0 20px;
+    color: initial;
+    display: flex;
+    justify-content: flex-start;
+}*/
+
+.RTL .QueueOverview {
+    margin: 0 8px 10px 16px;
+}
+
+.QueueOverviewSeparator {
+    height: 20px;
+    min-height: 20px;
+}
+
+/*.QueueOverviewList {  //*********now referenced in Core.Reset.css
+    display: flex;
+    clear: both;
+    float: none;
+    padding-bottom: 20px;
+}
+
+.QueueOverviewList li {
+    float: none;
+    display: flex;
+    list-style: none;
+    padding: none;
+    height: auto;
+    white-space: nowrap;
+    border: none;
+    border-radius: none;
+    margin-left: 20px;
+}
+
+.QueueOverviewList li:first-child {
+    margin-left: 0;
+}
+
+.QueueOverviewList li a {
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--border-color);
+    padding: var(--size-8) var(--size-20);
+    color: var(--main-font-color);
+    background: transparent;
+    transition: var(--main-transition);
+    font-size: var(--font-size-sm);
+}
+
+.QueueOverviewList li a:hover {
+    border: 1px solid var(--primary-color-darker);
+    color: var(--white);
+    background: var(--primary-color-darker);
+    opacity: 1;
+}
+
+.QueueOverview .Active  {
+    font-weight: normal;
+    border: 1px solid var(--primary-color);
+    background: var(--primary-color-rgb);
+}
+*/
+
+.QueueOverviewList.Level_1 {
+    margin-left: 0;
+}
+
+.QueueOverviewList.Level_2 {
+    margin-left: 0;
+}
+
+.QueueOverviewList.Level_3 {
+    margin-left: 0;
+}
+
+.QueueOverviewList.Level_4 {
+    margin-left: 0;
+}
+
+.QueueOverviewList.Level_5 {
+    margin-left: 0;
+}
+
+.QueueOverviewList.Level_6 {
+    margin-left: 0;
+}
+
+.QueueOverviewList.Level_7 {
+    margin-left: 0;
+}
+
+.QueueOverviewList.Level_8 {
+    margin-left: 0;
+}
+
+.QueueOverviewList.Level_9 {
+    margin-left: 0;
+}
+
+.QueueOverviewList.Level_10 {
+    margin-left: 0;
+}
+
+.QueueOverviewList.Level_X {
+    margin-left: 0;
+}
+
+.RTL .QueueOverviewList.Level_1 {
+    margin-right: 10px;
+}
+
+.RTL .QueueOverviewList.Level_2 {
+    margin-right: 20px;
+}
+
+.RTL .QueueOverviewList.Level_3 {
+    margin-right: 30px;
+}
+
+.RTL .QueueOverviewList.Level_4 {
+    margin-right: 40px;
+}
+
+.RTL .QueueOverviewList.Level_5 {
+    margin-right: 50px;
+}
+
+.RTL .QueueOverviewList.Level_6 {
+    margin-right: 60px;
+}
+
+.RTL .QueueOverviewList.Level_7 {
+    margin-right: 70px;
+}
+
+.RTL .QueueOverviewList.Level_8 {
+    margin-right: 80px;
+}
+
+.RTL .QueueOverviewList.Level_9 {
+    margin-right: 90px;
+}
+
+.RTL .QueueOverviewList.Level_10 {
+    margin-right: 100px;
+}
+
+.RTL .QueueOverviewList.Level_X {
+    margin-right: 100px;
+}
+
+.RTL .QueueOverviewList li {
+    float: right;
+}
+
+.QueueOverview .OlderLevel1 {
+    color: orange;
+}
+
+.QueueOverview .OlderLevel2 {
+    color: #ff4766;
+}
+
+.QueueOverview .Oldest {
+    color: red;
+    animation: Blinking 1s steps(10, start) infinite;
+    -webkit-animation: Blinking 1s steps(10, start) infinite;
+}
+
+.QueueOverviewList:not(:last-of-type) li a.Active {
+    opacity: 0.5;
+}
+
+.QueueOverviewList:not(:last-of-type) li a:hover {
+    opacity: 1;
+}
+
+} /* end @media */

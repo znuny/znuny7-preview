@@ -1,0 +1,245 @@
+# --
+# Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Znuny GmbH, https://znuny.org/
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+# --
+
+[% RenderBlockStart("Main") %]
+<div class="MainBox ARIARoleMain LayoutFixedSidebar SidebarFirst ActionsSideBar">
+    <div class="SidebarColumn ActionsSideBarComp">
+        <div class="WidgetSimple">
+            <div class="Header">
+                <h2>[% Translate("Actions") | html %]</h2>
+            </div>
+            <div class="Content">
+                <ul class="ActionList">
+[% RenderBlockStart("ActionAddDynamicField") %]
+                    <li>
+                        <h4><label for="[% Data.SelectName | html %]">[% Translate( Data.ObjectTypeName ) | html %]</label></h4>
+                        [% Data.AddDynamicFieldStrg %]
+                        <div class="FieldExplanation">
+                            <p>[% Translate("Add new field for object") | html %]: [% Translate(Data.ObjectType) | html %]</p>
+                        </div>
+                    </li>
+[% RenderBlockEnd("ActionAddDynamicField") %]
+                </ul>
+            </div>
+        </div>
+        <div class="WidgetSimple">
+            <div class="Header">
+                <h2><label for="FilterDynamicFields">[% Translate("Filter for Dynamic Fields") | html %]</label></h2>
+            </div>
+            <div class="Content">
+                <input type="text" id="FilterDynamicFields" class="FilterBox" placeholder="[% Translate("Just start typing to filter...") | html %]" name="FilterDynamicFields" value="" title="[% Translate("Filter for dynamic fields") | html %]">
+            </div>
+        </div>
+[% RenderBlockStart("Hint") %]
+        <div class="WidgetSimple">
+            <div class="Header">
+                <h2>[% Translate("Hint") | html %]</h2>
+            </div>
+            <div class="Content">
+                <div class="FieldExplanation">
+                    <p>
+                        [% Translate("To add a new field, select the field type from one of the object's list, the object defines the boundary of the field and it can't be changed after the field creation.") | html %]
+                    </p>
+                </div>
+            </div>
+        </div>
+[% RenderBlockEnd("Hint") %]
+
+        <div class='WidgetSimple' id='DynamicFieldImportExportWidget'>
+            <div class='Header'>
+                <h2>
+                    [% Translate("Import and export of configurations") | html %]
+                </h2>
+            </div>
+            <div class='Content'>
+                <p class='FieldExplanation'>
+                    [% Translate('Upload a file in YAML format (as provided by the export) to import dynamic field configurations.') | html %]
+                </p>
+                <ul class='ActionList SpacingTop'>
+                    <li>
+                        <form action='[% Env("CGIHandle") %]' method='post' enctype='multipart/form-data' class='Validate PreventMultipleSubmits'>
+                            <input type='hidden' name='ChallengeToken' value=[% Env("UserChallengeToken") | JSON %]>
+                            <input type='hidden' name='Action' value='AdminDynamicFieldConfigurationImportExport'/>
+                            <input type='hidden' name='Subaction' value='Import'/>
+                            <input name='FileUpload' id='FileUpload' type='file' size='18' class='Fixed W100pc Validate_Required [% Data.FileUploadInvalid | html %]'/>
+                            <div id='FileUploadError' class='TooltipErrorMessage'>
+                                <p>
+                                   [% Translate('This field is required.') | html %]
+                                </p>
+                            </div>
+                            <div id='FileUploadServerError' class='TooltipErrorMessage'>
+                                <p>
+                                   [% Translate('This field is required.') | html %]
+                                </p>
+                            </div>
+                            <fieldset>
+                                <label for='OverwriteExistingConfigurations'>
+                                    <input type='checkbox' id='OverwriteExistingConfigurations' name='OverwriteExistingConfigurations' value='1'/>
+                                    [% Translate('Overwrite existing configurations') | html %]
+                                </label>
+                            </fieldset>
+                            <button class='CallForAction btn-main btn-primary-ghost' id='DynamicFieldImport' type='submit'>
+                                <span><i class='fa fa-upload'></i>
+                                    [% Translate('Import configurations') | html %]
+                                </span>
+                            </button>
+                        </form>
+                    </li>
+                    <li>
+                        <a href='[% Env("Baselink") %]Action=AdminDynamicFieldConfigurationImportExport;Subaction=Export' id='DynamicFieldExport' class='CallForAction btn-main btn-primary-ghost'>
+                            <span><i class='fa fa-download'></i>
+                                [% Translate('Export configurations') | html %]
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class='WidgetSimple'>
+            <div class='Header'>
+                <h2>[% Translate('Related Actions') | html %]</h2>
+            </div>
+            <div class='Content'>
+                <ul class='ActionList'>
+                    <li>
+                        <a href='[% Env("Baselink") %]Action=AdminDynamicFieldScreenConfiguration' class='CallForAction btn-main btn-primary-ghost'>
+                        <a href='[% Env("Baselink") %]Action=AdminProcessManagement' class='CallForAction btn-main btn-primary-ghost'>
+                            <span>
+                                [% Translate('Process Management') | html %]
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='[% Env("Baselink") %]Action=AdminDynamicFieldScreenConfiguration' class='CallForAction btn-main btn-primary-ghost'>
+                            <span>
+                                [% Translate('Dynamic fields ↔ Screens') | html %]
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="ContentColumn">
+        <h1 class="InvisibleText">[% Translate("Dynamic Fields Management") | html %] - [% Translate(Data.Action) | html %]</h1>
+
+        [% BreadcrumbPath = [
+                {
+                    Name => Translate('Dynamic Fields Management'),
+                    Link => Env("Action"),
+                },
+            ]
+        %]
+
+        [% INCLUDE "Breadcrumb.tt" Path = BreadcrumbPath %]
+        <div class="WidgetSimple">
+            <div class="Header">
+                <h2>[% Translate("Dynamic Fields List") | html %]</h2>
+[% RenderBlockStart("ContextSettings") %]
+                <ul class="ContextFunctions">
+                    <li class="ContextSettings">
+                        <a href="#" class="icon-hover" id="ShowContextSettingsDialog" title="[% Translate("Settings") | html %]">
+                            <i class="fa fa-cog"></i>
+                            <span>[% Translate("Settings") | html %]</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div id="ContextSettingsDialogContainer" class="Hidden">
+                    <form action="[% Env("CGIHandle") %]" method="post" id="ContextSettingsDialog">
+                        <input type="hidden" name="Action" value="AgentPreferences"/>
+                        <input type="hidden" name="Subaction" value="Update"/>
+                        <input type="hidden" name="Group" value="[% Data.Group | html %]"/>
+                        <input type="hidden" name="RedirectURL" value="[% Data.RequestedURL | html %]"/>
+                        <fieldset class="TableLike">
+                            <label for="[% Data.PreferencesKey | html %]">[% Translate("Dynamic fields per page") | html %]</label>
+                            <div class="Field">
+                                [% Data.PageShownString %]
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+[% RenderBlockEnd("ContextSettings") %]
+
+            </div>
+            <div class="DynamicFieldsPagination">
+                <span class="Pagination">
+[% RenderBlockStart("OverviewNavBarPageNavBar") %]
+                    <ul>
+                        <li>[% Data.ResultLong %]</li>
+                        <li class="page-links">[% Data.SiteNavBarLong %]</li>
+                    </ul>
+[% RenderBlockEnd("OverviewNavBarPageNavBar") %]
+                </span>
+            </div>
+            <div class="DynamicFieldsContent scroll-bar-styled bar-no-left-border">
+                <table class="DataTable" id="DynamicFieldsTable" summary="List of all registered Dynamic Fields">
+                    <thead>
+                        <tr>
+                            <th>[% Translate("Name") | html %]</th>
+                            <th>[% Translate("Label") | html %]</th>
+                            <th>[% Translate("Order") | html %]</th>
+                            <th>[% Translate("Type") | html %]</th>
+                            <th>[% Translate("Object") | html %]</th>
+                            <th>[% Translate("Validity") | html %]</th>
+                            <th>[% Translate("Delete") | html %]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+[% RenderBlockStart("NoDataFound") %]
+                        <tr>
+                            <td colspan="6">
+                                [% Translate("No data found.") | html %]
+                            </td>
+                        </tr>
+[% RenderBlockEnd("NoDataFound") %]
+[% RenderBlockStart("DynamicFieldsRow") %]
+                        <tr class="MasterAction[% IF Data.ValidID != 1%] Invalid[% END %]" id="DynamicFieldID_[% Data.ID | html %]">
+                            <td>
+                                <a href="[% Env("Baselink") %]Action=[% Data.ConfigDialog | uri %];Subaction=Change;ObjectType=[% Data.ObjectType | uri %];FieldType=[% Data.FieldType | uri %];ID=[% Data.ID | uri %]" title="[% Data.Name | html %]" class="MasterActionLink">[% Data.Name %]</a>
+                            </td>
+                            <td>
+                                <div>[% Translate(Data.Label) | html %]</div>
+                            </td>
+                            <td>
+                                <div>[% Data.FieldOrder %]</div>
+                            </td>
+                            <td>
+                                <div>[% Translate(Data.FieldTypeName) | html %]</div>
+                            </td>
+                            <td>
+                                <div>[% Translate(Data.ObjectTypeName) | html %]</div>
+                            </td>
+                            <td>
+                                <div>[% Translate(Data.Valid) | html %]</div>
+                            </td>
+                            <td class="Center">
+[% RenderBlockStart("DeleteLink") %]
+                                <a class="TrashCan DynamicFieldDelete table-icon-hover-md" href="#" data-query-string="Action=AdminDynamicField;Subaction=DynamicFieldDelete;ID=[% Data.ID | uri %];[% Env("ChallengeTokenParam") | html %]" title="[% Translate("Delete this field") | html %]">[% Translate("Delete this field") | html %]
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
+[% RenderBlockEnd("DeleteLink") %]
+                            </td>
+                        </tr>
+[% RenderBlockEnd("DynamicFieldsRow") %]
+                        <tr class="FilterMessage Hidden">
+                            <td colspan="7">[% Translate("No matches found.") | html %]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+[% RenderBlockStart("MaxFieldOrder") %]
+        <input id="MaxFieldOrder" type="hidden" name="MaxFieldOrder" value="[% Data.MaxFieldOrder | html %]"/>
+[% RenderBlockEnd("MaxFieldOrder") %]
+    </div>
+</div>
+[% RenderBlockEnd("Main") %]

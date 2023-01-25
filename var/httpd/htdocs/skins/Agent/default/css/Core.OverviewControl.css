@@ -1,0 +1,348 @@
+/*
+Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+Copyright (C) 2021 Znuny GmbH, https://znuny.org/
+
+This software comes with ABSOLUTELY NO WARRANTY. For details, see
+the enclosed file COPYING for license information (GPL). If you
+did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+*/
+
+/**
+ * @package     Skin "Default"
+ * @section     OverviewControls
+ */
+
+@media screen,projection,tv,handheld {
+
+/**
+ * @subsection  Overview Control General
+ */
+.OverviewActions {
+    min-height: 28px;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--padding-md);
+    background: var(--main-bg-color);
+    width: 100%;
+    height: 100%;
+}
+
+.OverviewActions>div {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+}
+
+.OverviewControl {
+    background-color: transparent;
+}
+
+.OverviewControl > div {
+    padding: 0;
+}
+
+.RTL .OverviewControl > div {
+    padding: 0;
+}
+
+.OverviewControl .Tabs {
+    padding: 0 var(--padding-xs);
+}
+
+.OverviewControl .ActionRow {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--padding-sm);
+}
+
+.OverviewControl .ControlRow + .ActionRow {
+    padding: 0;
+}
+
+.OverviewControl.OverviewAgenda .ControlRow + .ActionRow {
+    padding: var(--padding-sm);
+}
+
+.OverviewControl .ActionRow .Pagination{
+    border-top: 0;
+}
+
+.OverviewControl .ActionRow .HeaderLeft,
+.OverviewControl .ActionRow .HeaderCenter,
+.OverviewControl .ActionRow .HeaderRight {
+    display: flex;
+    gap: var(--gap-md);
+    align-self: center;
+    margin: 0;
+    float: none;
+}
+
+.OverviewControl .ActionRow .HeaderLeft a {
+    display: flex;
+    align-self: center;
+}
+
+.OverviewControl .ActionRow .HeaderLeft a:hover {
+    text-decoration: underline;
+}
+
+.OverviewControl .ActionRow .HeaderCenter h2 {
+    margin: 0;
+}
+
+.OverviewControl .ActionRow .HeaderRight .btn-today {
+    padding: var(--padding-xs) var(--padding-md);
+    margin: 0;
+    border: var(--border-width) var(--border-solid) var(--border-color);
+    border-radius: var(--border-radius-xs);
+    height: auto;
+    background: transparent;
+    color: var(--black);
+    text-shadow: none;
+    box-shadow: none;
+    transition: var(--main-transition);
+}
+
+.OverviewControl .ActionRow .HeaderRight .btns-arrow-wrapper {
+    display: flex;
+    gap: var(--gap-sm);
+}
+
+.OverviewControl .ActionRow .HeaderRight .btn-arrow {
+    padding: var(--padding-xs) 7px;
+    margin: 0;
+    border: var(--border-width) var(--border-solid) var(--border-color);
+    border-radius: var(--border-radius-xs);
+    height: auto;
+    background: transparent;
+    color: var(--black);
+    text-shadow: none;
+    box-shadow: none;
+    transition: var(--main-transition);
+}
+
+.OverviewControl .ActionRow .HeaderRight .btn-today:hover,
+.OverviewControl .ActionRow .HeaderRight .btn-arrow:hover {
+    background-color: var(--gray-semi-light);
+}
+
+/**
+ * @subsection  Control Row View Zoom
+ */
+.OverviewZoom {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.RTL .OverviewZoom {
+    float: left;
+}
+
+.OverviewZoom li {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 0 var(--margin-sm);
+}
+
+.OverviewZoom li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 18px;
+    width: 30px;
+    height: 30px;
+    color: var(--black);
+    border-radius: var(--border-radius-sm);
+    border: var(--border-width) var(--border-solid) var(--border-color);
+    background: transparent;
+    transition: var(--main-transition);
+}
+
+.OverviewZoom li.Active a,
+.OverviewZoom li.Active a:hover {
+    background: var(--primary-color-rgb);
+    color: var(--black);
+    border: var(--border-width) var(--border-solid) var(--primary-color) !important;
+    pointer-events: none;
+}
+
+.OverviewZoom li a:hover {
+    background: var(--primary-color);
+    color: var(--white) !important;
+    border: var(--border-width) var(--border-solid) var(--primary-color) !important;
+    padding: 4px 10px !important;
+}
+
+.OverviewZoom + .Pagination {
+    height: 10px;
+    margin-top: 5px;
+    padding-right: 12px;
+}
+
+.OverviewActions .Actions, .OverviewActions ul.Actions {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+}
+
+.OverviewActions .Actions, .OverviewActions .Actions li {
+    display: flex;
+    align-self: center;
+    transition: var(--main-transition);
+}
+
+#BulkAction a:hover {
+    text-decoration: none;
+    cursor: default;
+}
+
+.MasterAction h2 a {
+    align-self: center;
+    display: flex;
+    color: var(--black);
+    font-size: var(--font-size-sm);
+    font-weight: var(--bold);
+}
+
+/**
+ * @subsection  Control Row Overview Header for Medium and Large View
+ */
+.OverviewHeaderMediumLarge div.IconContainer {
+    float: left;
+    width: 40px;
+    height: 30px;
+    padding-left: 4px;
+    background: transparent url(../img/overviewcontrol_line.png) no-repeat bottom right;
+}
+
+.RTL .OverviewHeaderMediumLarge div.IconContainer {
+    float: right;
+    padding-left: 0;
+    padding-right: 4px;
+    background-position: bottom left;
+}
+
+.OverviewHeaderMediumLarge div.IconContainer span.Checkbox {
+    display: block;
+    height: 14px;
+    width: 40px;
+    background: transparent url(../img/overviewcontrol_checkbox.png) no-repeat center;
+}
+
+.OverviewHeaderMediumLarge div.IconContainer span.Flag {
+    display: block;
+    height: 9px;
+    width: 16px;
+    margin-left: 10px;
+    margin-top: 3px;
+    background-color: #999;
+}
+
+.RTL .OverviewHeaderMediumLarge div.IconContainer span.Flag {
+    margin-left: 0;
+    margin-right: 13px;
+}
+
+.OverviewHeaderMediumLarge div.Filter {
+    height: 25px;
+    padding-top: 5px;
+}
+
+.RTL .OverviewHeaderMediumLarge div.Filter {
+    margin-left: 0;
+    margin-right: 55px;
+}
+
+/**
+ * @subsection  Control Row Overview Header for Small View
+ */
+.OverviewHeaderSmall {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+/**
+ * @subsection  Control Row Fix for Ticket Create Masks with Datepicker
+ */
+
+#CustomerTickets {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+#CustomerTickets > div,
+#CustomerTickets > ul {
+    padding: 0;
+}
+
+.LayoutPopup #CustomerTickets > div,
+.LayoutPopup #CustomerTickets > ul.Overview  {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/**
+ * Filter Dropdown
+ */
+
+.OverviewActions .InputField_InputContainer {
+    width: auto;
+    min-width: 185px;
+}
+
+.OverviewActions .InputField_InputContainer input {
+    line-height: normal;
+}
+
+.OverviewActions .InputField_InputContainer div.InputField_Selection div.Text {
+    /*font-family: Inter;*/
+    font-size: var(--font-size-sm);
+    font-weight: var(--semi-bold);
+    color: var(--black);
+}
+
+.OverviewActions .InputField_InputContainer div.InputField_Selection div.Text:before {
+    color: var(--gray-semi-dark);
+    position: absolute;
+    background: var(--main-bg-color);
+    font-weight: var(--medium);
+    min-width: 57px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/**
+ *  Table
+ */
+
+.Overview.TicketList table {
+    border-left: var(--border-width) var(--border-solid) var(--border-color);
+    border-right: var(--border-width) var(--border-solid) var(--border-color);
+    border-bottom-left-radius: var(--border-radius-sm);
+    border-bottom-right-radius: var(--border-radius-sm);
+}
+
+.Overview.TicketList table thead tr th {
+    padding: var(--padding-lg);
+    border-bottom: var(--border-width) var(--border-solid) var(--border-color);
+}
+
+.Overview.TicketList table thead tr th span {
+    padding: 0;
+}
+
+.Overview.TicketList table tbody tr.DateDivider td {
+    padding: var(--padding-xs) var(--padding-sm);
+}
+
+
+} /* end @media */

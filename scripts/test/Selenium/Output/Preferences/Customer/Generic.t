@@ -1,0 +1,75 @@
+# --
+# Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Znuny GmbH, https://znuny.org/
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+# --
+
+## no critic (Modules::RequireExplicitPackage)
+use strict;
+use warnings;
+use utf8;
+
+use vars (qw($Self));
+
+# get selenium object
+my $Selenium = $Kernel::OM->Get('Kernel::System::UnitTest::Selenium');
+
+$Selenium->RunTest(
+    sub {
+
+        my $HelperObject = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
+        my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+
+        # create test user and login
+        my $TestUserLogin = $HelperObject->TestCustomerUserCreate(
+            Groups => ['admin'],
+        ) || die "Did not get test user";
+
+        $Selenium->Login(
+            Type     => 'Customer',
+            User     => $TestUserLogin,
+            Password => $TestUserLogin,
+        );
+
+        my $ScriptAlias = $ConfigObject->Get('ScriptAlias');
+
+        # go to customer preferences
+        $Selenium->VerifiedGet("${ScriptAlias}customer.pl?Action=CustomerPreferences");
+
+        # create test params
+        my @Tests = (
+            {
+                Name  => 'Ticket Overview',
+                ID    => 'UserRefreshTimeUpdate',
+                Value => '5',
+            },
+            {
+                Name  => 'Number of displayed tickets',
+                ID    => 'UserShowTicketsUpdate',
+                Value => '30',
+            },
+        );
+
+        my $UpdateMessage = "Preferences updated successfully!";
+
+        # update generic preferences
+        for my $Test (@Tests) {
+
+            $Selenium->InputFieldValueSet(
+                Element => "#$Test->{ID}",
+                Value   => $Test->{Value},
+            );
+            $Selenium->find_element( "#$Test->{ID}", 'css' )->VerifiedClick();
+
+            $Self->True(
+                index( $Selenium->get_page_source(), $UpdateMessage ) > -1,
+                "Customer preference $Test->{Name} - updated"
+            );
+        }
+    }
+);
+
+1;

@@ -1,0 +1,255 @@
+/*
+Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+Copyright (C) 2021 Znuny GmbH, https://znuny.org/
+
+This software comes with ABSOLUTELY NO WARRANTY. For details, see
+the enclosed file COPYING for license information (GPL). If you
+did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+*/
+
+/**
+ * @package     Skin "Default"
+ * @section     Application
+ * @subsection  AgentStatistics
+ */
+
+@media screen,projection,tv,handheld {
+
+/**
+ * @subsubsection     General
+ */
+
+.PreviewWidget {
+    position: relative;
+}
+
+.PreviewContainer {
+    overflow: hidden !important;
+}
+
+.PreviewContainer .nvd3 text {
+    font-size: 11px;
+}
+
+.PreviewContainer .Preview {
+	width: 70%;
+	height: 500px;
+    background: var(--main-bg-color);
+    border: var(--border-width) var(--border-solid) var(--border-color);
+    border-radius: var(--border-radius-sm);
+    margin: 0 auto 30px;
+}
+
+.PreviewContainer .Preview .Error,
+.PreviewContainer .Preview .Hint {
+    text-align: center;
+    color: #777;
+}
+
+.PreviewContainer .Preview .Error i,
+.PreviewContainer .Preview .Hint i {
+    display: block;
+    font-size: 30px;
+    color: #bbb;
+    margin-bottom: 5px;
+}
+
+.PreviewContainer .Preview .Error:first-child,
+.PreviewContainer .Preview .Hint:first-child {
+    margin-top: 130px;
+}
+
+.PreviewContainer .PreviewSettings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-sm);
+}
+
+.PreviewContainer .PreviewSettings a.Active {
+    border-bottom: 1px solid #000;
+}
+
+.PreviewContainer .PreviewSettings .Warning {
+    display: block;
+    color: var(--gray-md);
+}
+
+.PreviewContainer .PreviewSettings .btns-wrapper {
+    display: flex;
+    gap: var(--gap-sm);
+}
+
+.PreviewContainer .CallForAction {
+    width: 100px;
+}
+
+.PreviewSettings .CallForAction {
+    width: auto;
+}
+
+.PreviewSettings .CallForAction.Active {
+    background-color: #e0e0e0;
+    border-color: #777;
+}
+
+.PreviewContainer .CallForAction span {
+    height: auto;
+}
+
+.PreviewContainer .CallForAction span i {
+    display: block;
+    width: 100%;
+    margin: 3px 0px 5px 0px;
+}
+
+.PreviewContainer .CallForAction.Left,
+.PreviewContainer .CallForAction.Right {
+	position: absolute;
+	top: 50%;
+	margin-top: -30px;
+	left: 50px;
+	text-align: center;
+}
+
+.PreviewContainer .CallForAction.Right {
+	left: auto;
+	right: 50px;
+}
+
+.PreviewContainer .CallForAction.Bottom {
+	display: block;
+	margin: 0px auto 30px auto;
+}
+
+.WidgetSimple fieldset legend {
+    padding-top: 10px;
+}
+
+fieldset legend {
+    position: relative;
+}
+
+fieldset legend a {
+
+}
+
+.PreviewContainer #PreviewCanvas {
+	width: 100%;
+	margin: 15px 0px;
+	height: 300px;
+}
+
+.PreviewContainer .PreviewTable {
+    overflow: auto;
+    height: 100%;
+    margin: 0;
+    border: var(--border-width) var(--border-solid) var(--border-color);
+    border-radius: var(--border-radius-sm);
+}
+
+.PreviewContainer .PreviewTable td {
+	white-space: nowrap;
+}
+
+
+#EditDialog {
+    width: 800px;
+    max-height: 70vh; /* ED added on 23/01/18 */
+}
+
+#EditDialog .InputField_Search {
+    min-width: 500px;
+}
+
+
+/* MODALS */
+
+
+.Dialog.Modal .Content fieldset.TableLike.inner-previewModalContainer {
+}
+
+.Dialog .Content fieldset.inner-previewModalContainer > legend {
+    display: flex;
+    width: 100%;
+    gap: var(--gap-sm);
+    align-items: center;
+    padding-bottom: var(--padding-sm);
+    padding-top: var(--padding-md);
+    margin-top: var(--margin-md);
+    border-top: var(--border-width) var(--border-solid) var(--border-color);
+}
+
+.Dialog .Content fieldset.inner-previewModalContainer:first-child > legend {
+    margin: 0;
+    padding: 0;
+    border-top: var(--border-width) var(--border-solid) transparent;
+}
+
+.Dialog .Content fieldset.inner-previewModalContainer > legend > span {
+    margin: 0;
+}
+
+.Dialog .Content fieldset.inner-previewModalContainer .field-wrapper {
+    padding-left: var(--padding-xxl);
+}
+
+.Dialog .Content fieldset.TableLike.Add .Field select {
+    width: 100%;
+    max-width: 100%;
+}
+
+.TableLike.Add .Field.Value{
+    width: 100%;
+    max-width: 100%;
+}
+
+/*
+.Dialog .Content fieldset.inner-previewModalContainer .Field {
+    padding: 0;
+    display: flex;
+    gap: var(--gap-xs);
+    padding-left: var(--padding-xxl);
+}
+
+.Dialog .Content fieldset.TableLike.Add label {
+    padding-top: var(--padding-sm);
+    padding-left: var(--padding-xxl);
+}
+.Dialog .Content fieldset.inner-previewModalContainer label,
+.Dialog .Content fieldset.TableLike.Add .Field {
+    padding-left: var(--padding-xxl);
+}
+
+
+
+.Dialog .Content fieldset.inner-previewModalContainer .radio-field-wrapper.absolute-period {
+    padding-top: var(--padding-sm);
+}
+
+.Dialog .Content fieldset.inner-previewModalContainer .radio-field-wrapper label {
+    display: flex;
+    gap: var(--gap-sm);
+    align-content: center;
+    padding-left: var(--padding-xxl);
+}
+
+.Dialog .Content fieldset.inner-previewModalContainer .radio-field-wrapper.relative-period {
+
+}
+
+ .Dialog .Content fieldset.inner-previewModalContainer .radio-field-wrapper.relative-period .Field,
+.Dialog .Content fieldset.inner-previewModalContainer .scale-field-wrapper .Field {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--gap-sm);
+}
+
+.Dialog .Content fieldset.inner-previewModalContainer .radio-field-wrapper.relative-period .Field > *,
+.Dialog .Content fieldset.inner-previewModalContainer .scale-field-wrapper .Field > * {
+    display: flex;
+    width: 100%;
+} */
+
+} /* end @media */

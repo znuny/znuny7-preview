@@ -1,0 +1,516 @@
+/*
+Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+Copyright (C) 2021 Znuny GmbH, https://znuny.org/
+
+This software comes with ABSOLUTELY NO WARRANTY. For details, see
+the enclosed file COPYING for license information (GPL). If you
+did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+*/
+
+/**
+ * @package     Skin "Default"
+ * @section     OverviewLarge
+ */
+
+@media screen,projection,tv,handheld {
+
+/**
+ * @subsection  Large View Overview
+ */
+
+#TicketOverviewLarge {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.OverviewLarge {
+    margin: 0;
+    line-height: var(--main-line-height);
+    padding: var(--main-page-padding);
+    background: var(--main-bg-color);
+}
+
+.OverviewLarge li.Active, .OverviewLarge .HiddenBlock {
+    display: flex;
+    flex-flow: column;
+} 
+
+.RTL .OverviewLarge {
+    margin-right: 8px;
+    margin-left: 16px;
+}…                                                                                                                            
+
+.OverviewLarge .ActionRow {
+    cursor: default;
+}
+
+/*#EmptyMessageLarge {
+   padding: var(--padding-md);
+   border: var(--border-width) var(--border-solid) var(--border-color);
+   background: var(--white);
+   min-height: 10vh;
+   border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+ }
+
+.OverviewLarge > li {
+    position: relative;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+.OverviewLarge > li:first-child {
+    border-top: 1px solid #ddd;
+}*/
+
+/*.OverviewLarge > li ul.InlineActions {*/
+    /*  NOTE: moved to Core.Reset under ".InlineActions";*/
+    /*transition: all ease-in 0.2s;*/
+/*}*/
+
+.OverviewLarge > li ul.InlineActions li {
+    height: auto;
+    min-height: 0;
+    border: none;
+}
+
+.OverviewLarge > li ul.InlineActions li form {
+    padding-top: 7px;
+    overflow: unset;
+}
+
+.OverviewLarge > li ul.InlineActions li a {
+    color: var(--white);
+}
+
+/*.OverviewLarge > li ul.InlineActions li:last-child a {
+    margin-right: 0px;
+}*/
+
+.OverviewLarge > li ul.InlineActions li:nth-child(even) {
+    background-color: transparent;
+}
+
+.OverviewLarge > li ul.InlineActions li.ResponsiveActionMenu {
+    display: none;
+}
+
+.OverviewLarge > li ul.InlineActions li.ResponsiveActionMenu:after {
+    content: "";
+    display: inline;
+    float: none;
+    margin: 0;
+    margin-left: 8px;
+}
+
+body.TouchDevice .OverviewLarge > li ul.InlineActions li.ResponsiveActionMenu.Opened:after {
+    content: " | ";
+    display: block;
+    float: right;
+    margin: 5px 3px;
+}
+
+body.TouchDevice .OverviewLarge > li ul.InlineActions {
+    top: 0px;
+    transition: none;
+}
+
+body.TouchDevice .OverviewLarge > li ul.InlineActions li.ResponsiveActionMenu {
+    display: inline-block;
+}
+
+.OverviewLarge .Content {
+    cursor: pointer;
+}
+
+.OverviewLarge .Content.ArticleBody {
+    cursor: text;
+    color: var(--text-message-color);
+    font-size: var(--font-size-sm);
+    font-weight: var(--medium);
+    padding: var(--padding-lg);
+    min-height: var(--text-message-min-height);
+}
+
+/*.OverviewLarge .Content.ShowInlineActions {
+    padding-top: 32px;
+}*/
+
+/*.OverviewLarge > li:hover > .Content,
+.OverviewLarge > li:hover {
+    border-left-color: #FCB24B !important;
+}
+
+.OverviewLarge > li:last-child {
+    border-bottom: 1px solid #ddd;
+}*/
+
+/* Color is transparent/ no color at all
+.OverviewLarge > li:nth-child(even) {
+    background-color: #F5F5F5;
+}*/
+
+.OverviewLarge > li:nth-child(even) .Content {
+    border-left-color: #f5f5f5;
+}
+
+.OverviewLarge div.Checkbox {
+    cursor: default !important;
+}
+
+/*.OverviewLarge div.Checkbox input {
+    margin-top: 12px;
+    margin-left: 8px;
+}
+
+.RTL .OverviewLarge input.Checkbox {
+    left: auto;
+    right: 0px;
+}
+
+.RTL .OverviewLarge div.Checkbox input {
+    margin-left: 0px;
+    margin-right: 8px;
+}
+
+.OverviewLarge div.Flag {
+    position: absolute;
+    left: 5px;
+    top: 37px;
+    width: 25px;
+    height: 15px;
+    border: 1px solid #bbb;
+}*/
+
+.RTL .OverviewLarge div.Flag {
+    left: auto;
+    right: -10px;
+}
+
+.OverviewLarge div.UnreadArticles {
+    /*position: absolute;
+    left: 4px;
+    top: 60px;*/
+}
+
+.RTL .OverviewLarge div.UnreadArticles {
+    left: auto;
+    right: 4px;
+}
+
+.OverviewLarge li:hover span.UnreadArticles {
+    background-position: 0 -40px;
+}
+
+.OverviewLarge .Infos {
+    width: 40%;
+}
+
+.RTL .OverviewLarge .Infos {
+    float: right;
+}
+
+/*.OverviewLarge div.Content.ShowInlineActions .Infos {
+    margin-top: -20px;
+}*/
+
+/*.OverviewLarge h2 {
+    width: 90%;
+    height: 15px;
+    margin: 0 10px 5px 50px;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.RTL .OverviewLarge h2 {
+    margin: 0 50px 5px 10px;
+}*/
+
+.OverviewLarge h2 a {
+    color: #000;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.OverviewLarge .tables-wrapper {
+    display: flex;
+    flex-flow: row;
+}
+
+.OverviewLarge .Infos table {
+    table-layout: fixed;
+}
+
+.RTL .OverviewLarge .Infos table {
+    margin: 0 50px 0 10px;
+}
+
+.OverviewLarge .Infos table tr:last-child td {
+    padding: 0 0 0 10px;
+}
+
+.OverviewLarge .Infos table tr.Middle {
+    border-top: var(--border-width) var(--border-solid) var(--border-color);
+}
+
+.OverviewLarge .Infos table tr.Middle td {
+    padding-top: 10px;
+}
+
+.OverviewLarge .Infos table td {
+    width: 50%;
+    padding: 0 0 var(--padding-md) 10px;
+    overflow: hidden;
+    border-left: var(--border-width) var(--border-solid) var(--border-color);
+    line-height: var(--main-line-height);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.OverviewLarge .Infos table td > div {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.OverviewLarge .Infos table td:first-child {
+    padding: 0 0 var(--padding-md) 0;
+    border-left: none;
+}
+
+.OverviewLarge .Infos table tr:last-child td:first-child {
+    padding: 0;
+}
+
+/*.OverviewLarge .Infos table td label {
+    display: block;
+    color: #888;
+    font-weight: bold;
+}*/
+
+.OverviewLarge .ItemActions {
+    display: flex;
+    height: 50px;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+    color: var(--black);
+    padding: var(--padding-sm) var(--padding-lg);
+    font-weight: var(--normal);
+    font-size: var(--font-size-sm);
+    background: var(--color-ticket-header);
+    border-top: var(--border-width) var(--border-solid) var(--border-color);
+    border-bottom: var(--border-width) var(--border-solid) var(--border-color);
+}
+
+.OverviewLarge .ItemActions li {
+    flex-flow: row !important;
+    white-space: nowrap;
+}
+
+/*.OverviewLarge .ItemActions li:hover a {
+    text-decoration: underline;
+}*/
+
+.OverviewLarge .ItemActions .Actions, 
+.OverviewLarge .Actions form {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    width: 100%;
+}
+
+.OverviewLarge .Preview {
+    width: 60%;
+    padding-left: var(--padding-md);
+}
+
+.OverviewLarge .Preview > ul:first-child {
+    border: var(--border-width) var(--border-solid) var(--border-color);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+}
+
+.OverviewLarge .Preview > ul:first-child > li {
+    border-bottom: var(--border-width) var(--border-solid) var(--border-color);
+}
+
+.OverviewLarge .Preview>ul li:first-child {
+    border-radius: 0;
+    border-top-right-radius: var(--border-radius-md);
+    border-top-left-radius: var(--border-radius-md);
+}
+
+.OverviewLarge .Preview>ul li:last-child {
+    border-radius: 0;
+    border-bottom-right-radius: var(--border-radius-md);
+    border-bottom-left-radius: var(--border-radius-md);
+    border-bottom: 0;
+}
+
+.OverviewLarge .InputField_Search {
+    height: var(--reply-input-height);
+    max-width: unset;
+}
+
+/*.RTL .OverviewLarge .Preview {
+    float: left;
+}*/
+
+/*.OverviewLarge .Preview > ul {
+    background-color: #FFF;
+}*/
+
+.OverviewLarge .Preview li {
+    display: flex;
+    flex-flow: column;
+    transition: var(--main-transition);
+    font-size: var(--font-size-sm);
+    font-weight: var(--normal);
+    color: var(--black);
+}
+
+.OverviewLarge li:target {
+    flex-flow: column;
+}
+
+.OverviewLarge .Preview li:last-child {
+    width: 100%;
+}
+
+.OverviewLarge ul li:first-child h3 {
+    border-top-left-radius: var(--border-radius-md);
+    border-top-right-radius: var(--border-radius-md);
+}
+
+.OverviewLarge .Preview h3 {
+    margin: 0;
+    width: 100%;
+    font-size: var(--font-size-sm);
+    font-weight: var(--medium);
+    color: var(--table-text-color);
+    transition: var(--main-transition);
+    padding: var(--padding-sm) var(--padding-lg);
+    background: var(--gray-semi-light);
+}
+
+.OverviewLarge .Preview li.Active h3 {
+    background: var(--email-info) !important;
+    border-color: var(--border-color);
+}
+
+.RTL .OverviewLarge .Preview li.Active h3 {
+    margin-left: 0;
+    margin-right: -1px;
+}
+
+.OverviewLarge .Preview h3 a {
+    height: 17px;
+    line-height: 16px;
+    color: var(--ticket-subject);
+    display: block;
+    overflow: hidden;
+}
+
+.OverviewLarge .Preview h3 a .Headline span:first-child {
+    opacity: .5;
+}
+
+.OverviewLarge .Preview .Active h3 a .Headline span:first-child {
+    opacity: 1;
+}
+
+.OverviewLarge li:hover .Preview h3 a {
+    /*color: #5E584F;*/
+}
+
+.OverviewLarge .Preview li.Active h3 a {
+    /*color: #000;*/
+}
+
+.OverviewLarge li:hover .Preview li.Active h3 a {
+    /*color: #0E0E0E;*/
+}
+
+.OverviewLarge .Preview h3 .Subject,
+.OverviewLarge .Preview h3 .DateTime {
+    color: var(--ticket-subject);
+}
+
+.OverviewLarge .Preview h3 .Headline {
+    float: left;
+}
+
+.RTL .OverviewLarge .Preview h3 .Headline {
+    float: right;
+}
+
+.OverviewLarge .Preview h3 span.DateTime {
+    float: right;
+}
+
+.RTL .OverviewLarge .Preview h3 span.DateTime {
+    float: left;
+}
+
+.OverviewLarge .Preview li div.HiddenBlock {
+    display: none;
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow: auto;
+}
+
+.OverviewLarge .Preview li.Active div.HiddenBlock {
+    display: block;
+}
+
+/*.OverviewLarge .Preview .Content {
+    
+}*/
+
+.OverviewLarge .Preview .ArticleCount5 li div.HiddenBlock div.Content {
+    height: 124px;
+}
+
+.OverviewLarge .Preview .ArticleCount4 li div.HiddenBlock div.Content {
+    height: 144px;
+}
+
+.OverviewLarge .Preview .ArticleCount3 li div.HiddenBlock div.Content {
+    height: 164px;
+}
+
+.OverviewLarge .Preview .ArticleCount2 li div.HiddenBlock div.Content {
+    height: 184px;
+}
+
+.OverviewLarge .Preview .ArticleCount1 li div.HiddenBlock div.Content {
+    height: 204px;
+}
+
+.OverviewLarge .Preview .ArticleCount5 li div.HiddenBlock div.ActionRow + div.Content {
+    height: 97px;
+}
+
+.OverviewLarge .Preview .ArticleCount4 li div.HiddenBlock div.ActionRow + div.Content {
+    height: 117px;
+}
+
+.OverviewLarge .Preview .ArticleCount3 li div.HiddenBlock div.ActionRow + div.Content {
+    height: 137px;
+}
+
+.OverviewLarge .Preview .ArticleCount2 li div.HiddenBlock div.ActionRow + div.Content {
+    height: 157px;
+}
+
+.OverviewLarge .Preview .ArticleCount1 li div.HiddenBlock div.ActionRow + div.Content {
+    height: 177px;
+}
+
+} /* end @media */

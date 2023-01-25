@@ -1,0 +1,40 @@
+/*
+Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+Copyright (C) 2021 Znuny GmbH, https://znuny.org/
+
+This software comes with ABSOLUTELY NO WARRANTY. For details, see
+the enclosed file COPYING for license information (GPL). If you
+did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+*/
+
+/**
+ * @package     Skin "Default"
+ * @section     Customer User Address Book
+ */
+
+@media screen,projection,tv,handheld {
+
+.CustomerUserAdressBookSearch h1 {
+    padding: 0 0 8px;
+}
+
+#OverviewBody.Overview form.CustomerUserAddressBookForm {
+    border-right: 0;
+    border-left: 0;
+}
+
+.CustomerUserAdressBook .FieldExplanation {
+    align-self: flex-start;
+}
+
+.CustomerUserAdressBook .Pagination {
+    border-top: 0;
+}
+
+.CustomerUserAdressBookList .Disabled > td,
+.CustomerUserAdressBookList .Disabled > td span {
+    color: #AAAAAA !important;
+    opacity: 0.8;
+}
+
+} /* end @media */

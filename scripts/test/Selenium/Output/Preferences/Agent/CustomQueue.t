@@ -1,0 +1,121 @@
+# --
+# Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Znuny GmbH, https://znuny.org/
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+# --
+
+## no critic (Modules::RequireExplicitPackage)
+use strict;
+use warnings;
+use utf8;
+
+use vars (qw($Self));
+
+# get selenium object
+my $Selenium = $Kernel::OM->Get('Kernel::System::UnitTest::Selenium');
+
+$Selenium->RunTest(
+    sub {
+
+        my $HelperObject = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
+        my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+        my $CacheObject  = $Kernel::OM->Get('Kernel::System::Cache');
+        my $QueueObject  = $Kernel::OM->Get('Kernel::System::Queue');
+        my $UserObject   = $Kernel::OM->Get('Kernel::System::User');
+
+        # create test user and login
+        my $TestUserLogin = $HelperObject->TestUserCreate(
+            Groups => [ 'admin', 'users' ],
+        ) || die "Did not get test user";
+
+        $Selenium->Login(
+            Type     => 'Agent',
+            User     => $TestUserLogin,
+            Password => $TestUserLogin,
+        );
+
+        # get test user ID
+        my $TestUserID = $UserObject->UserLookup(
+            UserLogin => $TestUserLogin,
+        );
+
+        # create test queue
+        my $QueueName = 'Queue' . $HelperObject->GetRandomID();
+        my $QueueID   = $QueueObject->QueueAdd(
+            Name            => $QueueName,
+            ValidID         => 1,
+            GroupID         => 1,
+            SystemAddressID => 1,
+            SalutationID    => 1,
+            SignatureID     => 1,
+            Comment         => 'Selenium Queue',
+            UserID          => $TestUserID,
+        );
+        $Self->True(
+            $QueueID,
+            "QueueAdd() successful for test $QueueName ID $QueueID",
+        );
+
+        my $ScriptAlias = $ConfigObject->Get('ScriptAlias');
+
+        # go to agent preferences
+        $Selenium->VerifiedGet(
+            "${ScriptAlias}index.pl?Action=AgentPreferences;Subaction=Group;Group=NotificationSettings"
+        );
+
+        # add test queue to 'My Queues' preference
+        $Selenium->InputFieldValueSet(
+            Element => '#QueueID',
+            Value   => $QueueID,
+        );
+
+        # save the setting, wait for the ajax call to finish and check if success sign is shown
+        $Selenium->execute_script(
+            "\$('#QueueID').closest('.WidgetSimple').find('.SettingUpdateBox').find('button').trigger('click');"
+        );
+        $Selenium->WaitFor(
+            JavaScript =>
+                "return \$('#QueueID').closest('.WidgetSimple').hasClass('HasOverlay')"
+        );
+        $Selenium->WaitFor(
+            JavaScript =>
+                "return \$('#QueueID').closest('.WidgetSimple').find('.fa-check').length"
+        );
+        $Selenium->WaitFor(
+            JavaScript =>
+                "return !\$('#QueueID').closest('.WidgetSimple').hasClass('HasOverlay')"
+        );
+
+        # get DB object
+        my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
+
+        # delete personal queues connection
+        my $Success = $DBObject->Do(
+            SQL => "DELETE FROM personal_queues WHERE queue_id = $QueueID",
+        );
+        $Self->True(
+            $Success,
+            "Delete personal queues connection",
+        );
+
+        # delete created test queue
+        $Success = $DBObject->Do(
+            SQL => "DELETE FROM queue WHERE id = $QueueID",
+        );
+        $Self->True(
+            $Success,
+            "Delete queue - $QueueID",
+        );
+
+        # make sure the cache is correct
+        $CacheObject->CleanUp(
+            Type => 'Queue',
+        );
+
+    }
+);
+
+1;

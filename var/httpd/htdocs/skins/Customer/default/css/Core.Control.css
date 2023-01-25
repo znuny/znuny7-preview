@@ -1,0 +1,463 @@
+/*
+Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+Copyright (C) 2021 Znuny GmbH, https://znuny.org/
+
+This software comes with ABSOLUTELY NO WARRANTY. For details, see
+the enclosed file COPYING for license information (GPL). If you
+did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+*/
+
+/**
+ * @package     OTRS Framework - Skin "Default"
+ * @section     Customer
+ */
+
+@media screen,projection,tv,handheld {
+
+/**
+ * @subsection  Navigation
+ */
+#Navigation {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    padding: 0 var(--padding-xl);
+    border-bottom: var(--border-width) var(--border-solid) var(--border-color);
+    transition: var(--main-transition);
+    background: var(--white);
+}
+
+#Navigation > ul {
+    display: flex;
+}
+
+.RTL #Navigation > ul {
+    float: right;
+}
+
+#Navigation > ul > li > ul {
+    display: none;
+    position: absolute;
+    top: 45px;
+    left: 0px;
+    z-index: 99;
+    background: var(--menu-bg);
+    min-width: 100%;
+    box-shadow: var(--menu-box-shadow);
+    padding: var(--padding-sm);
+    border-radius: var(--border-radius-xs);
+}
+
+.RTL #Navigation > ul > li > ul {
+    right: 1px;
+}
+
+#Navigation > ul > li > ul::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 5px;
+    background: transparent;
+
+}
+
+#Navigation > ul > li:hover ul,
+#Navigation > ul > li a:focus + ul,
+#Navigation > ul > li ul.Expanded {
+    display: block;
+    z-index: 1000;
+}
+
+#Navigation .Individual {
+    float: right;
+}
+
+.RTL #Navigation .Individual {
+    float: left;
+}
+
+#Navigation > ul > li {
+    position: relative;
+    display: flex;
+}
+
+#Navigation > ul > li:last-child {
+    border-right: 0px;
+}
+
+.RTL #Navigation > ul > li {
+    float: right;
+    margin: -1px -2px 0 0;
+}
+
+#Navigation > ul > li > a {
+    display: block;
+    height: auto;
+    padding: var(--padding-md) var(--padding-sm);
+    font-size: var(--main-font-size);
+    line-height: var(--main-line-height);
+    color: var(--menu-font);
+    position: relative;
+}
+
+#Navigation > ul > li.Selected > a:after {
+    content: "";
+}
+
+/* #Navigation > ul > li:last-child > a:after {
+    display: none;
+} */
+
+#Navigation > ul > li > ul > li {
+    position: relative;
+    display: block;
+    white-space: nowrap;
+    border-top: 2px solid transparent;
+}
+
+#Navigation > ul > li > ul > li:first-child {
+    border-top: 0;
+}
+
+#Navigation > ul > li > ul a {
+    display: block;
+    position: relative;
+    color: var(--menu-font);
+    padding: var(--padding-sm) var(--padding-sm);
+    border-bottom: none;
+    font-size: var(--main-font-size);
+    transition: var(--main-transition);
+    border-radius: var(--border-radius-xs);
+}
+
+#Navigation > ul > li > ul li:last-child {
+}
+
+#Navigation > ul > li > ul a:hover,
+#Navigation > ul > li > ul a:focus,
+#Navigation > ul > li > ul a.SubSelected {
+    background: var(--gray-light);
+}
+
+.RTL #Navigation li:first-child a,
+#Navigation li::last-child a {
+    background-image: none;
+}
+
+.RTL #Navigation > ul > li > ul {
+    min-width: 120px;
+}
+
+.RTL #Navigation > ul > li > ul a {
+    padding: 4px 6px 4px 15px;
+    white-space: normal;
+}
+
+#Navigation li:active {
+}
+
+#Navigation .Selected + li {
+    margin-left: -1px;
+}
+
+#Navigation .Selected + li a {
+    padding-left: 10px;
+}
+
+#Navigation .Selected,
+#Navigation .Selected:active,
+#Navigation > ul > li:hover {
+
+}
+
+#Navigation > ul > li > a::after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: var(--primary-color);
+    transform: scale(0, 1);
+    transform-origin: 0;
+    transition: transform 300ms ease;
+    will-change: transform;
+    border-radius: var(--border-radius-xs) var(--border-radius-xs) 0 0;
+    z-index: 10;
+  }
+
+#Navigation > ul > li.Selected > a::after {
+    transform: scale(1, 1);
+  }
+
+#Navigation .Selected > a,
+#Navigation > ul > li:hover > a {
+    color: var(--primary-color);
+}
+
+/**
+ * @subsection  Action Row / MessageBox (Notification)
+ */
+
+.ActionRow {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--white);
+    border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+    border: var(--border-width) var(--border-solid) var(--border-color);
+    padding: 0;
+    flex: 1;
+}
+
+.MessageBox {
+    display: flex;
+    padding: var(--padding-sm) var(--padding-xl);
+    align-items: center;
+    gap: var(--gap-sm);
+}
+
+.Content .MessageBox {
+    border: 1px solid #ddd;
+}
+
+.MessageBox.Notice {
+    background: #F7AE40;
+    border: 0px;
+}
+
+.MessageBox.Error {
+    background: #F25C5C;
+}
+
+.MessageBox.Success {
+    background-color: #d4edda;
+    border-bottom: 1px solid #c3e6cb;
+}
+
+.RTL .MessageBox p {
+    padding: 1px 20px 1px 0;
+}
+
+.MessageBox i,
+.MessageBox p {
+    color: var(--black);
+}
+
+.MessageBox a {
+    display: none;
+}
+
+#BottomActionRow {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#BottomActionRow.ActionRow {
+    border: 0;
+}
+/*
+@media (min-width: 1401px) {
+    #BottomActionRow.ActionRow {
+        padding-right: var(--padding-sm);
+        padding-top: var(--padding-sm);
+    }
+}
+*/
+.TicketView #BottomActionRow,
+.RTL .TicketView #BottomActionRow {
+    padding: 0;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+}
+
+#BottomActionRow span {
+    padding: 0 5px;
+}
+
+.RTL #BottomActionRow span {
+    padding-left: 0;
+    padding-right: 5px;
+}
+
+.Filter {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    padding: 0 var(--padding-xs);
+}
+
+.Filter li {
+    padding: var(--padding-xs) 2px var(--padding-xs) 0;
+}
+
+.Filter li a {
+    position: relative;
+    display: flex;
+    padding: var(--padding-sm) var(--padding-md);
+    color: var(--main-font-color);
+    font-size: var(--main-font-size);
+    transition: var(--main-transition);
+}
+
+.Filter li a:hover {
+    background-color: var(--gray-semi-light);
+    border-radius: var(--border-radius-xxs);
+}
+
+.RTL .Filter li a {
+    background-position: left;
+}
+
+.Filter li .Selected, 
+.Filter li .Selected:hover, 
+.Filter li .Selected:active {
+    background: none;
+    position: relative;
+    font-weight: var(--bold);
+    color: var(--black);
+    pointer-events: none;
+}
+
+.Filter li .Selected::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    background-color: var(--black);
+    height: 2px;
+    left: 0;
+    bottom: -5px;
+}
+
+
+
+/**
+ * @subsection  OverviewActions
+ */
+
+
+.OverviewActions {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+    padding: 0 var(--padding-md);
+}
+
+
+/**
+ * @subsection  Control Row Pagination
+ */
+
+ .Pagination {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+    margin-right: 0;
+    font-size: var(--main-font-size);
+    padding: var(--padding-md) var(--padding-none);
+}
+
+div.Pagination:empty {
+    padding: 0;
+    display: none;
+}
+
+.Pagination ul{
+    display: flex;
+    align-items: baseline;
+    flex-flow: row;
+    gap: var(--padding-xs);
+}
+
+.Pagination ul li a:first-child:before {
+    display: inline-block;
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 26px;
+    top: 0;
+    background-color: var(--gray-light);
+    left: -20px;
+}
+
+.Pagination ul li a:first-child {
+    margin-left: 30px;
+    position: relative;
+}
+
+.Pagination ul li:first-child {
+    display: flex;
+}
+/*
+.Pagination ul li:first-child:before {
+    display: none;
+}
+*/
+.Pagination a {
+    color: var(--gray-semi-dark);
+}
+
+.Pagination .page-links a {
+    border: var(--border-width) var(--border-solid) transparent;
+    transition: var(--main-transition);
+}
+
+.page-links a:hover {
+    border-radius: var(--border-radius-xs);
+    border-color: var(--border-color);
+}
+
+.Pagination li, .Pagination li span {
+    align-self: center;
+    font-size: var(--font-size-sm);
+    color: var(--gray-semi-dark);
+}
+
+
+.Sortable .ActionRow {
+    border-bottom: none;
+}
+
+.Sortable #BottomActionRow {
+    padding-bottom: 0;
+    border-bottom: 1px solid #B8BBBB;
+}
+
+/**
+ * @subsection  SerachTerms
+ */
+
+.SearchTerms {
+    padding: 4px 7px;
+}
+
+.SearchTerms h2 {
+    margin: 0;
+    color: #222;
+    font-size: 15px;
+    display: inline;
+    text-shadow: 0 1px 0 #EEE;
+}
+
+.SearchTerms span {
+    padding: 1px 8px 0;
+    margin: 0 3px;
+    color: #666;
+    background: #FFF;
+    border: 1px solid #BBB;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 1px 2px #DDD inset, 0 1px 0 #E8E8E8;
+    box-shadow: 0 1px 2px #DDD inset, 0 1px 0 #E8E8E8;
+}
+
+.SearchTerms span a {
+    font-size: 13px;
+    vertical-align: bottom;
+}
+
+} /* end @media */
