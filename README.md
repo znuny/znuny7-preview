@@ -21,7 +21,7 @@
 
 # Znuny 7 Preview
 
-This project is a preview of the upcoming release branch Znuny 7. It is branched from the current [Znuny LTS 6.4](https://github.com/znuny/Znuny/tree/rel-6_4).
+This project is a preview of the upcoming release branch Znuny 7. It is branched from the current [Znuny 6.4](https://github.com/znuny/Znuny/tree/rel-6_4).
 
 ## License
 

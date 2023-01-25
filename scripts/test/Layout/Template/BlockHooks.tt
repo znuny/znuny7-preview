@@ -6,13 +6,13 @@
 # the enclosed file COPYING for license information (GPL). If you
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
-
 [% RenderBlockStart('Block1') %]
 Content1
 [% RenderBlockStart('Block11') %]
 Content11
 [% RenderBlockEnd('Block11') %]
 [% RenderBlockEnd('Block1') %]
+
 [% RenderBlockStart('Block2') %]
 Content2
 [% RenderBlockStart('Block21') %]
