@@ -1132,7 +1132,7 @@ li > div:not(.IsLockedByMe) .HashItem .HashItem > .SettingContent > div.InputFie
     min-height: 10px;
     /*overflow: hidden;*/
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--gap-sm);
 }
 
@@ -1216,8 +1216,9 @@ li > div:not(.IsLockedByMe) .HashItem .HashItem > .SettingContent > div.InputFie
 .SettingContent input[type=password],
 .SettingContent .InputField_Search,
 .Setting input.Key {
+    display: flex;
     text-overflow: ellipsis;
-    min-width: 200px;
+    min-width: 170px;
     color: var(--gray-dark);
     background: var(--main-bg-color);
     border-color: transparent;
@@ -1229,7 +1230,7 @@ li > div:not(.IsLockedByMe) .HashItem .HashItem > .SettingContent > div.InputFie
 .IsLockedByMe .Setting input.Key {
     text-overflow: inherit;
     /*min-width: 200px;*/
-    min-width: unset;
+    /*min-width: unset;*/
 }
 
 /*.IsLockedByMe .SettingContent input[type="text"][readonly], 
@@ -1412,24 +1413,31 @@ li > div:not(.IsLockedByMe) .HashItem .HashItem > .SettingContent > div.InputFie
     text-overflow: ellipsis;
 }
 
-/*.IsLockedByMe .HashItem .SettingContent {
-    min-width: calc(100% - 220px); /* full width minus key + arrow width */
-/*}
+.IsLockedByMe .HashItem .SettingContent {
+    min-width: calc(100% - 190px); /* full width minus key + arrow width */
+}
 
 .ArrayItem .HashItem .SettingContent,
 .HashItem .HashItem .SettingContent {
-    min-width: calc(100% - 220px); /* full width minus key + arrow width */
-/*}
-
-.HashItem .HashItem .SettingContent {
-    min-width: calc(100% - 220px);
+    min-width: calc(100% - 170px); /* full width minus key + arrow width */
 }
 
+.HashItem .HashItem .SettingContent {
+    min-width: calc(100% - 170px);
+}
+
+.Hash > .HashItem > .SettingContent > .Hash > .HashItem  {
+    flex-wrap: wrap;
+}
+
+
+
+/*
 .HashItem .SettingContent > .Array,
 .HashItem .SettingContent > .Hash {
     margin-left: 17px;
-}*/
-
+}
+*/
 /* Comparison Mode */
 
 .SettingsList {

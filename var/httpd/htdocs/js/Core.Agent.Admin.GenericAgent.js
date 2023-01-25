@@ -201,9 +201,19 @@ Core.Agent.Admin.GenericAgent = (function (TargetNS) {
             Core.Config.Get('CGIHandle'),
             Data,
             function (Response) {
-                var FieldHTML = Response.Label + '<div class="Field flex-row" data-id="' + Response.ID + '">' + Response.Field + RemoveButtonHTML;
+
+                // Removed immediate addition of RemoveButtonHTML (see comment below)
+                var FieldHTML = Response.Label + '<div class="Field flex-row" data-id="' + Response.ID + '">' + Response.Field;
                 // Append field HTML from response to selected fields area.
                 $('#' + SelectedFieldsID).append(FieldHTML);
+
+                // Added check for TooltipErrorMessage div, add RemoveButtonHTML before it, in case it exists, proceed as normal if not
+                if(FieldHTML.includes("TooltipErrorMessage")) {
+                    $('div.Field[data-id="' + Response.ID + '"] > .TooltipErrorMessage').before(RemoveButtonHTML);
+                } else {
+                    $('div.Field[data-id="' + Response.ID + '"]').append(RemoveButtonHTML);
+                }
+
                 TargetNS.InitRemoveButtonEvent($('div.Field[data-id="' + Response.ID + '"]').find('.RemoveButton'), AddFieldsID);
 
                 // Remove the field from add fields dropdown and redraw this dropdown.

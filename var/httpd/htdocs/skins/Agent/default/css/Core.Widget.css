@@ -2077,8 +2077,8 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
     .WidgetSimple > .Header h2,
     .WidgetSimple > .Header h3 {
-        /*display: flex;     - this prevents the ellipsis overflow to take place
-        align-items: center; - as the elements become inline */
+        display: flex;     /* - this prevents the ellipsis overflow to take place */
+        /*align-items: center; - as the elements become inline */
         padding: 0;
         margin: 0;
         white-space: nowrap;

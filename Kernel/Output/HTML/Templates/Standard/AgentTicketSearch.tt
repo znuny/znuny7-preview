@@ -506,8 +506,6 @@
 </div>
 
 <div class="ContentFooter space-between">
-
-    # todo  This button is a placeholder and does not work
     <button id="Cancel" class="btn-main btn-width-md btn-cancel-ghost DontPrint" type="submit" value=" Cancel"><span>Cancel</span></button>
 
     <button id="SearchFormSubmit" class="btn-primary btn-main btn-width-md" value="[% Translate("Search") | html %]"><span> [% Translate("Search") | html %]</span></button>

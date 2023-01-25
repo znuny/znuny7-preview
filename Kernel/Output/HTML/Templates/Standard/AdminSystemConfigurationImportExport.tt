@@ -47,7 +47,7 @@
 
         [% INCLUDE "Breadcrumb.tt" Path = BreadcrumbPath %]
 
-        <div class="flex-row gap-md">
+        <div class="flex-row gap-md align-item-start">
             [% IF Config("ConfigImportAllowed") %]
             <div class="Size1of2">
                 <div class="WidgetSimple">

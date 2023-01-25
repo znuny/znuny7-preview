@@ -154,7 +154,7 @@
                     <input type="hidden" name="Element" value="[% Data.Element | html %]"/>
                     <input type="hidden" name="Fields" value=""/>
                     <input type="hidden" name="ContinueAfterSave" id="ContinueAfterSave" value=""/>
-                    <div class="MessageBox">
+                    <div class="MessageBox Notice">
                         <span><i class="fa fa-info-circle"></i></span>
                         <p>
                             [% Translate("You can assign elements by dragging and dropping them to the lists of available, disabled, assigned and required elements.") | html %]

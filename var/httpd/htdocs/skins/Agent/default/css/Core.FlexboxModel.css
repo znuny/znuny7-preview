@@ -40,7 +40,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         flex-wrap: wrap;
     }
 
-    .Field.flex-row > :not(:last-child) {
+    .Field.flex-row > :first-child {
         flex: 1 0 75%;
     }
 
@@ -121,6 +121,11 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     .align-item-right {
         display: flex;
         align-items: flex-end !important;
+    }
+
+    .align-item-start {
+        display: flex;
+        align-items: flex-start !important;
     }
 
     .space-between {

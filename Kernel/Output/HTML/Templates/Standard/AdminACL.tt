@@ -98,7 +98,7 @@
                 <h2>[% Translate("ACLs") | html %]</h2>
             </div>
             <div class="Content">
-                <p class="ACLNote">
+                <p class="ACLNote Notice">
                     <i class="fa fa-info-circle"></i>
                     [% Translate("Please note: This table represents the execution order of the ACLs. If you need to change the order in which ACLs are executed, please change the names of the affected ACLs.") | html %]</p>
                 <table class="DataTable" id="ACLs">
