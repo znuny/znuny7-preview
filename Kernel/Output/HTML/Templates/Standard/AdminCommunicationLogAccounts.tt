@@ -127,7 +127,7 @@
                             [% ELSIF Data.AccountStatus == 'Warning' %]
                                 <i class="fa fa-exclamation Warning" aria-hidden="true" title="[% Data.AccountStatus %]"></i>
                             [% ELSE %]
-                                <a href="[% Env("Baselink") %]Action=AdminCommunicationLog;[% Data.AccountErrorLink %]" target="_blank">
+                                <a class="table-icon-hover-md" href="[% Env("Baselink") %]Action=AdminCommunicationLog;[% Data.AccountErrorLink %]" target="_blank">
                                     <i class="fa fa-times Error" aria-hidden="true"></i>
                                 </a>
                             [% END %]
@@ -145,7 +145,7 @@
                             </td>
                             <td class="Edit Center">
                             [% IF Data.AccountLink %]
-                                <a href="[% Env("Baselink") %][% Data.AccountLink %]" target="_blank">
+                                <a class="table-icon-hover-md" href="[% Env("Baselink") %][% Data.AccountLink %]" target="_blank">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                 </a>
                             [% END %]
@@ -201,7 +201,7 @@
 [% RenderBlockStart("CommunicationLogRow") %]
                             <tr class="MasterAction [% IF Data.Status == 'Failed' %]Error[% END %]">
                                 <td class="Status Center" title="[% Translate(Data.Status) | html %]">
-                                    <a href="[% Env("Baselink") %]Action=AdminCommunicationLog;Subaction=Zoom;CommunicationID=[% Data.CommunicationID | uri %]" title="[% Data.Name | html %]" class="MasterActionLink">
+                                    <a href="[% Env("Baselink") %]Action=AdminCommunicationLog;Subaction=Zoom;CommunicationID=[% Data.CommunicationID | uri %]" title="[% Data.Name | html %]" class="MasterActionLink table-icon-hover-md">
                                     [% IF Data.Status == 'Successful' %]
                                         <i class="fa fa-check Confirmation" aria-hidden="true"></i>
                                     [% ELSIF Data.Status == 'Failed' %]

@@ -83,7 +83,7 @@
                 <div class="Content">
                     <fieldset class="TableLike FixedLabel">
                         [% IF Config('Ticket::Service') && TicketFrontendConfig.Service %]
-                        <div class="card-item col-wide-33 col-desktop-50">
+                        <div class="card-item col-wide-33 col-desktop-50 col-tablet-50">
                             <h2 class="card-title">[% Translate("Service") | html %]</h2>
 [% RenderBlockStart("Service") %]
                             <div>
@@ -141,7 +141,7 @@
                         [% END %]
 
                         [% IF TicketFrontendConfig.Queue || TicketFrontendConfig.Owner || TicketFrontendConfig.Responsible %]
-                        <div class="card-item col-wide-33 col-desktop-50">
+                        <div class="card-item col-wide-33 col-desktop-50 col-tablet-50">
                             <h2 class="card-title">[% Translate("Team Data") | html %]</h2>
 [% RenderBlockStart("Queue") %]
                             <div>
@@ -217,7 +217,7 @@
                         [% END %]
 
                         [% IF TicketFrontendConfig.Title || TicketFrontendConfig.TicketType || TicketFrontendConfig.State || TicketFrontendConfig.Priority %]
-                        <div class="card-item col-wide-33 col-desktop-100">
+                        <div class="card-item col-wide-33 col-desktop-100 col-tablet-100">
                             <h2 class="card-title">[% Translate("Ticket Data") | html %]</h2>
 [% RenderBlockStart("Title") %]
                             <div>
@@ -278,10 +278,10 @@
                         [% END %]
 
                         [% IF !TicketFrontendConfig.DynamicField.empty %]
-                        <div class="dynamic-field-col card-item col-wide-100 col-desktop-100">
+                        <div class="dynamic-field-col card-item col-wide-100 col-desktop-100 col-tablet-100">
                             <h2 class="card-title">[% Translate("Dynamic Info") | html %]</h2>
 [% RenderBlockStart("TicketTypeDynamicField") %]
-                                <div class="Row Row_DynamicField_[% Data.Name | html %] col-wide-33 col-desktop-50">
+                                <div class="Row Row_DynamicField_[% Data.Name | html %] col-wide-33 col-desktop-50 col-tablet-50">
                                     [% Data.Label %]
                                     <div class="Field">
                                     [% Data.Field %]
@@ -329,7 +329,7 @@
                     <div class="Content">
                         <fieldset class="TableLike FixedLabel">
                             [% IF TicketFrontendConfig.InformAgent || TicketFrontendConfig.InvolvedAgent %]
-                            <div class="card-item col-wide-33 col-desktop-100">
+                            <div class="card-item col-wide-33 col-desktop-100 col-tablet-100">
                                 <h2 class="card-title">[% Translate("Inform") | html %]</h2>
 [% RenderBlockStart("InformAdditionalAgents") %]
 [% RenderBlockStart("InformAgent") %]
@@ -367,7 +367,7 @@
                             </div>
                             [% END %]
 
-                            <div class="card-item col-wide-adapt-elem col-desktop-100">
+                            <div class="card-item col-wide-adapt-elem col-desktop-100 col-tablet-100">
                                 <h2 class="card-title">[% Translate("Communications") | html %]</h2>
                                 [% IF Data.WidgetStatus == 'Expanded' %]
                                     <input type="hidden" id="CreateArticle" name="CreateArticle" value="1" />

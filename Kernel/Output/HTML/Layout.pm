@@ -1154,19 +1154,27 @@ sub Notify {
         return '' if !$Param{Info};
     }
 
-    my $BoxClass = 'Notice';
+    my $BoxClass  = 'Notice';
+    my $IconClass = 'fa fa-bell';
 
     if ( $Param{Info} ) {
         $Param{Info} =~ s/\n//g;
     }
     if ( $Param{Priority} && $Param{Priority} eq 'Error' ) {
-        $BoxClass = 'Error';
+        $BoxClass  = 'Error';
+        $IconClass = 'fa fa-exclamation-circle';
+    }
+    elsif ( $Param{Priority} && $Param{Priority} eq 'Warning' ) {
+        $BoxClass  = 'Warning';
+        $IconClass = 'fa fa-exclamation-triangle';
     }
     elsif ( $Param{Priority} && $Param{Priority} eq 'Success' ) {
-        $BoxClass = 'Success';
+        $BoxClass  = 'Success';
+        $IconClass = 'fa fa-check-circle';
     }
     elsif ( $Param{Priority} && $Param{Priority} eq 'Info' ) {
-        $BoxClass = 'Info';
+        $BoxClass  = 'Info';
+        $IconClass = 'fa fa-info-circle';
     }
 
     if ( $Param{Link} ) {
@@ -1202,7 +1210,8 @@ sub Notify {
         TemplateFile => 'Notify',
         Data         => {
             %Param,
-            BoxClass => $BoxClass,
+            BoxClass  => $BoxClass,
+            IconClass => $IconClass,
         },
     );
 }

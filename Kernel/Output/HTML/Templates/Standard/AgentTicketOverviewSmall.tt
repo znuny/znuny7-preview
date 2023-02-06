@@ -12,7 +12,7 @@
     <li id="BulkAction" class="AlwaysPresent Inactive [% Data.CSS | html %]"><a href="#">[% Translate(Data.Name) | html %]</a></li>
 [% RenderBlockEnd("DocumentActionRowBulk") %]
 [% RenderBlockStart("DocumentActionRowLastColumnFilter") %]
-    <li class=""><a href="[% Env(" Baselink") %]Action=[% Env("Action") %];DeleteFilters=DeleteFilters">[% Translate("Reset overview") | html %]</a></li>
+    <li class=""><a href="[% Env("Baselink") %]Action=[% Env("Action") %];DeleteFilters=DeleteFilters">[% Translate("Reset overview") | html %]</a></li>
 [% RenderBlockEnd("DocumentActionRowLastColumnFilter") %]
 [% RenderBlockStart("DocumentActionRowItem") %]
     <li class="[% Data.CSS | html %]"><a href="#">[% Translate(Data.Name) | html %]</a></li>
@@ -44,7 +44,7 @@
 [% RenderBlockStart("OverviewNavBarPageFlag") %]
                     <th class="OverviewHeader [% Data.CSS | html %]" title="[% Translate(Data.Title) | html %]">
 [% RenderBlockStart("OverviewNavBarPageFlagLink") %]
-                        <a name="OverviewControl" href="[% Env(" Baselink") %]Action=[% Env("Action") | uri %];[% Data.LinkSort %];SortBy=[% Data.Name | uri %];OrderBy=[% Data.OrderBy | uri %]" title="[% Translate(Data.Title) | html %]">
+                        <a name="OverviewControl" href="[% Env("Baselink") %]Action=[% Env("Action") | uri %];[% Data.LinkSort %];SortBy=[% Data.Name | uri %];OrderBy=[% Data.OrderBy | uri %]" title="[% Translate(Data.Title) | html %]">
                             <em class="PrintOnly">[% Translate(Data.Title) | html %]</em>
                         </a>
 [% RenderBlockEnd("OverviewNavBarPageFlagLink") %]
@@ -58,7 +58,7 @@
 [% RenderBlockStart("OverviewNavBarPageTicketHeader") %]
 [% RenderBlockStart("OverviewNavBarPageTicketNumber") %]
                     <th class="OverviewHeader [% Data.CSS | html %]">
-                        <a name="OverviewControl" href="[% Env(" Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=TicketNumber;OrderBy=[% Data.OrderBy | uri %]" title="[% Translate(Data.Title) | html %]">[% Config("Ticket::Hook") %]</a>
+                        <a name="OverviewControl" href="[% Env("Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=TicketNumber;OrderBy=[% Data.OrderBy | uri %]" title="[% Translate(Data.Title) | html %]">[% Config("Ticket::Hook") %]</a>
                     </th>
 [% RenderBlockEnd("OverviewNavBarPageTicketNumber") %]
 [% RenderBlockStart("OverviewNavBarPageColumn") %]
@@ -75,7 +75,7 @@
                         </div>
 [% RenderBlockEnd("OverviewNavBarPageColumnFilter") %]
 [% RenderBlockStart("OverviewNavBarPageColumnFilterLink") %]
-                        <a name="OverviewControl" href="[% Env(" Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=[% Data.ColumnName | uri %];OrderBy=[% Data.OrderBy | uri %]" title="[% Translate(Data.Title) | html %]">[% Data.ColumnNameTranslated | html %]</a>
+                        <a name="OverviewControl" href="[% Env("Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=[% Data.ColumnName | uri %];OrderBy=[% Data.OrderBy | uri %]" title="[% Translate(Data.Title) | html %]">[% Data.ColumnNameTranslated | html %]</a>
                         <a href="#" class="ColumnSettingsTrigger" title="[% Data.FilterTitle | html %]">
                             <i class="fa fa-filter"></i>
                         </a>
@@ -86,7 +86,7 @@
                         </div>
 [% RenderBlockEnd("OverviewNavBarPageColumnFilterLink") %]
 [% RenderBlockStart("OverviewNavBarPageColumnLink") %]
-                        <a name="OverviewControl" href="[% Env(" Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=[% Data.ColumnName | uri %];OrderBy=[% Data.OrderBy | uri %]" title="[% Translate(Data.Title) | html %]">[% Data.ColumnNameTranslated | html %]</a>
+                        <a name="OverviewControl" href="[% Env("Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=[% Data.ColumnName | uri %];OrderBy=[% Data.OrderBy | uri %]" title="[% Translate(Data.Title) | html %]">[% Data.ColumnNameTranslated | html %]</a>
 [% RenderBlockEnd("OverviewNavBarPageColumnLink") %]
 [% RenderBlockStart("OverviewNavBarPageColumnEmpty") %]
                         <span class="Gray" title="[% Data.Title | html %]">[% Data.ColumnNameTranslated | html %]</span>
@@ -97,13 +97,13 @@
 [% RenderBlockStart("OverviewNavBarPageDynamicField") %]
                     <th class="OverviewHeader [% Data.HeaderColumnName | html %] DynamicField Last [% Data.CSS | html %]">
 [% RenderBlockStart("OverviewNavBarPageDynamicFieldSortable") %]
-                        <a name="OverviewControl" href="[% Env(" Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=DynamicField_[% Data.DynamicFieldName | uri %];OrderBy=[% Data.OrderBy | uri %]" title="[% Translate(Data.Title) | html %]">[% Translate(Data.Label) | html %]</a>
+                        <a name="OverviewControl" href="[% Env("Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=DynamicField_[% Data.DynamicFieldName | uri %];OrderBy=[% Data.OrderBy | uri %]" title="[% Translate(Data.Title) | html %]">[% Translate(Data.Label) | html %]</a>
 [% RenderBlockEnd("OverviewNavBarPageDynamicFieldSortable") %]
 [% RenderBlockStart("OverviewNavBarPageDynamicFieldNotSortable") %]
                         <span class="Gray" title="[% Data.Title | html %]">[% Translate(Data.Label) | html %]</span>
 [% RenderBlockEnd("OverviewNavBarPageDynamicFieldNotSortable") %]
 [% RenderBlockStart("OverviewNavBarPageDynamicFieldFiltrableSortable") %]
-                        <a name="OverviewControl" href="[% Env(" Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=DynamicField_[% Data.DynamicFieldName | uri %];OrderBy=[% Data.OrderBy | uri %]" title="[% Translate(Data.Title) | html %]">[% Translate(Data.Label) | html %]</a>
+                        <a name="OverviewControl" href="[% Env("Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=DynamicField_[% Data.DynamicFieldName | uri %];OrderBy=[% Data.OrderBy | uri %]" title="[% Translate(Data.Title) | html %]">[% Translate(Data.Label) | html %]</a>
                         <a href="#" class="ColumnSettingsTrigger" title="[% Data.FilterTitle | html %]">
                             <i class="fa fa-filter"></i>
                         </a>
@@ -127,73 +127,73 @@
                     </th>
 [% RenderBlockEnd("OverviewNavBarPageDynamicField") %]
 [% RenderBlockEnd("GeneralOverviewHeader") %]
-                    # example of how to use fixed dynamic field blocks for customizations
-                    # Note: Field1 and Field2 are the names of the fields and had to be replaced with the actual
-                    # field names
+# example of how to use fixed dynamic field blocks for customizations
+# Note: Field1 and Field2 are the names of the fields and had to be replaced with the actual
+# field names
 #[% RenderBlockStart("OverviewNavBarPageDynamicField_Field1") %]
-                    # <th class="DynamicField Last [% Data.CSS | html %]">
+# <th class="DynamicField Last [% Data.CSS | html %]">
 #[% RenderBlockStart("OverviewNavBarPageDynamicField_Field1_Sortable") %]
-                        # <a name="OverviewControl" href="[% Env(" Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=DynamicField_[% Data.DynamicFieldName | uri %];OrderBy=[% Data.OrderBy | uri %]">[% Translate(Data.Label) | html %]</a>
+# <a name="OverviewControl" href="[% Env("Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=DynamicField_[% Data.DynamicFieldName | uri %];OrderBy=[% Data.OrderBy | uri %]">[% Translate(Data.Label) | html %]</a>
 #[% RenderBlockEnd("OverviewNavBarPageDynamicField_Field1_Sortable") %]
 #[% RenderBlockStart("OverviewNavBarPageDynamicField_Field1_NotSortable") %]
-                        # <span class="Gray" title="[% Data.Title | html %]">[% Translate(Data.Label) | html %]</span>
+# <span class="Gray" title="[% Data.Title | html %]">[% Translate(Data.Label) | html %]</span>
 #[% RenderBlockEnd("OverviewNavBarPageDynamicField_Field1_NotSortable") %]
 #[% RenderBlockStart("OverviewNavBarPageDynamicField_Field1_FiltrableSortable") %]
-                        # <a href="#" class="ColumnSettingsTrigger" title="[% Data.FilterTitle | html %]">
-                            # <i class="fa fa-filter"></i>
-                            # </a>
-                        # <div class="ColumnSettingsContainer DontPrint">
-                            # <div class="ColumnSettingsBox">
-                                # [% Data.ColumnFilterStrg %]
-                                # </div>
-                            # </div>
-                        # <a name="OverviewControl" href="[% Env(" Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=DynamicField_[% Data.DynamicFieldName | uri %];OrderBy=[% Data.OrderBy | uri %]" title="[% Translate(Data.Title) | html %]">[% Data.Label | html %]</a>
+# <a href="#" class="ColumnSettingsTrigger" title="[% Data.FilterTitle | html %]">
+# <i class="fa fa-filter"></i>
+# </a>
+# <div class="ColumnSettingsContainer DontPrint">
+# <div class="ColumnSettingsBox">
+# [% Data.ColumnFilterStrg %]
+# </div>
+# </div>
+# <a name="OverviewControl" href="[% Env("Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=DynamicField_[% Data.DynamicFieldName | uri %];OrderBy=[% Data.OrderBy | uri %]" title="[% Translate(Data.Title) | html %]">[% Data.Label | html %]</a>
 #[% RenderBlockEnd("OverviewNavBarPageDynamicField_Field1_FiltrableSortable") %]
 #[% RenderBlockStart("OverviewNavBarPageDynamicField_Field1_FiltrableNotSortable") %]
-                        # <a href="#" class="ColumnSettingsTrigger" title="[% Data.FilterTitle | html %]">
-                            # <i class="fa fa-filter"></i>
-                            # </a>
-                        # <div class="ColumnSettingsContainer DontPrint">
-                            # <div class="ColumnSettingsBox">
-                                # [% Data.ColumnFilterStrg %]
-                                # </div>
-                            # </div>
-                        # <span class="Gray" title="[% Data.Title | html %]">[% Data.Label | html %]</span>
+# <a href="#" class="ColumnSettingsTrigger" title="[% Data.FilterTitle | html %]">
+# <i class="fa fa-filter"></i>
+# </a>
+# <div class="ColumnSettingsContainer DontPrint">
+# <div class="ColumnSettingsBox">
+# [% Data.ColumnFilterStrg %]
+# </div>
+# </div>
+# <span class="Gray" title="[% Data.Title | html %]">[% Data.Label | html %]</span>
 #[% RenderBlockEnd("OverviewNavBarPageDynamicField_Field1_FiltrableNotSortable") %]
-                        # </th>
+# </th>
 #[% RenderBlockEnd("OverviewNavBarPageDynamicField_Field1") %]
 #[% RenderBlockStart("OverviewNavBarPageDynamicField_Field2") %]
-                    # <th class="DynamicField Last [% Data.CSS | html %]">
+# <th class="DynamicField Last [% Data.CSS | html %]">
 #[% RenderBlockStart("OverviewNavBarPageDynamicField_Field2_Sortable") %]
-                        # <a name="OverviewControl" href="[% Env(" Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=DynamicField_[% Data.DynamicFieldName | uri %];OrderBy=[% Data.OrderBy | uri %]">[% Translate(Data.Label) | html %]</a>
+# <a name="OverviewControl" href="[% Env("Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=DynamicField_[% Data.DynamicFieldName | uri %];OrderBy=[% Data.OrderBy | uri %]">[% Translate(Data.Label) | html %]</a>
 #[% RenderBlockEnd("OverviewNavBarPageDynamicField_Field2_Sortable") %]
 #[% RenderBlockStart("OverviewNavBarPageDynamicField_Field2_NotSortable") %]
-                        # <span class="Gray" title="[% Data.Title | html %]">[% Translate(Data.Label) | html %]</span>
+# <span class="Gray" title="[% Data.Title | html %]">[% Translate(Data.Label) | html %]</span>
 #[% RenderBlockEnd("OverviewNavBarPageDynamicField_Field2_NotSortable") %]
 #[% RenderBlockStart("OverviewNavBarPageDynamicField_Field2_FiltrableSortable") %]
-                        # <a href="#" class="ColumnSettingsTrigger" title="[% Data.FilterTitle | html %]">
-                            # <i class="fa fa-filter"></i>
-                            # </a>
-                        # <div class="ColumnSettingsContainer DontPrint">
-                            # <div class="ColumnSettingsBox">
-                                # [% Data.ColumnFilterStrg %]
-                                # </div>
-                            # </div>
-                        # <a name="OverviewControl" href="[% Env(" Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=DynamicField_[% Data.DynamicFieldName | uri %];OrderBy=[% Data.OrderBy | uri %]" title="[% Translate(Data.Title) | html %]">[% Data.Label | html %]</a>
+# <a href="#" class="ColumnSettingsTrigger" title="[% Data.FilterTitle | html %]">
+# <i class="fa fa-filter"></i>
+# </a>
+# <div class="ColumnSettingsContainer DontPrint">
+# <div class="ColumnSettingsBox">
+# [% Data.ColumnFilterStrg %]
+# </div>
+# </div>
+# <a name="OverviewControl" href="[% Env("Baselink") %]Action=[% Env("Action") %];[% Data.LinkSort %];SortBy=DynamicField_[% Data.DynamicFieldName | uri %];OrderBy=[% Data.OrderBy | uri %]" title="[% Translate(Data.Title) | html %]">[% Data.Label | html %]</a>
 #[% RenderBlockEnd("OverviewNavBarPageDynamicField_Field2_FiltrableSortable") %]
 #[% RenderBlockStart("OverviewNavBarPageDynamicField_Field2_FiltrableNotSortable") %]
-                        # <a href="#" class="ColumnSettingsTrigger" title="[% Data.FilterTitle | html %]">
-                            # <i class="fa fa-filter"></i>
-                            # </a>
-                        # <div class="ColumnSettingsContainer DontPrint">
-                            # <div class="ColumnSettingsBox">
-                                # [% Data.ColumnFilterStrg %]
-                                # </div>
-                            # </div>
-                        # <span class="Gray" title="[% Data.Title | html %]">[% Data.Label | html %]</span>
+# <a href="#" class="ColumnSettingsTrigger" title="[% Data.FilterTitle | html %]">
+# <i class="fa fa-filter"></i>
+# </a>
+# <div class="ColumnSettingsContainer DontPrint">
+# <div class="ColumnSettingsBox">
+# [% Data.ColumnFilterStrg %]
+# </div>
+# </div>
+# <span class="Gray" title="[% Data.Title | html %]">[% Data.Label | html %]</span>
 #[% RenderBlockEnd("OverviewNavBarPageDynamicField_Field2_FiltrableNotSortable") %]
 #[% RenderBlockEnd("OverviewNavBarPageDynamicField_Field2") %]
-                        # </th>
+# </th>
                 </tr>
             </thead>
 [% RenderBlockEnd("TableHeader") %]
@@ -223,7 +223,7 @@
 [% RenderBlockStart("RecordTicketData") %]
 [% RenderBlockStart("RecordTicketNumber") %]
                     <td>
-                        <a href="[% Env(" Baselink") %]Action=AgentTicketZoom;TicketID=[% Data.TicketID | uri %]" title="[% Data.Title | html %]" class="MasterActionLink">[% Data.TicketNumber %]</a>
+                        <a href="[% Env("Baselink") %]Action=AgentTicketZoom;TicketID=[% Data.TicketID | uri %]" title="[% Data.Title | html %]" class="MasterActionLink">[% Data.TicketNumber %]</a>
                     </td>
 [% RenderBlockEnd("RecordTicketNumber") %]
 [% RenderBlockStart("RecordEscalationTime") %]
@@ -243,7 +243,7 @@
 [% RenderBlockEnd("RecordResponsible") %]
 [% RenderBlockStart("RecordCustomerID") %]
                     <td>
-                        <a href="[% Env(" Baselink") %]Action=AgentTicketCustomer;TicketID=[% Data.TicketID | uri %]" class="AsPopup">
+                        <a href="[% Env("Baselink") %]Action=AgentTicketCustomer;TicketID=[% Data.TicketID | uri %]" class="AsPopup">
                             <span title="[% Data.CustomerID | html %]">[% Data.CustomerID | truncate(100) | html %]</span>
                         </a>
                     </td>
@@ -287,32 +287,32 @@
                     </td>
 [% RenderBlockEnd("RecordDynamicField") %]
 [% RenderBlockEnd("GeneralOverviewRow") %]
-                    # example of how to use fixed dynamic field blocks for customizations
-                    # Note: Field1 and Field2 are the names of the fields and had to be replaced with the actual
-                    # field names
+# example of how to use fixed dynamic field blocks for customizations
+# Note: Field1 and Field2 are the names of the fields and had to be replaced with the actual
+# field names
 #[% RenderBlockStart("RecordDynamicField_Field1") %]
-                    # <td>
-                        # <div title="[% Data.Title | html %]">
+# <td>
+# <div title="[% Data.Title | html %]">
 #[% RenderBlockStart("RecordDynamicField_Field1_Link") %]
-                            # <a href="[% Data.Link | Interpolate %]" target="_blank" class="DynamicFieldLink">[% Data.Value %]</a>
+# <a href="[% Data.Link | Interpolate %]" target="_blank" class="DynamicFieldLink">[% Data.Value %]</a>
 #[% RenderBlockEnd("RecordDynamicField_Field1_Link") %]
 #[% RenderBlockStart("RecordDynamicField_Field1_Plain") %]
-                            # [% Data.Value %]
+# [% Data.Value %]
 #[% RenderBlockEnd("RecordDynamicField_Field1_Plain") %]
-                            # </div>
-                        # </td>
+# </div>
+# </td>
 #[% RenderBlockEnd("RecordDynamicField_Field1") %]
 #[% RenderBlockStart("RecordDynamicField_Field2") %]
-                    # <td>
-                        # <div title="[% Data.Title | html %]">
+# <td>
+# <div title="[% Data.Title | html %]">
 #[% RenderBlockStart("RecordDynamicField_Field2_Link") %]
-                            # <a href="[% Data.Link | Interpolate %]" target="_blank" class="DynamicFieldLink">[% Data.Value %]</a>
+# <a href="[% Data.Link | Interpolate %]" target="_blank" class="DynamicFieldLink">[% Data.Value %]</a>
 #[% RenderBlockEnd("RecordDynamicField_Field2_Link") %]
 #[% RenderBlockStart("RecordDynamicField_Field2_Plain") %]
-                            # [% Data.Value %]
+# [% Data.Value %]
 #[% RenderBlockEnd("RecordDynamicField_Field2_Plain") %]
-                            # </div>
-                        # </td>
+# </div>
+# </td>
 #[% RenderBlockEnd("RecordDynamicField_Field2") %]
                 </tr>
 [% RenderBlockEnd("Record") %]

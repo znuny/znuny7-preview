@@ -258,7 +258,7 @@
 [% RenderBlockStart("CommunicationRow") %]
                         <tr class="MasterAction [% IF Data.Status == 'Failed' %]Error[% END %]">
                             <td class="Status Center" title="[% Translate(Data.Status) | html %]">
-                                <a class="MasterActionLink" href="[% Env("Baselink") %]Action=AdminCommunicationLog;Subaction=Zoom;CommunicationID=[% Data.CommunicationID | uri %]" title="[% Data.Name | html %]">
+                                <a class="MasterActionLink table-icon-hover-md" href="[% Env("Baselink") %]Action=AdminCommunicationLog;Subaction=Zoom;CommunicationID=[% Data.CommunicationID | uri %]" title="[% Data.Name | html %]">
                                 [% IF Data.Status == 'Successful' %]
                                     <i class="fa fa-check Confirmation" aria-hidden="true"></i>
                                 [% ELSIF Data.Status == 'Failed' %]

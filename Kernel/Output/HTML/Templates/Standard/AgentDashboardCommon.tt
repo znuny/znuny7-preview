@@ -116,7 +116,7 @@
 [% RenderBlockEnd("ContentSmallRefresh") %]
                         </li>
 
-                        <li>
+                        <li class="wrapper-widget-close">
 [% RenderBlockStart("ContentSmallRemove") %]
                             <div class="WidgetAction Close">
                                 <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=UpdateRemove;Name=[% Data.Name |
@@ -245,7 +245,7 @@
                             </div>
 [% RenderBlockEnd("ContentLargePreferences") %]
                         </li>
-                        <li>
+                        <li class="wrapper-widget-close">
 [% RenderBlockStart("ContentLargeRemove") %]
                             <div class="WidgetAction Close">
                                 <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=UpdateRemove;Name=[% Data.Name |

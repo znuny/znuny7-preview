@@ -837,6 +837,9 @@ form select.Error {
     font-size: var(--font-size-sm);
 }
 
+.BreadCrumb a:hover {
+    text-decoration: underline;
+}
 /*  'after' and 'before' pseudo-elements have been replaced by <i> icon
 .BreadCrumb a:after {
     position: absolute;

@@ -1,3 +1,31 @@
+# 7.0.0 2023-??-??
+ - 2023-01-26 Added additional IconClass for Notifications (Notify's).
+ - 2023-01-26 Integrated Znuny4OTRS-AdminValidFilter into Framework. Filters invalid entries in the admin area.
+ - 2023-01-25 Flattened customer menu to single level.
+ - 2023-01-20 Dashboard Widget Expand - There are now dashboard widget filters that display the selected widget alone and if possible with a larger number of tickets. This way the focus is concentrated on one widget.
+ - 2022-12-21 Removed too bright colors from the default selection (AppointmentCalendar::CalendarColors).
+ - 2022-12-15 CustomerTicketZoom - The CustomerTicketZoom view has been changed as well as the way articles are loaded.
+ - 2022-12-10 Dashboard Summary Counter - For each dashboard filter there is now a correct indicator of the ticket count as pill.
+ - 2022-12-09 Dashboard Widget Header - Added additional Base.pm for Dashboard and added new Header() function (Kernel/Output/HTML/Dashboard/Base.pm). This function can be used in every Kernel/Output/HTML/Dashboard/* module.
+ - 2022-11-21 Moved the additional buttons from Content 'Run()' area to Header 'Header()'. Added new Header() function. Kernel/Output/HTML/Dashboard/CustomerIDList.pm and Kernel/Output/HTML/Dashboard/CustomerUserList.pm
+ - 2022-10-18 Added this SysConfig list of colors in hexadecimal RGB which will be available for selection. Make sure the colors are dark enough so white text can be overlayed on them. (ColorPicker###Palette)
+ - 2022-11-23 Mentions Widget - Changed the style of Mention Widget in TicketZoom.
+ - 2022-10-21 Breadcrumbs - Moved all Breadcrumbs into the Content / ContentColumn <div> block.
+ - 2022-10-19 CustomerLogin - The login menu has been greatly simplified (HTML / JS).
+ - 2022-10-18 Added ColorPicker for states and priorities. These attributes are now displayed in color as a pill.
+ - 2022-10-18 Added Base module to add additional inline CSS.
+ - 2022-10-13 Added a general ColorPicker function to LayoutObject.
+ - 2022-10-10 Wrapper - Added additional <div> around a lot of fields to use flex technology.
+ - 2022-10-06 Button - The buttons have revised graphics.
+ - 2022-10-04 Core.UI.Dialog DialogClass - Added new DialogClasses (modal-sm | modal-md | modal-lg)
+ - 2022-09-06 New Activity module informs you directly via frontend.
+ - 2022-08-29 TicketOverviewMenu / Sort - Added the Modernize css class to some fields.
+ - 2022-08-29 spectrum-1.8.1. - This JS is removed and replaced by the also existing JScolor.
+ - 2022-08-23 FilterAssigned - Added filters for the already assigned attributes.
+ - 2022-08-22 Core.UI.InputFields.js - Changed the behaviour of the Core.UI.InputFields.js. Now no fields are automatically enlarged or reduced.
+ - 2022-08-08 Admin - Added counter of AdminSettingPages per widget and additional focus by filter.
+ - 2022-07-15 Frontend::ToolBarModule - Refactored the Toolbar registration, position and view.
+
 # 6.5.1 2023-??-??
  - 2022-01-05 Changed JS alert() function to Core.UI.Dialog.ShowAlert().
  - 2022-01-04 Show PackageRequired- and ModuleRequired-information while package installation & update.

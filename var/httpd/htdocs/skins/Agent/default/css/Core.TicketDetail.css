@@ -194,7 +194,7 @@ div.Headline .Flag {
 .ArticleMailHeader fieldset > div {
     display: flex;
     flex-flow: row;
-    align-items: center;
+    align-items: baseline;
     font-size: var(--font-size-sm);
 }
 
@@ -247,9 +247,8 @@ div.Headline .Flag {
 #ArticleItems .ArticleMailHeader label,
 #ArticleItems .ArticleMailHeader p.Value {
     display: flex;
-    margin: 0px;
-    padding: 0px;
     line-height: 30px;
+    gap: 0;
 }
 
 #ArticleItems .ArticleMailHeader label {

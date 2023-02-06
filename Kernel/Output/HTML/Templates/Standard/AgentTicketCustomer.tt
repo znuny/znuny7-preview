@@ -57,7 +57,7 @@
                                 </div>
                             </div>
 
-                            <div class="Field align-right">
+                            <div class="Field SaveButtons align-right">
                                 <button class="CallForAction Primary btn-primary btn-main btn-width-md" id="Submit" accesskey="g" title="[% Translate("Submit") | html %] (g)" type="submit" value="[% Translate("Submit") | html %]"><span>[% Translate("Submit") | html %]</span></button>
                             </div>
                         </fieldset>

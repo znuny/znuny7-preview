@@ -141,6 +141,9 @@
                                 [% Translate("List (%s total)", Data.ListAll) | html %]
                             [% END %]
                         </h2>
+                        <a href="#" class="icon-hover" id="ValidFilter" title="[% Translate("Filter") | html %]">
+                            <i class="fa fa-filter"></i>
+                        </a>
                     </div>
 [% RenderBlockEnd("OverviewHeader") %]
 [% RenderBlockStart("NoSearchTerms") %]
@@ -183,7 +186,7 @@
                                     <td>[% Data.UserLastLoginTimestamp | Localize("TimeShort") %]</td>
 [% RenderBlockStart("OverviewResultRowSwitchToUser") %]
                                     <td>
-                                        <a class="AsBlock" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Switch;UserID=[% Data.UserID | uri %];[% Env("ChallengeTokenParam") | html %]">[% Translate("Switch to agent") | html %]</a>
+                                        <a class="AsBlock table-actions-button" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Switch;UserID=[% Data.UserID | uri %];[% Env("ChallengeTokenParam") | html %]">[% Translate("Switch to agent") | html %]</a>
                                     </td>
 [% RenderBlockEnd("OverviewResultRowSwitchToUser") %]
                                     <td>[% Translate(Data.Valid) | html %]</td>

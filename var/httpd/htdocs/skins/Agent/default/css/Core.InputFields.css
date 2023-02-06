@@ -155,6 +155,11 @@ div.InputField_InputContainer .InputField_Search {
     position: relative;
 }
 
+div.InputField_InputContainer .InputField_Search:focus + i {
+    transform-origin: center center;
+    transform: rotate(180deg);
+}
+
 table div.InputField_InputContainer .InputField_Search {
     min-width: 200px;
 }

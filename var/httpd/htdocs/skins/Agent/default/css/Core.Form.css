@@ -531,12 +531,14 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         display: inline-block;
         vertical-align: middle;
         cursor: pointer;
-        position: relative; - comment added by beatriz 22/12/21 */
+        position: relative; - comment added by beatriz 22/12/22 */
         z-index: 999;
-        text-indent: -9999px;
+        border: 0;
+        background: unset;
+        /*text-indent: -9999px; - comment added by beatriz on 6/2/2023 */
     }
 
-    button.Add,
+    /*button.Add,
     a.Add {
         background: url(../img/filter_add.png) no-repeat center;
     }
@@ -546,7 +548,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     a.Add:hover,
     a.Add:focus {
         background: url(../img/filter_add_hover.png) no-repeat center;
-    }
+    }*/
 
     button.CertificateRelationAdd,
     a.CertificateRelationAdd {
@@ -557,7 +559,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         background: url(../img/icons/certificate.png) no-repeat center;
     }
 
-    button.Remove,
+    /*button.Remove,
     a.Remove {
         background: url(../img/filter_remove.png) no-repeat center;
     }
@@ -567,7 +569,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     a.Remove:hover,
     a.Remove:focus {
         background: url(../img/filter_remove_hover.png) no-repeat center;
-    }
+    }*/
 
     a.TrashCan i.fa-trash-o,
     a.Pencil i.fa-edit {
@@ -870,6 +872,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         gap: var(--gap-xs);
         display: flex;
         flex-direction: column;
+        align-items: flex-start;
     }
 
     /* formerly: .AdminManagement .WidgetSimple > .Content .TableLike div.Field */
@@ -1131,6 +1134,11 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         flex-direction: column;
         gap: var(--gap-sm);
     } 
+
+    .outer-label-wrapper {
+        display: flex;
+        align-items: center;
+    }
 
     .label-wrapper,
     .AdminManagement form fieldset.TableLike > .label-wrapper {
@@ -1608,61 +1616,12 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         gap: var(--gap-md);
     }
 
-    /**
-    * @search ticket modal
-    */
-
-    /*body .Dialog > .Content > .InnerContent.outer-search-ticket {
-        padding: 0;
-    }*/
-
-    body .Dialog > .Content > .InnerContent.outer-search-ticket .search-ticket {
-        display: flex;
-        flex-direction: column;
-        gap: var(--gap-md);
-        padding: 0;
-        overflow: hidden;
-    }
-
-    body .Dialog > .Content > .InnerContent.outer-search-ticket .search-ticket .top-section,
-    body .Dialog > .Content > .InnerContent.outer-search-ticket .search-ticket .bottom-section {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        gap: var(--gap-md);
-    }
-
-    /* body .Dialog > .Content > .InnerContent.outer-search-ticket .search-ticket .top-section .Field {
-        display: flex;
-        flex-direction: column;
-    } */
 
 
-    body .Dialog > .Content > .InnerContent.outer-search-ticket .search-ticket fieldset.TableLike {
-        position: relative;
-        display: flex;
-        flex: 1;
-        flex-direction: column;
-        margin: 0;
-        padding: 40px 0 0;
-    }
 
-    body .Dialog > .Content > .InnerContent.outer-search-ticket .search-ticket fieldset.TableLike > legend {
-        display: flex;
-        padding-bottom: var(--padding-md);
-        width: 100%;
-    }
 
-    /*.search-ticket fieldset.TableLike > legend span*/
-    body .Dialog > .Content > .InnerContent.outer-search-ticket .search-ticket fieldset.TableLike legend span {
-        display: flex;
-        padding: 0;
-        margin: 0;
-        border: 0;
-        text-indent: 0;
-        font-size: var(--font-size-md);
-        font-weight: var(--semi-bold);
-    }
+
+    
 
     .field-wrapper {
         display: flex;
@@ -1674,119 +1633,20 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         display: none !important;
     }
 
-    body .Dialog > .Content > .InnerContent.outer-search-ticket .search-ticket fieldset.TableLike > label {
-        display: flex;
-        width: 100%;
-    }
-
-    body .Dialog > .Content > .InnerContent.outer-search-ticket .search-ticket fieldset.TableLike .Field {
-        position: relative;
-        display: flex;
-        flex-direction: row;
-        padding: 0;
-        margin: 0;
-        width: 100%; 
-        align-items: center;
-    }
-
-    body .Dialog > .Content > .outer-search-ticket-btns {
-        display: flex;
-        justify-content: space-between;
-        padding: 15px !important;
-        background: transparent;
-        border-top: 0;
-    }
-
-
-
-    /* SECTION TOP */
-
-    body .Dialog > .Content > .InnerContent.outer-search-ticket .search-ticket .top-section .Field {
-        display: flex;
-        flex-direction: row;
-        padding-bottom: var(--padding-sm);
-    }
-
-    body .Dialog > .Content > .InnerContent.outer-search-ticket .search-ticket .top-section fieldset.TableLike .Field {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-    }
-
-    body .Dialog > .Content > .InnerContent.outer-search-ticket .search-ticket .top-section fieldset.TableLike .Field.create-tpm-btn {
-        flex-direction: row;
-        justify-content: flex-end;
-        position: absolute;
-        gap: var(--padding-md);
-        top: -30px;
-        right: 0;
-    }
-
-    /* body .Dialog > .Content > .InnerContent.outer-search-ticket .search-ticket .create-tpl-btn {
-        position: absolute;
-        top: var(--padding-md);
-        right: 0;
-    } */
-
-    body .Dialog > .Content > .InnerContent.outer-search-ticket .search-ticket .create-tpm-btn button {
-        min-width: var(--btn-max-width-sm);
-    }
-
-    /* 'Submit' & 'Create' button container */
-    body .Dialog > .Content > .InnerContent.outer-search-ticket .search-ticket fieldset.TableLike .Field:last-child {
-        position: relative;
-    }
-
-    body .Dialog > .Content > .InnerContent.outer-search-ticket .search-ticket fieldset.TableLike .Field .new-tpl-input {
-        position: relative;
-        padding-top: var(--padding-xl);
-        display: flex;
-        width: 100%;
-    }
-
-    body .Dialog > .Content > .InnerContent.outer-search-ticket .search-ticket fieldset.TableLike .Field .create-tpm-btn {
-        position: absolute;
-        top: 10px;
-        right: 0;
-    }
-
-    body .Dialog > .Content > .InnerContent.outer-search-ticket .search-ticket fieldset.TableLike .Field .InputField_Container {
-        position: relative;
-        display: flex;
-        width: 100%;
-        max-width: 100%;
-        margin-bottom: 0;
-    }
-
-
-    /* SECTION BOTTOM */
-
-    body .Dialog > .Content > .InnerContent.outer-search-ticket .bottom-section .TableLike {
-        gap: var(--gap-md) !important;
-    }
-
-    body .Dialog > .Content > .InnerContent.outer-search-ticket .search-ticket fieldset.TableLike .Field input[type=text],
-    body .Dialog .Content .InnerContent.outer-search-ticket .search-ticket fieldset.TableLike .Field .InputField_Search {
-        border: 0;
-        border-bottom: var(--border-width) var(--border-solid) var(--border-color);
-        border-radius: 0;
-        min-height: 35px;
-        padding: 0;
-        color: var(--table-text-color);
-        font-size: 14px;
-        font-weight: var(--medium);
-        min-width: auto;
-    }
-
-    body .Dialog > .Content > .InnerContent.outer-search-ticket .search-ticket .bottom-section fieldset.TableLike .Field .RemoveButton {
-        margin: 0;
-        position: relative;
-        right: 0;
+    .field-wrapper > .title {
+        /*font-family: Poppins*/
         font-size: var(--font-size-md);
+        font-weight: var(--semi-bold);
+        color: var(--black);
+        line-height: normal;
+        letter-spacing: 0.1px;
+        padding: 0;
     }
 
-    body .Dialog > .Content > .InnerContent.outer-search-ticket .search-ticket .bottom-section fieldset.TableLike:last-child {
-        margin-right: 0;
+    .WidgetSimple .field-wrapper > .Field,
+    .field-wrapper > .Field {
+        line-height: 35px;
+        flex-wrap: wrap;
     }
 
 

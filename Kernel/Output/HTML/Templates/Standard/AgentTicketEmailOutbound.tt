@@ -43,7 +43,7 @@
             [% INCLUDE "FormElements/DraftNotifications.tt" %]
             <fieldset class="TableLike FixedLabel">
 
-                <div class="card-item col-wide-50 col-desktop-100">
+                <div class="card-item col-wide-50 col-desktop-100 col-tablet-100">
                     <h2 class="card-title">[% Translate("Customer") | html %]</h2>
                     <div>
                         <label>[% Translate("From") | html %]:</label>
@@ -292,7 +292,7 @@
                     </div>
                 </div>
 
-                <div class="card-item col-wide-50 col-desktop-100">
+                <div class="card-item col-wide-50 col-desktop-100 col-tablet-100">
                     <h2 class="card-title">[% Translate("Ticket Data") | html %]</h2>
                     <div>
                         <label for="ComposeStateID">[% Translate("Next ticket state") | html %]:</label>
@@ -313,10 +313,10 @@
                 </div>
 
                 [% IF !TicketFrontendConfig.DynamicField.empty %]
-                <div class="dynamic-field-col card-item col-wide-100 col-desktop-100">
+                <div class="dynamic-field-col card-item col-wide-100 col-desktop-100 col-tablet-100">
                     <h2 class="card-title">[% Translate("Dynamic Info") | html %]</h2>
 [% RenderBlockStart("DynamicField") %]
-                    <div class="Row Row_DynamicField_[% Data.Name | html %] wide-33 col-desktop-50">
+                    <div class="Row Row_DynamicField_[% Data.Name | html %] wide-33 col-desktop-50 col-tablet-50">
                         [% Data.Label %]
                         <div class="Field">
                             [% Data.Field %]
@@ -326,7 +326,7 @@
                 </div>
                 [% END %]
 
-                <div class="card-item col-wide-100 col-desktop-100">
+                <div class="card-item col-wide-100 col-desktop-100 col-tablet-100">
                     <h2 class="card-title">[% Translate("Communications") | html %]</h2>
 
                     <div>

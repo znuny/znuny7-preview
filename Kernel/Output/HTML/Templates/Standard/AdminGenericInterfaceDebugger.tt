@@ -21,7 +21,8 @@
                     <li>
                         <button class="CallForAction btn-main btn-primary-ghost" type="button" id="DeleteButton"><span><i class="fa fa-trash-o"></i> [% Translate("Clear") | html %]</span></button>
                         <div class="Hidden" id="DeleteDialogContainer">
-                            <span class="WarningDialog ">&nbsp;</span>
+                            <span class="WarningDialog ">
+                            </span>
                             <p id="DeleteDialog" class="Center Warning">
                                 [% Translate("Do you really want to clear the debug log of this web service?") | html %]
                             </p>

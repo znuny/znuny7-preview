@@ -154,7 +154,7 @@
                                     <td>[% Data.UserType | html %]</td>
                                     <td>[% Data.UserFullname | html %]</td>
                                     <td>
-                                        <a class="AsBlock" href="[% Env("Baselink") %]Action=AdminSystemMaintenance;Subaction=Kill;WantSessionID=[% Data.SessionID | uri %];[% Env("ChallengeTokenParam") | html %];SystemMaintenanceID=[% Data.SystemMaintenanceID | html %]">[% Translate("Kill this session") | html %]</a>
+                                        <a class="AsBlock table-actions-button" href="[% Env("Baselink") %]Action=AdminSystemMaintenance;Subaction=Kill;WantSessionID=[% Data.SessionID | uri %];[% Env("ChallengeTokenParam") | html %];SystemMaintenanceID=[% Data.SystemMaintenanceID | html %]">[% Translate("Kill this session") | html %]</a>
                                     </td>
                                 </tr>
 [% RenderBlockEnd("AgentSession") %]
@@ -185,7 +185,7 @@
                                     <td>[% Data.UserType | html %]</td>
                                     <td>[% Data.UserFullname | html %]</td>
                                     <td>
-                                        <a class="AsBlock" href="[% Env("Baselink") %]Action=AdminSystemMaintenance;Subaction=Kill;WantSessionID=[% Data.SessionID | uri %];[% Env("ChallengeTokenParam") | html %];SystemMaintenanceID=[% Data.SystemMaintenanceID | html %]">[% Translate("Kill this session") | html %]</a>
+                                        <a class="AsBlock table-actions-button" href="[% Env("Baselink") %]Action=AdminSystemMaintenance;Subaction=Kill;WantSessionID=[% Data.SessionID | uri %];[% Env("ChallengeTokenParam") | html %];SystemMaintenanceID=[% Data.SystemMaintenanceID | html %]">[% Translate("Kill this session") | html %]</a>
                                     </td>
                                 </tr>
 [% RenderBlockEnd("CustomerSession") %]

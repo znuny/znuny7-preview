@@ -90,6 +90,15 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         gap: var(--gap-md);
     }
 
+    .ContentColumn > h1 {
+        color: var(--black);
+        /*font-family: 'Poppins';*/
+        font-size: var(--font-size-xxl);
+        font-weight: var(--semi-bold);
+        line-height: 24px;
+        letter-spacing: .1px;
+    }
+
     /**
     * @subsection  TicketZoom & Modal Popup LayoutFixedSidebar
     */
@@ -194,6 +203,51 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         margin-left: 10px;
         margin-right: 0;
     }
+
+
+    @media only screen and (max-width: 1024px) {
+        /* SidebarColumn */
+
+        #ResponsiveSidebarHandle .fa.fa-sign-out {
+            transform: rotate(180deg);
+        }
+
+        .LayoutFixedSidebar.SidebarLast .ResponsiveSidebarContainer > .SidebarColumn,
+        .LayoutFixedSidebar.SidebarFirst .ResponsiveSidebarContainer > .SidebarColumn {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-md);
+            position: fixed;
+            height: 100%;
+            top: 0px;
+            z-index: 999;
+            width: 300px;
+            right: -300px;
+            overflow: auto;
+            background: var(--white);
+            padding: var(--padding-lg);
+            box-sizing: border-box;
+        }
+
+        .Dashboard.LayoutFixedSidebar.SidebarLast .ResponsiveSidebarContainer > .SidebarColumn,
+        .Dashboard.LayoutFixedSidebar.SidebarFirst .ResponsiveSidebarContainer > .SidebarColumn {
+            background: var(--main-bg-color);
+        }
+
+        .LayoutFixedSidebar.SidebarLast .ResponsiveSidebarContainer > .SidebarColumn > :first-child,
+        .LayoutFixedSidebar.SidebarFirst .ResponsiveSidebarContainer > .SidebarColumn > :first-child {
+            margin-top: 0;
+        }
+
+        .ActionsSideBar.LayoutFixedSidebar .ContentWrapper .InnerMainBoxContent .InnerSidebarColumn {
+            width: 100%;
+        }
+    }
+    
+
+
+
+
 
     /**
     * @subsection   LayoutGrid
@@ -418,7 +472,8 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     }
 
     .manageLinks .WidgetSimple .Content {
-        padding: 0;
+        /*padding: 0;*/
+        border: var(--border-width) var(--border-solid) var(--border-color);
     }
 
     .ticketMerge .WidgetSimple .Content {
@@ -433,8 +488,8 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     }
 
     .manageLinks .WidgetSimple .Content .TableLike {
-        border: 1px solid var(--border-color);
-        border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+        border: var(--border-width) var(--border-solid) var(--border-color);
+        border-radius: var(--border-radius-sm) var(--border-radius-sm);
     }
 
 
@@ -480,12 +535,14 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     }
 
     .manageLinks .Footer {
-        padding: var(--padding-xxl) 0;
+        max-width: 600px;
+        padding-top: var(--padding-lg);
         display: flex;
         flex-flow: row;
         justify-content: end;
         border: 0;
         max-height: unset;
+        margin: auto;
     }
 
     .Popup fieldset > div > div,
@@ -890,6 +947,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         gap: var(--margin-lg);
         overflow: hidden;
         padding: var(--padding-lg) 0;
+        width: 100%;
     }
 
     .ItemListGrid > li {
@@ -897,10 +955,39 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         display: flex;
         line-height: 100%;
         width: calc(25% - var(--margin-md));
-        min-width: 248px;
         max-width: 100%;
         min-height: 200px;
         margin: 0;
+    }
+
+    @media only screen and (min-width: 2400px) {
+        .ItemListGrid > li {
+            width: calc(16.6% - 16px);
+        }
+    }
+    
+    @media only screen and (min-width: 2000px) and (max-width: 2399px) {
+        .ItemListGrid > li {
+            width: calc(20% - 16px);
+        }
+    }
+
+    @media only screen and (max-width: 1400px) {
+        .ItemListGrid > li {
+            width: calc(33.5% - var(--margin-md));
+        }
+    }
+
+    @media only screen and (max-width: 1200px) {
+        .ItemListGrid > li {
+            width: calc(50% - var(--margin-md));
+        }
+    }
+
+    @media only screen and (max-width: 1024px) {
+        .ItemListGrid > li {
+            width: calc(33.5% - var(--margin-md));
+        }
     }
 
     .ItemListGrid.WithIcons > li {
@@ -1076,7 +1163,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         flex-flow: row;
         justify-content: flex-end;
         gap: var(--padding-lg);
-        padding-top: var(--padding-lg);
         min-width: 100%;
     }
 
@@ -1170,17 +1256,17 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     /******************/
     /*      Cols      */
     .col-desktop-33 {
-        width: 33%;
+        width: 100%;
         max-width: calc(33.33% - var(--margin-lg));
     }
     
     .col-desktop-50 {
-        width: 50%;
+        width: 100%;
         max-width: calc(50% - var(--margin-lg));
     }
     
     .col-desktop-66 {
-        width: 66%;
+        width: 100%;
         max-width: calc(66.66% - var(--margin-lg));
     }
     
@@ -1193,6 +1279,78 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         width: auto;
         flex: 1;
     }
+
+    /************************/
+    /*      Card Items      */
+    .card-item.col-desktop-33 {
+        width: 100%;
+        max-width: 33.33%;
+    }
+    
+    .card-item.col-desktop-50 {
+        width: 100%;
+        max-width: 50%;
+    }
+    
+    .card-item.col-desktop-66 {
+        width: 100%;
+        max-width: 66.66%;
+    }
+    
+    .card-item.col-desktop-100 {
+        width: 100%;
+        max-width: 100%;
+    }
+
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    /******************/
+    /*      Cols      */
+    .col-tablet-33 {
+        width: 100%;
+        max-width: calc(33.33% - var(--margin-md));
+    }
+    
+    .col-tablet-50 {
+        width: 100%;
+        max-width: calc(50% - var(--margin-md));
+    }
+    
+    .col-tablet-66 {
+        width: 100%;
+        max-width: calc(66.66% - var(--margin-md));
+    }
+    
+    .col-tablet-100 {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /************************/
+    /*      Card Items      */
+    .card-item.col-tablet-33 {
+        width: 100%;
+        max-width: 33.33%;
+    }
+    
+    .card-item.col-tablet-50 {
+        width: 100%;
+        max-width: 50%;
+    }
+    
+    .card-item.col-tablet-66 {
+        width: 100%;
+        max-width: 66.66%;
+    }
+    
+    .card-item.col-tablet-100 {
+        width: 100%;
+        max-width: 100%;
+    }
+
 }
 
 
@@ -1264,7 +1422,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 }
 
-@media (min-width: 1025px) and (max-width: 1599px) {
+@media only screen and (max-width: 1599px) {
 
     .Popup .WidgetSimple,
     .LayoutPopup > .Content.card {

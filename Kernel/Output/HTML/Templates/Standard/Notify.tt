@@ -9,7 +9,7 @@
 <!-- start Notify -->
 <div class="MessageBox [% Data.BoxClass %]">
     <span>
-        <i class="fa fa-info-circle"></i>
+        <i class="[% Data.IconClass %]"></i>
     </span>
     <p>
 [% RenderBlockStart("LinkStart") %]

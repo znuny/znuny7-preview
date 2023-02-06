@@ -364,7 +364,6 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     .MessageBox i,
     .ACLNote i {
         font-size: var(--font-size-md);
-        color: var(--alert-info-icon-color);
     }
 
     .MessageBrowser .p-desc,
@@ -389,16 +388,54 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         text-align: center;
     }
 
-    /* Error MessageBox*/
-    .MessageBox.Error {
-        background: #f8d7da;
-        color: #721c24;
+    /**
+    * @subsection  Alerts colors
+    * @note        
+    */
+
+    .Info {
+        background: var(--alert-info-bg-color);
+        border: 1px solid var(--alert-info-border-color);
     }
 
-    .MessageBox.Error > span,
-    .MessageBox.Error i,
-    .MessageBox.Error p > a {
-        color: #721c24;
+    .Info i {
+        color: var(--alert-info-icon-color);
+    }
+
+    .Error {
+        background: var(--alert-error-bg-color);
+        border: 1px solid var(--alert-error-border-color);
+    }
+
+    .Error i {
+        color: var(--alert-error-icon-color);
+    }
+
+    .Success {
+        background: var(--alert-success-bg-color);
+        border: 1px solid var(--alert-success-border-color);
+    }
+
+    .Success i {
+        color: var(--alert-success-icon-color);
+    }
+
+    .Warning {
+        background: var(--alert-warning-bg-color);
+        border: 1px solid var(--alert-warning-border-color);
+    }
+
+    .Warning i {
+        color: var(--alert-warning-icon-color);
+    }
+
+    .Notice {
+        background: var(--alert-notice-bg-color);
+        border: 1px solid var(--alert-notice-border-color);
+    }
+
+    .Notice i {
+        color: var(--alert-notice-icon-color);
     }
 
     /* ************************************* Attachment Component ********************************* */

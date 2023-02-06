@@ -234,7 +234,7 @@ X-OTRS-Login: [% Env("Baselink") %]
 
         </div>
     </div>
-    # loading a file called ads.js would be blocked by ad blockers (e.g. AdBlock or AdBlockPlus) and thus allows for a basic adblocker detection
+    <!-- # loading a file called ads.js would be blocked by ad blockers (e.g. AdBlock or AdBlockPlus) and thus allows for a basic adblocker detection -->
     <script type="text/javascript" src="[% Config("Frontend::JavaScriptPath") %]ads.js"></script>
 
 [% InsertTemplate("Footer.tt") %]

@@ -73,6 +73,12 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         transition: var(--main-transition);
     }
 
+    .Field .icon-hover,
+    .Field .icon-hover-md,
+    .Field .icon-hover-sm {
+        align-self: inherit;
+    }
+
     label .icon-hover,
     button .icon-hover {
         margin: 0;
@@ -142,6 +148,10 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         border-radius: var(--border-radius-sm);
     }
 
+    #ActivityDialogContent .TableLike {
+        border-radius: 0;
+    }
+
     div.card-item,
     span.card-item,
     form.card-item,
@@ -176,6 +186,20 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         line-height: normal;
     }
 
+    @media only screen and (max-width: 1599px) {
+
+        div.card-item::after {
+            content: '';
+            width: calc(100% + 200px);
+            height: 1px;
+            position: absolute;
+            left: -100px;
+            bottom: 0;
+            background: var(--border-color);
+        }
+    }
+
+
     @media (min-width: 1025px) and (max-width: 1599px) {
 
         div.card-item,
@@ -193,16 +217,18 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
             padding: var(--padding-lg);
         }
     
-        div.card-item::after {
-            content: '';
-            width: calc(100% + 200px);
-            height: 1px;
-            position: absolute;
-            left: -100px;
-            bottom: 0;
-            background: var(--border-color);
-        }
     }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+
+        div.card-item,
+        div.card-item > .Row {
+            background: none;
+            border: 0;
+        }
+    
+    }
+
 
 
     /* **************************************** Pill **************************************** */
@@ -620,7 +646,6 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     .MessageBox i,
     .ACLNote i {
         font-size: var(--font-size-md);
-        color: var(--alert-info-icon-color);
     }
 
     .MessageBrowser .p-desc,
@@ -901,11 +926,6 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         flex-direction: row;
         justify-content: flex-end;
         gap: var(--padding-lg);
-        padding-top: var(--padding-lg);
-    }
-
-    .field-wrapper.form-button-actions:only-child .buttons-field {
-        padding: 0;
     }
 
     /* ******************************************* Table List ****************************************** */
@@ -961,8 +981,8 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 
     /* ************************************* Widget Content - Row of Columns ********************************* */
 
-    .RowofColumns .Content Fieldset,
-    .AdminManagement .RowofColumns .Content Fieldset {
+    .WidgetSimple.row-of-columns .Content fieldset,
+    .AdminManagement .row-of-columns .Content fieldset {
         display: flex;
         flex-flow: row;
         flex-wrap: wrap;
@@ -971,17 +991,186 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         gap: var(--gap-md);
     }
 
-    .RowofColumns .Content Fieldset > div,
-    .AdminManagement .RowofColumns .Content Fieldset > div{
+    .WidgetSimple.row-of-columns .Content fieldset .field-wrapper,
+    .AdminManagement .row-of-columns .Content fieldset .field-wrapper{
         max-width: calc(25% - var(--gap-md));
         width: 100%;
     }
 
     @media (min-width: 1025px) and (max-width: 1599px) {
-        .RowofColumns .Content Fieldset > div,
-        .AdminManagement .RowofColumns .Content Fieldset > div{
+        .row-of-columns .Content fieldset .field-wrapper,
+        .AdminManagement .row-of-columns .Content fieldset .field-wrapper{
             max-width: calc(50% - var(--gap-md));
         }
+    }
+
+    /* ************************************* Main Search Component ********************************* */
+
+    .Dialog > .Content > .InnerContent.main-search-component {
+        overflow: scroll;
+    }
+
+    .main-search-component .search-ticket {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-md);
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .main-search-component .search-ticket .top-section,
+    .main-search-component .search-ticket .bottom-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: var(--gap-md);
+    }
+
+    .main-search-component .search-ticket fieldset.TableLike {
+        position: relative;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        margin: 0;
+        padding: 40px 0 0;
+    }
+
+    .main-search-component .search-ticket fieldset.TableLike > legend {
+        display: flex;
+        padding-bottom: var(--padding-md);
+        width: 100%;
+    }
+
+    /*.search-ticket fieldset.TableLike > legend span*/
+    .main-search-component .search-ticket fieldset.TableLike legend span {
+        display: flex;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        text-indent: 0;
+        font-size: var(--font-size-md);
+        font-weight: var(--semi-bold);
+    }
+
+
+    .main-search-component .search-ticket fieldset.TableLike > label {
+        display: flex;
+        width: 100%;
+    }
+
+    .main-search-component .search-ticket fieldset.TableLike .Field {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+        margin: 0;
+        width: 100%; 
+        align-items: center;
+    }
+
+    /* SECTION TOP */
+
+    .main-search-component .search-ticket .top-section .Field {
+        display: flex;
+        flex-direction: row;
+        padding-bottom: var(--padding-sm);
+    }
+
+    .main-search-component .search-ticket .top-section fieldset.TableLike .Field {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-search-component .search-ticket .top-section fieldset.TableLike .Field.create-tpm-btn {
+        flex-direction: row;
+        justify-content: flex-end;
+        position: absolute;
+        gap: var(--padding-md);
+        top: -30px;
+        right: 0;
+    }
+
+    /* .main-search-component .search-ticket .create-tpl-btn {
+        position: absolute;
+        top: var(--padding-md);
+        right: 0;
+    } */
+
+    .main-search-component .search-ticket .create-tpm-btn button {
+        min-width: var(--btn-max-width-sm);
+    }
+
+    /* 'Submit' & 'Create' button container */
+    .main-search-component .search-ticket fieldset.TableLike .Field:last-child {
+        position: relative;
+    }
+
+    .main-search-component .search-ticket fieldset.TableLike .Field .new-tpl-input {
+        position: relative;
+        padding-top: var(--padding-xl);
+        display: flex;
+        width: 100%;
+    }
+
+    .main-search-component .search-ticket fieldset.TableLike .Field .create-tpm-btn {
+        position: absolute;
+        top: 10px;
+        right: 0;
+    }
+
+    .main-search-component .search-ticket fieldset.TableLike .Field .InputField_Container {
+        position: relative;
+        display: flex;
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 0;
+    }
+
+
+    /* SECTION BOTTOM */
+
+    .Dialog .Content .search-ticket .bottom-section fieldset{
+        width: 50%;  
+    }
+    
+    .Dialog .Content .search-ticket .bottom-section fieldset .field-wrapper {
+        width: 100%;
+    }  
+
+    .main-search-component .bottom-section .TableLike {
+        gap: var(--gap-md) !important;
+    }
+
+    .main-search-component .search-ticket fieldset.TableLike .Field input[type=text],
+    body .Dialog .Content .InnerContent.main-search-component .search-ticket fieldset.TableLike .Field .InputField_Search {
+        border: 0;
+        border-bottom: var(--border-width) var(--border-solid) var(--border-color);
+        border-radius: 0;
+        min-height: 35px;
+        padding: 0;
+        color: var(--table-text-color);
+        font-size: 14px;
+        font-weight: var(--medium);
+        min-width: auto;
+    }
+
+    .main-search-component .search-ticket .bottom-section fieldset.TableLike .Field .RemoveButton {
+        margin: 0;
+        position: relative;
+        right: 0;
+        font-size: var(--font-size-md);
+    }
+
+    .main-search-component .search-ticket .bottom-section fieldset.TableLike:last-child {
+        margin-right: 0;
+    }
+
+
+    /* SECTION Buttons */
+
+    .Dialog > .Content > .ContentFooter.main-search-component-btns {
+        justify-content: space-between;
     }
 
     /* ************************************* Attachment Widget ********************************* */
@@ -1251,4 +1440,251 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         flex-flow: column;
         min-width: 100%;
     }
+
+    /* **************************************** Pagination *********************************** */
+
+    .Pagination {
+        display: flex;
+        flex-flow: row;
+        justify-content: flex-end;
+        margin-right: 0;
+        font-size: var(--main-font-size);
+        padding: var(--padding-sm) var(--padding-xl);
+        border-top: var(--border-width) var(--border-solid) var(--border-color);
+        background: var(--white);
+    }
+
+    .Pagination:empty {
+        padding: 0;
+        display: none;
+    }
+
+    .SidebarColumn .Pagination {
+        background: transparent;
+        border-top: 0;
+    }
+
+    .Pagination:empty,
+    .Pagination:is(:empty),
+    .Pagination:has(.page-links:empty) {
+        padding: 0;
+        display: none;
+    }
+
+    .Pagination ul{
+        display: flex;
+        align-items: baseline;
+        flex-flow: row;
+        gap: var(--padding-xs);
+    }
+
+    .Pagination ul li a:first-child:before {
+        display: inline-block;
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 26px;
+        top: 0;
+        background-color: var(--gray-light);
+        left: -20px;
+    }
+
+    .Pagination ul li a:first-child {
+        margin-left: 30px;
+        position: relative;
+    }
+
+    .Pagination ul li:first-child {
+        display: flex;
+    }
+
+    .Pagination li, 
+    .Pagination li span {
+        align-self: center;
+        font-size: var(--font-size-sm);
+        color: var(--gray-semi-dark);
+    }
+
+    .Pagination a {
+        color: var(--gray-semi-dark);
+    }
+
+    .Pagination .page-links a:hover {
+        border-radius: var(--border-radius-xs);
+        border-color: var(--border-color);
+    }
+    .Pagination .page-links {
+        display: flex;
+        flex-flow: row;
+    }
+
+    .Pagination .page-links a {
+        display: flex;
+        width: 26px;
+        height: 26px;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--border-radius-xs);
+        border: var(--border-width) var(--border-solid) transparent;
+        transition: var(--main-transition);
+    }
+
+    .Pagination .page-links a:hover {
+        background-color: var(--gray-light);
+        color: var(--gray-semi-dark);
+    }
+
+    .Pagination.page-links a:hover {
+        background: rgba(1, 1, 1, 0.08);
+    }
+
+    .Pagination .page-links a.pagination-travel-l,
+    .Pagination .page-links a.pagination-travel-r,
+    .Pagination .page-links a.pagination-travel-one-l,
+    .Pagination .page-links a.pagination-travel-one-r {
+        font-size: var(--main-font-size);
+        border: var(--border-width) var(--border-solid) var(--border-color);
+    }
+
+    .Pagination .page-links a.pagination-travel-l,
+    .Pagination .page-links a.pagination-travel-one-l {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right: 0;
+    }
+
+    .Pagination .page-links a.pagination-travel-r,
+    .Pagination .page-links a.pagination-travel-one-r {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .Pagination .page-links a.pagination-travel-one-l {
+        margin-left: var(--padding-sm);
+    }
+
+    .Pagination .page-links > a.pagination-travel-one-r {
+        margin-right: var(--padding-sm);
+    }
+
+
+    .RTL .Pagination {
+        float: left;
+    }
+
+    form.Pagination > * {
+        float: left;
+    }
+
+    .RTL .Pagination > * {
+        float: right;
+    }
+
+    .Pagination > span {
+        margin-top: 3px;
+    }
+
+    form.Pagination a {
+        height: 24px;
+        width: 24px;
+        display: block;
+    }
+
+    span.Pagination a.Selected {
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+
+    span.Pagination span.PaginationLimit {
+        color: #FF0000;
+    }
+
+    .Pagination a span {
+        margin: 7px 6px;
+        height: 9px;
+        width: 11px;
+        text-indent: -9999px;
+        background: url(../img/arrows.png) no-repeat;
+        display: block;
+    }
+
+    /*.Pagination .ArrowLeft span {
+        background-position: left top;
+    }
+
+    .RTL .Pagination .ArrowLeft span {
+        background-position: right top;
+    }
+
+    .Pagination .ArrowRight span {
+        background-position: right top;
+    }
+
+    .RTL .Pagination .ArrowRight span {
+        background-position: left top;
+    }*/
+
+    .Pagination input {
+        width: 16px;
+        margin-right: 2px;
+        padding: 1px 3px;
+        font-size: 11px;
+        font-family: inherit;
+        text-align: right;
+    }
+
+    @media only screen and (max-width: 1024px) {
+    
+        .WidgetSimple span.Pagination {
+            display: none;
+        }
+    
+        .WidgetSimple span.Pagination.AsBlock {
+            display: flex;
+        }
+    }
+
+
+    /* **************************************** Filters *********************************** */
+
+    .TableFilterContainer {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex: 1;
+    }
+
+    .TableFilterContainer .FilterRemove {
+        position: absolute;
+        right: 15px;
+        font-size: 12px;
+        display: none;
+        color: var(--gray-semi-dark);
+        transition: color ease 0.3s;
+    }
+
+    .TableFilterContainer .FilterRemove:focus,
+    .TableFilterContainer .FilterRemove:hover,
+    .TableFilterContainer .FilterRemove:active {
+        color: var(--black);
+    }
+
+    span.TableFilterContainer > input,
+    span.TableFilterContainer > input.FilterBox,
+    input#SysConfigSearch {
+        padding: 6px var(--padding-sm);
+        padding-left: var(--padding-xxl);
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    span.TableFilterContainer > i {
+        position: absolute;
+        bottom: 25%;
+        left: 10px;
+        font-size: var(--font-size-md);
+        color: var(--gray-semi-dark);
+    }
+
+
 }

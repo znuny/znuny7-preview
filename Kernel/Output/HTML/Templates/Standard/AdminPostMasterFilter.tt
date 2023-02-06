@@ -112,8 +112,8 @@
                                 <a class="AsBlock" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Update;Name=[% Data.Name | uri %]">[% Translate(Data.Name) | html %]</a>
                             </td>
                             <td class="Center">
-                                <a class="TrashCan PostMasterFilterDelete" href="#" data-query-string="Action=[% Env("Action") %];Subaction=Delete;Name=[% Data.Name | uri %];[% Env("ChallengeTokenParam") | html %]" title="[% Translate("Delete this filter") | html %]">
-                                <i class="fa fa-trash-o"></i>
+                                <a class="TrashCan PostMasterFilterDelete table-icon-hover-md" href="#" data-query-string="Action=[% Env("Action") %];Subaction=Delete;Name=[% Data.Name | uri %];[% Env("ChallengeTokenParam") | html %]" title="[% Translate("Delete this filter") | html %]">
+                                    <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
                         </tr>

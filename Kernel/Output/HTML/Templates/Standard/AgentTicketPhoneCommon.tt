@@ -58,7 +58,7 @@
                     <fieldset class="TableLike FixedLabel">
 
                         [% IF TicketFrontendConfig.State %]
-                        <div class="card-item col-wide-100 col-desktop-100">
+                        <div class="card-item col-wide-100 col-desktop-100 col-tablet-100">
                             <h2 class="card-title">[% Translate("Ticket Data") | html %]</h2>
 
                             <div>
@@ -80,10 +80,10 @@
                         [% END %]
 
                         [% IF !TicketFrontendConfig.DynamicField.empty %]
-                        <div class="dynamic-field-col card-item col-wide-100 col-desktop-100">
+                        <div class="dynamic-field-col card-item col-wide-100 col-desktop-100 col-tablet-100">
                             <h2 class="card-title">[% Translate("Dynamic Info") | html %]</h2>
 [% RenderBlockStart("DynamicField") %]
-                                <div class="Row Row_DynamicField_[% Data.Name | html %] col-wide-33 col-desktop-50">
+                                <div class="Row Row_DynamicField_[% Data.Name | html %] col-wide-33 col-desktop-50 col-tablet-50">
                                     [% Data.Label %]
                                     <div class="Field">
                                         [% Data.Field %]
@@ -94,7 +94,7 @@
                         [% END %]
 
 
-                        <div class="card-item col-wide-100 col-desktop-100">
+                        <div class="card-item col-wide-100 col-desktop-100 col-tablet-100">
                             <h2 class="card-title">[% Translate("Communication") | html %]</h2>
 
                             <div>

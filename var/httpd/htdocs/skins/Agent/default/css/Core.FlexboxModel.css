@@ -21,12 +21,23 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 @media screen,projection,tv,handheld {
 
     /* **************************************** Main Classes **************************************** */
+    .full-width,
+    .WidgetSimple.full-width .Content fieldset,
+    .WidgetSimple.full-width .Content form,
+    .WidgetSimple .Content fieldset.full-width,
+    .WidgetSimple .Content form.full-width {
+        max-width: unset;
+        width: 100%;
+    }
+    
+    .WidgetSimple .flex-column,
     div.flex-column, 
     span.flex-column {
         display: flex;
         flex-flow: column !important;
     }
 
+    .WidgetSimple .flex-row,
     div.flex-row, 
     span.flex-row,
     .AdminManagement .WidgetSimple .Field.flex-row {
@@ -40,7 +51,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         flex-wrap: wrap;
     }
 
-    .Field.flex-row > :first-child {
+    .Field.flex-row > :first-child:not(select) {
         flex: 1 0 75%;
     }
 

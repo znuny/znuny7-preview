@@ -14,7 +14,7 @@
 [% RenderBlockEnd("TimeUnitsLabelMandatory") %]
 [% RenderBlockStart("TimeUnitsText") %]
 
-    <div class="Field col-wide-50 col-desktop-50">
+    <div class="Field col-wide-50 col-desktop-50 col-tablet-50">
         <input type="text" id="[% Data.ID | html %]" name="[% Data.Name | html %]" value="[% Data.TimeUnits | html %]" class="W50pc Validate_TimeUnits [% Data.TimeUnitsRequiredClass | html %] [% Data.TimeUnitsInvalid | html %]"/>
         <div id="TimeUnitsError" class="TooltipErrorMessage"><p>[% Translate("Invalid time!") | html %]</p></div>
         <div id="TimeUnitsServerError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>

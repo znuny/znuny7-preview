@@ -157,12 +157,12 @@
                                         [% Translate(Data.ValidIDs.item(TokenConfig.ValidID)) | html %]
                                     </td>
                                     <td>
-                                        <a class="CallForAction AsPopup PopupType_AdminOAuth2TokenManagement" href="[% TokenData.AuthorizationCodeRequestURL | html %]" title="[% Translate("Request new token") | html %]">
+                                        <a class="CallForAction AsPopup PopupType_AdminOAuth2TokenManagement table-actions-button" href="[% TokenData.AuthorizationCodeRequestURL | html %]" title="[% Translate("Request new token") | html %]">
                                             <span>[% Translate("Request new token") | html %]</span>
                                         </a>
                                         &nbsp;
                                         [% IF !TokenConfig.Used %]
-                                            <a class="CallForAction" data-action-delete-token-config href="[% Env("Baselink") %]Action=AdminOAuth2TokenManagement;Subaction=DeleteTokenConfig;ID=[% TokenConfig.TokenConfigID | uri %]" title="[% Translate("Delete this token and its configuration.") | html %]">
+                                            <a class="CallForAction table-actions-button" data-action-delete-token-config href="[% Env("Baselink") %]Action=AdminOAuth2TokenManagement;Subaction=DeleteTokenConfig;ID=[% TokenConfig.TokenConfigID | uri %]" title="[% Translate("Delete this token and its configuration.") | html %]">
                                                 <span>[% Translate("Delete") | html %]</span>
                                             </a>
                                         [% END %]

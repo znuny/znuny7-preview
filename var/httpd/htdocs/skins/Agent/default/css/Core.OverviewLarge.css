@@ -241,8 +241,20 @@ body.TouchDevice .OverviewLarge > li ul.InlineActions li.ResponsiveActionMenu {
     flex-flow: row;
 }
 
+@media only screen and (max-width: 1024px) {
+    .OverviewLarge .tables-wrapper {
+        flex-direction: column;
+    }
+}
+
 .OverviewLarge .Infos table {
     table-layout: fixed;
+}
+
+@media only screen and (max-width: 1024px) {
+    .OverviewLarge .Infos {
+        width: 100%;
+    }
 }
 
 .RTL .OverviewLarge .Infos table {
@@ -328,6 +340,13 @@ body.TouchDevice .OverviewLarge > li ul.InlineActions li.ResponsiveActionMenu {
 .OverviewLarge .Preview {
     width: 60%;
     padding-left: var(--padding-md);
+}
+
+@media only screen and (max-width: 1024px) {
+    .OverviewLarge .Preview {
+        width: 100%;
+        padding: 0;
+    }
 }
 
 .OverviewLarge .Preview > ul:first-child {

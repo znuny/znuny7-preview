@@ -401,12 +401,12 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         border: 0;
     }
 
-    div.WidgetSimpleSecondary div.ActionRow li {
+    /*div.WidgetSimpleSecondary div.ActionRow li {
         color: var(--table-text-color);
         font-size: 11px;
         font-weight: var(--semi-bold);
         letter-spacing: .8px;
-    }
+    }*/
 
     /*div.WidgetSimpleSecondary div.ActionRow li a,
     div.WidgetSimpleSecondary div.ActionRow li span.ClusterLink {
@@ -446,6 +446,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     .WidgetSimple.Collapsed:not(.GridGroups) .Header {
         background: var(--white);
         border: 0;
+        border-radius: var(--border-radius-sm);
     }
 
     .WidgetSimple .Content fieldset {
@@ -655,7 +656,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     /**
     * @subsection  WidgetBox
     */
-    .WidgetBox > .Header h2 {
+    /*.WidgetBox > .Header h2 {
         font-size: 14px;
         margin-left: 5px;
     }
@@ -698,26 +699,27 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         border-left: 1px solid #C6C5C4;
         border-right: 1px solid #C6C5C4;
         border-bottom: 1px solid #C6C5C4;
-    }
+    }*/
 
     .Collapsed > .Content {
         display: none;
     }
 
-    .WidgetBox > .Content.AutoHeight {
+    /*.WidgetBox > .Content.AutoHeight {
         min-height: 0;
-    }
+    }*/
 
-    /**
-    * @subaction   ActionMenu
-    */
+    /************************/
+    /*  Widget - ActionMenu */
+    /************************/
 
     .ActionMenu {
-        top: 27px;
-        right: 47px;
-        padding-left: 3px;
-        position: absolute;
-        display: none;
+        display: flex;
+        top: initial;
+        right: initial;
+        padding-left: initial;
+        position: relative;
+        z-index: 1;
     }
 
     .RTL .ActionMenu {
@@ -734,6 +736,142 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     .Header .ActionMenu.Visible {
         display: flex;
     }
+
+
+
+    .WidgetSimple.Expanded:not(.Setting) .ActionMenu,
+    .WidgetSimple.Collapsed:not(.Setting) .ActionMenu  {
+        right: 30px;
+    }
+
+    .ActionMenu .Btn-Menu-Vertical {
+        width: 30px;
+        height: 30px;
+        margin-left: var(--margin-sm);
+    }
+        
+    .ActionMenu .Btn-Menu-Vertical span {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        background: transparent;
+        transition: var(--main-transition);
+        cursor: pointer;
+    }
+        
+    .ActionMenu .Btn-Menu-Vertical:hover span {
+        background: var(--gray-light);
+    }
+        
+    .ActionMenu .Btn-Menu-Vertical span i {
+        font-size: var(--icon-main-size);
+        color: var(--gray-dark);;
+    }
+        
+    .ActionMenu:hover .ActionMenuList  {
+        display: flex;
+    }
+        
+    /*     ActionMenu > ActionMenuList    */
+    .ActionMenu .ActionMenuList{
+        display: none;
+        flex-direction: column;
+        z-index: 999;
+        position: absolute;
+        top: 30px;
+        right: 0;
+        min-width: 160px;
+        background: var(--menu-bg);
+        margin-top: 0;
+        box-shadow: var(--menu-box-shadow);
+        padding: var(--padding-sm);
+        border-radius: var(--border-radius-xs);
+    }
+        
+    .ActionMenu .ActionMenuList li,
+    ul.WidgetTooltip li {
+        height: auto;
+        width: auto;
+        text-indent: 0px;
+        line-height: 18px;
+        white-space: nowrap;
+        color: unset;
+        padding: unset;
+        border: unset;
+        font-size: unset;
+        transition: unset;
+        border-radius: unset;
+        cursor: pointer;
+        border-radius: var(--border-radius-xs);
+    }
+        
+    .ActionMenu .ActionMenuList li:hover,
+    ul.WidgetTooltip li:hover {
+        color: var(--menu-font);
+        background: var(--gray-light);
+        border-radius: var(--border-radius-xs);
+    }
+        
+    /*     ActionMenu > ActionMenuList > WidgetAction    */
+    .ActionMenu .ActionMenuList li .WidgetAction,
+    ul.WidgetTooltip li {
+        height: auto;
+        width: 100%;
+        padding-right: 0;
+        float: initial;
+        text-align: left;
+
+        border-radius: var(--border-radius-xs);
+        color: var(--menu-font);
+        padding: var(--padding-sm) var(--padding-sm);
+        border-bottom: none;
+        font-size: var(--main-font-size);
+        transition: var(--main-transition);
+    }
+        
+    .ActionMenu .ActionMenuList li .WidgetAction a,
+    ul.WidgetTooltip li a {
+        display: flex;
+        height: auto;
+        justify-content: space-between;
+    }
+        
+    .ActionMenu .ActionMenuList li .WidgetAction a .iconWrapper,
+    ul.WidgetTooltip li a i {
+        display: flex;
+        height: auto !important;
+        width: 20px;
+        position: relative;
+        background: transparent;
+        padding: 0;
+        box-sizing: border-box;
+        justify-content: center;
+        align-items: center;
+    }
+        
+    .ActionMenu .ActionMenuList li .WidgetAction a .iconWrapper i,
+    .ActionMenu .ActionMenuList li .WidgetAction:hover a .iconWrapper i,
+    ul.WidgetTooltip li a i {
+        color: var(--gray-dark);
+    }
+        
+    .ActionMenu .ActionMenuList li .WidgetAction a .textWrapper,
+    ul.WidgetTooltip li a {
+        display: flex;
+        padding-left: var(--padding-xs);
+        color: var(--menu-font);
+        text-indent: 0;
+        font-size: var(--main-font-size);
+        width: calc(100% - 20px);
+        line-height: 110%;
+        align-items: center;
+    }
+
+
+
 
     /**
     * @subsection  WidgetActions
@@ -793,6 +931,12 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         height: 100%;
         left: 0;
     }
+
+    .WidgetAction.Toggle {
+        z-index: 1;
+        transition: var(--main-transition);
+    }
+
 
     .WidgetAction.Toggle i {
         display: flex !important;
@@ -1979,6 +2123,10 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         align-items: center;
     }
 
+    .mainStructure .ContentColumn .WidgetSimple .Header .ActionMenu .ActionMenuList li .WidgetAction.ShowPagination a .iconWrapper i {
+        font-size: 16px;
+    }
+
 
 
     /*
@@ -1996,7 +2144,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         /*transition: var(--main-transition);*/
         border: var(--border-width) var(--border-solid) var(--border-color);
         border-radius: var(--border-radius-sm);
-        overflow: hidden;
+        /*overflow: hidden;*/
     }
 
     .SidebarFirst .SidebarColumn .WidgetSimple {
@@ -2039,8 +2187,10 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     .WidgetSimple > .Content{
         transition: var(--main-transition);
         padding: 0;
-        overflow: auto;
         min-height: 0;
+        border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+        overflow: auto;
+        /*overflow: hidden;*/ /* overflow hidden will break the horizontal scroll */
     }
 
     .WidgetSimple.Collapsed .ArticleMailHeader {
@@ -2077,7 +2227,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
     .WidgetSimple > .Header h2,
     .WidgetSimple > .Header h3 {
-        display: flex;     /* - this prevents the ellipsis overflow to take place */
+        display: inline; /* - edited by beatriz on 27/1/2023 - so the ellipsis overflow can take place */
         /*align-items: center; - as the elements become inline */
         padding: 0;
         margin: 0;
@@ -2089,6 +2239,14 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         text-shadow: none;
         color: var(--black);
         line-height: 120%;
+        z-index: 1;
+    }
+
+    .WidgetSimple.MenuExpanded > .Header h2,
+    .WidgetSimple.MenuExpanded > .Header h3 {
+        text-overflow: unset;
+        white-space: unset;
+        max-width: unset;
     }
 
     .TicketZoom .WidgetSimple > .Header h2 {
@@ -2117,7 +2275,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     .AdminManagement .Content .TableLike > div {
         display: flex;
         flex-flow: column;
-        gap: var(--gap-xs);
+        /*gap: var(--gap-xs); - edited by beatriz on 30/1/2023 */
         width: 100%;
         max-width: 800px;
         align-self: start;
@@ -2233,148 +2391,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         padding-right: var(--padding-sm);
     }*/
 
-    /************************/
-    /*  Widget - ActionMenu */
-    /************************/
-
-    .ActionMenu {
-        display: flex;
-        top: initial;
-        right: initial;
-        padding-left: initial;
-        position: relative;
-    }
-
-    .WidgetSimple.Expanded:not(.Setting) .ActionMenu,
-    .WidgetSimple.Collapsed:not(.Setting) .ActionMenu  {
-        right: 30px;
-    }
-
-    .ActionMenu .Btn-Menu-Vertical {
-        width: 30px;
-        height: 30px;
-        margin-left: var(--margin-sm);
-    }
-        
-    .ActionMenu .Btn-Menu-Vertical span {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        justify-content: center;
-        align-items: center;
-        border-radius: 5px;
-        background: transparent;
-        transition: var(--main-transition);
-        cursor: pointer;
-    }
-        
-    .ActionMenu .Btn-Menu-Vertical:hover span {
-        background: var(--gray-light);
-    }
-        
-    .ActionMenu .Btn-Menu-Vertical span i {
-        font-size: var(--icon-main-size);
-        color: var(--gray-dark);;
-    }
-        
-    .ActionMenu:hover .ActionMenuList  {
-        display: flex;
-    }
-        
-    /*     ActionMenu > ActionMenuList    */
-    .ActionMenu .ActionMenuList{
-        display: none;
-        flex-direction: column;
-        z-index: 999;
-        position: absolute;
-        top: 30px;
-        right: 0;
-        min-width: 160px;
-        background: var(--menu-bg);
-        margin-top: 0;
-        box-shadow: var(--menu-box-shadow);
-        padding: var(--padding-sm);
-        border-radius: var(--border-radius-xs);
-    }
-        
-    .ActionMenu .ActionMenuList li,
-    ul.WidgetTooltip li {
-        height: auto;
-        width: auto;
-        text-indent: 0px;
-        line-height: 18px;
-        white-space: nowrap;
-        color: unset;
-        padding: unset;
-        border: unset;
-        font-size: unset;
-        transition: unset;
-        border-radius: unset;
-        cursor: pointer;
-        border-radius: var(--border-radius-xs);
-    }
-        
-    .ActionMenu .ActionMenuList li:hover,
-    ul.WidgetTooltip li:hover {
-        color: var(--menu-font);
-        background: var(--gray-light);
-        border-radius: var(--border-radius-xs);
-    }
-        
-    /*     ActionMenu > ActionMenuList > WidgetAction    */
-    .ActionMenu .ActionMenuList li .WidgetAction,
-    ul.WidgetTooltip li {
-        height: auto;
-        width: 100%;
-        padding-right: 0;
-        float: initial;
-        text-align: left;
-
-        border-radius: var(--border-radius-xs);
-        color: var(--menu-font);
-        padding: var(--padding-sm) var(--padding-sm);
-        border-bottom: none;
-        font-size: var(--main-font-size);
-        transition: var(--main-transition);
-    }
-        
-    .ActionMenu .ActionMenuList li .WidgetAction a,
-    ul.WidgetTooltip li a {
-        display: flex;
-        height: auto;
-        justify-content: space-between;
-    }
-        
-    .ActionMenu .ActionMenuList li .WidgetAction a .iconWrapper,
-    ul.WidgetTooltip li a i {
-        display: flex;
-        height: auto !important;
-        width: 20px;
-        position: relative;
-        background: transparent;
-        padding: 0;
-        box-sizing: border-box;
-        justify-content: center;
-        align-items: center;
-    }
-        
-    .ActionMenu .ActionMenuList li .WidgetAction a .iconWrapper i,
-    .ActionMenu .ActionMenuList li .WidgetAction:hover a .iconWrapper i,
-    ul.WidgetTooltip li a i {
-        color: var(--gray-dark);
-    }
-        
-    .ActionMenu .ActionMenuList li .WidgetAction a .textWrapper,
-    ul.WidgetTooltip li a {
-        display: flex;
-        padding-left: var(--padding-xs);
-        color: var(--menu-font);
-        text-indent: 0;
-        font-size: var(--main-font-size);
-        width: calc(100% - 20px);
-        line-height: 110%;
-        align-items: center;
-    }
 
 
 
@@ -2475,8 +2491,8 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     .SidebarColumn .WidgetSimple .Content fieldset .row-wrapper .Field i {
         right: 15px;
         position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
+        /*top: 50%;
+        transform: translateY(-50%); - edited by beatriz on 27/1/2023*/
     }
 
     .SidebarColumn .WidgetSimple .Content fieldset .btn-container {
@@ -2565,8 +2581,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     /*************************/
     /* ContentColumn - Table */
     .ContentColumn .DataTable {
-        border-bottom-left-radius: var(--border-radius-sm);
-        border-bottom-right-radius: var(--border-radius-sm);
         overflow: hidden;
     }
 
@@ -2619,6 +2633,10 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         background: var(--white);
     }
 
+    .WidgetSimple .Content .WidgetSettingsForm > fieldset.TableLike {
+        max-width: 100%;
+    }
+
     .WidgetSettingsForm fieldset .row-wrapper {
         display: flex;
         justify-content: space-between;
@@ -2645,8 +2663,8 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     .WidgetSettingsForm fieldset .Field .InputField_InputContainer i{
         right: 15px;
         position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
+        /*top: 50%;
+        transform: translateY(-50%); - edited by beatriz on 27/1/2023 */
     }
 
     .WidgetSettingsForm fieldset .row-wrapper .Field .InputField_Container,

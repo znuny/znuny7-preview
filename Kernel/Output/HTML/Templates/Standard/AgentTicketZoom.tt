@@ -113,7 +113,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a class="FormDraftDelete"
+                                    <a class="FormDraftDelete table-icon-hover-md"
                                         href="[% Env("CGIHandle") %]?Action=AgentTicketZoom;Subaction=FormDraftDelete;FormDraftID=[% FormDraft.FormDraftID | html %];TicketID=[% Data.TicketID %]"
                                         title="[% Translate("Delete") | html %]"
                                         data-title="[% FormDraft.Title | html %]"
@@ -146,57 +146,74 @@
             <div class="WidgetSimple WidgetSimpleSecondary">
                 <div class="Content OverflowVisible">
                     <div class="ActionRow Cluster">
-                        <ul class="Actions">
+                        <ul class="Actions-Mobile-List">
+                            <li>Back</li>
+                            <li id="mobile-action-option">Options</li>
+                        </ul>
+
+                        <div class="Actions-overlay">
+                            <div class="Actions-wrapper">
+                            <div class="Actions-top">Options</div>
+                            <ul class="Actions">
 [% RenderBlockStart("TicketMenu") %]
-                            <li id="nav-[% Data.Name | replace(' ', '-') | html %]">
-                            [% IF Data.Type == 'Cluster' %]
-                                <span class="[% Data.Class %]" >[% Translate(Data.Name) | html %] <i class="fa fa-caret-down"></i></span>
-                            [% ELSE %]
-                                <a href="[% Env("Baselink") %][% Data.Link | Interpolate %]" class="[% Data.Class %]" [% Data.LinkParam %] title="[% Translate(Data.Description) | html %]" target="[% Data.Target | html %]">[% Translate(Data.Name) | html %]</a>
-                            [% END %]
+                                <li id="nav-[% Data.Name | replace(' ', '-') | html %]">
+                                [% IF Data.Type == 'Cluster' %]
+                                    <span class="[% Data.Class %]" >[% Translate(Data.Name) | html %] <i class="fa fa-caret-down"></i></span>
+                                [% ELSE %]
+                                    <a href="[% Env("Baselink") %][% Data.Link | Interpolate %]" class="[% Data.Class %]" [% Data.LinkParam %] title="[% Translate(Data.Description) | html %]" target="[% Data.Target | html %]">[% Translate(Data.Name) | html %]</a>
+                                [% END %]
 [% RenderBlockStart("TicketMenuSubContainer") %]
-                                <ul id="nav-[% Data.Name | replace(' ', '-') | html %]-container">
+                                    <ul id="nav-[% Data.Name | replace(' ', '-') | html %]-container">
 [% RenderBlockStart("TicketMenuSubContainerItem") %]
-                                    <li id="nav-[% Data.Name | replace(' ', '-') | html %]">
-                                        <a href="[% IF !Data.ExternalLink %][% Env("Baselink") %][% END %][% Data.Link | Interpolate %]" class="[% Data.Class | html %]" [% Data.LinkParam %] title="[% Translate(Data.Description) | html %]" target="[% Data.Target | html %]">[% Translate(Data.Name) | html %]</a>
-                                    </li>
+                                        <li id="nav-[% Data.Name | replace(' ', '-') | html %]">
+                                            <a href="[% IF !Data.ExternalLink %][% Env("Baselink") %][% END %][% Data.Link | Interpolate %]" class="[% Data.Class | html %]" [% Data.LinkParam %] title="[% Translate(Data.Description) | html %]" target="[% Data.Target | html %]">[% Translate(Data.Name) | html %]</a>
+                                        </li>
 [% RenderBlockEnd("TicketMenuSubContainerItem") %]
-                                </ul>
+                                    </ul>
 [% RenderBlockEnd("TicketMenuSubContainer") %]
-                            </li>
+                                </li>
 [% RenderBlockEnd("TicketMenu") %]
 [% RenderBlockStart("TicketMenuPhoneAsDropdown") %]
-                            <li>
-                                <form title="[% Translate(Data.Name) | html %]" action="[% Env("CGIHandle") %]" method="get" id="[% Data.FormID | html %]">
-                                    <input type="hidden" name="Action" value="[% Data.Action | html %]"/>
-                                    <input type="hidden" name="TicketID" value="[% Data.TicketID | html %]"/>
-                                    <label for="[% Data.PhoneElementID | html %]" class="InvisibleText">[% Translate(Data.Name) | html %]:</label>
-                                    [% Data.StandardReplyStrg %]
-                                </form>
-                            </li>
+                                <li>
+                                    <form title="[% Translate(Data.Name) | html %]" action="[% Env("CGIHandle") %]" method="get" id="[% Data.FormID | html %]">
+                                        <input type="hidden" name="Action" value="[% Data.Action | html %]"/>
+                                        <input type="hidden" name="TicketID" value="[% Data.TicketID | html %]"/>
+                                        <label for="[% Data.PhoneElementID | html %]" class="InvisibleText">[% Translate(Data.Name) | html %]:</label>
+                                        [% Data.StandardReplyStrg %]
+                                    </form>
+                                </li>
 [% RenderBlockEnd("TicketMenuPhoneAsDropdown") %]
 [% RenderBlockStart("MoveLink") %]
-                            <li class="[% Data.Class | html %]">
-                                <form title="[% Translate("Move ticket to a different queue") | html %]" action="[% Env("CGIHandle") | html %]" method="post">
-                                    <input type="hidden" name="Action" value="AgentTicketMove"/>
-                                    <input type="hidden" name="QueueID" value="[% Data.QueueID | html %]"/>
-                                    <input type="hidden" name="TicketID" value="[% Data.TicketID | html %]"/>
-                                    <label for="DestQueueID" class="InvisibleText">[% Translate("Queue") | html %]:</label>
-                                    [% Data.MoveQueuesStrg %]
-                                </form>
-                            </li>
+                                <li class="[% Data.Class | html %]">
+                                    <form title="[% Translate("Move ticket to a different queue") | html %]" action="[% Env("CGIHandle") | html %]" method="post">
+                                        <input type="hidden" name="Action" value="AgentTicketMove"/>
+                                        <input type="hidden" name="QueueID" value="[% Data.QueueID | html %]"/>
+                                        <input type="hidden" name="TicketID" value="[% Data.TicketID | html %]"/>
+                                        <label for="DestQueueID" class="InvisibleText">[% Translate("Queue") | html %]:</label>
+                                        [% Data.MoveQueuesStrg %]
+                                    </form>
+                                </li>
 [% RenderBlockEnd("MoveLink") %]
 [% RenderBlockStart("MoveForm") %]
-                            <li>
-                                <a href="[% Env("Baselink") %]Action=AgentTicketMove;TicketID=[% Data.TicketID | uri %];" class="AsPopup PopupType_TicketAction" title="[% Translate("Change Queue") | html %]">[% Translate("Queue") | html %]</a>
-                            </li>
+                                <li>
+                                    <a href="[% Env("Baselink") %]Action=AgentTicketMove;TicketID=[% Data.TicketID | uri %];" class="AsPopup PopupType_TicketAction" title="[% Translate("Change Queue") | html %]">[% Translate("Queue") | html %]</a>
+                                </li>
 [% RenderBlockEnd("MoveForm") %]
 [% RenderBlockStart("TicketMenuExternalLink") %]
-                            <li>
-                                <a href="[% Data.Link | Interpolate %]" class="[% Data.Class | html %]" [% Data.LinkParam %] title="[% Translate(Data.Description) | html %]" target="[% Data.Target %]">[% Translate(Data.Name) | html %]</a>
-                            </li>
+                                <li>
+                                    <a href="[% Data.Link | Interpolate %]" class="[% Data.Class | html %]" [% Data.LinkParam %] title="[% Translate(Data.Description) | html %]" target="[% Data.Target %]">[% Translate(Data.Name) | html %]</a>
+                                </li>
 [% RenderBlockEnd("TicketMenuExternalLink") %]
-                        </ul>
+                            </ul>
+                            <div class="Actions-bottom">
+                                <a class="btn-collapse">
+                                    <i class="fa fa-sign-out"></i>
+                                    <span>Collapse</span>
+                                </a>
+                            </div>
+                            </div>
+                            <div class="Actions-close"></div>
+                        </div>
 
                         <div class="WidgetAction ArticleView">
                             <a class="icon-hover" id="ArticleViewSettings" href="#" title="[% Translate("Settings") | html %]">

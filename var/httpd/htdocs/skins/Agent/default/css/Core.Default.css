@@ -333,25 +333,69 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         float: right;
     }
 
-    .Error {
-        color: var(--error-color) !important;
-    }
-
-    .Warning {
-        color: var(--warning-color) !important;
-    }
-
-    .Notice {
-        background: var(--alert-info-bg-color); /* placeholder color, to better identify fields with this class */
-        border: 1px solid #e6f0f7;
-    }
-
     .Confirmation {
         color: var(--confirmation-color);
     }
 
     .Small {
         font-size: 90%;
+    }
+
+    /**
+    * @subsection  Alerts colors
+    * @note        
+    */
+
+    .Info {
+        background: var(--alert-info-bg-color);
+        border: 1px solid var(--alert-info-border-color);
+    }
+
+    .Info i {
+        color: var(--alert-info-icon-color);
+    }
+
+    .Error {
+        background: var(--alert-error-bg-color);
+        border: 1px solid var(--alert-error-border-color);
+    }
+
+    .Error i {
+        color: var(--alert-error-icon-color);
+    }
+
+    .Success {
+        background: var(--alert-success-bg-color);
+        border: 1px solid var(--alert-success-border-color);
+    }
+
+    .Success i {
+        color: var(--alert-success-icon-color);
+    }
+
+    .Warning {
+        background: var(--alert-warning-bg-color);
+        border: 1px solid var(--alert-warning-border-color);
+    }
+
+    .MainBox .WidgetSimple p.Warning,
+    .MainBox .WidgetSimple p.Error {
+        background: none;
+        border: 0;
+        color: var(--warning-color);
+    }
+
+    .Warning i {
+        color: var(--alert-warning-icon-color);
+    }
+
+    .Notice {
+        background: var(--alert-notice-bg-color);
+        border: 1px solid var(--alert-notice-border-color);
+    }
+
+    .Notice i {
+        color: var(--alert-notice-icon-color);
     }
 
     /**
@@ -585,21 +629,16 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         font-weight: var(--semi-bold);
         margin: 0;
         position: relative;
-        align-items: center;
+        align-items: baseline;
     }
 
     .OverviewBox > h1 > div:nth-child(odd) {
         display: flex;
         font-size: var(--main-font-size);
         font-weight: var(--normal);
-        padding: var(--padding-xs) var(--padding-sm);
 
         color: var(--main-font-color);
-        background: var(--white);
-        transition: var(--main-transition);
-        font-size: var(--font-size-sm);
-        border-radius: var(--border-radius-sm);
-        border: var(--border-width) var(--border-solid) var(--border-color);
+        font-size: var(--main-font-size);
     }
 
     .OverviewBox > h1 > div:nth-child(even) {
@@ -712,6 +751,10 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         position: relative;
         color: var(--bread-crumb);
         font-size: var(--font-size-sm);
+    }
+
+    .BreadCrumb a:hover {
+        text-decoration: underline;
     }
 
     /*  'after' and 'before' pseudo-elements have been replaced by <i> icon
@@ -983,7 +1026,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     */
     span.UnreadArticles,
     div.UnreadArticles {
-        /*display: block;*/
+        display: block;
         width: 16px;
         height: 15px;
         margin-left: 0;
@@ -1858,46 +1901,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
             line-height: 150%;
         }
 
-        /* Filters */
-
-        .TableFilterContainer {
-            position: relative;
-            display: flex;
-            align-items: center;
-            flex: 1;
-        }
-
-        .TableFilterContainer .FilterRemove {
-            position: absolute;
-            right: 15px;
-            font-size: 12px;
-            display: none;
-            color: var(--gray-semi-dark);
-            transition: color ease 0.3s;
-        }
-
-        .TableFilterContainer .FilterRemove:focus,
-        .TableFilterContainer .FilterRemove:hover,
-        .TableFilterContainer .FilterRemove:active {
-            color: var(--black);
-        }
-
-        span.TableFilterContainer > input,
-        span.TableFilterContainer > input.FilterBox,
-        input#SysConfigSearch {
-            padding: 6px var(--padding-sm);
-            padding-left: var(--padding-xxl);
-            box-sizing: border-box;
-            width: 100%;
-        }
-
-        span.TableFilterContainer > i {
-            position: absolute;
-            bottom: 25%;
-            left: 10px;
-            font-size: var(--font-size-md);
-            color: var(--gray-semi-dark);
-        }
     }
 
     /***********************************************************************/

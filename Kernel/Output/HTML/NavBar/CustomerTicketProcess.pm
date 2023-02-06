@@ -130,6 +130,7 @@ sub Run {
     my $NavBarName = $FrontendModuleConfig->{NavBarName};
     my $Priority   = sprintf( '%07d', $FrontendNavigationConfig->{'002-ProcessManagement'}->[0]->{Prio} );
 
+    return if !$Param{NavBarModule}->{Sub};
     my %Return = %{ $Param{NavBarModule}->{Sub} };
 
     # remove CustomerTicketProcess from the TicketMenu

@@ -21,7 +21,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         overflow: visible;
     }
 
-    ul.Overview {
+    .Overview {
         margin: 0;
         padding: var(--main-page-padding);
         padding-top: 0;
@@ -37,18 +37,18 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         padding: var(--padding-sm) 0;
     }
 
-    .Overview>li {
+    .Overview > li {
         border: var(--border-width) var(--border-solid) var(--border-color);
         border-top: none;
         position: relative;
         overflow: hidden;
     }
 
-    .Overview>li:nth-child(odd) {
+    .Overview > li:nth-child(odd) {
         background: var(--white);
     }
 
-    .Overview>li:last-child {
+    .Overview > li:last-child {
         border-bottom-left-radius: var(--border-radius-sm);
         border-bottom-right-radius: var(--border-radius-sm);
     }

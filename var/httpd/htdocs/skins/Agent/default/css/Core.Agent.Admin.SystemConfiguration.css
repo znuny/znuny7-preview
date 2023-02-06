@@ -488,6 +488,7 @@ h2.SearchResults {
     justify-content: flex-end;
     /*padding-top: var(--padding-lg);*/
     gap: var(--gap-md);
+    max-width: 100%;
 }
 
 /*.WidgetSimple.Setting.IsLockedByMe .Content .SettingUpdateBox {
@@ -629,6 +630,7 @@ h2.SearchResults {
 .WidgetSimple.Setting .SettingContainer > fieldset {
     padding: 0;
     min-width: unset;
+    max-width: unset;
 }
 
 .WidgetSimple.Setting .SettingContainer .Setting {
@@ -650,11 +652,12 @@ h2.SearchResults {
     min-height: 100%;
 }
 
-.WidgetSimple.Setting:not(.IsLockedByMe):not(.MenuExpanded) .SettingContainer > fieldset:before {
+/*.WidgetSimple.Setting:not(.IsLockedByMe):not(.MenuExpanded) .SettingContainer > fieldset:before*/
+.WidgetSimple.Setting:not(.IsLockedByMe):not(.MenuExpanded) .SettingWrapper > form:before {
     content: "";
     position: absolute;
     left: -20px; /*account for container padding*/
-    bottom: -20px;
+    bottom: 0;
     opacity: .4;
     height: 20px;
     z-index: 100;
@@ -664,7 +667,8 @@ h2.SearchResults {
     width: calc(100% + 40px);
 }
 
-.Deployment .WidgetSimple.Setting:not(.IsLockedByMe):not(.MenuExpanded) .SettingContainer > fieldset:before {
+/*.Deployment .WidgetSimple.Setting:not(.IsLockedByMe):not(.MenuExpanded) .SettingContainer > fieldset:before*/
+.Deployment .WidgetSimple.Setting:not(.IsLockedByMe):not(.MenuExpanded) .SettingWrapper > form:before {
     display: none;
 }
 
@@ -1024,6 +1028,7 @@ li > div:not(.IsLockedByMe) .HashItem .HashItem > .SettingContent > div.InputFie
     position: relative;
     border-radius: var(--border-radius-sm);
     /*min-width: calc(100% + 20px);*/
+    border: var(--border-width) var(--border-solid) var(--border-color);
 }
 
 .Hash.FrontendNavigationHash {
@@ -1117,7 +1122,8 @@ li > div:not(.IsLockedByMe) .HashItem .HashItem > .SettingContent > div.InputFie
     background: unset;
     border: 0;
     position: relative;
-    left: -5px;
+    left: -8px;
+    margin: auto;
     min-height: 24px;
     min-width: 24px;
     border-radius: var(--border-radius-xxs);
@@ -1135,6 +1141,13 @@ li > div:not(.IsLockedByMe) .HashItem .HashItem > .SettingContent > div.InputFie
     align-items: flex-start;
     gap: var(--gap-sm);
 }
+
+.HashItem.hasChild {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
 
 /*.IsLockedByMe .ArrayItem,
 .IsLockedByMe .HashItem {
@@ -1592,6 +1605,10 @@ li > div:not(.IsLockedByMe) .HashItem .HashItem > .SettingContent > div.InputFie
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+h2 > .Icon {
+    display: inline;
 }
 
 .RTL .Icon {

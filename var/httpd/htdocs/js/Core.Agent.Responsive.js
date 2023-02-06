@@ -32,17 +32,13 @@ Core.Agent.Responsive = (function (TargetNS) {
             });
         }
 
-        $('.Dashboard .WidgetSimple .Header').off('click.Responsive').on('click.Responsive', function() {
-            $(this).find('.ActionMenu').fadeToggle();
-        });
-
         // hide graphs as they're not properly supported on mobile devices
         $('.D3GraphMessage, .D3GraphCanvas').closest('.WidgetSimple').hide();
 
         // Add trigger icon for pagination
         $('span.Pagination a:first-child').parent().closest('.WidgetSimple').each(function() {
             if (!$(this).find('.ShowPagination').length) {
-                $(this).find('.WidgetAction.Close').after('<div class="WidgetAction ShowPagination"><a title="Close" href=""><i class="fa fa-angle-double-right"></i></a></div>');
+                $(this).find('.wrapper-widget-close').after('<li><div class="WidgetAction ShowPagination"><a title="Close" href=""><span class="iconWrapper"><i class="fa fa-angle-right"></i></span><span class="textWrapper">Pagination</span></a></div></li>');
             }
         });
 
@@ -73,7 +69,7 @@ Core.Agent.Responsive = (function (TargetNS) {
 
         // add handles for navigation and sidebar
         if (!$('#ResponsiveSidebarHandle').length) {
-            $('.SidebarColumn').closest('.ResponsiveSidebarContainer').before('<span class="ResponsiveHandle" id="ResponsiveSidebarHandle"><i class="fa fa-caret-square-o-left"></i></span>');
+            $('.SidebarColumn').closest('.ResponsiveSidebarContainer').before('<span class="ResponsiveHandle" id="ResponsiveSidebarHandle"><i class="fa fa-sign-out"></i></span>');
         }
         if (!$('#ResponsiveNavigationHandle').length) {
             $('#NavigationContainer').closest('.ResponsiveSidebarContainer').before('<span class="ResponsiveHandle" id="ResponsiveNavigationHandle"><i class="fa fa-navicon"></i></span>');
@@ -88,12 +84,12 @@ Core.Agent.Responsive = (function (TargetNS) {
                 $('#NavigationContainer').closest('.ResponsiveSidebarContainer').fadeIn();
                 $('html').addClass('NoScroll');
                 $('#NavigationContainer').animate({
-                    'left': '0px'
+                    'left': '0'
                 });
             }
             else {
                 $('#ResponsiveSidebarHandle').animate({
-                    'right': '0px'
+                    'right': '20px'
                 });
                 $('#NavigationContainer').closest('.ResponsiveSidebarContainer').fadeOut();
                 $('html').removeClass('NoScroll');
@@ -113,12 +109,12 @@ Core.Agent.Responsive = (function (TargetNS) {
                 $('.SidebarColumn').closest('.ResponsiveSidebarContainer').fadeIn();
                 $('html').addClass('NoScroll');
                 $('.SidebarColumn').animate({
-                    'right': '0px'
+                    'right': '0'
                 });
             }
             else {
                 $('#ResponsiveNavigationHandle').animate({
-                    'left': '0px'
+                    'left': '20px'
                 });
                 $('.SidebarColumn').closest('.ResponsiveSidebarContainer').fadeOut();
                 $('html').removeClass('NoScroll');
@@ -192,6 +188,19 @@ Core.Agent.Responsive = (function (TargetNS) {
         $('.PreferencesScreen .WidgetSimple').removeClass('Collapsed').addClass('Expanded');
 
     });
+
+    // MOBILE - Show Actions Menu
+    $('#mobile-action-option').on('click', function() {
+        $('body').addClass('has-actions-menu-opened');
+    });
+
+    $('.Actions-close, .btn-collapse').on('click', function() {
+        $('body').removeClass('has-actions-menu-opened');
+    });
+
+
+    
+
 
     return TargetNS;
 

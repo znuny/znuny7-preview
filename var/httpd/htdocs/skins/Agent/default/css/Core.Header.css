@@ -79,6 +79,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         top: 0;
         align-items: center;
         gap: var(--gap-sm);
+        order: 2;
     }
 
     @media only screen and (max-width: 1024px) {
@@ -622,6 +623,12 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         line-height: var(--main-line-height);
     }
 
+    @media only screen and (max-width: 1024px) {
+        .dropdown-menu.Actions li {
+            float: left;
+        }
+    }
+
     .dropdown-menu::before,
     .dropdown-search-menu::before {
         content: '';
@@ -679,10 +686,12 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     }
 
     /*.dropdown-filter .dropdown-menu */
-    .dropdown-item a {
+    .dropdown-item a,
+    .dropdown-menu .dropdown-item a {
         padding-left: 0;
         padding: var(--padding-sm);
         width: 100%;
+        text-transform: inherit;
     }
 
     .dropdown-item, .dropdown-item a, .dropdown-item.Selected a {

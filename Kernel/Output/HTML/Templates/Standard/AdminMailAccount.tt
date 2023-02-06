@@ -101,6 +101,9 @@
 [% RenderBlockStart("OverviewResult") %]
             <div class="Header">
                 <h2>[% Translate("List") | html %]</h2>
+                <a href="#" class="icon-hover" id="ValidFilter" title="[% Translate("Filter") | html %]">
+                    <i class="fa fa-filter"></i>
+                </a>
             </div>
             <div class="Content">
                 <table class="DataTable" id="MailAccounts">
@@ -143,12 +146,12 @@
                             <td>[% Data.ChangeTime | Localize("TimeShort") %]</td>
                             <td>[% Data.CreateTime | Localize("TimeShort") %]</td>
                             <td class="Center">
-                                <a class="TrashCan MailAccountDelete" href="#" data-query-string="Action=AdminMailAccount;Subaction=Delete;ID=[% Data.ID | uri %];[% Env("ChallengeTokenParam") | html %]" title="[% Translate("Delete account") | html %]">[% Translate("Delete account") | html %]
+                                <a class="TrashCan MailAccountDelete table-icon-hover-md" href="#" data-query-string="Action=AdminMailAccount;Subaction=Delete;ID=[% Data.ID | uri %];[% Env("ChallengeTokenParam") | html %]" title="[% Translate("Delete account") | html %]">[% Translate("Delete account") | html %]
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
                             <td>
-                                <a class="AsBlock" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Run;ID=[% Data.ID | uri %];[% Env("ChallengeTokenParam") | html %]">[% Translate("Fetch mail") | html %]</a>
+                                <a class="AsBlock table-actions-button" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Run;ID=[% Data.ID | uri %];[% Env("ChallengeTokenParam") | html %]">[% Translate("Fetch mail") | html %]</a>
                             </td>
                         </tr>
 [% RenderBlockEnd("OverviewResultRow") %]

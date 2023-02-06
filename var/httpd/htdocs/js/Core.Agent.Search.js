@@ -59,9 +59,21 @@ Core.Agent.Search = (function (TargetNS) {
      *      This function adds one attributes for search.
      */
     TargetNS.SearchAttributeAdd = function (Attribute) {
-        var $Label = $('#SearchAttributesHidden label#Label' + Attribute);
+        var $Label = $('#SearchAttributesHidden label#Label' + Attribute),
+            $Clone;
+
         if ($Label.length) {
-            $Label.parent().parent().clone().appendTo('#SearchInsert')
+
+            if ($Label.parents('.field-wrapper').length){
+                $Clone = $Label.parents('.field-wrapper').clone();
+            }else{
+                // use old clone calls
+                $Label.prev().clone().appendTo('#SearchInsert');
+                $Label.clone().appendTo('#SearchInsert');
+                $Clone = $Label.next().clone().appendTo('#SearchInsert')
+            }
+
+            $Clone.appendTo('#SearchInsert')
 
                 // bind click function to remove button now
                 .find('.RemoveButton').on('click', function () {
@@ -101,7 +113,14 @@ Core.Agent.Search = (function (TargetNS) {
      *      This function removes attributes from an element.
      */
     TargetNS.SearchAttributeRemove = function ($Element) {
-        $Element.parent().remove();
+
+        if ($Element.parents('.field-wrapper').length){
+            $Element.parent().remove();
+        }else{
+            $Element.prev().prev().remove();
+            $Element.prev().remove();
+            $Element.remove();
+        }
     };
 
     /**

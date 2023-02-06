@@ -111,7 +111,7 @@
                             <td>[% Data.UserType | html %]</td>
                             <td>[% Data.UserFullname | html %]</td>
                             <td>
-                                <a class="AsBlock" href="[% Env("Baselink") %]Action=AdminSession;Subaction=Kill;WantSessionID=[% Data.SessionID | uri %];[% Env("ChallengeTokenParam") | html %]">[% Translate("Kill this session") | html %]</a>
+                                <a class="AsBlock table-actions-button" href="[% Env("Baselink") %]Action=AdminSession;Subaction=Kill;WantSessionID=[% Data.SessionID | uri %];[% Env("ChallengeTokenParam") | html %]">[% Translate("Kill this session") | html %]</a>
                             </td>
                         </tr>
 [% RenderBlockEnd("Session") %]

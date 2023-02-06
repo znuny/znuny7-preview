@@ -25,7 +25,7 @@
             <input type="hidden" name="RecipientField" value="[% Data.RecipientField | html %]" id="RecipientField" />
             <input type="hidden" name="RecipientFieldLabel" value="[% Data.RecipientFieldLabel | html %]" id="RecipientFieldLabel" />
             <input type="hidden" name="ExcludeUserLoginsJSON" value="" id="ExcludeUserLogins">
-            <fieldset class="TableLike SpacingTop card-item col-wide-100 col-desktop-100">
+            <fieldset class="TableLike SpacingTop card-item col-wide-100 col-desktop-100 col-tablet-100">
                 <h2 class="card-title">[% Translate("Templates") | html %]</h2>
                 <div class="search-template">
                     <label>[% Translate("Search template") | html %]:</label>
@@ -53,7 +53,7 @@
                 <h2 class="card-title">[% Translate("Filters in use") | html %]</h2>
 
             </fieldset>
-            <fieldset class="TableLike SpacingTop card-item col-wide-100 col-desktop-100">
+            <fieldset class="TableLike SpacingTop card-item col-wide-100 col-desktop-100 col-tablet-100">
                 <h2 class="card-title">[% Translate("Additional filters") | html %]</h2>
                 <div>
                     <label>[% Translate("Add another attribute") | html %]:</label>

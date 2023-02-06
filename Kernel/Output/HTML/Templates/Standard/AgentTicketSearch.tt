@@ -8,7 +8,7 @@
 # --
 
 [% RenderBlockStart("SearchAJAX") %]
-<div class="InnerContent outer-search-ticket">
+<div class="InnerContent main-search-component">
     <form action="[% Env("CGIHandle") %]" method="post" id="SearchForm" class="Validate search-ticket">
         <input type="hidden" name="Action" value="[% Env("Action") %]" id="SearchAction"/>
         <input type="hidden" name="Subaction" value="Search"/>
@@ -30,19 +30,19 @@
                     </div>
                 </div>
                 <div class="Field create-tpm-btn">
-                    <button id="SearchProfileNew" class="CallForAction btn-ghost-sm" value="[% Translate("Create New") | html %]">
+                    <button id="SearchProfileNew" class="btn-ghost-sm" value="[% Translate("Create New") | html %]">
                         <span>[% Translate("Create New") | html %]</span>
                     </button>
-                    <button id="SearchProfileDelete" class="Hidden CallForAction btn-ghost-sm" value="[% Translate("Delete") | html %]">
+                    <button id="SearchProfileDelete" class="Hidden btn-ghost-sm" value="[% Translate("Delete") | html %]">
                         <span>[% Translate("Delete") | html %]</span>
                     </button>
-                    <button id="SearchProfileAsLink" class="Hidden CallForAction btn-ghost-sm" value="[% Translate("Profile link") | html %]">
+                    <button id="SearchProfileAsLink" class="Hidden btn-ghost-sm" value="[% Translate("Profile link") | html %]">
                         <span>[% Translate("Profile link") | html %]</span>
                     </button>
                 </div>
-                <div class="Clear"></div>
+
                 <label>[% Translate("Save changes in template") | html %]:</label>
-                <div class="Field">
+                <div class="Field align-item-left">
                     <input type="checkbox" name="SaveProfile" id="SaveProfile" value="1"/>
                 </div>
             </fieldset>
@@ -505,7 +505,7 @@
     </fieldset>
 </div>
 
-<div class="ContentFooter space-between">
+<div class="ContentFooter main-search-component-btns">
     <button id="Cancel" class="btn-main btn-width-md btn-cancel-ghost DontPrint" type="submit" value=" Cancel"><span>Cancel</span></button>
 
     <button id="SearchFormSubmit" class="btn-primary btn-main btn-width-md" value="[% Translate("Search") | html %]"><span> [% Translate("Search") | html %]</span></button>

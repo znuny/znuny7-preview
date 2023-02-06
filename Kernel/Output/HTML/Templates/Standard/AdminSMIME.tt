@@ -210,7 +210,7 @@
                             <td>[% Data.StartDate | html %]</td>
                             <td>[% Data.EndDate | html %]</td>
                             <td class="Center">
-                                <a class="TrashCan" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Delete;Type=[% Data.Type | uri %];Filename=[% Data.Filename | uri %];[% Env("ChallengeTokenParam") | html %]" title="[% Translate("Delete this certificate") | html %]">
+                                <a class="TrashCan table-icon-hover-md" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Delete;Type=[% Data.Type | uri %];Filename=[% Data.Filename | uri %];[% Env("ChallengeTokenParam") | html %]" title="[% Translate("Delete this certificate") | html %]">
                                     [% Translate("Delete this certificate") | html %]
                                     <i class="fa fa-trash-o"></i>
                                 </a>
@@ -314,7 +314,7 @@
 [% RenderBlockStart("RelatedCertsRow") %]
                     <tr>
                         <td class="Center">
-                            <a class="Remove" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=SignerRelationDelete;CertFingerprint=[% Data.CertFingerprint | uri %];CAFingerprint=[% Data.Fingerprint | uri %];CAID=[% Data.CertificateID | uri %];CertificateID=[% Data.ParentID | uri %];[% Env("ChallengeTokenParam") | html %]" title="[% Translate("Delete this relation") | html %]">
+                            <a class="Remove table-actions-button" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=SignerRelationDelete;CertFingerprint=[% Data.CertFingerprint | uri %];CAFingerprint=[% Data.Fingerprint | uri %];CAID=[% Data.CertificateID | uri %];CertificateID=[% Data.ParentID | uri %];[% Env("ChallengeTokenParam") | html %]" title="[% Translate("Delete this relation") | html %]">
                                 [% Translate("Delete this relation") | html %]
                             </a>
                         </td>
@@ -368,7 +368,7 @@
 [% RenderBlockStart("AvailableCertsRow") %]
                     <tr>
                         <td>
-                            <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=SignerRelationAdd;CertFingerprint=[% Data.CertFingerprint | uri %];CAFingerprint=[% Data.Fingerprint | uri %];CAID=[% Data.CertificateID | uri %];CertificateID=[% Data.ParentID | uri %];[% Env("ChallengeTokenParam") | html %]" class="Add" title="[% Translate("Relate this certificate") | html %]">
+                            <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=SignerRelationAdd;CertFingerprint=[% Data.CertFingerprint | uri %];CAFingerprint=[% Data.Fingerprint | uri %];CAID=[% Data.CertificateID | uri %];CertificateID=[% Data.ParentID | uri %];[% Env("ChallengeTokenParam") | html %]" class="Add table-actions-button" title="[% Translate("Relate this certificate") | html %]">
                                 [% Translate("Relate this certificate") | html %]
                             </a>
                         </td>

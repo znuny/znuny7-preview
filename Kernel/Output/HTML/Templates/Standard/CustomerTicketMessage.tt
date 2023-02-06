@@ -19,11 +19,11 @@
                 <input type="hidden" name="FormID" value="[% Data.FormID | html %]" />
                 <input type="hidden" name="FromChatID" value="[% Data.FromChatID | html %]" />
                 <fieldset class="TableLike">
-                    <div class="card-item col-wide-33 col-desktop-100">
+                    <div class="card-item col-wide-33 col-desktop-100 col-tablet-100">
                         <h2 class="card-title">[% Translate("Team Data") | html %]</h2>
                         <div class="active-inner-cols">
 [% RenderBlockStart("Queue") %]
-                            <div class="field-wrapper col-wide-100 col-desktop-50">
+                            <div class="field-wrapper col-wide-100 col-desktop-50 col-tablet-50">
                                 <label for="Dest" class="Mandatory">
                                     <span class="Marker">*</span>
                                     [% Translate("To") | html %]:
@@ -40,11 +40,11 @@
                         </div>
                     </div>
                     [% IF Config('Ticket::Service') && TicketFrontendConfig.Service %]
-                    <div class="card-item col-wide-33 col-desktop-100">
+                    <div class="card-item col-wide-33 col-desktop-100 col-tablet-100">
                         <h2 class="card-title">[% Translate("Services") | html %]</h2>
                         <div class="active-inner-cols">
 [% RenderBlockStart("TicketService") %]
-                            <div class="field-wrapper col-wide-100 col-desktop-50">
+                            <div class="field-wrapper col-wide-100 col-desktop-50 col-tablet-50">
                                 [% IF Data.ServiceMandatory %]
                                 <label for="ServiceID" class="Mandatory"><span class="Marker">*</span> [% Translate("Service") | html %]:</label>
                                 [% ELSE %]
@@ -62,7 +62,7 @@
                             </div>
 [% RenderBlockEnd("TicketService") %]
 [% RenderBlockStart("TicketSLA") %]
-                            <div class="field-wrapper col-wide-100 col-desktop-50">
+                            <div class="field-wrapper col-wide-100 col-desktop-50 col-tablet-50">
                                 [% IF Data.SLAMandatory %]
                                 <label for="SLAID" title="[% Translate(" Service level agreement") | html %]" class="Mandatory"><span class="Marker">*</span> [% Translate("SLA") | html %]:</label>
                                 [% ELSE %]
@@ -83,11 +83,11 @@
                     </div>
                     [% END %]
                     [% IF ( Config('Ticket::Type') && TicketFrontendConfig.TicketType ) || TicketFrontendConfig.Priority %]
-                    <div class="card-item col-wide-33 col-desktop-100">
+                    <div class="card-item col-wide-33 col-desktop-100 col-tablet-100">
                         <h2 class="card-title">[% Translate("Ticket Data") | html %]</h2>
                         <div class="active-inner-cols">
 [% RenderBlockStart("TicketType") %]
-                            <div class="field-wrapper col-wide-100 col-desktop-50">
+                            <div class="field-wrapper col-wide-100 col-desktop-50 col-tablet-50">
                                 <!--
                                     <label for="TicketNumber">[% Config("Ticket::Hook") %]</label>
                                     <input title="Ticket#" type="text" name="TicketNumber" size="30" value="[% Data.TicketNumber | html %]" />
@@ -103,7 +103,7 @@
                             </div>
 [% RenderBlockEnd("TicketType") %]
 [% RenderBlockStart("Priority") %]
-                            <div class="field-wrapper col-wide-100 col-desktop-50">
+                            <div class="field-wrapper col-wide-100 col-desktop-50 col-tablet-50">
                                 <label for="PriorityID">[% Translate("Priority") | html %]:</label>
                                 [% Data.PriorityStrg %]
                             </div>
@@ -112,11 +112,11 @@
                     </div>
                     [% END %]
                     [% IF !TicketFrontendConfig.DynamicField.empty %]
-                    <div class="card-item col-wide-100 col-desktop-100">
+                    <div class="card-item col-wide-100 col-desktop-100 col-tablet-100">
                         <h2 class="card-title">[% Translate("Dymanic Info") | html %]</h2>
                         <div class="active-inner-cols">
 [% RenderBlockStart("DynamicField") %]
-                            <div class="Row Row_DynamicField_[% Data.Name | html %] field-wrapper col-wide-33 col-desktop-50">
+                            <div class="Row Row_DynamicField_[% Data.Name | html %] field-wrapper col-wide-33 col-desktop-50 col-tablet-50">
                                 [% Data.Label %]
                                 <div class="Field">
                                     [% Data.Field %]
@@ -126,7 +126,7 @@
                         </div>
                     </div>
                     [% END %]
-                    <div class="card-item col-wide-100 col-desktop-100">
+                    <div class="card-item col-wide-100 col-desktop-100 col-tablet-100">
                         <h2 class="card-title">[% Translate("Communication") | html %]</h2>
                         <div class="field-wrapper">
                             <label for="Subject" class="Mandatory">

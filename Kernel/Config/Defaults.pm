@@ -1762,12 +1762,11 @@ via the Preferences button after logging in.
         NavBarName => 'Admin',
         Title      => '',
     };
-    $Self->{'Loader::Module::Admin'}->{'000-Defaults'} = {
+    $Self->{'Loader::Module::Admin'}->{'001-Framework'} = {
         CSS => [
             'Core.Agent.Admin.css',
         ],
         JavaScript => [
-            'Core.Agent.Admin.js',
             'Core.UI.AllocationList.js',
             'Core.Agent.TableFilters.js',
         ],

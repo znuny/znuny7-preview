@@ -41,7 +41,7 @@
 # <button type="button" onclick="$('#Template1').submit()" value="[% Translate(" Example Template") | html %]">[% Translate("Example Template") | html %]</button>
 # </div>
 # <div class="Clear"></div>
-                    <div class="card-item col-wide-33 col-desktop-50">
+                    <div class="card-item col-wide-33 col-desktop-50 col-tablet-50">
                         <h2 class="card-title">[% Translate("Customer") | html %]</h2>
                         <div>
                             <label for="ToCustomer" class="Mandatory">
@@ -262,7 +262,7 @@
                         </div>
                     </div>
                     [% IF Config('Ticket::Service') %]
-                    <div class="card-item col-wide-33 col-desktop-50">
+                    <div class="card-item col-wide-33 col-desktop-50 col-tablet-50">
                         <h2 class="card-title">[% Translate("Services") | html %]</h2>
 [% RenderBlockStart("TicketService") %]
                         <div>
@@ -303,7 +303,7 @@
 [% RenderBlockEnd("TicketSLA") %]
                     </div>
                     [% END %]
-                    <div class="card-item col-wide-33 col-desktop-50">
+                    <div class="card-item col-wide-33 col-desktop-50 col-tablet-50">
                         <h2 class="card-title">[% Translate("Team Data") | html %]</h2>
                         <div>
                             <label class="Mandatory" for="Dest"><span class="Marker">*</span> [% Translate("From queue") | html %]:</label>
@@ -346,7 +346,7 @@
                         </div>
 [% RenderBlockEnd("ResponsibleSelection") %]
                     </div>
-                    <div class="card-item col-wide-33 col-desktop-50">
+                    <div class="card-item col-wide-33 col-desktop-50 col-tablet-50">
                         <h2 class="card-title">[% Translate("Ticket Data") | html %]</h2>
 [% RenderBlockStart("TicketType") %]
                         <div>
@@ -389,10 +389,10 @@
                         </div>
                     </div>
                     [% IF !Data.DynamicFieldHTML.empty %]
-                    <div class="dynamic-field-col card-item col-wide-66 col-desktop-100">
+                    <div class="dynamic-field-col card-item col-wide-66 col-desktop-100 col-tablet-100">
                         <h2 class="card-title">[% Translate("Dynamic Info") | html %]</h2>
 [% RenderBlockStart("DynamicField") %]
-                        <div class="Row Row_DynamicField_[% Data.Name | html %] col-wide-50 col-desktop-50">
+                        <div class="Row Row_DynamicField_[% Data.Name | html %] col-wide-50 col-desktop-50 col-tablet-50">
                             [% Data.Label %]
                             <div class="Field">
                                 [% Data.Field %]
@@ -401,7 +401,7 @@
 [% RenderBlockEnd("DynamicField") %]
                     </div>
                     [% END %]
-                    <div class="card-item col-wide-100 col-desktop-100">
+                    <div class="card-item col-wide-100 col-desktop-100 col-tablet-100">
                         <h2 class="card-title">[% Translate("Communications") | html %]</h2>
                         <div>
                             <label class="Mandatory" for="Subject"><span class="Marker">*</span> [% Translate("Subject") | html %]:</label>
@@ -467,7 +467,7 @@
                             <label for="Signature">[% Translate("Signature") | html %]:</label>
                             <div class="RichTextField">
                                 <input type="hidden" name="Signature" value="[% Data.Signature | html %]" />
-                                <iframe height="140" width="620" frameborder="0" id="Signature" class="Signature" src="[% Env(" Baselink") %]Action=[% Env("Action") %];Subaction=Signature;QueueID=[% Data.QueueID | html %]"></iframe>
+                                <iframe height="140" width="620" frameborder="0" id="Signature" class="Signature" src="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Signature;QueueID=[% Data.QueueID | html %]"></iframe>
                             </div>
                         </div>
                         <div>
@@ -503,7 +503,7 @@
 # <div class="Clear"></div>
 # </div>
 #[% RenderBlockEnd("DynamicField_Field2") %]
-                    <div class="Field SpacingTop align-right">
+                    <div class="Field SaveButtons align-right">
                         <button class="Primary CallForAction btn-main btn-width-md btn-primary" id="submitRichText" accesskey="g" title="[% Translate(" Send mail") | html %] (g)" type="submit" value="[% Translate(" Send mail") | html %]"><span><i class="fa fa-envelope-o"></i> [% Translate("Send mail") | html %]</span></button>
                     </div>
                 </fieldset>

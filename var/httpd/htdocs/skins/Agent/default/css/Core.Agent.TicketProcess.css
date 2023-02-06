@@ -276,6 +276,14 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         max-width: calc(100% - (var(--side-bar-width) + var(--gap-md)));
     }
 
+    @media only screen and (max-width: 1024px) {
+        #NewProcessTicket .TableLike,
+        #NewProcessTicket + #AJAXLoader {
+            max-width: 100%;
+        }
+    }
+    
+
     #NewProcessTicket.NewProcessTicketSmall .TableLike,
     #NewProcessTicket.NewProcessTicketSmall + #AJAXLoader {
         min-width: 100%;

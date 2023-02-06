@@ -12,23 +12,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 /*  All devices with a smaller resolution than the current OTRS minimum solution */
 
-@media only screen and (min-width: 2400px) {
-    .ItemListGrid > li {
-        width: calc(16.6% - 16px);
-    }
-}
 
-@media only screen and (min-width: 2000px) and (max-width: 2399px) {
-    .ItemListGrid > li {
-        width: calc(20% - 16px);
-    }
-}
-
-@media only screen and (min-width: 1025px) and (max-width: 1200px) {
-    .ItemListGrid > li {
-        width: calc(33% - 11px);
-    }
-}
 
 @media only screen and (min-width: 1025px) {
     #AppWrapper > #NavigationContainer {
@@ -68,7 +52,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
     html.NoScroll #AppWrapper {
         overflow: hidden;
-        position: fixed;
+        width: 100%;
     }
 
     /* .MessageBox, 
@@ -415,7 +399,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 
 
-
+/*
     .WidgetSimple span.Pagination,
     .OverviewActions span.Pagination {
         text-align: center;
@@ -438,6 +422,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         margin: 10px 0px;
     }
 
+    
     .WidgetSimple span.Pagination a,
     .OverviewActions span.Pagination a {
         display: inline-block;
@@ -453,6 +438,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         font-weight: normal;
         background-color: #555;
     }
+    */
 
     .WidgetSimple > .Header h2,
     .WidgetSimple > .Header h3 {
@@ -487,7 +473,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         min-width: 500px;
     }
 
-    /*
+/*
     .WidgetSimple .ActionMenu {
         margin-right: 10px;
         border: 0px;
@@ -496,7 +482,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     .RTL .WidgetSimple .ActionMenu {
         margin-left: 10px;
     }
-*/
+
     .WidgetSimple .WidgetAction,
     .RTL .WidgetSimple .WidgetAction {
         display: inline-block;
@@ -507,7 +493,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         width: 100%;
         height: 100%;
     }
-
+*/
     .WidgetSimple .WidgetAction a {
         font-size: 22px;
         display: flex;
@@ -524,11 +510,11 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         display: none !important;
     }
 
-    .MainBox.FormScreen > h1,
+    /* .MainBox.FormScreen > h1,
     .MainBox.FormScreen > .AsteriskExplanation {
         margin-left: 0px !important;
         text-align: center;
-    }
+    } */
 
     .RTL .MainBox.FormScreen > h1,
     .RTL .MainBox.FormScreen > .AsteriskExplanation {
@@ -602,7 +588,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     fieldset.TableLike > .Row > .Field > input[type=checkbox] {
         width: auto;
     }
-
+/* 
     fieldset.TableLike .Field a {
         position: absolute;
         top: 0;
@@ -610,7 +596,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         width: auto;
         height: auto;
         margin: 0;
-    }
+    } */
 
     fieldset.TableLike .Field.SaveButtons a {
         position: relative;
@@ -713,11 +699,11 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         padding: 0px;
     }
 
-    fieldset.TableLike > .Field,
+    /* fieldset.TableLike > .Field,
     fieldset.TableLike > .Row > .Field {
         margin-left: 0;
         padding-bottom: var(--padding-xl);
-    }
+    } */
 
     .RTL fieldset.TableLike > .Field,
     .RTL fieldset.TableLike > .Row > .Field {
@@ -794,10 +780,11 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     */
 
     
-
+    /*
     .Tab.Actions li a {
         font-size: var(--font-size-xs);
     }
+    */
 
     /* Widget */
 
@@ -834,35 +821,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         font-size: var(--font-size-sm);
     }
 
-    /* SidebarColumn */
 
-    .LayoutFixedSidebar.SidebarLast .ResponsiveSidebarContainer > .SidebarColumn,
-    .LayoutFixedSidebar.SidebarFirst .ResponsiveSidebarContainer > .SidebarColumn {
-        position: fixed;
-        height: 100%;
-        top: 0px;
-        z-index: 999;
-        width: 300px;
-        right: -300px;
-        overflow: auto;
-        background: var(--white);
-        padding: var(--padding-lg) var(--padding-lg) 0;
-        box-sizing: border-box;
-    }
-
-    .Dashboard.LayoutFixedSidebar.SidebarLast .ResponsiveSidebarContainer > .SidebarColumn,
-    .Dashboard.LayoutFixedSidebar.SidebarFirst .ResponsiveSidebarContainer > .SidebarColumn {
-        background: var(--main-bg-color);
-    }
-
-    .LayoutFixedSidebar.SidebarLast .ResponsiveSidebarContainer > .SidebarColumn > :first-child,
-    .LayoutFixedSidebar.SidebarFirst .ResponsiveSidebarContainer > .SidebarColumn > :first-child {
-        margin-top: 0;
-    }
-
-    .ActionsSideBar.LayoutFixedSidebar .ContentWrapper .InnerMainBoxContent .InnerSidebarColumn {
-        width: 100%;
-    }
 
     #ContextSettingsDialog,
     #ContextSettingsDialogOverviewSmall {
@@ -870,6 +829,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         max-height: 100%;
     }
 
+    /*
     .OverviewActions > ul.Actions {
         float: none;
         display: block;
@@ -878,9 +838,11 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         text-align: center;
     }
 
+
     .OverviewActions > span.Pagination {
         height: 22px;
     }
+    */
 
     .OverviewZoom a {
         padding: 5px 7px;
@@ -1071,10 +1033,10 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         max-width: 200px;
     }
 
-    .TicketZoom .Actions li:after {
+    /* .TicketZoom .Actions li:after {
         display: inline-block;
         float: none;
-    }
+    } */
 
     .ArticleMailContent.WithMeta .ArticleBody,
     .ArticleMailContent.WithMeta .ArticleMailContentHTMLWrapper {
@@ -1216,11 +1178,13 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
      * @subsection Ticket Overview Large
      */
 
+    /*
     ul.OverviewZoom {
         text-align: center;
         float: none;
         display: block;
     }
+    
 
     .OverviewLarge .Infos {
         width: 100%;
@@ -1232,6 +1196,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         width: 100%;
         float: none;
     }
+    */
 
     .OverviewLarge div.Infos table td {
         border: none;
@@ -1408,10 +1373,10 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
     /* Process dialogs */
 
-    #ActivityDialogContent .LayoutPopup > .Content {
+    /* #ActivityDialogContent .LayoutPopup > .Content {
         padding: 0px;
         border-top: 1px solid #ccc;
-    }
+    } */
 
     .Dialog.Fullsize {
         height: auto;
@@ -1422,12 +1387,25 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         max-width: 800px;
     }
 
+
+
+
+
+
+
+
+
     /* Cluster */
 
-    .TicketZoom .ContentColumn .WidgetSimple .Content.OverflowVisible {
-        padding: 0 0 var(--padding-lg);
-    }
 
+
+    /* .TicketZoom .ContentColumn .WidgetSimple .Content.OverflowVisible {
+        padding: 0 0 var(--padding-lg);
+    } */
+
+
+
+/* 
     .Cluster .ClusterLink {
         display: none;
     }
@@ -1490,6 +1468,15 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         line-height: 20px;
         height: 20px;
     }
+ */
+
+
+
+
+
+
+
+
 
     /* Input Fields */
 
@@ -1512,7 +1499,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         margin-top: -1px;
     }
 
-    div.InputField_Selection {
+    /* div.InputField_Selection {
         height: auto;
         line-height: var(--main-line-height);
     }
@@ -1521,7 +1508,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     div.InputField_FiltersList,
     div.InputField_ToolbarContainer ul li a {
         font-size: 0.8em;
-    }
+    } */
 
     div.InputField_More {
         top: 8px;
@@ -1752,9 +1739,9 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     }
 
     /* Admin */
-    .ActionsSideBar.LayoutFixedSidebar .GridGroups .ItemListGrid > li {
+    /* .ActionsSideBar.LayoutFixedSidebar .GridGroups .ItemListGrid > li {
         width: calc(33% - var(--margin-md));
-    }
+    } */
 }
 
 

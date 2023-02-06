@@ -123,7 +123,8 @@
                         <button id="DeleteButton" class="CallForAction btn-main btn-primary-ghost" type="button"><span><i class="fa fa-trash-o"></i> [% Translate("Delete web service") | html %]</span></button>
                         <div class="Hidden" id="DeleteDialogContainer">
                             <div id ="DeleteDialog" class="InnerContent GenericInterfaceDialog">
-                                <span class="WarningDialog ">&nbsp;</span>
+                                <span class="WarningDialog ">
+                                </span>
                                 <p class="Center Warning">[% Translate("Do you really want to delete this web service?") | html %]</p>
                                 <div class="SpacingTop"></div>
                             </div>
@@ -211,6 +212,9 @@
         <div class="WidgetSimple">
             <div class="Header">
                 <h2>[% Translate("List") | html %]</h2>
+                <a href="#" class="icon-hover" id="ValidFilter" title="[% Translate("Filter") | html %]">
+                    <i class="fa fa-filter"></i>
+                </a>
             </div>
 [% RenderBlockEnd("OverviewHeader") %]
 [% RenderBlockStart("OverviewResult") %]
@@ -484,7 +488,8 @@
 
         <div class="Hidden" id="DeleteOperationDialogContainer">
             <div id ="DeleteOperationDialog" class="InnerContent GenericInterfaceDialog">
-                <span class="WarningDialog ">&nbsp;</span>
+                <span class="WarningDialog ">
+                </span>
                 <p class="Center Warning">[% Translate("Do you really want to delete this operation?") | html %]</p>
                 <div class="SpacingTop"></div>
             </div>
@@ -492,7 +497,8 @@
 
         <div class="Hidden" id="DeleteInvokerDialogContainer">
             <div id ="DeleteInvokerDialog" class="InnerContent GenericInterfaceDialog">
-                <span class="WarningDialog ">&nbsp;</span>
+                <span class="WarningDialog ">
+                </span>
                 <p class="Center Warning">[% Translate("Do you really want to delete this invoker?") | html %]</p>
                 <div class="SpacingTop"></div>
             </div>

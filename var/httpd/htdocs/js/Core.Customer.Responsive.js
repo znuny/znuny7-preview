@@ -97,7 +97,7 @@ Core.Customer.Responsive = (function (TargetNS) {
 
         // add sidebar handling
         if ($(SidebarElem).length && !$('#ResponsiveSidebarHandle').length) {
-            $('#Header').append('<a id="ResponsiveSidebarHandle" href="#"><i class="fa fa-caret-square-o-left"></i></a>');
+            $('#Header').append('<a id="ResponsiveSidebarHandle" href="#"><i class="fa fa-sign-out"></i></a>');
         }
 
         // add sidebar column expansion handling

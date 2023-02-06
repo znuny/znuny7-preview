@@ -209,6 +209,7 @@ ul.ContextFunctions li:last-child:hover > a {
     border: 0;
     overflow: unset;
     min-height: unset;
+    z-index: 1;
 }
 
 .AdditionalInformation.SpacingLoader {
@@ -246,10 +247,18 @@ ul.ContextFunctions li:last-child:hover > a {
     overflow: hidden;
     background: white;
     border: var(--border-width) var(--border-solid) var(--border-color);
-    border-top: 0;
+
+    margin: 0;
+    background: none;
+    border: 0;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    /* edited by beatriz on 1/2/2023 - merged code block right below */
 }
 
-.WidgetSimple .Content .ActionRow {
+/*.WidgetSimple .Content .ActionRow {
     margin: 0;
     background: none;
     border-bottom: 0px;
@@ -257,7 +266,7 @@ ul.ContextFunctions li:last-child:hover > a {
     flex-flow: row;
     justify-content: space-between;
     align-items: center;
-}
+}*/
 
 .Actions {
     /*padding: 0;
@@ -275,6 +284,17 @@ ul.ContextFunctions li:last-child:hover > a {
     font-size: var(--main-font-size);
     padding: 0;
     z-index: 19;
+    color: var(--table-text-color);
+    font-size: 11px;
+    font-weight: var(--semi-bold);
+    letter-spacing: .8px;
+}
+
+.ItemActions .Actions li {
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
 }
 
 .Actions li:after {
@@ -296,6 +316,13 @@ ul.ContextFunctions li:last-child:hover > a {
     top: 0;
     right: 0;*/
 }
+
+@media only screen and (max-width: 1024px) {
+    .Actions li:after {
+        display: none;
+    }
+}
+
 
 .Actions li.Hidden {
     display: none;
@@ -351,6 +378,25 @@ ul.ContextFunctions li:last-child:hover > a {
     border-bottom: var(--border-width) var(--border-solid) var(--border);
     transition: var(--main-transition);
     /*letter-spacing: 1px;*/
+    text-transform: uppercase;
+    padding: 0 6px;
+    color: var(--gray-darker);
+}
+
+.ActionRow > .Actions li > a, 
+.ActionRow > .Actions li > span {
+    padding: var(--padding-xs) var(--padding-sm);
+    border-radius: var(--border-radius-xxs);
+}
+
+.ActionRow > .Actions li:hover > a, 
+.ActionRow > .Actions li:hover > span {
+    background: var(--gray-light);
+}
+
+.ItemActions .Actions li a,
+.ItemActions .Actions li span {
+    text-transform: inherit;
 }
 
 .ItemActions .Actions li a,
@@ -359,6 +405,8 @@ ul.ContextFunctions li:last-child:hover > a {
     color: var(--table-text-color);
     padding: 0 var(--padding-xs);
     font-size: var(--font-size-sm);
+    font-weight: var(--normal);
+    text-transform: inherit;
     min-width: unset;
 }
 
@@ -366,6 +414,8 @@ ul.ContextFunctions li:last-child:hover > a {
 .ItemActions .Actions li label:hover,
 .OverviewControl .Actions li a:hover {
     text-decoration: underline;
+    background: inherit;
+    cursor: pointer;
 }
 
 .ItemActions .Actions li form .InputField_InputContainer input {
@@ -390,7 +440,9 @@ ul.ContextFunctions li:last-child:hover > a {
 }*/
 
 #ticketDetails .Actions,
-#ticketDetails .Actions > li{
+#ticketDetails .Actions > li,
+.ActionRow .Actions,
+.ActionRow .Actions > li {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -450,6 +502,144 @@ ul.ContextFunctions li:last-child:hover > a {
 .Actions li select {
     font-size: var(--font-size-sm);
 }
+
+.Actions-Mobile-List,
+.Actions-top,
+.Actions-bottom,
+.Actions-close  {
+    display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+
+    .Actions-Mobile-List {
+        display: flex;
+        gap: var(--gap-md);
+    }
+
+    .Actions-Mobile-List li {
+        font-size: var(--main-font-size);
+    }
+
+    #ticketDetails .Actions-overlay {
+        position: fixed;
+        z-index: 999999;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100vh;
+        width: 0;
+    }
+
+    #ticketDetails .Actions-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: -300px;
+        width: 300px;
+        transition: var(--main-transition);
+        background-color: var(--white);
+    }
+
+    #ticketDetails .Actions-wrapper .Actions-top {
+        display: flex;
+        padding: var(--gap-md);
+        border-bottom: var(--border-width) var(--border-solid) var(--border-color);
+        width: 100%;
+    }
+
+    #ticketDetails .Actions {
+        display: flex;
+        padding: var(--gap-md);
+        gap: var(--gap-md);
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #ticketDetails .Actions-wrapper .Actions-bottom {
+        display: flex;
+        padding: var(--gap-md);
+        width: 100%;
+        position: relative;
+        margin-top: auto !important;
+    }
+
+    #ticketDetails .Actions-wrapper .Actions-bottom::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 20px;
+        right: 20px;
+        border-bottom: var(--border-width) var(--border-solid) var(--border-color);
+        width: calc(100% - 40px);
+        height: 1px;
+    }
+
+    #ticketDetails .Actions-wrapper .Actions-bottom .btn-collapse {
+        display: flex;
+        gap: var(--gap-xs);
+        position: relative;
+        color: var(--black);
+    }
+
+    #ticketDetails .Actions-wrapper .Actions-bottom .btn-collapse {
+        position: relative;
+        color: var(--black);
+    }
+
+    #ticketDetails .Actions-wrapper .Actions-bottom .btn-collapse i {
+        transform: rotate(180deg);
+    }
+
+    #ticketDetails .Actions-close {
+        height: 0;
+        width: 0;
+        transition: var(--main-transition);
+    }
+
+    /* 
+     * has-actions-menu-opened
+    */
+
+    .has-actions-menu-opened #ticketDetails .Actions-overlay {
+        width: 100%;
+    }
+
+    .has-actions-menu-opened #ticketDetails .Actions-wrapper {
+        left: 0;
+    }
+
+    .has-actions-menu-opened #ticketDetails .Actions-close {
+        display: flex;
+        height: 100vh;
+        width: 100%;
+        background: rgba(22, 22, 22, 0.7);
+    }
+
+    .has-actions-menu-opened #ticketDetails {
+        z-index: 9999;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .SidebarColumn .DashboardActions .Tab.Actions li {
     height: auto;
@@ -585,7 +775,7 @@ ul.ContextFunctions li:last-child:hover > a {
     display: none;
 }
 
-.LightRow h2 {
+/*.LightRow h2 {
     margin: 0;
     padding: 4px 0 5px;
     font-weight: normal;
@@ -596,16 +786,16 @@ ul.ContextFunctions li:last-child:hover > a {
     -webkit-box-shadow: 0 -1px 0 #DDD inset;
     box-shadow: 0 -1px 0 #DDD inset;
     border-bottom-color: #AAA;
-}
+}*/
 
-.LightRow .WidgetAction.Toggle {
+/*.LightRow .WidgetAction.Toggle {
     margin-left: 7px;
 }
 
 .RTL .LightRow .WidgetAction.Toggle {
     margin-left: 6px;
     margin-right: 7px;
-}
+}*/
 
 .LightRow #AJAXImageDestQueueID {
     display: none;
@@ -644,227 +834,6 @@ ul.ContextFunctions li:last-child:hover > a {
     padding-top: 3px;
     font-weight: bold;
     font-size: 14px;
-}
-
-/*
- * @subsection  Dashboard Ticket Filter
- */
-/*.TicketFilter > a.Selected,
-.UserFilter > a.Selected {
-    text-decoration: underline;
-}*/
-
-/**
- * @subsection  Control Row Pagination
- */
-/*
- * form.Pagination is the new style pagination, div.Pagination the old style
- * Both should work with this CSS
- */
-.Pagination {
-    display: flex;
-    flex-flow: row;
-    justify-content: flex-end;
-    margin-right: 0;
-    font-size: var(--main-font-size);
-    padding: var(--padding-sm) var(--padding-xl);
-    border-top: var(--border-width) var(--border-solid) var(--border-color);
-    background: var(--main-bg-color);
-}
-
-.SidebarColumn .Pagination {
-    background: transparent;
-    border-top: 0;
-}
-
-.Pagination:empty,
-.Pagination:is(:empty),
-.Pagination:has(.page-links:empty) {
-    padding: 0;
-    display: none;
-}
-
-.Pagination ul{
-    display: flex;
-    align-items: baseline;
-    flex-flow: row;
-    gap: var(--padding-xs);
-}
-
-.Pagination ul li a:first-child:before {
-    display: inline-block;
-    content: "";
-    position: absolute;
-    width: 1px;
-    height: 26px;
-    top: 0;
-    background-color: var(--gray-light);
-    left: -20px;
-}
-
-.Pagination ul li a:first-child {
-    margin-left: 30px;
-    position: relative;
-}
-
-.Pagination ul li:first-child {
-    display: flex;
-}
-/*
-.Pagination ul li:first-child:before {
-    display: none;
-}
-*/
-.Pagination a {
-    color: var(--gray-semi-dark);
-}
-
-.Pagination .page-links a {
-    border: var(--border-width) var(--border-solid) transparent;
-    transition: var(--main-transition);
-}
-
-.page-links a:hover {
-    border-radius: var(--border-radius-xs);
-    border-color: var(--border-color);
-}
-
-.Pagination li, .Pagination li span {
-    align-self: center;
-    font-size: var(--font-size-sm);
-    color: var(--gray-semi-dark);
-}
-
-/*.travel-back, .travel-forward {
-    list-style-position: inside;
-}*/
-
-.page-links {
-    display: flex;
-    flex-flow: row;
-}
-
-/*.travel-back a, .travel-forward a {
-    font-size: var(--font-size-md);
-    border: var(--border-width) var(--border-solid) var(--border-color);
-}*/
-
-/*.travel-back a, .travel-forward a, */
-.page-links a {
-    display: flex;
-    width: 26px;
-    height: 26px;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--border-radius-xs);
-}
-
-/*.travel-back a:hover, .travel-forward a:hover, */
-.page-links a:hover {
-    background-color: var(--gray-light);
-    color: var(--gray-semi-dark);
-}
-
-.Pagination.page-links a:hover {
-    background: rgba(1, 1, 1, 0.08);
-}
-
-.Pagination .page-links a.pagination-travel-l,
-.Pagination .page-links a.pagination-travel-r,
-.Pagination .page-links a.pagination-travel-one-l,
-.Pagination .page-links a.pagination-travel-one-r {
-    font-size: var(--main-font-size);
-    border: var(--border-width) var(--border-solid) var(--border-color);
-}
-
-.Pagination .page-links a.pagination-travel-l,
-.Pagination .page-links a.pagination-travel-one-l {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-right: 0;
-}
-
-.Pagination .page-links a.pagination-travel-r,
-.Pagination .page-links a.pagination-travel-one-r {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-.Pagination .page-links a.pagination-travel-one-l {
-    margin-left: var(--padding-sm);
-}
-
-.Pagination .page-links > a.pagination-travel-one-r {
-    margin-right: var(--padding-sm);
-}
-
-/*.travel-back:hover, .travel-forward:hover {
-    cursor: pointer
-}*/
-
-.RTL .Pagination {
-    float: left;
-}
-
-form.Pagination > * {
-    float: left;
-}
-
-.RTL .Pagination > * {
-    float: right;
-}
-
-.Pagination > span {
-    margin-top: 3px;
-}
-
-form.Pagination a {
-    height: 24px;
-    width: 24px;
-    display: block;
-}
-
-span.Pagination a.Selected {
-    font-weight: bold;
-    color: var(--primary-color);
-}
-
-span.Pagination span.PaginationLimit {
-    color: #FF0000;
-}
-
-.Pagination a span {
-    margin: 7px 6px;
-    height: 9px;
-    width: 11px;
-    text-indent: -9999px;
-    background: url(../img/arrows.png) no-repeat;
-    display: block;
-}
-
-/*.Pagination .ArrowLeft span {
-    background-position: left top;
-}
-
-.RTL .Pagination .ArrowLeft span {
-    background-position: right top;
-}
-
-.Pagination .ArrowRight span {
-    background-position: right top;
-}
-
-.RTL .Pagination .ArrowRight span {
-    background-position: left top;
-}*/
-
-.Pagination input {
-    width: 16px;
-    margin-right: 2px;
-    padding: 1px 3px;
-    font-size: 11px;
-    font-family: inherit;
-    text-align: right;
 }
 
 

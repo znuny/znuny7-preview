@@ -20,7 +20,8 @@
     <a class="AsBlock LinkObjectLink" href="[% Data.Link %]" title="[% Data.Title | html %]" >[% Data.Content | truncate(Data.MaxLength) | html %]</a>
 [% RenderBlockEnd("Link") %]
 [% RenderBlockStart("DeleteLinkIcon") %]
-    <a href="#" data-delete-link-sourceobject="[% Data.SourceObject | html %]" data-delete-link-sourcekey="[% Data.SourceKey | html %]" data-delete-link-targetidentifier="[% Data.TargetIdentifier | html %]" class="InstantLinkDelete" title="[% Translate("Delete link") | html %]">
+
+    <a href="#" data-delete-link-sourceobject="[% Data.SourceObject | html %]" data-delete-link-sourcekey="[% Data.SourceKey | html %]" data-delete-link-targetidentifier="[% Data.TargetIdentifier | html %]" class="InstantLinkDelete table-icon-hover-md" title="[% Translate("Delete link") | html %]">
         <i class="fa fa-trash-o">
             <span class="InvisibleText">[% Translate("Delete Link") | html %]</span>
         </i>
@@ -172,7 +173,7 @@
 [% RenderBlockStart("ContentLargePreferencesItemRawHTML") %]
                                     [% Data.HTML %]
 [% RenderBlockEnd("ContentLargePreferencesItemRawHTML") %]
-                                <div class="Buttons align-right">
+                                <div class="SaveButtons align-right">
                                     <button id="linkobject-[% Data.Name | html %]_cancel" class="btn-main btn-width-md btn-cancel-ghost CallForAction DontPrint" type="button" value="[% Translate("Cancel") | html %]">
                                         <span>[% Translate("Cancel") | html %]</span>
                                     </button>

@@ -175,6 +175,8 @@ Core.Agent.Dashboard = (function (TargetNS) {
         TargetNS.InitDashboardWidgetSettings();
         TargetNS.InitDashboardWidgetExpand();
 
+        TargetNS.InitDashboardWidgetBinding();
+
         Core.Agent.TableFilters.SetAllocationList();
 
     };
@@ -1535,11 +1537,11 @@ Core.Agent.Dashboard = (function (TargetNS) {
         $('#Dashboard' + Core.App.EscapeSelector(WidgetFilterData.Name) + '-box').find('.HeaderFilter').prepend($DashboardActions);
 
         // additional click event for dropdown-menu to show/hide
-        $('#Dashboard' + Core.App.EscapeSelector(WidgetFilterData.Name) + '-box').find('.DashboardActions').off('click').on('click', function() {
+        $('#Dashboard' + Core.App.EscapeSelector(WidgetFilterData.Name) + '-box').find('.DashboardActions').off('click.DashboardActions').on('click.DashboardActions', function() {
             $(this).find('.Tab.Actions').toggle();
         });
 
-        $('#Dashboard' + Core.App.EscapeSelector(WidgetFilterData.Name) + '-box').find('.Tab.Actions li a').off('click').on('click', function() {
+        $('#Dashboard' + Core.App.EscapeSelector(WidgetFilterData.Name) + '-box').find('.Tab.Actions li a').off('click.TabAction').on('click.TabAction', function() {
                 var Filter, AdditionalFilter = '',
                 CustomerID, CustomerUserID;
 
@@ -1624,6 +1626,22 @@ Core.Agent.Dashboard = (function (TargetNS) {
 
         $('.ContentColumn').find('.WidgetSimple').addClass('Hidden');
         $('.ContentColumn').find('#' + WidgetSelector).removeClass('Hidden');
+    }
+
+    /**
+     * @name InitDashboardWidgetBinding
+     * @memberof Core.Agent.Dashboard
+     * @function
+     * @description
+     *      Initializes the dashboard widget click event.
+     */
+    TargetNS.InitDashboardWidgetBinding = function () {
+
+        // additional click event for ActionMenuList to show/hide
+        $('.WidgetSimple').find('.ActionMenu').off('click.ActionMenu').on('click.ActionMenu', function() {
+            $(this).find('.ActionMenuList').toggle();
+        });
+
     }
 
     Core.Init.RegisterNamespace(TargetNS, 'APP_MODULE');

@@ -51,7 +51,7 @@
                             <h2>[% Config("Ticket::Hook") %]</h2>
 
                             <div class="active-inner-cols">
-                                <div class="field-wrapper col-wide-50 col-desktop-50">
+                                <div class="field-wrapper col-wide-50 col-desktop-50 col-tablet-50">
                                     <div class="label-wrapper">
                                         <label for="TicketNumber">[% Config("Ticket::Hook") %]</label>
                                     </div>
@@ -60,7 +60,7 @@
                                         <p>[% Translate("e. g. 10*5155 or 105658*") | html %]</p>
                                     </div>
                                 </div>
-                                <div class="field-wrapper col-wide-50 col-desktop-50">
+                                <div class="field-wrapper col-wide-50 col-desktop-50 col-tablet-50">
                                     <div class="label-wrapper">
                                         <label for="CustomerID">[% Translate("CustomerID") | html %]</label>
                                     </div>
@@ -73,7 +73,7 @@
                                 [% IF Config('Ticket::Service') || Config('Ticket::Type') %]
 
                                     [% IF Config('Ticket::Service') %]
-                                    <div class="field-wrapper col-wide-50 col-desktop-50">
+                                    <div class="field-wrapper col-wide-50 col-desktop-50 col-tablet-50">
                                         <div class="label-wrapper">
                                             <label for="ServiceIDs">[% Translate("Services") | html %]:</label>
                                         </div>
@@ -84,7 +84,7 @@
                                     [% END %]
 
                                     [% IF Config('Ticket::Type') %]
-                                    <div class="field-wrapper col-wide-50 col-desktop-50">
+                                    <div class="field-wrapper col-wide-50 col-desktop-50 col-tablet-50">
                                         <div class="label-wrapper">
                                             <label for="TypeIDs">[% Translate("Types") | html %]:</label>
                                         </div>
@@ -96,7 +96,7 @@
 
                                 [% END %]
 
-                                <div class="field-wrapper col-wide-50 col-desktop-50">
+                                <div class="field-wrapper col-wide-50 col-desktop-50 col-tablet-50">
                                     <div class="label-wrapper">
                                         <label for="PriorityIDs">[% Translate("Priority") | html %]:</label>
                                     </div>
@@ -104,7 +104,7 @@
                                         [% Data.PrioritiesStrg %]
                                     </div>
                                 </div>
-                                <div class="field-wrapper col-wide-50 col-desktop-50">
+                                <div class="field-wrapper col-wide-50 col-desktop-50 col-tablet-50">
                                     <div class="label-wrapper">
                                         <label for="StateIDs">[% Translate("State") | html %]:</label>
                                     </div>
@@ -120,7 +120,7 @@
                             <h2>[% Translate("Communication") | html %]</h2>
                             <div class="active-inner-cols">
 [% RenderBlockStart("SearchableArticleField") %]
-                                <div class="field-wrapper col-wide-50 col-desktop-50">
+                                <div class="field-wrapper col-wide-50 col-desktop-50 col-tablet-50">
                                     <div class="label-wrapper">
                                         <label for="[% Data.ArticleFieldKey | html %]">[% Translate(Data.ArticleFieldLabel) | html %]</label>
                                     </div>
@@ -139,7 +139,7 @@
                             <h2>[% Translate("Dynamic Info") | html %]</h2>
                             <div class="active-inner-cols">
 [% RenderBlockStart("DynamicField") %]
-                                <div class="field-wrapper col-wide-50 col-desktop-50">
+                                <div class="field-wrapper col-wide-50 col-desktop-50 col-tablet-50">
                                     <div class="label-wrapper">
                                         [% Data.Label %]
                                     </div>
@@ -208,7 +208,7 @@
 
                         <fieldset class="section-block last">
                             <h2>[% Translate("Save Search as Template?") | html %]</h2>
-                            <div class="field-wrapper  col-wide-50 col-desktop-50">
+                            <div class="field-wrapper  col-wide-50 col-desktop-50 col-tablet-50">
                                 <div class="flex-row">
                                     <div class="label-wrapper">
                                         <input title="[% Translate("Save as Template") | html %]" type="checkbox" id="SaveProfile" name="SaveProfile" />
@@ -216,7 +216,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="field-wrapper col-wide-50 col-desktop-50">
+                            <div class="field-wrapper col-wide-50 col-desktop-50 col-tablet-50">
                                 <div class="flex-row">
                                     <div class="label-wrapper">
                                         <label for="Profile">[% Translate("Template Name") | html %]</label>

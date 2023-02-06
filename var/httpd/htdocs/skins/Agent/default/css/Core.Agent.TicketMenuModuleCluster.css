@@ -28,7 +28,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     border: var(--border-width) var(--border-solid) transparent !important;
 }
 
-.Cluster ul li a,
+/*.Cluster ul li a,
 .Cluster ul li span {
     padding: var(--padding-xs) var(--padding-sm);
     border-radius: var(--border-radius-xxs);
@@ -37,7 +37,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 .Cluster ul li:hover > a,
 .Cluster ul li:hover > span {
     background: var(--gray-light);
-}
+}*/
 
 .Cluster ul li:hover > span > i {
     transform: rotate(180deg);
@@ -47,7 +47,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     display: none;
     flex-flow: column;
     position: absolute;
-    top: 35px;
+    top: 30px;
     left: 0;
     z-index: 999;
     min-width: 110%;
@@ -65,9 +65,9 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 .Cluster ul ul::before {
     content: '';
     position: absolute;
-    width: 84%;
-    height: 8px;
-    top: -7px;
+    width: 100%;
+    height: 15px;
+    top: -15px;
     left: 0;
 }
 
@@ -105,7 +105,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     border-bottom: 0px;
 }
 
-.Cluster ul ul li a {
+.ActionRow.Cluster ul ul li a {
     color: var(--main-font-color);
     padding: var(--padding-sm);
     display: block;

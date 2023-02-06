@@ -232,6 +232,8 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     gap: var(--gap-sm);
     padding: 0;
     min-width: unset;
+    /*overflow-x: hidden;*/
+    
 }
 
 .Dialog .Content fieldset .Field {

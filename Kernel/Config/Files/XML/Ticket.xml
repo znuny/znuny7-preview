@@ -10690,7 +10690,7 @@
                             </Array>
                         </Item>
                         <Item Key="Description" Translatable="1">Tickets.</Item>
-                        <Item Key="Name" Translatable="1">Tickets</Item>
+                        <Item Key="Name" Translatable="1">My Tickets</Item>
                         <Item Key="Link">Action=CustomerTicketOverview;Subaction=MyTickets</Item>
                         <Item Key="LinkOption"></Item>
                         <Item Key="NavBar">Ticket</Item>
@@ -10710,33 +10710,12 @@
                             <Array>
                             </Array>
                         </Item>
-                        <Item Key="Description" Translatable="1">My Tickets.</Item>
-                        <Item Key="Name" Translatable="1">My Tickets</Item>
-                        <Item Key="Link">Action=CustomerTicketOverview;Subaction=MyTickets</Item>
-                        <Item Key="LinkOption"></Item>
-                        <Item Key="NavBar">Ticket</Item>
-                        <Item Key="Type">Submenu</Item>
-                        <Item Key="Block"></Item>
-                        <Item Key="AccessKey"></Item>
-                        <Item Key="Prio">110</Item>
-                    </Hash>
-                </Item>
-                <Item>
-                    <Hash>
-                        <Item Key="Group">
-                            <Array>
-                            </Array>
-                        </Item>
-                        <Item Key="GroupRo">
-                            <Array>
-                            </Array>
-                        </Item>
                         <Item Key="Description" Translatable="1">Company Tickets.</Item>
                         <Item Key="Name" Translatable="1">Company Tickets</Item>
                         <Item Key="Link">Action=CustomerTicketOverview;Subaction=CompanyTickets</Item>
                         <Item Key="LinkOption"></Item>
                         <Item Key="NavBar">Ticket</Item>
-                        <Item Key="Type">Submenu</Item>
+                        <Item Key="Type">Menu</Item>
                         <Item Key="Block"></Item>
                         <Item Key="AccessKey">t</Item>
                         <Item Key="Prio">120</Item>
@@ -10761,7 +10740,7 @@
                     </Item>
                     <Item Key="Description" Translatable="1">Create tickets.</Item>
                     <Item Key="NavBarName">Ticket</Item>
-                    <Item Key="Title" Translatable="1">New Ticket</Item>
+                    <Item Key="Title" Translatable="1">Create Ticket</Item>
                 </Hash>
             </Item>
         </Value>
@@ -10799,11 +10778,11 @@
                             </Array>
                         </Item>
                         <Item Key="Description" Translatable="1">Create new Ticket.</Item>
-                        <Item Key="Name" Translatable="1">New Ticket</Item>
+                        <Item Key="Name" Translatable="1">Create Ticket</Item>
                         <Item Key="Link">Action=CustomerTicketMessage</Item>
                         <Item Key="LinkOption"></Item>
                         <Item Key="NavBar">Ticket</Item>
-                        <Item Key="Type">Submenu</Item>
+                        <Item Key="Type">Menu</Item>
                         <Item Key="Block"></Item>
                         <Item Key="AccessKey">n</Item>
                         <Item Key="Prio">100</Item>
@@ -10963,12 +10942,12 @@
                             <Array>
                             </Array>
                         </Item>
-                        <Item Key="Description" Translatable="1">Search.</Item>
-                        <Item Key="Name" Translatable="1">Search</Item>
+                        <Item Key="Description" Translatable="1">Search tickets.</Item>
+                        <Item Key="Name" Translatable="1">Ticket Search</Item>
                         <Item Key="Link">Action=CustomerTicketSearch</Item>
                         <Item Key="LinkOption"></Item>
                         <Item Key="NavBar">Ticket</Item>
-                        <Item Key="Type">Submenu</Item>
+                        <Item Key="Type">Menu</Item>
                         <Item Key="Block"></Item>
                         <Item Key="AccessKey">s</Item>
                         <Item Key="Prio">300</Item>

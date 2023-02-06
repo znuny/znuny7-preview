@@ -25,7 +25,8 @@
                         <button id="DeleteButton" class="CallForAction btn-main btn-primary-ghost" type="button"><span><i class="fa fa-trash-o"></i> [% Translate("Delete all conditions") | html %]</span></button>
                         <div class="Hidden" id="DeleteDialogContainer">
                             <div id ="DeleteDialog" class="InnerContent GenericInterfaceDialog">
-                                <span class="WarningDialog ">&nbsp;</span>
+                                <span class="WarningDialog ">
+                                </span>
                                 <p class="Center Warning">[% Translate("Do you really want to delete all the conditions for this event?") | html %]</p>
                             </div>
                         </div>

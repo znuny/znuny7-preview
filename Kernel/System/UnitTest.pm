@@ -196,7 +196,7 @@ sub Run {
 
             push @Files,
                 map  { $Home . '/' . $_ }
-                grep {m/\.t/}
+                grep {m/\.t$/}
                 map  { $_->{Location} } @{ $Structure{Filelist} };
         }
     }
