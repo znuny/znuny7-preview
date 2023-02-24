@@ -17,6 +17,9 @@ my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
 my $HelperObject = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
 my $Selenium     = $Kernel::OM->Get('Kernel::System::UnitTest::Selenium');
 
+my $IsITSMIncidentProblemManagementInstalled
+    = $Kernel::OM->Get('Kernel::System::Util')->IsITSMIncidentProblemManagementInstalled();
+
 # do not checkmx
 $HelperObject->ConfigSettingChange(
     Valid => 1,
@@ -83,13 +86,21 @@ $Selenium->RunTest(
         my $TestService = "Service-" . $HelperObject->GetRandomID();
 
         # create a test service
-        my $ServiceID = $ServiceObject->ServiceAdd(
+        my %ServiceValues = (
             Name    => $TestService,
             Comment => 'Selenium Test Service',
             ValidID => 1,
             UserID  => 1,
         );
 
+        if ($IsITSMIncidentProblemManagementInstalled) {
+            $ServiceValues{TypeID}      = 1;
+            $ServiceValues{Criticality} = '3 normal';
+        }
+
+        my $ServiceID = $ServiceObject->ServiceAdd(
+            %ServiceValues
+        );
         $Self->True(
             $ServiceID,
             "Service is created - $ServiceID",

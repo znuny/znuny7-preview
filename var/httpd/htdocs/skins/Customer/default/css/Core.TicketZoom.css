@@ -33,28 +33,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         float: right;
     }
     
-    .Flag {
-        position: relative;
-        display: block;
-        width: 21px;
-        height: 16px;
-        line-height: 16px;
-        text-indent: -9999px;
-    }
-    
-    .RTL .Flag {
-        left: auto;
-        right: 6px;
-    }
-    
-    .Flag span {
-        height: 15px;
-        line-height: 15px;
-        border: 1px solid transparent;
-        border-bottom: none;
-        display: block;
-    }
-    
     #TicketOptions {
         position: relative;
         overflow: hidden;
@@ -216,6 +194,12 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         flex-wrap: wrap;
         gap: var(--gap-md);
     }
+
+    @media only screen and (max-width: 1024px) {
+        .TicketZoom .ZoomForm .ZoomInfo #Metadata {
+            gap: var(--gap-lg);
+        }
+    }
     
     .TicketZoom .ZoomForm .ZoomInfo #Metadata li.Header {
         display: none;
@@ -228,6 +212,13 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         gap: var(--gap-sm);
         flex-basis: calc(25% - 15px);
         padding: var(--padding-xs);
+    }
+
+    @media only screen and (max-width: 1024px) {
+        .TicketZoom .ZoomForm .ZoomInfo #Metadata li {
+            flex-basis: 100%;
+            padding: 0;
+        }
     }
 
     .TicketZoom .ZoomForm .ZoomInfo #Metadata li::before {
@@ -250,6 +241,12 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         background-color: var(--gray-semi-light);
     }
 
+    @media only screen and (max-width: 1024px) {
+        .TicketZoom .ZoomForm .ZoomInfo #Metadata li::after {
+            top: -15px;
+        } 
+    }
+
     .TicketZoom .ZoomForm .ZoomInfo #Metadata li .Key {
         font-size: var(--main-font-size);
         font-weight: var(--medium);
@@ -262,6 +259,12 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         align-self: baseline;
         font-size: var(--font-size-md);
         color: var(--black);
+    }
+
+    @media only screen and (max-width: 1024px) {
+        .TicketZoom .ZoomForm .ZoomInfo #Metadata li .Value {
+            font-size: var(--font-size-sm);
+        }
     }
 
     .TicketZoom .ZoomForm .ZoomInfo #Metadata li .Value.pill {
@@ -425,11 +428,12 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         display: flex;
         flex-basis: calc(100% - 63px);
         flex-direction: column;
-        justify-content: space-around;
+        gap: var(--gap-xs);
     }
 
     .TicketZoom .ZoomForm .main-content-wrapper .messages-wrapper #Messages ul li .MessageHeader a .message-info .message-user {
         color: var(--primary-color);
+        width: calc(100% - 50px);
     }
     
     .TicketZoom .ZoomForm .main-content-wrapper .messages-wrapper #Messages ul li .MessageHeader a .message-info h3 {

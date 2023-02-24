@@ -32,6 +32,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     - Input Fields
         - Settings Tree
         - Single Row Inputs
+        - Inline Filter Field
 */
 
 @media screen,projection,tv,handheld {
@@ -148,6 +149,10 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         border-radius: var(--border-radius-sm);
     }
 
+    .card .Field.SaveButtons {
+        padding: 0 var(--padding-lg);
+    }
+
     #ActivityDialogContent .TableLike {
         border-radius: 0;
     }
@@ -159,7 +164,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     .card-item {
         display: flex;
         flex-flow: column;
-        gap: 0;
+        gap: var(--gap-xs);
         background: var(--main-bg-color);
     }
 
@@ -225,6 +230,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         div.card-item > .Row {
             background: none;
             border: 0;
+            width: 100%;
         }
     
     }
@@ -707,12 +713,14 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         background: var(--white);
     }
 
+    .LayoutPopup .card .card-item .Field.component-attachment,
     .AgentTicketActionCommon fieldset .Field.component-attachment {
         margin-top: var(--margin-sm);
     }
 
     .outer-upload-file {
         display: flex;
+        min-width: 100%;
     }
 
     .outer-upload-file .DnDUpload {
@@ -1007,7 +1015,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     /* ************************************* Main Search Component ********************************* */
 
     .Dialog > .Content > .InnerContent.main-search-component {
-        overflow: scroll;
+        overflow-y: auto;
     }
 
     .main-search-component .search-ticket {
@@ -1099,6 +1107,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 
     .main-search-component .search-ticket .create-tpm-btn button {
         min-width: var(--btn-max-width-sm);
+        cursor: pointer;
     }
 
     /* 'Submit' & 'Create' button container */
@@ -1125,6 +1134,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         width: 100%;
         max-width: 100%;
         margin-bottom: 0;
+        flex: 1;
     }
 
 
@@ -1197,6 +1207,24 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     .FAQ-related-articles-widget {
         margin-top: var(--margin-sm);
     }
+
+    /* ************************************* WidgetSimple Valid Filter Active ********************************* */
+
+    .filter-items a{
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+
+    .filter-items a .show-valid,
+    .filter-items.ValidFilterActive a .show-all  {
+        display: flex;
+    }
+
+    .filter-items a .show-all,
+    .filter-items.ValidFilterActive a .show-valid {
+        display: none;
+    }
+
 
     /* ************************************* Search Filter Admin Widget ********************************* */
 
@@ -1439,6 +1467,50 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         display: flex;
         flex-flow: column;
         min-width: 100%;
+    }
+
+    /* --- Inline Filter Field --- */
+    /* - Row with single input field and a button at the end */
+    .inline-filter-field button {
+        min-width: 100px;
+    }
+    
+    .LayoutPopup .inline-filter-field.card,
+    .MainBox .inline-filter-field {
+        background: var(--main-bg-color);
+    }
+
+    .MainBox .inline-filter-field > .Header {
+        background: var(--white);
+        border-bottom: var(--border-width) var(--border-solid) var(--border-color);
+    }
+
+    .LayoutPopup .WidgetSimple.inline-filter-field .Content,
+    .MainBox .WidgetSimple.inline-filter-field .Content {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--gap-md);
+        border: 0;
+        padding: var(--padding-lg);
+    }
+
+    .MainBox .inline-filter-field .Content {
+        padding: var(--padding-md) var(--padding-lg);
+    }
+
+    .LayoutPopup .inline-filter-field .Content span:nth-child(1),
+    .MainBox .inline-filter-field .Content span:nth-child(1) {
+        min-width: unset;
+        width: 100%;
+        /*max-width: 500px;*/
+    }
+
+    .LayoutPopup .inline-filter-field .Content span input,
+    .MainBox .inline-filter-field .Content span input {
+        background: var(--white);
+        /*max-height: 28px;*/
     }
 
     /* **************************************** Pagination *********************************** */

@@ -17,7 +17,8 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     --main-page-padding: 25px;
 
     /* Sections */
-    --side-bar-width: 280px;
+    --side-bar-width-desktop: 280px;
+
 
     /* Text */
     --font-size-xxl: 24px;

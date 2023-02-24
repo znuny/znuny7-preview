@@ -32,7 +32,8 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     
     .WidgetSimple .flex-column,
     div.flex-column, 
-    span.flex-column {
+    span.flex-column,
+    .flex-column {
         display: flex;
         flex-flow: column !important;
     }
@@ -40,7 +41,9 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     .WidgetSimple .flex-row,
     div.flex-row, 
     span.flex-row,
-    .AdminManagement .WidgetSimple .Field.flex-row {
+    fieldset.flex-row,
+    .AdminManagement .WidgetSimple .Field.flex-row,
+    .flex-row {
         display: flex;
         flex-flow: row;
         gap: var(--gap-xs);
@@ -63,6 +66,10 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     span.flex-wrap,
     .flex-wrap {
         flex-wrap: wrap;
+    }
+
+    .no-gap {
+        gap: 0;
     }
 
     .gap-md,

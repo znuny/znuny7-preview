@@ -13,8 +13,8 @@
             [% Translate("Manage links for %s", Data.SourceObjectLong) | html %]
         </h1>
         <div>
-            <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Close" id="LinkAddCloseLink" class="CancelClosePopup btn-cancel-ghost btn-main btn-width-md">
-                [% Translate("Cancel") | html %]
+            <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Close" id="LinkAddCloseLink" class="btn-cancel-ghost btn-main btn-width-md">
+                [% Translate("Close and Back") | html %]
             </a>
         </div>
     </div>
@@ -57,7 +57,7 @@
 [% RenderBlockEnd("LinkSearchRow") %]
                             </div>
                         </fieldset>
-                        <div class="Footer Field SpacingTopSmall">
+                        <div class="Footer Field">
                             <button type="submit" id="SubmitSearch" name="SubmitSearch" class="CallForAction Primary btn-main btn-primary btn-width-md" value="[% Translate("Search") | html %]"><span> [% Translate("Start search") | html %]</span></button>
                         </div>
 [% RenderBlockStart("LinkTableComplex") %]

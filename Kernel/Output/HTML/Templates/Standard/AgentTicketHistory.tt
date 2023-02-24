@@ -19,8 +19,8 @@
             </a>
         </div>
     </div>
-    <div class="Content">
-        <div class="WidgetSimple InlineFilterField card">
+    <div class="Content table-widget-parent">
+        <div class="WidgetSimple inline-filter-field card">
             <div class="Content">
                 <span>
                     <input type="text" id="FilterHistory" placeholder="[% Translate("Start typing to filter...") | html %]" name="FilterHistory" value="" title="[% Translate("Filter for history items") | html %]">

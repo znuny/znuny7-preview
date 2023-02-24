@@ -23,7 +23,7 @@
 
                         <div class="Content">
 
-                            <div class="Field">
+                            <div class="field-wrapper">
                                 <div class="label-wrapper">
                                     <label for="Profile">[% Translate("Search template") | html %]</label>
                                 </div>
@@ -228,7 +228,7 @@
                             </div>
                         </fieldset>
                     </div>
-                    <div id="BottomActionRow" class="ActionRow">
+                    <div id="BottomActionRow" class="ActionRow ActionRow-full-width">
                         <span>[% Translate("Output to") | html %]</span>
                         <span>[% Data.ResultFormStrg %]</span>
                         <button id="Submit" type="submit" value="[% Translate("Search") | html %]" class="btn-primary btn-main btn-width-md">[% Translate("Search") | html %]</button>

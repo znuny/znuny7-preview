@@ -40,7 +40,7 @@ sub CreateCSS {
 
     my %PriorityList = $PriorityObject->PriorityList(
         UserID => 1,
-        Valid  => 1,
+        Valid  => 0,
     );
 
     return '' if !%PriorityList;

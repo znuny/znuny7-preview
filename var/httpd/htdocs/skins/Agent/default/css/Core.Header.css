@@ -35,6 +35,15 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         z-index: 100;
     }
 
+    @media only screen and (max-width: 1024px) {
+        #Header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+    }
+
     /**
     * @subsection  Logo
     */
@@ -669,7 +678,8 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 
     /*************************************/
     /*.dropdown-container .dropdown-menu */
-    .dropdown-item {
+    .dropdown-item,
+    .dropdown-filter .dropdown-menu li {
         width: 100%;
         display: flex;
         margin: 0;
@@ -681,20 +691,24 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         align-items: center;
     }
 
-    .dropdown-filter .dropdown-menu .dropdown-item {
+    .dropdown-filter .dropdown-menu .dropdown-item,
+    .dropdown-filter .dropdown-menu li {
         padding: 0;
     }
 
     /*.dropdown-filter .dropdown-menu */
     .dropdown-item a,
-    .dropdown-menu .dropdown-item a {
+    .dropdown-menu .dropdown-item a,
+    .dropdown-filter .dropdown-menu li a {
         padding-left: 0;
         padding: var(--padding-sm);
         width: 100%;
-        text-transform: inherit;
+        text-transform: none;
     }
 
-    .dropdown-item, .dropdown-item a, .dropdown-item.Selected a {
+    .dropdown-item, 
+    .dropdown-item a, 
+    .dropdown-item.Selected a {
         color: var(--menu-font);
         font-size: var(--font-size-sm);
     }
@@ -703,12 +717,14 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         font-weight: var(--bold);
     }
 
-    .dropdown-container .dropdown-menu .dropdown-item::after {
+    .dropdown-container .dropdown-menu .dropdown-item::after,
+    .dropdown-container .dropdown-menu li::after  {
         display: none;
     }
 
     /*.dropdown-container .dropdown-menu */
-    .dropdown-item:hover {
+    .dropdown-item:hover,
+    .dropdown-filter .dropdown-menu li:hover {
         background: var(--gray-light);
         cursor: pointer;
     }

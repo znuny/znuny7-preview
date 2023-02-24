@@ -49,6 +49,9 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     --success-color: #3DD598;
     --warning-color: #FC5A5A;
 
+    /* Flag Element */
+    --color-flag-default: #cdcdcd;
+
     /* Alert Component */
     --alert-close-icon-color: var(--gray-dark);
 
@@ -58,16 +61,19 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         --alert-info-border-color: #50b6ff1a;
 
         /* Error */
+        --alert-error-bg-solid-color: #FC5A5A;
         --alert-error-bg-color: #FC5A5A10;
         --alert-error-icon-color: #FC5A5A;
         --alert-error-border-color:#FC5A5A1a;
 
         /* Success */
+        --alert-success-bg-solid-color: #3DD598;
         --alert-success-bg-color: #3DD59810;
         --alert-success-icon-color: #3DD598;
         --alert-success-border-color: #3DD5981a;
 
         /* Warning */
+        --alert-warning-bg-solid-color: #F2BD0E;
         --alert-warning-bg-color: #F2BD0E10;
         --alert-warning-icon-color: #F2BD0E;
         --alert-warning-border-color: #F2BD0E1a;

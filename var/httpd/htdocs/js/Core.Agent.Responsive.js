@@ -190,16 +190,21 @@ Core.Agent.Responsive = (function (TargetNS) {
     });
 
     // MOBILE - Show Actions Menu
-    $('#mobile-action-option').on('click', function() {
-        $('body').addClass('has-actions-menu-opened');
+
+    //open
+    $('.mobile-action-option').on('click', function() {
+        $('body').addClass('has-options-overlay-opened');
+        $('html').addClass('NoScroll');
+        $(this).closest('.ItemActions, .ActionRow').addClass('active');
     });
 
+    //close
     $('.Actions-close, .btn-collapse').on('click', function() {
-        $('body').removeClass('has-actions-menu-opened');
+        $('body').removeClass('has-options-overlay-opened');
+        $('html').removeClass('NoScroll');
+        $(this).closest('.ItemActions, .ActionRow').removeClass('active');
     });
 
-
-    
 
 
     return TargetNS;

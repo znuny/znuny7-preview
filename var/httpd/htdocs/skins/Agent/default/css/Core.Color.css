@@ -120,6 +120,13 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     --confirmation-color: var(--success-color);
     --plus-color: var(--success-color);
 
+    /* Tables */
+    --tr-disabled-bg: #efefef;
+    --tr-disabled-text: #B6B6B6;
+
+    /* Flag Element */
+    --color-flag-default: #cdcdcd;
+
     /* Alert Component */
     --alert-close-icon-color: var(--gray-dark);
 
@@ -129,11 +136,13 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         --alert-info-border-color: #50b6ff1a;
 
         /* Error */
+        --alert-error-bg-solid-color: #FC5A5A;
         --alert-error-bg-color: #FC5A5A10;
         --alert-error-icon-color: #FC5A5A;
         --alert-error-border-color:#FC5A5A1a;
 
         /* Success */
+        --alert-success-bg-solid-color: #3DD598;
         --alert-success-bg-color: #3DD59810;
         --alert-success-icon-color: #3DD598;
         --alert-success-border-color: #3DD5981a;

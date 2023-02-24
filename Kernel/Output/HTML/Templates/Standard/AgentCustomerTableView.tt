@@ -63,7 +63,7 @@
     <div class="Clear"></div>
 [% RenderBlockEnd("CustomerRow") %]
 [% RenderBlockStart("CustomerItem") %]
-    <ul class="ItemRow flex-row align-center">
+    <ul class="ItemRow">
 [% RenderBlockStart("CustomerItemRow") %]
         <li>
             <i class="fa [% Data.IconName %] [% Data.CSSClass %]"></i>

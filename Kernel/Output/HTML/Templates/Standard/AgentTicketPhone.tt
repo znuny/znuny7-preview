@@ -72,18 +72,20 @@
 
             <div class="Field [% Data.CustomerHiddenContainer | html %] CustomerContainerField">
                 <div class="CustomerTicketTemplateFromCustomer Hidden">
-                    <input name="CustomerSelected" title="[% Translate("Select this customer as the main customer.") | html %]" id="CustomerSelected" class="RadioRound" type="radio" value=""/>
-                    <input name="CustomerKey" id="CustomerKey" class="CustomerKey" type="hidden" value=""/>
-                    <input class="CustomerTicketText Radio" title="[% Translate("Customer user") | html %]" name="CustomerTicketText" id="CustomerTicketText" type="text" value="" readonly="readonly" />
-                    <a href="#" id="RemoveCustomerTicket" class="RemoveButton CustomerTicketRemove icon-hover-sm">
-                        <i class="fa fa-times"></i>
-                        <span class="InvisibleText">[% Translate("Remove Ticket Customer User") | html %]</span>
-                    </a>
+                    <div class="SpacingTopSmall">
+                        <input name="CustomerSelected" title="[% Translate("Select this customer as the main customer.") | html %]" id="CustomerSelected" class="RadioRound" type="radio" value=""/>
+                        <input name="CustomerKey" id="CustomerKey" class="CustomerKey" type="hidden" value=""/>
+                        <input class="CustomerTicketText Radio" title="[% Translate("Customer user") | html %]" name="CustomerTicketText" id="CustomerTicketText" type="text" value="" readonly="readonly" />
+                        <a href="#" id="RemoveCustomerTicket" class="RemoveButton CustomerTicketRemove icon-hover-sm">
+                            <i class="fa fa-times"></i>
+                            <span class="InvisibleText">[% Translate("Remove Ticket Customer User") | html %]</span>
+                        </a>
+                    </div>
                 </div>
 
                 <div id="TicketCustomerContentFromCustomer" class="CustomerContainer">
 [% RenderBlockStart("MultipleCustomer") %]
-                    <div class="">
+                    <div class="SpacingTopSmall">
                         <input name="CustomerSelected" title="[% Translate("Select this customer as the main customer.") | html %]" id="CustomerSelected" class="RadioRound" type="radio" value="[% Data.Count | html %]" [% Data.CustomerSelected | html %]  [% Data.CustomerDisabled | html %] />
                         <input name="CustomerKey_[% Data.Count | html %]" id="CustomerKey_[% Data.Count | html %]" class="CustomerKey" type="hidden" value="[% Data.CustomerKey | html %]"/>
                         <input class="CustomerTicketText Radio [% Data.CustomerError | html %]" title="[% Translate("Customer user") | html %]" name="CustomerTicketText_[% Data.Count %]" id="CustomerTicketText_[% Data.Count %]" type="text" value="[% Data.CustomerElement | html %]" readonly="readonly" />

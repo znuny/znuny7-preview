@@ -63,13 +63,12 @@
                 <input type="hidden" name="ArticleID" value="[% Data.ArticleID | html %]" />
                 <input type="hidden" name="FormID" value="[% Data.FormID | html %]" />
                 <input type="hidden" name="FromChatID" value="[% Data.FromChatID | html %]" />
-                <div id="ZoomSidebar" class="ZoomInfo">
+                <div id="ZoomSidebar" class="ZoomInfo SidebarColumn">
                     <div class="main-card-item Metadata-wrapper">
                         <ul id="Metadata">
                             <li class="Header">
                                 <div class="MessageHeader">
                                     <h3>[% Translate("Information") | html %]</h3>
-                                    <div class="Clear"></div>
                                 </div>
                             </li>
                             <li>

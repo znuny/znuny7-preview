@@ -218,18 +218,14 @@ sub _TasksGet {
             Module  => 'scripts::Migration::Base::PerlModulesCheck',
         },
         {
-            Message => 'Check installed CPAN modules for known vulnerabilities',
-            Module  => 'scripts::Migration::Base::CPANAuditCheck',
-        },
-        {
             Message => 'Check if database has been backed up',
             Module  => 'scripts::Migration::Base::DatabaseBackupCheck',
         },
 
-        #         {
-        #             Message => 'Upgrade database structure',
-        #             Module  => 'scripts::Migration::Znuny::UpgradeDatabaseStructure',
-        #         },
+        {
+            Message => 'Upgrade database structure',
+            Module  => 'scripts::Migration::Znuny::UpgradeDatabaseStructure',
+        },
         {
             Message => 'Rebuild configuration',
             Module  => 'scripts::Migration::Base::RebuildConfig',
@@ -249,6 +245,10 @@ sub _TasksGet {
         {
             Message => 'Migrate notification events',
             Module  => 'scripts::Migration::Znuny::MigrateNotificationEvents',
+        },
+        {
+            Message => 'Integrate Znuny-NoteToLinkedTicket',
+            Module  => 'scripts::Migration::Znuny::IntegrateZnunyNoteToLinkedTicket',
         },
 
         # NOTE: UninstallMergedPackages has to be called only after

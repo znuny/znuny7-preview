@@ -37,30 +37,27 @@
 
                 [% FOREACH ArticleField IN Data.ArticleFields.values.nsort("Prio") %]
                     [% IF ArticleField.Label == "From" || ArticleField.Label == "To" || ArticleField.Label == "Cc"  || ArticleField.Label == "Bcc" %]
-                    <div>
+                    <div class="field-wrapper">
                         <label class="Switchable">[% Translate(ArticleField.Label) | html %]:</label>
                         <p class="Value" title="[% ArticleField.Value | html %]">
                             <span class="Switch [% ArticleField.ValueHidden | html %]">[% ArticleField.Value | html %]</span>
                             <span class="Switch [% ArticleField.RealnameHidden | html %]">[% ArticleField.Realname | html %]</span>
                         </p>
                     </div>
-                    <div class="Clear"></div>
                     [% ELSIF ArticleField.Type == "ArticleOption" %]
                     <!-- show article options like signed, crypted, ...-->
-                    <div>
+                    <div class="field-wrapper">
                         <label>[% Translate(ArticleField.Label) | html %]:</label>
                         <p title="[% ArticleField.Value | html %]" class="[% ArticleField.Class | html %] Value">
                             [% Translate(ArticleField.Value) | html %]
                         </p>
                     </div>
-                    <div class="Clear"></div>
                     [% ELSIF ArticleField.Label == "Subject" %]
                     <!-- Include the full subject so that it can be copied. The one in the title bar is shortened. -->
-                    <div>
+                    <div class="field-wrapper">
                         <label>[% Translate("Subject") | html %]:</label>
                         <p class="Value">[% ArticleField.Value | html %]</p>
                     </div>
-                    <div class="Clear"></div>
                     [% END %]
                 [% END %]
 

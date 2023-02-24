@@ -51,7 +51,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         display: flex;
         flex-direction: column;
         width: 100%;
-        max-width: var(--side-bar-width);
+        max-width: var(--side-bar-width-desktop);
         gap: var(--gap-md)
     }
 
@@ -119,7 +119,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     .mainStructure.LayoutFixedSidebar .ContentColumn {
         display: flex;
         flex-direction: column;
-        width: calc(100% - var(--side-bar-width));
+        width: calc(100% - var(--side-bar-width-desktop));
         padding: 0;
         gap: var(--gap-md)
     }
@@ -128,7 +128,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         display: flex;
         flex-direction: column;
         width: 100%;
-        max-width: var(--side-bar-width);
+        max-width: var(--side-bar-width-desktop);
         gap: var(--gap-md)
     }
 
@@ -153,6 +153,12 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         overflow: hidden;
         width: 100%;
         gap: 0;
+    }
+
+    @media only screen and (min-width: 1400px) {
+        .FormScreen .TableLike {
+            max-width: 100%;
+        }
     }
 
 
@@ -180,8 +186,9 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 }
 
 /* **************** START RESPONSIVE COLS | Desktop & Wide **************** */
-@media (min-width: 1401px) {
-
+@media (min-width: 1400px) {
+    /******************/
+    /*      Cols      */
     .col-wide-33 {
         width: 100%;
         max-width: calc(33.33% - var(--margin-lg));
@@ -189,7 +196,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     
     .col-wide-50 {
         width: 50%;
-        max-width: calc(50% - var(--margin-lg));
+        max-width: calc(50% - var(--margin-sm));
     }
     
     .col-wide-66 {
@@ -201,9 +208,14 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         width: 100%;
         max-width: 100%;
     }
+
+    .col-wide-adapt-elem {
+        width: auto;
+        flex: 1;
+    }
 }
 
-@media (min-width: 1025px) and (max-width: 1400px) {
+@media (min-width: 1025px) and (max-width: 1399px) {
     /******************/
     /*      Cols      */
     .col-desktop-33 {
@@ -225,4 +237,52 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         width: 100%;
         max-width: 100%;
     }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    /******************/
+    /*      Cols      */
+    .col-tablet-33 {
+        width: 100%;
+        max-width: calc(33.33% - var(--margin-md));
+    }
+    
+    .col-tablet-50 {
+        width: 100%;
+        max-width: calc(50% - var(--margin-md));
+    }
+    
+    .col-tablet-66 {
+        width: 100%;
+        max-width: calc(66.66% - var(--margin-md));
+    }
+    
+    .col-tablet-100 {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /************************/
+    /*      Card Items      */
+    .card-item.col-tablet-33 {
+        width: 100%;
+        max-width: 33.33%;
+    }
+    
+    .card-item.col-tablet-50 {
+        width: 100%;
+        max-width: 50%;
+    }
+    
+    .card-item.col-tablet-66 {
+        width: 100%;
+        max-width: 66.66%;
+    }
+    
+    .card-item.col-tablet-100 {
+        width: 100%;
+        max-width: 100%;
+    }
+
 }

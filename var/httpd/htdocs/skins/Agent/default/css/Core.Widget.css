@@ -49,6 +49,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         font-weight: var(--semi-bold);
         background-color: var(--white);
         color: var(--modal-col-text-color);
+        word-break: break-word;
     }
 
     ul.Tablelike li.OneRow,
@@ -118,7 +119,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
     .manageLinks .WidgetSimple{
         border: none;
-        border-radius: 0px;
+        /*border-radius: 0px;*/
     }
 
     .WidgetSimple.WidgetLoading i {
@@ -719,7 +720,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         right: initial;
         padding-left: initial;
         position: relative;
-        z-index: 1;
+        z-index: 10;
     }
 
     .RTL .ActionMenu {
@@ -856,6 +857,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     .ActionMenu .ActionMenuList li .WidgetAction:hover a .iconWrapper i,
     ul.WidgetTooltip li a i {
         color: var(--gray-dark);
+        font-size: var(--main-font-size);
     }
         
     .ActionMenu .ActionMenuList li .WidgetAction a .textWrapper,
@@ -2147,6 +2149,10 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         /*overflow: hidden;*/
     }
 
+    .RealPopup #AppWrapper > .WidgetSimple {
+        border-radius: 0;
+    }
+
     .SidebarFirst .SidebarColumn .WidgetSimple {
         border-radius: 0;
     }
@@ -2190,6 +2196,8 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         min-height: 0;
         border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
         overflow: auto;
+        position: relative;
+        z-index: 5;
         /*overflow: hidden;*/ /* overflow hidden will break the horizontal scroll */
     }
 
@@ -2203,6 +2211,8 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         display: flex;
         align-items: center;
         justify-content: space-between;
+        position: relative;
+        /*z-index: 10; - edited by beatriz on 23/02/16 - was breaking filter dropdown menu */
     }
 
     .WidgetSimple.Expanded .Header {
@@ -2277,17 +2287,32 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         flex-flow: column;
         /*gap: var(--gap-xs); - edited by beatriz on 30/1/2023 */
         width: 100%;
-        max-width: 800px;
+        /*max-width: 800px;   - edited by beatriz on 15/2/2023 - overriding width in save field */
         align-self: start;
         z-index: 1;
     }
 
     /*.AdminManagement .Content fieldset.TableLike - edited by beatriz on 09/01/2023 */
-    .WidgetSimple .Content fieldset.TableLike {
+    .WidgetSimple .Content fieldset.TableLike,
+    .FormScreen .Content fieldset.TableLike {
+        width: 100%;
         max-width: 600px;
         gap: var(--gap-md);
         margin: auto;
     }
+
+    @media only screen and (max-width: 991px) {
+        .WidgetSimple .Content fieldset.TableLike {
+            max-width: 100%;
+        }
+    }
+
+    @media only screen and (min-width: 1200px) {
+        .LayoutPopup .WidgetSimple .Content fieldset.TableLike {
+            max-width: 100%;
+        }
+    }
+    
 
     .AdminManagement .WidgetSimple > .Content .TableLike > div.Field {
         display: flex;
@@ -2807,6 +2832,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     /*.information-widget */
     .Content fieldset > span {
         display: flex;
+        width: 100%;
         flex-flow: column;
         align-items: baseline;
         justify-content: flex-start;
@@ -3065,6 +3091,14 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         font-size: var(--font-size-xs);
         font-weight: var(--normal);
         /*font-family: Inter;*/
+    }
+
+    .message-primary {
+        color: var(--primary-color);
+        /*font-family: 'Inter';*/
+        font-size: var(--font-size-md);
+        font-weight: var(--semi-bold);
+        letter-spacing: .2px;
     }
 
     /******************************* Search Profile Widget *******************************/

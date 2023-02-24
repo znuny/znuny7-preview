@@ -27,6 +27,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 .Login p {
     padding: 0;
+    font-size: var(--main-font-size);
 }
 
 .Login noscript p{
@@ -55,7 +56,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 #Container h2 {
     line-height: 22px;
-    padding-bottom: var(--padding-sm);
+    padding-bottom: var(--padding-lg);
 }
 
 #Container .header-content {
@@ -139,7 +140,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 } */
 
 .Login input:focused {
-    border-color: #F92;
+    border-color: var(--black);
 }
 
 /* .Login button {
@@ -214,6 +215,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     padding: 2px 0;
     transition: var(--main-transition);
     border-bottom: 1px solid transparent;
+    font-size: var(--main-font-size);
 }
 
 .Option a:hover {
@@ -248,19 +250,24 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     cursor: default;
     width: 100%;
     max-width: 400px;
-    padding: var(--padding-xs);
+    padding: 7px var(--padding-xs);
     border-radius: var(--border-radius-xs);
     text-align: center;
 }
 
 .ErrorBox {
+    background-color: var(--alert-error-bg-solid-color);
     color: var(--white);
-    background: #D41111;
+}
+
+.SuccessBox {
+    background-color: var(--alert-success-bg-solid-color);
+    color: var(--white);
 }
 
 .WarningBox {
     color: var(--black);
-    background: #FFDD50;
+    background: var(--alert-warning-bg-solid-color);
 }
 
 .WarningBox.WithIcon {
@@ -274,10 +281,9 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     top: 6px;
 }
 
-.SuccessBox {
-    color: var(--white);
-    background: #08A503;
-}
+
+
+
 
 /**
  * @subsection  Login Content

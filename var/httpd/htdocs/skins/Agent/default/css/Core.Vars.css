@@ -31,7 +31,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     /* Sections */
     --main-bg-color: #FAFAFB;
     --input-field-bg-color: var(--white);
-    --side-bar-width: 280px;
+    --side-bar-width-desktop: 280px;
 
     /* Text */
     --font-size-xxl: 24px;
@@ -67,6 +67,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     --gap-xl: 60px;
     --gap-lg: 30px;
     --gap-md: 20px;
+    --gap-md-sm: 15px;
     --gap-sm: 10px;
     --gap-xs: 5px;
 

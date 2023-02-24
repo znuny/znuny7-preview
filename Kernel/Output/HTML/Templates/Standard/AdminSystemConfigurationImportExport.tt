@@ -91,11 +91,6 @@
                                     [% Translate("Download current configuration settings of your system in a .yml file.") | html %]
                                 </p>
 
-                                [% IF Data.OTRSBusinessIsInstalled %]
-                                <input type="checkbox" id="SkipUserSettings" name="SkipUserSettings" value="1" checked="checked" />
-                                <label for="SkipUserSettings">[% Translate("Include user settings") | html %]</label>
-                                [% END %]
-
                                 <div class="SaveButtons">
                                     <button id="ExportButton" class="CallForAction btn-main btn-primary btn-width-xxl" type="submit" value="[% Translate("Upload system configuration") | html %]">
                                         <span>[% Translate("Export current configuration") | html %]</span>

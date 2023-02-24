@@ -9,8 +9,8 @@
 <div class="MainBox ARIARoleMain FormScreen">
     <h1>[% Translate("Create New Process Ticket") | html %]</h1>
     <div class="ContentColumn">
-        <form action="[% Env(" CGIHandle") %]" method="post" enctype="multipart/form-data" name="compose" id="NewProcessTicket" class="Validate PreventMultipleSubmits">
-            <input type="hidden" name="Action" value="[% Env(" Action") %]" />
+        <form action="[% Env("CGIHandle") %]" method="post" enctype="multipart/form-data" name="compose" id="NewProcessTicket" class="Validate PreventMultipleSubmits">
+            <input type="hidden" name="Action" value="[% Env("Action") %]" />
             <input type="hidden" name="Subaction" value="DisplayActivityDialog" />
             <input type="hidden" name="FormID" value="[% Data.FormID | html %]" />
             <input type="hidden" id="LinkTicketID" name="LinkTicketID" value="[% Data.LinkTicketID | html %]" />

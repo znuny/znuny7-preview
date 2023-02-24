@@ -11,5 +11,4 @@
     <div class="Content">
         [% Data.MainContent %]
     </div>
-    <div class="Clear"></div>
 </div>

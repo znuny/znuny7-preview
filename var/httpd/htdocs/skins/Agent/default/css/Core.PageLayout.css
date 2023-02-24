@@ -53,7 +53,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         gap: var(--gap-md);
         flex-wrap: nowrap;
         align-items: initial;
-        overflow-x: hidden;
+        /*overflow-x: hidden;*/
     }
 
     .mainStructure.LayoutFixedSidebar .mainContent {
@@ -65,7 +65,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     .mainStructure.LayoutFixedSidebar .ContentColumn {
         display: flex;
         flex-direction: column;
-        width: calc(100% - var(--side-bar-width));
+        width: calc(100% - var(--side-bar-width-desktop));
         padding: 0;
         gap: var(--gap-md)
     }
@@ -74,7 +74,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         display: flex;
         flex-direction: column;
         width: 100%;
-        max-width: var(--side-bar-width);
+        max-width: var(--side-bar-width-desktop);
         gap: var(--gap-md)
     }
 
@@ -150,6 +150,15 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         width: 100%;
     }
 
+    .RealPopup .Content fieldset.popup-card {
+        border-radius: var(--border-radius-xs);
+        border: var(--border-width) var(--border-solid) var(--border-color);
+    }
+
+    .RealPopup .Content fieldset.popup-card + .TableLike {
+        padding: 0;
+    }
+
     .RealPopup .LayoutFixedSidebar > .ContentColumn,
     .RealPopup .LayoutFixedSidebar > .ContentColumn > .card,
     .RealPopup .Content .ContentColumn {
@@ -176,7 +185,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         flex-direction: column;
         gap: var(--gap-md);
         width: 100%;
-        max-width: var(--side-bar-width);
+        max-width: var(--side-bar-width-desktop);
         /*float: right;
         padding-left: 16px; -replaced with gap in parent container - */
     }
@@ -354,46 +363,50 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         padding: var(--padding-lg);
     }
 
-    /* History Modal --------------------------------*/
-    /* InlineFilterField Component */
-    .LayoutPopup .InlineFilterField.card,
-    .MainBox .InlineFilterField {
-        background: var(--main-bg-color);
+
+
+    /* Popups */
+    @media only screen and (max-width: 1024px) {
+        .PopupIframe {
+            background: rgba(22, 22, 22, 0.7);
+            height: 100vh !important;
+        }
+
+        body.Popup,
+        body.RealPopup {
+            background: transparent;
+        }
+
+        .Popup {
+            width: 100%;
+            height: 100vh;
+            background: transparent;
+            padding: 50px 20px;
+            box-sizing: border-box;
+        }
+
+        .Popup #AppWrapper {
+            background: var(--white);
+            padding: 0;
+            max-width: 800px;
+            width: 100%;
+            min-height: unset;
+            margin: 0 auto;
+            border-radius: var(--border-radius-sm);
+            overflow: hidden;
+        }
     }
 
-    .MainBox .InlineFilterField > .Header {
-        background: var(--white);
-        border-bottom: var(--border-width) var(--border-solid) var(--border-color);
-    }
+    @media only screen and (max-width: 991px) {
+        .Popup {
+            padding: 0;
+        }
 
-    .LayoutPopup .InlineFilterField .Content,
-    .MainBox .InlineFilterField .Content {
-        display: flex;
-        flex-flow: row;
-        padding: 0;
-        justify-content: space-between;
-        align-items: center;
-        gap: var(--gap-md);
+        .Popup #AppWrapper {
+            max-width: 100%;
+            border-radius: 0;
+        }
     }
-
-    .MainBox .InlineFilterField .Content {
-        padding: var(--padding-md) var(--padding-lg);
-    }
-
-    .LayoutPopup .InlineFilterField .Content span:nth-child(1),
-    .MainBox .InlineFilterField .Content span:nth-child(1) {
-        min-width: unset;
-        width: 100%;
-        /*max-width: 500px;*/
-    }
-
-    .LayoutPopup .InlineFilterField .Content span input,
-    .MainBox .InlineFilterField .Content span input {
-        background: var(--white);
-        max-height: 28px;
-    }
-    /*---*/
-
 
     /* table-widget */
     .Popup .table-widget.Expanded,
@@ -408,6 +421,15 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         border-bottom-left-radius: var(--border-radius-xs);
         border-bottom-right-radius: var(--border-radius-xs);
         */
+    }
+
+    .Popup .table-widget-parent .table-widget.Expanded,
+    .RealPopup .table-widget-parent .table-widget.Expanded,
+    .Popup .table-widget-parent .table-widget.Expanded .Content,
+    .RealPopup .table-widget-parent .table-widget.Expanded .Content,
+    .table-widget-parent .table-widget.Expanded,
+    .table-widget-parent .table-widget.Expanded .Content {
+        border: var(--border-width) var(--border-solid) var(--border-color);
     }
 
     .Popup .table-widget .Content,
@@ -443,7 +465,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     .Popup .table-widget.has-padding .Content,
     .RealPopup .table-widget.has-padding .Content,
     .table-widget.has-padding .Content {
-        padding: var(--padding-md);
+        padding: var(--padding-lg);
     }
 
     .Popup .table-widget.has-padding .Content .DataTable,
@@ -476,8 +498,20 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         border: var(--border-width) var(--border-solid) var(--border-color);
     }
 
+    .manageLinks .Content form {
+        display: flex;
+        flex-flow: column;
+        gap: var(--gap-md);
+    }
+
     .ticketMerge .WidgetSimple .Content {
         max-width: unset;
+    }
+
+    @media only screen and (max-width: 1024px) {
+        .manageLinks .WidgetSimple .Content form {
+            overflow: hidden;
+        }
     }
 
     .manageLinks .WidgetSimple .Content .TableLike,
@@ -487,10 +521,16 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         align-items: center;
     }
 
+    .manageLinks .WidgetSimple.Tabs .Content fieldset.TableLike {
+        max-width: 100%;
+    }
+
     .manageLinks .WidgetSimple .Content .TableLike {
         border: var(--border-width) var(--border-solid) var(--border-color);
         border-radius: var(--border-radius-sm) var(--border-radius-sm);
     }
+
+
 
 
     /* .LayoutPopup.manageLinks > .Content:not(.LayoutFixedSidebar) .card-item,
@@ -505,13 +545,48 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     } */
 
     .manageLinks .WidgetSimple.Tabs .Content .innerContent {
-        padding: var(--padding-lg);
+        /*padding: var(--padding-lg);
         border: var(--border-width) var(--border-solid) var(--border-color);
-        border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+        border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm); - edited by beatriz on 10/2/2023 - no apparent need for these styles */
     }
 
-    .manageLinks .WidgetSimple.Tabs .Content .innerContent .WidgetSimple .Content  {
+    @media only screen and (max-width: 1024px) {
+        .manageLinks .WidgetSimple.Tabs .Content .innerContent {
+            border: 0;
+            border-radius: 0;
+        }
+    }
+
+    @media only screen and (max-width: 1024px) {
+        .manageLinks .WidgetSimple.Tabs .Content .innerContent .WidgetSimple.Collapsed  {
+            border: var(--border-width) var(--border-solid) var(--border-color);
+            border-radius: var(--border-radius-sm);
+        }
+    }
+
+    .manageLinks .WidgetSimple.Tabs .Content .innerContent .WidgetSimple .Content {
         overflow: inherit;
+        display: flex;
+        flex-flow: column;
+        gap: var(--gap-md);
+        padding: 0;
+        border: 0;
+    }
+
+    /*.manageLinks .WidgetSimple.Tabs .Content .innerContent .WidgetSimple .Content > :first-child {
+        border-bottom: var(--border-width) var(--border-solid) var(--border-color);
+    }*/
+
+    .manageLinks .WidgetSimple.Tabs .Content .innerContent .WidgetSimple .Content > div:nth-child(2) {
+        padding: 0 0 var(--padding-md) var(--padding-md);
+        margin-left: auto;
+    }
+
+    @media only screen and (max-width: 1024px) {
+        .manageLinks .WidgetSimple.Tabs .Content .innerContent .WidgetSimple .Content  {
+            border: 0;
+            border-radius: 0;
+        }
     }
 
     .manageLinks .WidgetSimple.Tabs .Content .innerContent .WidgetSimple .Content .SpacingTopSmall {
@@ -522,6 +597,16 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         border-radius: initial;
     }
 
+    @media only screen and (max-width: 1024px) {
+        .manageLinks .WidgetSimple.Tabs .Content .innerContent .WidgetSimple .Content .SpacingTopSmall {
+            padding: 0;
+            margin-top: var(--margin-lg);
+        }
+    }
+
+
+    
+
     .ticketMerge .card-item:first-child .Field {
         display: flex;
         flex-flow: column;
@@ -531,12 +616,14 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     .manageLinks div.LightRow.Bottom {
         border-left: var(--border-width) var(--border-solid) var(--border-color);
         border-right: var(--border-width) var(--border-solid) var(--border-color);
+        border-bottom: 0;
         background: var(--white);
     }
 
     .manageLinks .Footer {
-        max-width: 600px;
-        padding-top: var(--padding-lg);
+        max-width: 100%;
+        width: 100%;
+        padding: 0 0 var(--padding-lg);
         display: flex;
         flex-flow: row;
         justify-content: end;
@@ -545,11 +632,15 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         margin: auto;
     }
 
+
+    
+
     .Popup fieldset > div > div,
     .RealPopup fieldset > div > div {
         width: 100%;
     }
 
+    .LayoutPopup .SidebarColumn .Content,
     .Popup .SidebarColumn .Content,
     .RealPopup .SidebarColumn .Content {
         padding: var(--padding-lg) var(--padding-md);
@@ -561,6 +652,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         color: var(--black)
     }
 
+    .LayoutPopup .Content .Header,
     .Popup .Content .Header,
     .RealPopup .Content .WidgetSimple > .Header {
         background: var(--main-bg-color);
@@ -568,6 +660,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         border-top-right-radius: var(--border-radius-sm);
     }
 
+    .LayoutPopup .SidebarColumn .Header,
     .Popup .SidebarColumn .Header,
     .RealPopup .SidebarColumn .Header {
         padding: var(--padding-lg) var(--padding-md);
@@ -576,7 +669,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
     .LayoutPopup > .Header {
         /*font-family: Inter;*/
-        padding: var(--padding-sm) var(--padding-lg);
+        padding: var(--padding-lg);
         border-bottom: 0;
         background-color: var(--white-bg-header);
         display: flex;
@@ -779,6 +872,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         padding: var(--main-page-padding);
         background-color: var(--white);
     }
+    
 
     .LayoutPopup > .Content.card {
         display: flex;
@@ -797,11 +891,18 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         gap: var(--gap-sm);
     }
 
+    @media only screen and (max-width: 1024px) {
+        .LayoutPopup .Content .ContentColumn fieldset.TableLike {
+            padding: 0;
+        }
+    }
+    
+
     .LayoutPopup > .Content > fieldset > div,
     .LayoutPopup > .Content > fieldset > .field-wrapper {
         display: flex;
         flex-flow: column;
-        gap: 0;
+        gap: var(--gap-xs);
         width: 100%;
     }
 
@@ -1395,6 +1496,16 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     .FormScreen .ContentColumn .card-item + .Field {
         margin: var(--margin-sm);
     }
+
+    .AdminManagement .WidgetSimple fieldset.TableLike > .Field.SaveButtons, 
+    .AdminManagement .WidgetSimple > .Content .TableLike > div.Field.SaveButtons, 
+    fieldset.TableLike > .Field.SaveButtons, 
+    fieldset.TableLike > .Field.SaveButtons:last-child, 
+    .AdminManagement .WidgetSimple > .Content > form > fieldset.TableLike > div.SaveButtons, 
+    .SaveButtons:not(:first-child:last-child) {
+        min-width: unset;
+        padding: 0;
+    }
 }
 
 
@@ -1465,6 +1576,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     .FormScreen .ContentColumn .Content.card {
         display: flex;
         justify-content: center;
+        align-items: center;
     }
 
     .FormScreen #NewEmailTicket,

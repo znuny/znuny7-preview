@@ -271,9 +271,15 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         z-index: 0;
     }
 
+    @media only screen and (max-width: 1024px) {
+        #NewProcessTicket .TableLike {
+            padding: var(--padding-lg);
+        }
+    }
+
     #NewProcessTicket .TableLike,
     #NewProcessTicket + #AJAXLoader {
-        max-width: calc(100% - (var(--side-bar-width) + var(--gap-md)));
+        max-width: calc(100% - (var(--side-bar-width-desktop) + var(--gap-md)));
     }
 
     @media only screen and (max-width: 1024px) {
@@ -292,6 +298,13 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     #NewProcessTicket .TableLike > div {
         width: 100%;
         max-width: 550px;
+    }
+
+    @media only screen and (max-width: 1024px) {
+        #NewProcessTicket .TableLike > div {
+            max-width: 100%;
+            padding: 0 var(--padding-lg);
+        }
     }
 
     #NewProcessTicket .TableLike label {
@@ -332,6 +345,14 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         align-items: center;
     }
 
+    @media only screen and (max-width: 1024px) {
+        #ActivityDialogContent div.ContentColumn .LayoutPopup.ARIARoleMain {
+            width: 100%;
+            padding: 0 var(--padding-lg);
+        }
+    }
+    
+
     #ActivityDialogContent .ContentColumn .Content, 
     #ActivityDialogContent .ContentColumn .TableLike {
         padding: 0;
@@ -343,6 +364,12 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         align-items: center;
     }
 
+    @media only screen and (max-width: 1024px) {
+        #ActivityDialogContent .ContentColumn .Content {
+            width: 100%;
+        }
+    }
+
     #ActivityDialogContent .ContentColumn .Content > fieldset,
     #ActivityDialogContent .ContentColumn .Content + div {
         width: 550px;
@@ -350,7 +377,14 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         display: flex;
         flex-flow: column;
         border: 0;
-        gap: 15px;
+        gap: var(--gap-md-sm);
+    }
+
+    @media only screen and (max-width: 1024px) {
+        #ActivityDialogContent .ContentColumn .Content > fieldset,
+        #ActivityDialogContent .ContentColumn .Content + div {
+            width: 100%;
+        }
     }
 
     .LayoutPopup #ActivityDialogContent .ContentColumn .Content > fieldset,
@@ -358,6 +392,14 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         max-width: 550px;
         min-width: unset;
         border: 0;
+    }
+
+    @media only screen and (max-width: 1024px) {
+        .LayoutPopup #ActivityDialogContent .ContentColumn .Content > fieldset,
+        .LayoutPopup #ActivityDialogContent .ContentColumn .Content + div {
+            width: 100%;
+            max-width: 100%;
+        }
     }
 
     #ActivityDialogContent .card-item {

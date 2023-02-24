@@ -92,7 +92,7 @@
 [% RenderBlockStart("TableComplex") %]
 [% RenderBlockStart("TableComplexBlock") %]
         [% IF !Data.AJAX.defined %]
-            <div class="WidgetSimple SpacingTop Expanded" id="Widget[% Data.Name | html %]">
+        <div class="WidgetSimple Expanded" id="Widget[% Data.Name | html %]">
         [% END %]
 
         <div class="Header">
@@ -116,21 +116,21 @@
             </div>
         </div>
 [% RenderBlockStart("TableComplexBlockActionRow") %]
-                <div class="LightRow Bottom">
-                    <ul class="Actions">
+        <div class="LightRow Bottom">
+            <ul class="Actions">
 [% RenderBlockStart("TableComplexBlockActionRowBulk") %]
-                        <li class="Bulk">
-                            <span class="checkbox-container">
-                                <input type="checkbox" class="SelectAll" title="[% Translate("Select all") | html %]" id="SelectAllLinks[% Translate(Data.TableNumber) | html %]" autocomplete="off" />
-                                <label for="SelectAllLinks[% Translate(Data.TableNumber) | html %]">[% Translate("Select all") | html %]</label>
-                            </span>
-                        </li>
+                <li class="Bulk">
+                    <span class="checkbox-container">
+                        <input type="checkbox" class="SelectAll" title="[% Translate("Select all") | html %]" id="SelectAllLinks[% Translate(Data.TableNumber) | html %]" autocomplete="off" />
+                        <label for="SelectAllLinks[% Translate(Data.TableNumber) | html %]">[% Translate("Select all") | html %]</label>
+                    </span>
+                </li>
 [% RenderBlockEnd("TableComplexBlockActionRowBulk") %]
-                    </ul>
-                </div>
+            </ul>
+        </div>
 [% RenderBlockEnd("TableComplexBlockActionRow") %]
 
-            <div class="Content AutoHeight scroll-bar-styled">
+            <div class="Content AutoHeight scroll-bar-styled no-padding">
 [% RenderBlockStart("ContentLargePreferencesForm") %]
                     <div id="linkobject-[% Data.Name | html %]-setting" class="Hidden">
                         <form action="[% Env("CGIHandle") %]" method="post" enctype="multipart/form-data" name="linkobject-[% Data.NameForm | html %]_setting_form"
@@ -186,7 +186,7 @@
                     </div>
 [% RenderBlockEnd("ContentLargePreferencesForm") %]
 
-                <div id="[% Data.Name | html %]">
+                <div id="[% Data.Name | html %]" class="border-bottom" style="overflow-x:auto">
                     <table class="DataTable">
                         <thead>
                             <tr>
@@ -210,28 +210,40 @@
                 </div>
 [% RenderBlockStart("TableComplexBlockFooterNormal") %]
 [% RenderBlockEnd("TableComplexBlockFooterNormal") %]
-[% RenderBlockStart("TableComplexBlockFooterAdd") %]
-            <div class="SpacingTopSmall">
-                [% Data.LinkTypeStrg %]
 
-                <button class="CallForAction Inline btn-main btn-primary btn-width-sm" id="AddLinks" name="AddLinks" type="submit" title="[% Translate("Add links") | html %]">
-                    <span>[% Translate("Add links") | html %]</span>
-                </button>
-            </div>
-            <input type="hidden" name="SubmitLink" value="[% Translate("Link") | html %]" />
+# ---
+# Forwwward
+# ---
+# --- added <div class="inline-filter-field WidgetSimple"> and <div class="Content"> div wrappers,
+# --- added <span> wrappers and removed <div class='SpacingTopSmall'> parent
+[% RenderBlockStart("TableComplexBlockFooterAdd") %]
+                <div class="inline-filter-field WidgetSimple">
+                    <div class="Content">
+                        <span>
+                            [% Data.LinkTypeStrg %]
+                        </span>
+
+                        <span>
+                            <button class="CallForAction Inline btn-main btn-primary" id="AddLinks" name="AddLinks" type="submit" title="[% Translate("Add links") | html %]">
+                                <span>[% Translate("Add links") | html %]</span>
+                            </button>
+                        </span>
+                        <input type="hidden" name="SubmitLink" value="[% Translate("Link") | html %]" />
+                    </div>
+                </div>
 [% RenderBlockEnd("TableComplexBlockFooterAdd") %]
+# ---
 [% RenderBlockStart("TableComplexBlockFooterDelete") %]
-                <div class="SpacingTopSmall">
+                <div>
                     <button class="CallForAction btn-primary btn-main btn-width-md" type="submit" title="[% Translate("Delete links") | html %]">
                         <span>[% Translate("Delete links") | html %]</span>
                     </button>
                 </div>
                 <input type="hidden" name="SubmitDelete" value="[% Translate("Delete") | html %]" />
 [% RenderBlockEnd("TableComplexBlockFooterDelete") %]
-
             </div>
         [% IF !Data.AJAX.defined %]
-            </div>
+        </div>
         [% END %]
 [% RenderBlockEnd("TableComplexBlock") %]
 [% RenderBlockEnd("TableComplex") %]

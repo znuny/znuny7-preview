@@ -154,8 +154,18 @@ fieldset legend a {
 
 
 #EditDialog {
-    width: 800px;
-    max-height: 70vh; /* ED added on 23/01/18 */
+    max-width: 800px;
+    /*max-height: 70vh;*/ /* ED added on 23/01/18 */
+    /*                      beatriz removed on 23/02/15 - modal content restructure */
+    display: flex;
+    flex-flow: column;
+    gap: var(--gap-md-sm);
+}
+
+.Fields {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-md-sm);
 }
 
 #EditDialog .InputField_Search {

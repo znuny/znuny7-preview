@@ -15,7 +15,7 @@
         <h1 class="PageTitle">Tickets</h1>
         <div class="Content">
 [% RenderBlockStart("Filled") %]
-            <div class="ActionRow">
+            <div class="ActionRow ActionRow-full-width">
                 <ul class="Filter Tabs">
 [% RenderBlockStart("FilterHeader") %]
                     <li>
@@ -222,14 +222,14 @@
                 <h2>[% Translate("Welcome!") | html %]</h2>
 [% RenderBlockStart("EmptyDefaultButton") %]
                 <p>[% Translate("Please click the button below to create your first ticket.") | html %]</p>
-                <a class="Button" href="[% Env("Baselink") %]Action=CustomerTicketMessage">[% Translate("Create your first ticket") | html %]</a>
+                <a class="btn-primary btn-main btn-width-lg" href="[% Env("Baselink") %]Action=CustomerTicketMessage">[% Translate("Create your first ticket") | html %]</a>
 [% RenderBlockEnd("EmptyDefaultButton") %]
 [% RenderBlockEnd("EmptyDefault") %]
 [% RenderBlockStart("EmptyCustom") %]
                 <h2>[% Translate(Data.Title) | html %]</h2>
                 <p>[% Translate(Data.Text) | html %]</p>
 [% RenderBlockStart("EmptyCustomButton") %]
-                <a class="Button" href="[% Env("Baselink") %]Action=CustomerTicketMessage">[% Translate(Data.Button) | html %]</a>
+                <a class="btn-primary btn-main btn-width-lg" href="[% Env("Baselink") %]Action=CustomerTicketMessage">[% Translate(Data.Button) | html %]</a>
 [% RenderBlockEnd("EmptyCustomButton") %]
 [% RenderBlockEnd("EmptyCustom") %]
         </div>

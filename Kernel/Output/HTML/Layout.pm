@@ -35,12 +35,10 @@ our @ObjectDependencies = (
     'Kernel::System::LastViews',
     'Kernel::System::Log',
     'Kernel::System::Main',
-    'Kernel::System::OTRSBusiness',
     'Kernel::System::State',
     'Kernel::System::Storable',
     'Kernel::System::SystemMaintenance',
     'Kernel::System::User',
-    'Kernel::System::VideoChat',
     'Kernel::System::Web::Request',
 );
 
@@ -724,11 +722,6 @@ sub Login {
     $Self->LoaderCreateJavaScriptTranslationData();
     $Self->LoaderCreateJavaScriptTemplateData();
 
-    my $OTRSBusinessObject = $Kernel::OM->Get('Kernel::System::OTRSBusiness');
-    $Param{OTRSBusinessIsInstalled} = $OTRSBusinessObject->OTRSBusinessIsInstalled();
-    $Param{OTRSSTORMIsInstalled}    = $OTRSBusinessObject->OTRSSTORMIsInstalled();
-    $Param{OTRSCONTROLIsInstalled}  = $OTRSBusinessObject->OTRSCONTROLIsInstalled();
-
     # we need the baselink for VerfifiedGet() of selenium tests
     $Self->AddJSData(
         Key   => 'Baselink',
@@ -1049,16 +1042,6 @@ sub Error {
 
     if ( !$Param{Message} ) {
         $Param{Message} = $Param{BackendMessage};
-
-        # Don't check for business package if the database was not yet configured (in the installer).
-        if (
-            $Kernel::OM->Get('Kernel::Config')->Get('SecureMode')
-            && $Kernel::OM->Get('Kernel::Config')->Get('DatabaseDSN')
-            && !$Kernel::OM->Get('Kernel::System::OTRSBusiness')->OTRSBusinessIsInstalled()
-            )
-        {
-            $Param{ShowOTRSBusinessHint}++;
-        }
     }
 
     if ( $Param{BackendTraceback} ) {
@@ -1408,132 +1391,18 @@ sub Header {
 
     # run tool bar item modules
     if ( $Self->{UserID} && $Self->{UserType} eq 'User' ) {
+
         my $ToolBarModule = $ConfigObject->Get('Frontend::ToolBarModule');
+
         if ( $Param{ShowToolbarItems} && ref $ToolBarModule eq 'HASH' ) {
 
             $Self->Block(
                 Name => 'ToolBar',
                 Data => \%Param,
             );
-
-            my %Modules;
-            my %Jobs = %{$ToolBarModule};
-
-            # get group object
-            my $GroupObject = $Kernel::OM->Get('Kernel::System::Group');
-
-            MODULE:
-            for my $Job ( sort keys %Jobs ) {
-
-                # load and run module
-                next MODULE if !$MainObject->Require( $Jobs{$Job}->{Module} );
-                my $Object = $Jobs{$Job}->{Module}->new(
-                    %{$Self},    # UserID etc.
-                );
-                next MODULE if !$Object;
-
-                my $ToolBarAccessOk;
-
-                # if group restriction for tool-bar is set, check user permission
-                if ( $Jobs{$Job}->{Group} ) {
-
-                    # remove white-spaces
-                    $Jobs{$Job}->{Group} =~ s{\s}{}xmsg;
-
-                    # get group configurations
-                    my @Items = split( ';', $Jobs{$Job}->{Group} );
-
-                    ITEM:
-                    for my $Item (@Items) {
-
-                        # split values into permission and group
-                        my ( $Permission, $GroupName ) = split( ':', $Item );
-
-                        # log an error if not valid setting
-                        if ( !$Permission || !$GroupName ) {
-                            $Kernel::OM->Get('Kernel::System::Log')->Log(
-                                Priority => 'error',
-                                Message  => "Invalid config for ToolBarModule $Job - Key Group: '$Item'! "
-                                    . "Need something like 'Permission:Group;'",
-                            );
-                        }
-
-                        # get groups for current user
-                        my %Groups = $GroupObject->PermissionUserGet(
-                            UserID => $Self->{UserID},
-                            Type   => $Permission,
-                        );
-
-                        # next job if user have not groups
-                        next ITEM if !%Groups;
-
-                        # check user belongs to the correct group
-                        my %GroupsReverse = reverse %Groups;
-                        next ITEM if !$GroupsReverse{$GroupName};
-
-                        $ToolBarAccessOk = 1;
-
-                        last ITEM;
-                    }
-
-                    # go to the next module if not permissions
-                    # for the current one
-                    next MODULE if !$ToolBarAccessOk;
-                }
-
-                %Modules = ( $Object->Run( %Param, Config => $Jobs{$Job} ), %Modules );
-            }
-
-            # show tool bar items
-            MODULE:
-            for my $Key ( sort keys %Modules ) {
-                next MODULE if !%{ $Modules{$Key} };
-
-                # For ToolBarSearchFulltext module take into consideration SearchInArchive settings.
-                # See bug#13790 (https://bugs.otrs.org/show_bug.cgi?id=13790).
-                if ( $ConfigObject->Get('Ticket::ArchiveSystem') && $Modules{$Key}->{Block} eq 'ToolBarSearch' ) {
-                    $Modules{$Key}->{SearchInArchive}
-                        = $ConfigObject->Get('Ticket::Frontend::AgentTicketSearch')->{Defaults}->{SearchInArchive};
-                }
-
-                if (
-                    $Modules{$Key}->{Block} eq 'ToolBarSearch'
-                    && $Self->{UserToolBarSearchBackend}
-                    && $Self->{UserToolBarSearchBackend} eq 'ToolBarSearchBackend' . $Modules{$Key}->{Name}
-                    )
-                {
-                    $Modules{$Key}->{Checked} = 'checked="checked"';
-                }
-
-                if ( $Modules{$Key}->{Block} eq 'ToolBarItem' ) {
-                    $Modules{$Key}->{Block} = 'ToolBarPersonalViews';
-                }
-                $Modules{$Key}->{Block} //= 'ToolBarPersonalViews';
-
-                $Self->Block(
-                    Name => $Modules{$Key}->{Block},
-                    Data => {
-                        %{ $Modules{$Key} },
-                        AccessKeyReference => $Modules{$Key}->{AccessKey}
-                        ? " ($Modules{$Key}->{AccessKey})"
-                        : '',
-                    },
-                );
-            }
-
-            # Show links to last views, if enabled for tool bar.
-            my $ToolBarLastViewsHTML = $Self->_BuildLastViewsOutput(
-                Interface => 'Agent',
-                Position  => 'ToolBar',
+            $Self->ToolbarModules(
+                ToolBarModule => $ToolBarModule,
             );
-            if ( defined $ToolBarLastViewsHTML && length $ToolBarLastViewsHTML ) {
-                $Self->Block(
-                    Name => 'ToolBarLastViews',
-                    Data => {
-                        ToolBarLastViewsHTML => $ToolBarLastViewsHTML,
-                    },
-                );
-            }
         }
 
         if ( $Kernel::OM->Get('Kernel::System::Main')->Require( 'Kernel::System::Chat', Silent => 1 ) ) {
@@ -1638,10 +1507,6 @@ sub Header {
         }
     }
 
-    if ( $ConfigObject->Get('SecureMode') ) {
-        $Param{OTRSBusinessIsInstalled} = $Kernel::OM->Get('Kernel::System::OTRSBusiness')->OTRSBusinessIsInstalled();
-    }
-
     # create & return output
     $Output .= $Self->Output(
         TemplateFile => "Header$Type",
@@ -1652,6 +1517,150 @@ sub Header {
     $Self->_DisableBannerCheck( OutputRef => \$Output );
 
     return $Output;
+}
+
+sub ToolbarModules {
+    my ( $Self, %Param ) = @_;
+
+    my $MainObject   = $Kernel::OM->Get('Kernel::System::Main');
+    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+
+    my %ToolBarModuleBlocks = map { $Param{ToolBarModule}->{$_}->{Block} || 'ToolBarPersonalViews' => 1 }
+        grep { defined $Param{ToolBarModule}->{$_} } keys %{ $Param{ToolBarModule} };
+
+    # renders ToolBarContainer if a ToolBarModule is active
+    for my $Block ( sort keys %ToolBarModuleBlocks ) {
+        $Self->Block(
+            Name => $Block . 'Container',
+            Data => \%Param,
+        );
+    }
+
+    my %Modules;
+    my %Jobs = %{ $Param{ToolBarModule} };
+
+    # get group object
+    my $GroupObject = $Kernel::OM->Get('Kernel::System::Group');
+
+    MODULE:
+    for my $Job ( sort keys %Jobs ) {
+
+        # load and run module
+        next MODULE if !$MainObject->Require( $Jobs{$Job}->{Module} );
+        my $Object = $Jobs{$Job}->{Module}->new(
+            %{$Self},    # UserID etc.
+        );
+        next MODULE if !$Object;
+
+        my $ToolBarAccessOk;
+
+        # if group restriction for tool-bar is set, check user permission
+        if ( $Jobs{$Job}->{Group} ) {
+
+            # remove white-spaces
+            $Jobs{$Job}->{Group} =~ s{\s}{}xmsg;
+
+            # get group configurations
+            my @Items = split( ';', $Jobs{$Job}->{Group} );
+
+            ITEM:
+            for my $Item (@Items) {
+
+                # split values into permission and group
+                my ( $Permission, $GroupName ) = split( ':', $Item );
+
+                # log an error if not valid setting
+                if ( !$Permission || !$GroupName ) {
+                    $Kernel::OM->Get('Kernel::System::Log')->Log(
+                        Priority => 'error',
+                        Message  => "Invalid config for ToolBarModule $Job - Key Group: '$Item'! "
+                            . "Need something like 'Permission:Group;'",
+                    );
+                }
+
+                # get groups for current user
+                my %Groups = $GroupObject->PermissionUserGet(
+                    UserID => $Self->{UserID},
+                    Type   => $Permission,
+                );
+
+                # next job if user have not groups
+                next ITEM if !%Groups;
+
+                # check user belongs to the correct group
+                my %GroupsReverse = reverse %Groups;
+                next ITEM if !$GroupsReverse{$GroupName};
+
+                $ToolBarAccessOk = 1;
+
+                last ITEM;
+            }
+
+            # go to the next module if not permissions
+            # for the current one
+            next MODULE if !$ToolBarAccessOk;
+        }
+
+        %Modules = ( $Object->Run( %Param, Config => $Jobs{$Job} ), %Modules );
+    }
+
+    # show tool bar items
+    MODULE:
+    for my $Key ( sort keys %Modules ) {
+        next MODULE if !%{ $Modules{$Key} };
+
+        $Modules{$Key}->{Block} //= 'ToolBarPersonalViews';
+
+        # For ToolBarSearchFulltext module take into consideration SearchInArchive settings.
+        # See bug#13790 (https://bugs.otrs.org/show_bug.cgi?id=13790).
+        if ( $ConfigObject->Get('Ticket::ArchiveSystem') && $Modules{$Key}->{Block} eq 'ToolBarSearch' ) {
+            $Modules{$Key}->{SearchInArchive}
+                = $ConfigObject->Get('Ticket::Frontend::AgentTicketSearch')->{Defaults}->{SearchInArchive};
+        }
+
+        if (
+            $Modules{$Key}->{Block} eq 'ToolBarSearch'
+            && $Self->{UserToolBarSearchBackend}
+            && $Self->{UserToolBarSearchBackend} eq 'ToolBarSearchBackend' . $Modules{$Key}->{Name}
+            )
+        {
+            $Modules{$Key}->{Checked} = 'checked="checked"';
+        }
+
+        if ( $Modules{$Key}->{Block} eq 'ToolBarItem' ) {
+            $Modules{$Key}->{Block} = 'ToolBarPersonalViews';
+        }
+
+        $Self->Block(
+            Name => $Modules{$Key}->{Block},
+            Data => {
+                %{ $Modules{$Key} },
+                AccessKeyReference => $Modules{$Key}->{AccessKey}
+                ? " ($Modules{$Key}->{AccessKey})"
+                : '',
+            },
+        );
+    }
+
+    my $ToolBarLastViewsHTML = $Self->_BuildLastViewsOutput(
+        Interface => 'Agent',
+        Position  => 'ToolBar',
+    );
+
+    if ( defined $ToolBarLastViewsHTML && length $ToolBarLastViewsHTML ) {
+        $Self->Block(
+            Name => 'ToolBarLastViews',
+            Data => {
+                ToolBarLastViewsHTML => $ToolBarLastViewsHTML,
+            },
+        );
+    }
+
+    if ( $Param{ReturnResult} ) {
+        return $Self->Output(
+            TemplateFile => "HeaderToolbar",
+        );
+    }
 }
 
 sub Footer {
@@ -1717,22 +1726,6 @@ sub Footer {
         }
     }
 
-    # get OTRS business object
-    my $OTRSBusinessObject = $Kernel::OM->Get('Kernel::System::OTRSBusiness');
-
-    # don't check for business package if the database was not yet configured (in the installer)
-    if ( $ConfigObject->Get('SecureMode') ) {
-        $Param{OTRSBusinessIsInstalled} = $OTRSBusinessObject->OTRSBusinessIsInstalled();
-        $Param{OTRSSTORMIsInstalled}    = $OTRSBusinessObject->OTRSSTORMIsInstalled();
-        $Param{OTRSCONTROLIsInstalled}  = $OTRSBusinessObject->OTRSCONTROLIsInstalled();
-    }
-
-    # Check if video chat is enabled.
-    if ( $Kernel::OM->Get('Kernel::System::Main')->Require( 'Kernel::System::VideoChat', Silent => 1 ) ) {
-        $Param{VideoChatEnabled} = $Kernel::OM->Get('Kernel::System::VideoChat')->IsEnabled()
-            || $Kernel::OM->Get('Kernel::System::Web::Request')->GetParam( Param => 'UnitTestMode' ) // 0;
-    }
-
     # Set an array with pending states.
     my @PendingStateIDs = $Kernel::OM->Get('Kernel::System::State')->StateGetStatesByType(
         StateType => [ 'pending reminder', 'pending auto' ],
@@ -1761,8 +1754,6 @@ sub Footer {
         CustomerInfoSet                => $ConfigObject->Get('Ticket::Frontend::CustomerInfoCompose'),
         IncludeUnknownTicketCustomers  => $ConfigObject->Get('Ticket::IncludeUnknownTicketCustomers'),
         InputFieldsActivated           => $ConfigObject->Get('ModernizeFormFields'),
-        OTRSBusinessIsInstalled        => $Param{OTRSBusinessIsInstalled},
-        VideoChatEnabled               => $Param{VideoChatEnabled},
         DatepickerShowWeek             => $ConfigObject->Get('Datepicker::ShowWeek') || 0,
         PendingStateIDs                => \@PendingStateIDs,
         CheckSearchStringsForStopWords => (
@@ -4012,11 +4003,6 @@ sub CustomerLogin {
     $Self->LoaderCreateJavaScriptTranslationData();
     $Self->LoaderCreateJavaScriptTemplateData();
 
-    my $OTRSBusinessObject = $Kernel::OM->Get('Kernel::System::OTRSBusiness');
-    $Param{OTRSBusinessIsInstalled} = $OTRSBusinessObject->OTRSBusinessIsInstalled();
-    $Param{OTRSSTORMIsInstalled}    = $OTRSBusinessObject->OTRSSTORMIsInstalled();
-    $Param{OTRSCONTROLIsInstalled}  = $OTRSBusinessObject->OTRSCONTROLIsInstalled();
-
     $Self->AddJSData(
         Key   => 'Baselink',
         Value => $Self->{Baselink},
@@ -4406,12 +4392,6 @@ sub CustomerFooter {
 
     my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
 
-    # Check if video chat is enabled.
-    if ( $Kernel::OM->Get('Kernel::System::Main')->Require( 'Kernel::System::VideoChat', Silent => 1 ) ) {
-        $Param{VideoChatEnabled} = $Kernel::OM->Get('Kernel::System::VideoChat')->IsEnabled()
-            || $Kernel::OM->Get('Kernel::System::Web::Request')->GetParam( Param => 'UnitTestMode' ) // 0;
-    }
-
     # Check if customer user has permission for chat.
     my $CustomerChatPermission;
     if ( $Kernel::OM->Get('Kernel::System::Main')->Require( 'Kernel::System::Chat', Silent => 1 ) ) {
@@ -4444,14 +4424,6 @@ sub CustomerFooter {
         }
     }
 
-    # don't check for business package if the database was not yet configured (in the installer)
-    if ( $ConfigObject->Get('SecureMode') ) {
-        my $OTRSBusinessObject = $Kernel::OM->Get('Kernel::System::OTRSBusiness');
-        $Param{OTRSBusinessIsInstalled} = $OTRSBusinessObject->OTRSBusinessIsInstalled();
-        $Param{OTRSSTORMIsInstalled}    = $OTRSBusinessObject->OTRSSTORMIsInstalled();
-        $Param{OTRSCONTROLIsInstalled}  = $OTRSBusinessObject->OTRSCONTROLIsInstalled();
-    }
-
     # AutoComplete-Config
     my $AutocompleteConfig = $ConfigObject->Get('AutoComplete::Customer');
 
@@ -4475,12 +4447,8 @@ sub CustomerFooter {
         CustomerPanelSessionName => $ConfigObject->Get('CustomerPanelSessionName'),
         UserLanguage             => $Self->{UserLanguage},
         CheckEmailAddresses      => $ConfigObject->Get('CheckEmailAddresses'),
-        OTRSBusinessIsInstalled  => $Param{OTRSBusinessIsInstalled},
-        OTRSSTORMIsInstalled     => $Param{OTRSSTORMIsInstalled},
-        OTRSCONTROLIsInstalled   => $Param{OTRSCONTROLIsInstalled},
         InputFieldsActivated     => $ConfigObject->Get('ModernizeCustomerFormFields'),
         Autocomplete             => $AutocompleteConfig,
-        VideoChatEnabled         => $Param{VideoChatEnabled},
         WebMaxFileUpload         => $ConfigObject->Get('WebMaxFileUpload'),
         CustomerChatPermission   => $CustomerChatPermission,
     );

@@ -18,11 +18,6 @@
                     <li>
                         <a href="[% Env("Baselink") %]Action=AdminSystemConfiguration" class="GoBackButton CallForAction btn-main btn-primary-ghost"><span><i class="fa fa-caret-left"></i>[% Translate("Go back") | html %]</span></a>
                     </li>
-                    [% IF Data.OTRSBusinessIsInstalled %]
-                        <li>
-                            <a href="[% Env("Baselink") %]Action=AdminSystemConfigurationDeploymentHistory;Subaction=DeploymentHistory" class="CallForAction btn-main btn-primary OTRSBusinessRequired"><span>[% Translate("History") | html %]</span></a>
-                        </li>
-                    [% END %]
                 </ul>
             </div>
         </div>

@@ -1297,7 +1297,7 @@ sub PackageUninstall {
 =head2 GetRequiredPackages()
 
 This function returns an array of hashes that contains information
-about <RequiredPackages> of the .sopm-file.
+about C<RequiredPackages> of the .sopm-file.
 
     my $PackageRequired = $PackageObject->GetRequiredPackages(
         Structure => \%Structure,       # return of PackageParse()
@@ -2871,8 +2871,7 @@ sub AnalyzePackageFrameworkRequirements {
 
 =head2 PackageUpgradeAll()
 
-Updates installed packages to their latest version. Also updates OTRS Business Solution™ if system
-    is entitled and there is an update.
+Updates installed packages to their latest version.
 
     my %Result = $PackageObject->PackageUpgradeAll(
         Force           => 1,     # optional 1 or 0, Upgrades packages even if validation fails.
@@ -3400,7 +3399,7 @@ sub CheckVersion {
 =head2 GetRequiredModules()
 
 This function returns an array of hashes that contains information
-about <RequiredModules> of the .sopm-file.
+about C<RequiredModules> of the .sopm-file.
 
     my $ModuleRequired = $PackageObject->GetRequiredModules(
         Structure => \%Structure,       # return of PackageParse()
@@ -3412,12 +3411,12 @@ Returns:
         {
           'Name'        => 'GD::Graph',
           'Version'     => undef,
-          'IsInstalled' => 'Problem'
+          'IsInstalled' => 'Problem',
         },
         {
           'Name'        => 'Data::Dumper',
           'Version'     => '2.179',
-          'IsInstalled' => 'OK'
+          'IsInstalled' => 'OK',
         }
     );
 

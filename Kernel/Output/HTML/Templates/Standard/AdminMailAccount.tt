@@ -116,8 +116,13 @@
                             <th>[% Translate("Validity") | html %]</th>
                             <th>[% Translate("Changed") | html %]</th>
                             <th>[% Translate("Created") | html %]</th>
-                            <th>[% Translate("Delete") | html %]</th>
-                            <th>[% Translate("Run Now!") | html %]</th>
+# ---
+# Forwwward
+# ---
+# - Added "Center" class, replaced "Run Now!" text with "Run"
+                            <th class="Center">[% Translate("Delete") | html %]</th>
+                            <th class="Center">[% Translate("Run") | html %]</th>
+# ---
                         </tr>
                     </thead>
                     <tbody>
@@ -150,7 +155,7 @@
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
-                            <td>
+                            <td class="Center">
                                 <a class="AsBlock table-actions-button" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Run;ID=[% Data.ID | uri %];[% Env("ChallengeTokenParam") | html %]">[% Translate("Fetch mail") | html %]</a>
                             </td>
                         </tr>

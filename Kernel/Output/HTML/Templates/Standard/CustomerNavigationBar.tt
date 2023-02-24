@@ -7,9 +7,6 @@
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
 
-<!-- start Notifications -->
-[% Data.Notification %]
-<!-- end Notifications -->
 <!-- start NavigationBar -->
 <div id="Navigation">
     <ul class="menuItems">
@@ -30,6 +27,10 @@
     </ul>
 </div>
 <!-- end NavigationBar -->
+
+<!-- start Notifications -->
+[% Data.Notification %]
+<!-- end Notifications -->
 
 [% RenderBlockStart("LastViewsMenuBar") %]
 <div class="LastViewMenuBar">

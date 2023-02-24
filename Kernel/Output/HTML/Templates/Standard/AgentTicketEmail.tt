@@ -23,8 +23,8 @@
 [% RenderBlockEnd("CustomerTable") %]
         </div>
         <div class="ContentColumn card">
-            <form action="[% Env(" CGIHandle") %]" method="post" enctype="multipart/form-data" name="compose" id="NewEmailTicket" class="Validate PreventMultipleSubmits">
-                <input type="hidden" name="Action" value="[% Env(" Action") %]" />
+            <form action="[% Env("CGIHandle") %]" method="post" enctype="multipart/form-data" name="compose" id="NewEmailTicket" class="Validate PreventMultipleSubmits">
+                <input type="hidden" name="Action" value="[% Env("Action") %]" />
                 <input type="hidden" name="Subaction" value="StoreNew" />
                 <input type="hidden" name="FormID" value="[% Data.FormID | html %]" />
                 <input type="hidden" name="ExpandCustomerName" id="ExpandCustomerName" value="0" />
@@ -513,8 +513,8 @@
     <div id="CustomerTickets"></div>
 </div>
 # example template form for customizations
-#<form action="[% Env(" CGIHandle") %]" method="post" enctype="multipart/form-data" id="Template1">
-# <input type="hidden" name="Action" value="[% Env(" Action") %]" />
+#<form action="[% Env("CGIHandle") %]" method="post" enctype="multipart/form-data" id="Template1">
+# <input type="hidden" name="Action" value="[% Env("Action") %]" />
 # <input type="hidden" name="Subaction" value="StoreNew" />
 # <input type="hidden" name="FormID" value="[% Data.FormID | html %]" />
 # <input type="hidden" name="ExpandCustomerName" value="2" />

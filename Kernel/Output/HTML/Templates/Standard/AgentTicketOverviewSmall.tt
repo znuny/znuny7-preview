@@ -26,7 +26,7 @@
         [% Translate("No ticket data found.") | html %]
     </li>
 [% RenderBlockEnd("NoTicketFound") %]
-    <form class="scroll-bar-styled" action="[% Env(" CGIHandle") %]" method="post" enctype="multipart/form-data" name="matrix">
+    <form class="scroll-bar-styled" action="[% Env("CGIHandle") %]" method="post" enctype="multipart/form-data" name="matrix">
         <input type="hidden" name="Action" value="AgentTicketBulk" />
         <input type="hidden" name="TicketID" value="" />
         <input type="hidden" name="LastColumnFilter" id="LastColumnFilter" value="[% Data.LastColumnFilter | html %]" />
@@ -325,7 +325,7 @@
 [% RenderBlockEnd("DocumentContent") %]
 [% RenderBlockStart("DocumentMenuItemMoveForm") %]
     <li class="[% Data.Class | html %]">
-        <form title="[% Translate(" Move ticket to a different queue") | html %]" action="[% Env(" CGIHandle") | html %]" method="post">
+        <form title="[% Translate(" Move ticket to a different queue") | html %]" action="[% Env("CGIHandle") | html %]" method="post">
             <input type="hidden" name="Action" value="AgentTicketMove" />
             <input type="hidden" name="QueueID" value="[% Data.QueueID | html %]" />
             <input type="hidden" name="TicketID" value="[% Data.TicketID | html %]" />
@@ -335,7 +335,7 @@
     </li>
 [% RenderBlockEnd("DocumentMenuItemMoveForm") %]
 [% RenderBlockStart("DocumentColumnFilterForm") %]
-    <form title="[% Translate(" Column Filters Form") | html %]" action="[% Env(" CGIHandle") | html %]" method="post" name="ColumnFilterAttributes" id="ColumnFilterAttributes">
+    <form title="[% Translate(" Column Filters Form") | html %]" action="[% Env("CGIHandle") | html %]" method="post" name="ColumnFilterAttributes" id="ColumnFilterAttributes">
 [% RenderBlockStart("DocumentColumnFilterFormElement") %]
         <input type="hidden" name="[% Data.ElementName | html %]" value="[% Data.ElementValue | html %]" />
 [% RenderBlockEnd("DocumentColumnFilterFormElement") %]

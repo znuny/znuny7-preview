@@ -170,6 +170,11 @@ Core.Customer.TicketZoom = (function (TargetNS) {
         $('#Messages li').removeClass('Visible');
         $Message.addClass('Visible');
         LoadMessage($Message);
+
+        var ActiveScreenSize = Core.Config.Get('ActiveScreenSize');
+        if (ActiveScreenSize && ActiveScreenSize !== 'ScreenXL'){
+            $('#FollowUp').detach().appendTo('.Visible');
+        }
     }
 
     /**
@@ -191,7 +196,6 @@ Core.Customer.TicketZoom = (function (TargetNS) {
             $Form,
             FieldID,
             DynamicFieldNames = Core.Config.Get('DynamicFieldNames');
-
 
         ToggleMessage($('#Messages li:last'));
 
@@ -271,6 +275,18 @@ Core.Customer.TicketZoom = (function (TargetNS) {
         $('a.AsPopup').on('click', function () {
             Core.UI.Popup.OpenPopup($(this).attr('href'), 'TicketAction');
             return false;
+        });
+
+        Core.App.Subscribe('Event.App.Responsive.ScreenXL', function () {
+            if ($('#FollowUp')) {
+                $('#FollowUp').detach().appendTo('.main-content-wrapper');
+            }
+        });
+
+        Core.App.Subscribe('Event.App.Responsive.SmallerOrEqualScreenL', function () {
+            if ($('#FollowUp')) {
+                $('#FollowUp').detach().appendTo('.Visible');
+            }
         });
     };
 

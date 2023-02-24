@@ -72,6 +72,7 @@ tbody tr.UnreadArticles td {
     padding: var(--padding-lg);
     vertical-align: middle;
     box-sizing: border-box;
+    font-size: var(--main-font-size);
 }
 
 .DataTable tr:hover,
@@ -239,8 +240,9 @@ table tr.MasterAction {
     top: 0px;
 }
 
-.DataTable tbody tr.Invalid {
-    color: var(--gray-semi-dark)
+.DataTable tbody tr.Invalid td {
+    background-color: var(--tr-disabled-bg);
+    color: var(--tr-disabled-text);
 }
 
 .DataTable tbody td {
@@ -298,6 +300,10 @@ table tr.MasterAction {
 
 .DataTable tr:nth-child(even) td {
     background-color: var(--table-td-even-bg);
+}
+
+.DataTable .FilterMessage tr:nth-child(even) td {
+    background-color: unset;
 }
 
 /*.DataTable tr:nth-child(even) td.Highlight {
@@ -515,7 +521,7 @@ thead .headerSortDown a {
     padding: var(--padding-lg);
 }
 
-.TableSmall tbody tr.Active td,
+/*.TableSmall tbody tr.Active td,
 .DataTable tbody tr.Active td {
     color: #1A1A1A;
 }
@@ -542,7 +548,7 @@ thead .headerSortDown a {
 
 .TableSmall tbody tr.Active td:first-child {
     border-left: 1px solid #000;
-}
+}*/
 
 .TableSmall td a {
     color: #303030;
@@ -1246,5 +1252,14 @@ table#AlwaysGroups thead tr th:first-child {
 .LinkTable .Content .DataTable tr td {
     border: none;
 }
+
+/**
+* @subsection  MessageBox
+*/
+
+.MessageBox p, .MessageBox a {
+    font-size: var(--main-font-size);
+}
+
 
 } /* end @media */

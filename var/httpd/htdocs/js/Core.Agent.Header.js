@@ -67,7 +67,6 @@ Core.Agent.Header = (function (TargetNS) {
         // Check ToolBar visibility status and toggle accordingly
         function CheckToolBarVisibility() {
             if ($("#ToolBar").hasClass("hide")) {
-
                 // Get ToolBar current height and use it to hide up
                 $("#ToolBar").css("margin-top", -$("#ToolBar .toolbar-row").outerHeight());
                 Core.Agent.PreferencesUpdate('UserToolBar', 0);
@@ -176,15 +175,19 @@ Core.Agent.Header = (function (TargetNS) {
      * @description
      *      This function initialize header refresh.
      */
-    TargetNS.InitToolBarOverview = function () {
-        var RefreshTime = Core.Config.Get('RefreshTimeToolbar');
 
-        if (!$("#ToolBar").length || !RefreshTime) {
+    TargetNS.InitToolBarOverview = function () {
+        var RefreshTimeToolbar = Core.Config.Get('RefreshTimeToolbar'),
+            RefreshTime = Core.Config.Get('Refresh');
+
+        if (!$("#ToolBar").length) {
+            return;
+        }
+        if (RefreshTime || !RefreshTimeToolbar) {
             return;
         }
 
-        Core.Config.Set('RefreshSecondsToolbar', parseInt(RefreshTime, 10) || 0);
-
+        Core.Config.Set('RefreshSecondsToolbar', parseInt(RefreshTimeToolbar, 10) || 0);
         if (!Core.Config.Get('RefreshSecondsToolbar')) {
             return;
         }
@@ -195,33 +198,21 @@ Core.Agent.Header = (function (TargetNS) {
                 function() {
                     var Data = {
                         Action:    'AgentDashboard',
-                        Subaction: 'ToolbarFetch'
+                        Subaction: 'ToolbarFetch',
                     };
 
                     Core.AJAX.FunctionCall(
                         Core.Config.Get('Baselink'),
                         Data,
                         function (Response) {
-                            $.each(Response.IconsOrder, function(index,value) {
-                                if (!$('li[class="' + value + '"]').length) {
-                                    $('<li class ="' + value + '"></li>').insertAfter($('li[class="' + Response.IconsOrder[index-1] + '"]'));
-                                }
 
-                                if (value == "UserAvatar") {
-                                    return;
-                                }
+                            $('.toolbar-row').remove();
+                            $('#ToolBar').prepend(Response);
 
-                                $('li[class="' + value + '"]').html(Response.Icons[Response.IconsOrder[index]]);
-                            });
-
-                            $("#ToolBar").children().each(function(index,element) {
-                                if ($.inArray(element.className, Response.IconsOrder) == -1) {
-                                    $('li[class="' + element.className + '"]').remove();
-                                }
-                            });
-
-                            TargetNS.InitToolBarOverview();
-                        }
+                            Core.UI.InputFields.Init();
+                            TargetNS.Init();
+                        },
+                        'html'
                     );
                 },
                 Core.Config.Get('RefreshSecondsToolbar') * 1000

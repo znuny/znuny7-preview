@@ -64,11 +64,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     border-color: var(--primary-color);
 }
 
-.ItemListGrid > li.OTRSBusiness > a {
-    box-shadow: none;
-    border-color: #75c0d0;
-}
-
 .ItemListGrid > li > a {
     overflow: hidden;
 }

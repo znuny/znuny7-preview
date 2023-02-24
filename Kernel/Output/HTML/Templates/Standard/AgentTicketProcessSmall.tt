@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div class="Content">
+    <div class="Content no-gap">
         <form action="[% Env("CGIHandle") %]" method="post" enctype="multipart/form-data" name="compose" id="NewProcessTicket" class="NewProcessTicketSmall Validate PreventMultipleSubmits">
             <input type="hidden" name="Action" value="[% Env("Action") %]"/>
             <input type="hidden" name="Subaction" value="DisplayActivityDialog"/>

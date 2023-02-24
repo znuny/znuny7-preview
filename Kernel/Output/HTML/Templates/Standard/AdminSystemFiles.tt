@@ -28,7 +28,7 @@
     <div class="ContentColumn">
 
 [% RenderBlockStart("Filter") %]
-        <div class="WidgetSimple InlineFilterField">
+        <div class="WidgetSimple inline-filter-field">
             <div class="Header">
                 <h2>[% Translate("Filter") | html %]</h2>
             </div>

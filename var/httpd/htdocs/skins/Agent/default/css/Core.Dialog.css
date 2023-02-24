@@ -29,6 +29,12 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     z-index: 3500;
 }
 
+@media only screen and (max-width: 1024px) {
+    #Overlay {
+        z-index: 9999;
+    }
+}
+
 /**
  * @subsection  Dialog
  */
@@ -41,14 +47,33 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     border-radius: var(--border-radius-sm);
 }
 
+@media only screen and (max-width: 1024px) {
+    .Dialog {
+        z-index: 999999;
+    }
+}
+
 .Dialog.Modal.Alert {
-    z-index: 6500;
+    z-index: 99999;
 }
 
 .Dialog.Fullsize {
     width: 100%;
     height: 100%;
     left: 0px !important;
+}
+
+
+@media only screen and (max-width: 1024px) {
+    .Dialog.Fullsize {
+        height: auto;
+        top: 50px !important;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        max-width: calc(800px - var(--margin-xl));
+        width: calc(100% - var(--margin-xl));
+    }
 }
 
 .Dialog > .Header {
@@ -179,6 +204,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 }
 
 .Dialog.Alert {
+    position: fixed; /* edit by b on 2023/02/22 - this keeps the dialog in view in case the dialog is triggered when the user has scrolled to the bottom of the page */
     width: 450px;
     top: 100px;
     left: 300px;
@@ -195,17 +221,21 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 .Dialog.modal-sm {
     max-width: 500px;
-    width: 100%;
+    width: calc(100% - var(--margin-xl));
+}
+
+.Dialog.modal-sm .Content {
+    overflow-x: unset;
 }
 
 .Dialog.modal-md {
     max-width: 750px;
-    width: 100%;
+    width: calc(100% - var(--margin-xl));
 }
 
 .Dialog.modal-lg {
     max-width: 850px;
-    width: 100%;
+    width: calc(100% - var(--margin-xl));
 }
 
 .Dialog .Content {
@@ -215,6 +245,8 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     gap: var(--gap-md);
     max-height: 80vh !important;
 }
+
+
 
 /*.Dialog > .Content:has(.InnerContent):has(.ContentFooter) {
     padding: 0;
@@ -226,7 +258,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     padding: 0;
 }
 
-.Dialog .Content fieldset:not(#SearchAttributesHidden){
+.Dialog .Content fieldset:not(#SearchAttributesHidden):not(.flex-row){
     display: flex;
     flex-direction: column;
     gap: var(--gap-sm);
@@ -322,14 +354,14 @@ fieldset.modal-article-filter .field-wrapper {
     border-bottom: 0;
 }
 
-.Content.modal-col-wrapper, 
+.Content.modal-col-wrapper,
 .Content.modal-col-container {
     gap: var(--gap-md);
     padding: var(--padding-lg);
     flex-flow: row;
 }
 
-/*ul#Users, 
+/*ul#Users,
 ul#Groups,
 ul#Roles,
 ul#CustomerUsers,
@@ -353,7 +385,7 @@ ul#Service*/
     border-top-right-radius: 0;
 }
 
-/*ul#Users li, 
+/*ul#Users li,
 ul#Groups li,
 ul#Roles li,
 ul#CustomerUsers li,
@@ -366,7 +398,7 @@ ul#Service li*/
     letter-spacing: .1px;
 }
 
-/*ul#Users .Header, 
+/*ul#Users .Header,
 ul#Groups .Header,
 ul#Roles .Header,
 ul#CustomerUsers .Header,
@@ -395,7 +427,7 @@ ul#Service .Header*/
     padding-top: var(--padding-sm);
 }
 
-.modal-col1 ul:first-child, 
+.modal-col1 ul:first-child,
 .modal-col2 ul:first-child {
     border-bottom: 0;
     border-top-left-radius: var(--border-radius-sm);
@@ -403,7 +435,7 @@ ul#Service .Header*/
     background: var(--modal-header-bg);
 }
 
-.modal-col1 ul:last-child, 
+.modal-col1 ul:last-child,
 .modal-col2 ul:last-child {
     cursor: grab;
     overflow: auto;
@@ -447,8 +479,8 @@ ul#Service .Header*/
 }*/
 
 /*.Field.LayoutGrid .AllocationList.AvailableFields {*/
-    /* This name train is now referred as 
-    .modal-col1 ul:last-child, .modal-col2 ul:last-child 
+    /* This name train is now referred as
+    .modal-col1 ul:last-child, .modal-col2 ul:last-child
 }*/
 
 .Dialog .Field.LayoutGrid .AllocationList.OrderNumbers {

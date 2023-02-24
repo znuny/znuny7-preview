@@ -92,6 +92,11 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         border-radius: 0;
     }
 
+    .main-card-item fieldset,
+    .main-card-item .ActionRow {
+        max-width: 100%;
+    }
+
     div.card,
     span.card,
     form.card,
@@ -151,24 +156,34 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         line-height: normal;
     }
 
-    @media (min-width: 1025px) and (max-width: 1599px) {
+    div.card-item:last-child::after {
+        background: transparent;
+    }
 
-        div.card-item,
-        div.card-item > .Row {
-            background: none;
+    @media (min-width: 1025px) and (max-width: 1399px) {
+
+        .FormScreen:not(.Preferences) div.card-item,
+        .FormScreen:not(.Preferences) div.card-item > .Row {
+            background: transparent;
             border: 0;
+            margin: 0;
+        }
+
+        .FormScreen:not(.Preferences) div.card-item:last-child::after {
+            background: transparent;
+        }
+
+        div.card-item {
+            /*padding: var(--padding-lg) var(--padding-sm); - lateral padding was cutting ajax loader icons in half*/
+            padding: var(--padding-lg);
         }
     
         div.card-item > .Row.col-desktop-50 {
             width: calc(50% - 10px);
         }
     
-        div.card-item {
-            /*padding: var(--padding-lg) var(--padding-sm); - lateral padding was cutting ajax loader icons in half*/
-            padding: var(--padding-lg);
-        }
     
-        div.card-item::after {
+        .FormScreen:not(.Preferences) div.card-item::after {
             content: '';
             width: calc(100% + 200px);
             height: 1px;
@@ -176,6 +191,41 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
             left: -100px;
             bottom: 0;
             background: var(--border-color);
+        }
+    }
+
+    @media only screen and (max-width: 1024px) {
+
+        div.card-item,
+        div.card-item > .Row {
+            background: none;
+            border: 0;
+            width: 100%;
+            margin: 0;
+        }
+
+        div.card-item::after {
+            content: '';
+            width: 100%;
+            height: 1px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background: var(--border-color);
+        }
+
+
+    
+    }
+
+    @media only screen and (max-width: 991px) {
+        div.card-item {
+            padding: var(--padding-lg) 0;
+        }
+
+        div.card-item::after {
+            width: 100%;
+            left: 0;
         }
     }
 
@@ -351,9 +401,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         display: flex;
         flex-flow: row;
         align-items: center;
-        /*justify-content: space-between;*/ /* ed removed the comment on 22/12/13 - Added comment, fixed Close btn position when it exists (Beatriz 22/12/21)*/
-        padding: var(--padding-sm) var(--padding-lg);
-        /* margin-top: var(--margin-lg);  ed commented on 22/12/13 */
+        padding: var(--padding-sm) var(--padding-xl);
         position: relative;
         background: var(--alert-info-bg-color);
         border-radius: var(--border-radius-xxs);
@@ -822,7 +870,6 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         transition: var(--main-transition);
         border: var(--border-width) var(--border-solid) var(--border-color);
         border-radius: var(--border-radius-sm);
-        overflow: hidden;
     }
     
     /**
@@ -1068,7 +1115,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 
     /* ************************************* Search Profile Widget ********************************* */
 
-    .search-profile-widget .Content .Field {
+    .search-profile-widget .Content .field-wrapper {
         padding-bottom: var(--padding-md);
         border-bottom: var(--border-width) var(--border-solid) var(--border-color);
     }

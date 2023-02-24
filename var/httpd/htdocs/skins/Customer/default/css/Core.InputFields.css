@@ -20,16 +20,12 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 .InputField_Container,
 .InputField_InputContainer,
-.InputField_ListContainer,
 .InputField_Container div,
 .InputField_InputContainer div,
-.InputField_ListContainer div,
 fieldset.Columns .Column .InputField_Container,
 fieldset.Columns .Column .InputField_InputContainer,
-fieldset.Columns .Column .InputField_ListContainer,
 fieldset.Columns .Column .InputField_Container div,
-fieldset.Columns .Column .InputField_InputContainer div,
-fieldset.Columns .Column .InputField_ListContainer div {
+fieldset.Columns .Column .InputField_InputContainer div {
     padding: 0;
     overflow: visible;
     width: 100%;
@@ -45,10 +41,8 @@ fieldset.Columns .Column .InputField_InputContainer div {
 
 fieldset div.InputField_Container:first-child,
 fieldset div.InputField_InputContainer:first-child,
-fieldset div.InputField_ListContainer:first-child,
 .InputField_Container div:first-child,
-.InputField_InputContainer div:first-child,
-.InputField_ListContainer div:first-child {
+.InputField_InputContainer div:first-child {
     border-top: none;
     padding-top: 0;
 }
@@ -491,7 +485,12 @@ div.InputField_ToolbarContainer ul li a:hover {
 }
 
 .jstree-InputField .jstree-wholerow-ul .jstree-wholerow-clicked {
-    background-color: #ddd;
+    background-color: var(--primary-color);
+}
+
+.jstree-InputField .jstree-clicked, 
+.jstree-InputField .jstree-anchor.jstree-clicked {
+    color: var(--white);
 }
 
 .jstree-InputField .jstree-wholerow-ul .jstree-wholerow:hover,

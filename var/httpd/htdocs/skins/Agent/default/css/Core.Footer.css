@@ -14,19 +14,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 @media screen,projection,tv,handheld {
 
-html, 
-body{
-    display: flex;
-    flex-flow: column;
-    min-height: 100vh;
-}
-
-#AppWrapper {
-    display: flex;
-    flex-flow: column;
-    min-height: calc(100vh - 31px);
-    overflow: hidden;
-}
 
 #Footer {
     margin-top: auto;

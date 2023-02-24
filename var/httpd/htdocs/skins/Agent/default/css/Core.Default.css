@@ -14,6 +14,34 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 @media screen,projection,tv,handheld {
 
+    html, 
+    body{
+        display: flex;
+        flex-flow: column;
+        min-height: 100vh;
+    }
+
+    @media only screen and (max-width: 1024px) {
+        body, html {
+            font-size: 1em;
+            overflow-x: hidden;
+        }
+
+        html.NoScroll,
+        html.NoScroll body {
+            overflow: hidden;
+        }
+    
+        html.NoScroll body {
+            position: static;
+        }
+    
+        html.NoScroll #AppWrapper {
+            overflow: hidden;
+            width: 100%;
+        }
+    }
+
     /**
     * @subsection  Fonts
     */
@@ -26,15 +54,84 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         background: var(--main-bg-color);
     }
 
+    #AppWrapper {
+        display: flex;
+        flex-flow: column;
+        min-height: calc(100vh - 31px);
+        overflow: hidden;
+    }
+
+    @media only screen and (max-width: 1024px) {
+        #AppWrapper {
+            padding-top: 48px;
+        }
+
+        .RealPopup #AppWrapper {
+            padding-top: 0;
+        }
+    }    
+
     .RTL {
         text-align: right;
         /* this will inherit to all elements because of reset.css */
         direction: rtl;
     }
 
+    /**
+    *  Responsive Sidebar
+    */
+
+    .ResponsiveSidebarContainer {
+        background: rgba(22, 22, 22, 0.7);
+        height: 100%;
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        display: none;
+        z-index: 9999;
+    }
+
+    .ResponsiveHandle {
+        font-size: 1.5em;
+        color: var(--black);
+        cursor: pointer;
+        display: block;
+        position: fixed;
+        top: 11px;
+        width: 25px;
+        height: 30px;
+        padding: var(--padding-xs) 0;
+        background: transparent;
+        background-color: transparent;
+        text-align: center;
+        z-index: 999;
+    }
+
+    #ResponsiveNavigationHandle {
+        left: 20px;
+    }
+
+    #ResponsiveSidebarHandle {
+        right: 20px;
+    }
+
+    #ResponsiveSidebarNotification {
+        top: 60px;
+        left: -45px;
+        display: none;
+        color: #ccc;
+        cursor: default;
+    }
+
+
     #ViewModeSwitch {
         margin: 5px 0px;
     }
+
+    /**
+    *  Ajax Error Dialog
+    */
 
     #AjaxErrorDialog {
         display: none;
@@ -137,6 +234,12 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         display: none;
     }
 
+    /* edited by beatriz on 13/2/2023 - temporary fix 
+     - .Hidden class usage needs to be revised for the settings screens (accessed through the "settings" cogwheel in a widget) */
+    .Dialog .Hidden {
+        display: none; /* The "!important" rule can't be used here */
+    }
+
     .Invisible {
         visibility: hidden;
     }
@@ -175,6 +278,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     a {
         color: var(--primary-color);
         text-decoration: none;
+        font-size: var(--main-font-size);
     }
 
     a:hover,
@@ -337,9 +441,9 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         color: var(--confirmation-color);
     }
 
-    .Small {
+    /*.Small {
         font-size: 90%;
-    }
+    }*/
 
     /**
     * @subsection  Alerts colors
@@ -376,6 +480,14 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     .Warning {
         background: var(--alert-warning-bg-color);
         border: 1px solid var(--alert-warning-border-color);
+    }
+
+    .MasterAction > td > .Info,
+    .MasterAction > td > .Error,
+    .MasterAction > td > .Success,
+    .MasterAction > td > .Warning {
+        border-radius: var(--border-radius-xs);
+        padding: 2px 4px;
     }
 
     .MainBox .WidgetSimple p.Warning,
@@ -523,8 +635,8 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     * @subsection  Box alignment
     */
     .CenterBox {
-        margin-left: auto !important;
-        margin-right: auto !important;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     /**
@@ -632,23 +744,25 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         align-items: baseline;
     }
 
-    .OverviewBox > h1 > div:nth-child(odd) {
+    .OverviewBox > h1 > .overview-breadcrumb {
         display: flex;
-        font-size: var(--main-font-size);
+        gap: var(--gap-sm);
         font-weight: var(--normal);
+        padding-left: var(--padding-xs);
+    }
 
+    .OverviewBox > h1 > .overview-breadcrumb > div:nth-child(odd) {
+        display: flex;
+        /*font-size: var(--main-font-size);*/
         color: var(--main-font-color);
-        font-size: var(--main-font-size);
     }
 
-    .OverviewBox > h1 > div:nth-child(even) {
+    .OverviewBox > h1 > .overview-breadcrumb > div:nth-child(even) {
         display: flex;
-        font-size: var(--main-font-size);
-        font-weight: var(--normal);
-        padding: 0 var(--padding-sm);
+        /*font-size: var(--main-font-size);*/
     }
 
-    .OverviewBox > h1 > div:first-child {
+    .OverviewBox > h1 > .overview-breadcrumb > div:first-child {
         margin-left: var(--margin-sm);
     }
 
@@ -984,6 +1098,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     /**
     * @subsection  Flag
     */
+
     .Flag {
         line-height: inherit;
         transition: var(--main-transition);
@@ -992,6 +1107,11 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         display: flex;
         flex-flow: column;
         justify-content: center;
+    }
+
+    .RTL .Flag {
+        left: auto;
+        right: 6px;
     }
 
     .Flag.Small {
@@ -1007,6 +1127,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         cursor: pointer;
         /* set a default color for priorities */
         border-radius: var(--border-radius-xs);
+        background-color: var(--color-flag-default);
     }
 
     .Flag span.Escalated {
@@ -1224,13 +1345,31 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         width: 960px;
         min-height: 65vh;
         max-height: 80vh;
-        margin: -20px; /* this serves to nullify the default 20px padding in every widget's .Content */
+        margin: 0; /* this serves to nullify the default 20px padding in every widget's .Content */
+    }
+
+    @media only screen and (max-width: 1024px) {
+        iframe.TextOption.CustomerUserAddressBook {
+            width: 100%;
+        }
     }
 
     iframe.TextOption.FAQ {
         width: 1025px;
         min-height: 600px;
     }
+
+    @media only screen and (max-width: 1024px) {
+        iframe.TextOption.FAQ {
+            width: 100%;
+        }
+    }
+    
+    iframe.FAQField {
+        width: 100%;
+        height: auto;
+    }
+
 
     /**
     * @subsection global search
@@ -1240,6 +1379,17 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     #AgentCustomerUserInformationCenterSearchForm,
     #AgentTicketCustomerIDSelection {
         min-width: 760px;
+        overflow-x: hidden;
+    }
+
+    @media only screen and (max-width: 1024px) {
+        #SearchForm,
+        #AgentCustomerInformationCenterSearchForm, 
+        #AgentCustomerUserInformationCenterSearchForm,
+        #AgentTicketCustomerIDSelection {
+            min-width: unset;
+            width: 100%;
+        }
     }
 
     #SearchForm #SearchProfile,
@@ -1402,7 +1552,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         margin-left: -2px !important;
         border: var(--border-width) var(--border-solid) var(--border-color) !important;
         background-color: var(--white);
-        z-index: 6500 !important; /* dialogs z-index are defaulted to 6100, this component's needs to be slightly higher than that */
+        z-index: 999999 !important; /* dialogs z-index are defaulted to 6100, this component's needs to be slightly higher than that */
     }
 
     .ui-state-default,

@@ -21,15 +21,22 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 .TicketProcess .Content {
     margin: 0;
-    padding: 0px;
 }
 
-.TicketProcess > .Content {
-    padding: 10px;
+
+@media only screen and (max-width: 1024px) {
+    .TicketProcess .Content {
+        overflow-x: hidden;
+        gap: 0;
+    }
+
+    .TicketProcess .Content .LayoutPopup .Content {
+        padding: 0;
+    }
 }
 
-.TicketProcess fieldset{
-
+.TicketProcess .inner-page-display .LayoutPopup .Content {
+    padding: 0;
 }
 
 .Center {
@@ -152,6 +159,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     border: 0;
     padding: var(--padding-xl) 0 0;
 }
+
 .TicketProcess .PopupFooter .AdviceText {
     display: flex;
     padding: var(--padding-sm);

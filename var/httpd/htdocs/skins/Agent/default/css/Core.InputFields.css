@@ -91,7 +91,7 @@ div.InputField_InputContainer {
 
 .InputField_Search,
 .InputField_Autocomplete {
-    min-width: 150px;
+    min-width: 120px;
 }
 
 .InputField_Search.Small {
@@ -292,26 +292,32 @@ div.InputField_ListContainer {
     display: none;
     text-shadow: none;
     padding-top: 1px;
+    border-radius: var(--border-radius-xs);
+    overflow: auto;
+    background: var(--menu-bg);
+    box-shadow: var(--menu-box-shadow);
 }
 
+@media only screen and (max-width: 1024px) {
+    div.InputField_ListContainer {
+        z-index: 999999;
+    }
+}
+
+
 div.InputField_TreeContainer {
-    background-color: #fff;
+    background-color: var(--white);
     border: 1px solid #ccc;
     border-top: none;
     overflow-y: auto;
     box-sizing: content-box;
     line-height: 18px;
-}
-
-div.InputField_TreeContainer {
     border: 0;
     border-top: none;
     overflow-y: auto;
     box-sizing: border-box;
     line-height: 18px;
-    background: var(--menu-bg);
-    box-shadow: var(--menu-box-shadow);
-    border-radius: var(--border-radius-xs) var(--border-radius-xs) 0 0;
+    /*border-radius: var(--border-radius-xs) var(--border-radius-xs) 0 0;*/
     min-width: 75px;
 }
 

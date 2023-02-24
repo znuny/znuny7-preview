@@ -193,7 +193,6 @@
                                 <input type="text" name="Comment" id="Comment" value="[% Data.Comment | html %]" maxlength="250"/>
                             </div>
                         </div>
-
                         <div class="field-wrapper form-button-actions">
                             <div class="Field buttons-field">
                                 <a href="[% Env("Baselink") %]Action=[% Env("Action") %]" class="btn-cancel-ghost btn-main btn-width-md">[% Translate("Cancel") | html %]</a>
@@ -216,58 +215,7 @@
                 </form>
             </div>
         </div>
-        <div class="WidgetSimple">
-            <div class="Header">
-                <h2>[% Translate("Hint") | html %]</h2>
-            </div>
-            <div class="Content">
-                <div class="code-container">
-                    <p>[% Translate("You can use the following tags") | html %]:</p>
-                    <dl>
-                        <dt><code>&lt;OTRS_OWNER_*&gt;</code></dt>
-                        <dd>
-                            [% Translate("Ticket owner options") | html %] ([% Translate("e. g.") | html %]
-                            <code>&lt;OTRS_OWNER_UserFirstname&gt;</code>).
-                        </dd>
-
-                        <dt><code>&lt;OTRS_RESPONSIBLE_*&gt;</code></dt>
-                        <dd>
-                            [% Translate("Ticket responsible options") | html %] ([% Translate("e. g.") | html %]
-                            <code>&lt;OTRS_RESPONSIBLE_UserFirstname&gt;</code>).
-                        </dd>
-                        <dt><code>&lt;OTRS_CURRENT_*&gt;</code></dt>
-                        <dd>
-                            [% Translate("Options of the current user who requested this action") | html %] ([% Translate("e. g.") | html %]
-                            <code>&lt;OTRS_CURRENT_UserFirstname&gt;</code>).
-                        </dd>
-
-                        <dt><code>&lt;OTRS_TICKET_*&gt;</code></dt>
-                        <dd>
-                            [% Translate("Options of the ticket data") | html %] ([% Translate("e. g.") | html %]
-                            <code>&lt;OTRS_TICKET_TicketNumber>, &lt;OTRS_TICKET_TicketID&gt;, &lt;OTRS_TICKET_Queue&gt;, &lt;OTRS_TICKET_State&gt;</code>).
-                        </dd>
-                        <dt><code>&lt;OTRS_CUSTOMER_DATA_*&gt;</code></dt>
-                        <dd>
-                            [% Translate("Options of the current customer user data") | html %] ([% Translate("e. g.") | html %]
-                            <code>&lt;OTRS_CUSTOMER_DATA_UserFirstname&gt;</code>).
-                        </dd>
-
-                        <dt><code>&lt;OTRS_CONFIG_*&gt;</code></dt>
-                        <dd>
-                            [% Translate("Config options") | html %] ([% Translate("e. g.") | html %] <code>&lt;OTRS_CONFIG_HttpType&gt;</code>).
-                        </dd>
-                    </dl>
-                    <p>
-                        [% Translate("Example salutation") | html %]:
-                    </p>
-                    <textarea rows="5" cols="60" name="Response">
-Dear &lt;OTRS_CUSTOMER_REALNAME&gt;,
-
-Thank you for your request.
-                    </textarea>
-                </div>
-            </div>
-        </div>
+        [% INCLUDE "SmartTags/Default.tt" %]
 [% RenderBlockEnd("OverviewUpdate") %]
     </div>
 </div>

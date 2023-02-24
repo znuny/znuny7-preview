@@ -139,7 +139,8 @@
                                 </div>
                             </div>
 
-                            <div class="card">
+                            <div>
+#                                <label>[% Translate("Attachments") | html %]</label>
                                 <div class="Field component-attachment">
                                     [% INCLUDE "FormElements/AttachmentList.tt" %]
                                 </div>

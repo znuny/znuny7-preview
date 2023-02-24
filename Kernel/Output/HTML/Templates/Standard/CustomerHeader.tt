@@ -16,12 +16,12 @@
 <body class="NoJavaScript [% Data.BodyClass | html %]">
 <!-- start CI layout -->
     <div id="Header">
-        <div class="Info">
+        <div class="info-wrapper">
 [% RenderBlockStart("HeaderLogo") %]
-                <div id="Logo"></div>
+            <a id="Logo" href="[% Env('Baselink') %]"></a>
 [% RenderBlockEnd("HeaderLogo") %]
             <h1 class="CompanyName">
-                <a href="#">[% Config("CustomerHeadline") %]</a>
+                <a href="[% Env('Baselink') %]">[% Config("CustomerHeadline") | html%]</a>
             </h1>
 [% RenderBlockStart("DebugRTLButton") %]
                 <button onclick="Core.Debug.SimulateRTLPage();" type="button">Simulate RTL</button>
@@ -29,7 +29,7 @@
         </div>
 
 [% RenderBlockStart("Actions") %]
-        <div class="Actions">
+        <div id="HeaderToolBar" class="Actions">
             <div class="UserAvatar">
                 <a href="#">
                     <img src="//www.gravatar.com/avatar/98c188b4d137054757d5659a26994c81?s=100&amp;d=mp">

@@ -17,6 +17,9 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     form {
         width: 100%;
         overflow: auto;
+        display: flex;
+        flex-flow: column;
+        gap: var(--gap-md);
     }
     
     /**
@@ -114,6 +117,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         flex-direction: row;
         gap: var(--gap-sm);
         align-items: center;
+        flex-wrap: wrap;
     }
 
     ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -860,10 +864,23 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         padding: var(--padding-lg) 0 0 0;
     }
 
+    @media only screen and (max-width: 1024px) {
+        .LayoutPopup.AgentTicketCustomer form {
+            overflow: hidden;
+        }
+
+        .LayoutPopup.AgentTicketCustomer form .card-item {
+            padding: 0 0 var(--padding-lg);
+        }
+
+        .LayoutPopup.AgentTicketCustomer form .card-item::after {
+            background: transparent;
+        }
+    }
+
     fieldset > .field-wrapper {
         display: flex;
         flex-direction: column;
-        gap: 0;
         width: 100%;
     }
 
@@ -989,34 +1006,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         padding: var(--padding-sm) 0;
     }
 
-    .SidebarColumn .FieldExplanation.Error {
-        border: 1px solid #F03432;
-        color: #F03432;
-        line-height: 150%;
-        margin: 7px 0px;
-        padding: 7px 10px;
-    }
-
-    form label.Mandatory span.Marker {
-        font-size: 18px;
-        font-weight: bold;
-        position: relative;
-        top: 0.35em;
-        line-height: 1px;
-        right: 2px;
-        left: auto;
-        display: none !important;
-    }
-
-    .RTL form label.Mandatory span.Marker {
-        left: 2px;
-        right: auto;
-    }
-
-    form label.LabelError {
-        color: #ff505e !important;
-    }
-
     .CustomerContainer,
     .CcCustomerContainer,
     .BccCustomerContainer {
@@ -1122,6 +1111,44 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     #EmailRecipientsList.Expanded span,
     #EmailRecipientsList.Expanded a.Expand {
         display: inline;
+    }
+
+    /**
+    * @note         Validation
+    */
+
+    form label.Mandatory,
+    fieldset.TableLike > label.Mandatory,
+    fieldset.TableLike> .Row > label.Mandatory {
+        color: var(--black);
+    }
+
+    form label.Mandatory span.Marker {
+        font-size: 18px;
+        font-weight: bold;
+        position: relative;
+        top: 0.35em;
+        line-height: 1px;
+        right: 2px;
+        left: auto;
+        display: none !important;
+    }
+
+    .RTL form label.Mandatory span.Marker {
+        left: 2px;
+        right: auto;
+    }
+
+    form label.LabelError {
+        color: #ff505e !important;
+    }
+
+    .SidebarColumn .FieldExplanation.Error {
+        border: 1px solid #F03432;
+        color: #F03432;
+        line-height: 150%;
+        margin: 7px 0px;
+        padding: 7px 10px;
     }
 
     /**
@@ -1386,6 +1413,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         padding: 0;
         line-height: 100%;
         word-break: break-word;
+        align-items: baseline;
     }
 
     .RTL fieldset.TableLike > .Value,
@@ -1541,6 +1569,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
     iframe.Signature {
         border: var(--border-width) var(--border-solid) var(--border-color);
+        width: 100%;
         /*border: 1px solid #888;*/
     }
 
@@ -1665,6 +1694,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         overflow: hidden;
         width: 100%;
         gap: 0;
+        min-width: unset;
     }
 
     body.Popup form > .LayoutPopup > .Content.card fieldset.no-card-item {

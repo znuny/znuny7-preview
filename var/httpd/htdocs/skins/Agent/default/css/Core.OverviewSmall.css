@@ -33,10 +33,28 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     padding: 0 var(--main-page-padding) var(--main-page-padding);
 }
 
+@media only screen and (max-width: 1024px) {
+    #OverviewBody.Overview.TicketList {
+        overflow-y: auto;
+        display: flex;
+        position: relative;
+        width: 100%;
+        flex-direction: column;
+        border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+        border: 0;
+    }
+
+    #OverviewBody.Overview.TicketList > table {
+        border: var(--border-width) var(--border-solid) var(--border-color);
+        border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+        border-top: 0;
+    }
+}
+
 #OverviewBody.Overview.TicketList form {
     overflow-x: auto;
-    border-left: var(--border-width) var(--border-solid) var(--table-tr-border-bottom);
-    border-right: var(--border-width) var(--border-solid) var(--table-tr-border-bottom);
+    border: var(--border-width) var(--border-solid) var(--table-tr-border-bottom);
+    border-top: 0;
     border-bottom-left-radius: var(--border-radius-sm);
     border-bottom-right-radius: var(--border-radius-sm);
 }
@@ -47,13 +65,19 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     overflow: hidden;
 }
 
-/*#EmptyMessageSmall {
-    padding: var(--padding-md);
+@media only screen and (max-width: 1024px) {
+    #OverviewBody.Overview.TicketList table {
+        border: 0;
+    }
+}
+
+/* #EmptyMessageSmall {
+    font-size: var(--main-font-size);
+    border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
     border: var(--border-width) var(--border-solid) var(--border-color);
     background: var(--white);
-    min-height: 10vh;
-    border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
-}*/
+    padding: var(--padding-md);
+} */
 
 .Overview thead tr {
     background: #eaeaea;

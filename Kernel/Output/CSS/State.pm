@@ -40,7 +40,7 @@ sub CreateCSS {
 
     my %StateList = $StateObject->StateList(
         UserID => 1,
-        Valid  => 1,
+        Valid  => 0,
     );
 
     return '' if !%StateList;

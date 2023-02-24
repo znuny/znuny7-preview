@@ -17,7 +17,7 @@
         <div class="top-section">
             <fieldset class="TableLike">
                 <legend><span>[% Translate("Templates") | html %]</span></legend>
-                <label for="SearchProfile">[% Translate("Search template") | html %]:</label>
+                <label for="SearchProfile">[% Translate("Search template") | html %]</label>
                 <div class="Field">
                     [% Data.ProfilesStrg %]
                     <div id="SearchProfileAddBlock" class="new-tpl-input">
@@ -41,7 +41,7 @@
                     </button>
                 </div>
 
-                <label>[% Translate("Save changes in template") | html %]:</label>
+                <label>[% Translate("Save changes in template") | html %]</label>
                 <div class="Field align-item-left">
                     <input type="checkbox" name="SaveProfile" id="SaveProfile" value="1"/>
                 </div>
@@ -56,13 +56,13 @@
             <fieldset class="TableLike">
                 <legend><span>[% Translate("Additional filters") | html %]</span></legend>
                 <div class="field-wrapper">
-                    <label>[% Translate("Add another attribute") | html %]:</label>
+                    <label>[% Translate("Add another attribute") | html %]</label>
                     <div class="Field">
                         [% Data.AttributesStrg %]
                     </div>
                 </div>
                 <div class="field-wrapper">
-                    <label>[% Translate("Output") | html %]:</label>
+                    <label>[% Translate("Output") | html %]</label>
                     <div class="Field">
                         [% Data.ResultFormStrg %]
                     </div>
@@ -75,7 +75,7 @@
     <fieldset class="TableLike Hidden" id="SearchAttributesHidden">
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="Fulltext" id="LabelFulltext">[% Translate("Fulltext") | html %]:</label>
+                <label for="Fulltext" id="LabelFulltext">[% Translate("Fulltext") | html %]</label>
             </div>
             <div class="Field">
                 <input type="text" name="Fulltext" value="[% Data.Fulltext | html %]" class="W50pc" />
@@ -87,7 +87,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="TicketNumber" id="LabelTicketNumber">[% Config("Ticket::Hook") %]:</label>
+                <label for="TicketNumber" id="LabelTicketNumber">[% Config("Ticket::Hook") %]</label>
             </div>
             <div class="Field">
                 <input type="text" name="TicketNumber" placeholder="[% Translate("(e. g. 10*5155 or 105658*)") | html %]" value="[% Data.TicketNumber | html %]" class="W50pc"/>
@@ -96,7 +96,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="Title" id="LabelTitle">[% Translate("Title") | html %]:</label>
+                <label for="Title" id="LabelTitle">[% Translate("Title") | html %]</label>
             </div>
             <div class="Field">
                 <input type="text" name="Title" value="[% Data.Title | html %]" class="W50pc"/>
@@ -105,7 +105,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="CustomerID" id="LabelCustomerID">[% Translate("Customer ID (complex search)") | html %]:</label>
+                <label for="CustomerID" id="LabelCustomerID">[% Translate("Customer ID (complex search)") | html %]</label>
             </div>
             <div class="Field">
                 <input type="text" name="CustomerID" placeholder="[% Translate("(e. g. 234*)") | html %]" value="[% Data.CustomerID | html %]" class="W50pc"/>
@@ -114,7 +114,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="CustomerIDRaw" id="LabelCustomerIDRaw">[% Translate("Customer ID (exact match)") | html %]:</label>
+                <label for="CustomerIDRaw" id="LabelCustomerIDRaw">[% Translate("Customer ID (exact match)") | html %]</label>
             </div>
             <div class="Field">
                 <input type="text" id="CustomerIDRaw" name="CustomerIDRaw" placeholder="[% Translate("(e. g. 234321)") | html %]" value="[% Data.CustomerIDRaw | html %]" class="W50pc CustomerAutoCompleteSimple" data-customer-search-type="CustomerID"/>
@@ -123,7 +123,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="CustomerUserLogin" id="LabelCustomerUserLogin">[% Translate("Assigned to Customer User Login (complex search)") | html %]:</label>
+                <label for="CustomerUserLogin" id="LabelCustomerUserLogin">[% Translate("Assigned to Customer User Login (complex search)") | html %]</label>
             </div>
             <div class="Field">
                 <input type="text" name="CustomerUserLogin" placeholder="[% Translate("(e. g. U51*)") | html %]" value="[% Data.CustomerUserLogin | html %]" class="W50pc"/>
@@ -132,7 +132,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="CustomerUserLoginRaw" id="LabelCustomerUserLoginRaw">[% Translate("Assigned to Customer User Login (exact match)") | html %]:</label>
+                <label for="CustomerUserLoginRaw" id="LabelCustomerUserLoginRaw">[% Translate("Assigned to Customer User Login (exact match)") | html %]</label>
             </div>
             <div class="Field">
                 <input type="text" id="CustomerUserLoginRaw" name="CustomerUserLoginRaw" placeholder="[% Translate("(e. g. U5150)") | html %]" value="[% Data.CustomerUserLoginRaw | html %]" class="W50pc CustomerAutoCompleteSimple" data-customer-search-type="CustomerUser"/>
@@ -141,7 +141,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="CustomerUserID" id="LabelCustomerUserID">[% Translate("Accessible to Customer User Login (exact match)") | html %]:</label>
+                <label for="CustomerUserID" id="LabelCustomerUserID">[% Translate("Accessible to Customer User Login (exact match)") | html %]</label>
             </div>
             <div class="Field">
                 <input type="text" id="CustomerUserID" name="CustomerUserID" placeholder="[% Translate("(e. g. U5150)") | html %]" value="[% Data.CustomerUserID | html %]" class="W50pc CustomerAutoCompleteSimple" data-customer-search-type="CustomerUser"/>
@@ -150,7 +150,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="TypeIDs" id="LabelTypeIDs">[% Translate("Type") | html %]:</label>
+                <label for="TypeIDs" id="LabelTypeIDs">[% Translate("Type") | html %]</label>
             </div>
             <div class="Field">
                 [% Data.TypesStrg %]
@@ -160,7 +160,7 @@
 [% RenderBlockStart("SearchableArticleField") %]
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="[% Data.ArticleFieldKey | html %]" id="Label[% Data.ArticleFieldKey | html %]">[% Translate(Data.ArticleFieldLabel) | html %]:</label>
+                <label for="[% Data.ArticleFieldKey | html %]" id="Label[% Data.ArticleFieldKey | html %]">[% Translate(Data.ArticleFieldLabel) | html %]</label>
             </div>
             <div class="Field">
                 <input type="text" name="[% Data.ArticleFieldKey | html %]" value="[% Data.ArticleFieldValue | html %]" class="W50pc"/>
@@ -179,7 +179,7 @@
 [% RenderBlockEnd("DynamicField") %]
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="ServiceIDs" id="LabelServiceIDs">[% Translate("Service") | html %]:</label>
+                <label for="ServiceIDs" id="LabelServiceIDs">[% Translate("Service") | html %]</label>
             </div>
             <div class="Field">
                 [% Data.ServicesStrg %]
@@ -188,7 +188,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="SLAIDs" id="LabelSLAIDs">[% Translate("Service Level Agreement") | html %]:</label>
+                <label for="SLAIDs" id="LabelSLAIDs">[% Translate("Service Level Agreement") | html %]</label>
             </div>
             <div class="Field">
                 [% Data.SLAsStrg %]
@@ -197,7 +197,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="PriorityIDs" id="LabelPriorityIDs">[% Translate("Priority") | html %]:</label>
+                <label for="PriorityIDs" id="LabelPriorityIDs">[% Translate("Priority") | html %]</label>
             </div>
             <div class="Field">
                 [% Data.PrioritiesStrg %]
@@ -206,7 +206,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="StateIDs" id="LabelStateIDs">[% Translate("State") | html %]:</label>
+                <label for="StateIDs" id="LabelStateIDs">[% Translate("State") | html %]</label>
             </div>
             <div class="Field">
                 [% Data.StatesStrg %]
@@ -215,7 +215,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="QueueIDs" id="LabelQueueIDs">[% Translate("Queue") | html %]:</label>
+                <label for="QueueIDs" id="LabelQueueIDs">[% Translate("Queue") | html %]</label>
             </div>
             <div class="Field">
                 [% Data.QueuesStrg %]
@@ -224,7 +224,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="OwnerIDs" id="LabelOwnerIDs">[% Translate("Agent") | html %]/[% Translate("Owner") | html %]:</label>
+                <label for="OwnerIDs" id="LabelOwnerIDs">[% Translate("Agent") | html %]/[% Translate("Owner") | html %]</label>
             </div>
             <div class="Field">
                 [% Data.UserStrg %]
@@ -233,7 +233,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="ResponsibleIDs" id="LabelResponsibleIDs">[% Translate("Agent") | html %]/[% Translate("Responsible") | html %]:</label>
+                <label for="ResponsibleIDs" id="LabelResponsibleIDs">[% Translate("Agent") | html %]/[% Translate("Responsible") | html %]</label>
             </div>
             <div class="Field">
                 [% Data.ResponsibleStrg %]
@@ -242,7 +242,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="CreatedQueueIDs" id="LabelCreatedQueueIDs">[% Translate("Created in Queue") | html %]:</label>
+                <label for="CreatedQueueIDs" id="LabelCreatedQueueIDs">[% Translate("Created in Queue") | html %]</label>
             </div>
             <div class="Field">
                 [% Data.CreatedQueuesStrg %]
@@ -251,7 +251,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="CreatedUserIDs" id="LabelCreatedUserIDs">[% Translate("Created by") | html %] [% Translate("Agent") | html %]/[% Translate("Owner") | html %]:</label>
+                <label for="CreatedUserIDs" id="LabelCreatedUserIDs">[% Translate("Created by") | html %] [% Translate("Agent") | html %]/[% Translate("Owner") | html %]</label>
             </div>
             <div class="Field">
                 [% Data.CreatedUserStrg %]
@@ -260,7 +260,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="LockIDs" id="LabelLockIDs">[% Translate("Lock state") | html %]:</label>
+                <label for="LockIDs" id="LabelLockIDs">[% Translate("Lock state") | html %]</label>
             </div>
             <div class="Field">
                 [% Data.LocksStrg %]
@@ -269,7 +269,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="WatchUserIDs" id="LabelWatchUserIDs">[% Translate("Watcher") | html %]:</label>
+                <label for="WatchUserIDs" id="LabelWatchUserIDs">[% Translate("Watcher") | html %]</label>
             </div>
             <div class="Field">
                 [% Data.WatchUserStrg %]
@@ -278,7 +278,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="ArticleCreateTimePoint" id="LabelArticleCreateTimePoint">[% Translate("Article Create Time (before/after)") | html %]:</label>
+                <label for="ArticleCreateTimePoint" id="LabelArticleCreateTimePoint">[% Translate("Article Create Time (before/after)") | html %]</label>
             </div>
             <div class="Field">
                 <input type="hidden" name="ArticleTimeSearchType" value="TimePoint" [% Data.item("ArticleTimeSearchType::TimePoint") %]/>
@@ -288,7 +288,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="ArticleCreateTimeSlot" id="LabelArticleCreateTimeSlot">[% Translate("Article Create Time (between)") | html %]:</label>
+                <label for="ArticleCreateTimeSlot" id="LabelArticleCreateTimeSlot">[% Translate("Article Create Time (between)") | html %]</label>
             </div>
             <div class="Field">
                 <input type="hidden" name="ArticleTimeSearchType" value="TimeSlot" [% Data.item("ArticleTimeSearchType::TimeSlot") %]/>
@@ -310,7 +310,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="TicketCreateTimePoint" id="LabelTicketCreateTimePoint">[% Translate("Ticket Create Time (before/after)") | html %]:</label>
+                <label for="TicketCreateTimePoint" id="LabelTicketCreateTimePoint">[% Translate("Ticket Create Time (before/after)") | html %]</label>
             </div>
             <div class="Field">
                 <input type="hidden" name="TimeSearchType" value="TimePoint" [% Data.item("TimeSearchType::TimePoint") %]/>
@@ -320,7 +320,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="TicketCreateTimeSlot" id="LabelTicketCreateTimeSlot">[% Translate("Ticket Create Time (between)") | html %]:</label>
+                <label for="TicketCreateTimeSlot" id="LabelTicketCreateTimeSlot">[% Translate("Ticket Create Time (between)") | html %]</label>
             </div>
             <div class="Field">
                 <input type="hidden" name="TimeSearchType" value="TimeSlot" [% Data.item("TimeSearchType::TimeSlot") %]/>
@@ -342,7 +342,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="TicketChangeTimePoint" id="LabelTicketChangeTimePoint">[% Translate("Ticket Change Time (before/after)") | html %]:</label>
+                <label for="TicketChangeTimePoint" id="LabelTicketChangeTimePoint">[% Translate("Ticket Change Time (before/after)") | html %]</label>
             </div>
             <div class="Field">
                 <input type="hidden" name="ChangeTimeSearchType" value="TimePoint" [% Data.item("ChangeTimeSearchType::TimePoint") %]/>
@@ -352,7 +352,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="TicketChangeTimeSlot" id="LabelTicketChangeTimeSlot">[% Translate("Ticket Change Time (between)") | html %]:</label>
+                <label for="TicketChangeTimeSlot" id="LabelTicketChangeTimeSlot">[% Translate("Ticket Change Time (between)") | html %]</label>
             </div>
             <div class="Field">
                 <input type="hidden" name="ChangeTimeSearchType" value="TimeSlot" [% Data.item("ChangeTimeSearchType::TimeSlot") %]/>
@@ -374,7 +374,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="TicketLastChangeTimePoint" id="LabelTicketLastChangeTimePoint">[% Translate("Ticket Last Change Time (before/after)") | html %]:</label>
+                <label for="TicketLastChangeTimePoint" id="LabelTicketLastChangeTimePoint">[% Translate("Ticket Last Change Time (before/after)") | html %]</label>
             </div>
             <div class="Field">
                 <input type="hidden" name="LastChangeTimeSearchType" value="TimePoint" [% Data.item("LastChangeTimeSearchType::TimePoint") %]/>
@@ -384,7 +384,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="TicketLastChangeTimeSlot" id="LabelTicketLastChangeTimeSlot">[% Translate("Ticket Last Change Time (between)") | html %]:</label>
+                <label for="TicketLastChangeTimeSlot" id="LabelTicketLastChangeTimeSlot">[% Translate("Ticket Last Change Time (between)") | html %]</label>
             </div>
             <div class="Field">
                 <input type="hidden" name="LastChangeTimeSearchType" value="TimeSlot" [% Data.item("LastChangeTimeSearchType::TimeSlot") %]/>
@@ -406,7 +406,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="TicketPendingTimePoint" id="LabelTicketPendingTimePoint">[% Translate("Ticket Pending Until Time (before/after)") | html %]:</label>
+                <label for="TicketPendingTimePoint" id="LabelTicketPendingTimePoint">[% Translate("Ticket Pending Until Time (before/after)") | html %]</label>
             </div>
             <div class="Field">
                 <input type="hidden" name="PendingTimeSearchType" value="TimePoint" [% Data.item("PendingTimeSearchType::TimePoint") %]/>
@@ -416,7 +416,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="TicketPendingTimeSlot" id="LabelTicketPendingTimeSlot">[% Translate("Ticket Pending Until Time (between)") | html %]:</label>
+                <label for="TicketPendingTimeSlot" id="LabelTicketPendingTimeSlot">[% Translate("Ticket Pending Until Time (between)") | html %]</label>
             </div>
             <div class="Field">
                 <input type="hidden" name="PendingTimeSearchType" value="TimeSlot" [% Data.item("PendingTimeSearchType::TimeSlot") %]/>
@@ -430,7 +430,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="TicketCloseTimePoint" id="LabelTicketCloseTimePoint">[% Translate("Ticket Close Time (before/after)") | html %]:</label>
+                <label for="TicketCloseTimePoint" id="LabelTicketCloseTimePoint">[% Translate("Ticket Close Time (before/after)") | html %]</label>
             </div>
             <div class="Field">
                 <input type="hidden" name="CloseTimeSearchType" value="TimePoint" [% Data.item("CloseTimeSearchType::TimePoint") %]/>
@@ -440,7 +440,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="TicketCloseTimeSlot" id="LabelTicketCloseTimeSlot">[% Translate("Ticket Close Time (between)") | html %]:</label>
+                <label for="TicketCloseTimeSlot" id="LabelTicketCloseTimeSlot">[% Translate("Ticket Close Time (between)") | html %]</label>
             </div>
             <div class="Field">
                 <input type="hidden" name="CloseTimeSearchType" value="TimeSlot" [% Data.item("CloseTimeSearchType::TimeSlot") %]/>
@@ -462,7 +462,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="TicketEscalationTimePoint" id="LabelTicketEscalationTimePoint">[% Translate("Ticket Escalation Time (before/after)") | html %]:</label>
+                <label for="TicketEscalationTimePoint" id="LabelTicketEscalationTimePoint">[% Translate("Ticket Escalation Time (before/after)") | html %]</label>
             </div>
             <div class="Field">
                 <input type="hidden" name="EscalationTimeSearchType" value="TimePoint" [% Data.item("EscalationTimeSearchType::TimePoint") %]/>
@@ -472,7 +472,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="TicketEscalationTimeSlot" id="LabelTicketEscalationTimeSlot">[% Translate("Ticket Escalation Time (between)") | html %]:</label>
+                <label for="TicketEscalationTimeSlot" id="LabelTicketEscalationTimeSlot">[% Translate("Ticket Escalation Time (between)") | html %]</label>
             </div>
             <div class="Field">
                 <input type="hidden" name="EscalationTimeSearchType" value="TimeSlot" [% Data.item("EscalationTimeSearchType::TimeSlot") %]/>
@@ -494,7 +494,7 @@
         </div>
         <div class="field-wrapper">
             <div class="label-wrapper">
-                <label for="SearchInArchive" id="LabelSearchInArchive">[% Translate("Archive Search") | html %]:</label>
+                <label for="SearchInArchive" id="LabelSearchInArchive">[% Translate("Archive Search") | html %]</label>
             </div>
             <div class="Field">
                 [% Data.SearchInArchiveStrg %]
@@ -506,7 +506,7 @@
 </div>
 
 <div class="ContentFooter main-search-component-btns">
-    <button id="Cancel" class="btn-main btn-width-md btn-cancel-ghost DontPrint" type="submit" value=" Cancel"><span>Cancel</span></button>
+    <button id="Cancel" class="btn-main btn-width-md btn-cancel-ghost DontPrint" type="submit" value=" Cancel"><span>[% Translate("Cancel") | html %]</span></button>
 
     <button id="SearchFormSubmit" class="btn-primary btn-main btn-width-md" value="[% Translate("Search") | html %]"><span> [% Translate("Search") | html %]</span></button>
 </div>

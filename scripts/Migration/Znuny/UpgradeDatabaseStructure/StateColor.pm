@@ -71,8 +71,19 @@ sub _UpdateStateEntries {
         'merged'              => '#8D8D9B',
     );
 
+    my %ColorByStateType = (
+        'new'              => '#50B5FF',
+        'open'             => '#FFC542',
+        'closed'           => '#3DD598',
+        'pending reminder' => '#FF8A25',
+        'pending auto'     => '#FF8A25',
+        'removed'          => '#8D8D9B',
+        'merged'           => '#8D8D9B',
+    );
+
     my %StateList = $StateObject->StateList(
         UserID => 1,
+        Valid  => 0,
     );
     return 1 if !%StateList;
 
@@ -83,11 +94,13 @@ sub _UpdateStateEntries {
         );
         next STATEID if !%State;
 
-        $StateObject->StateUpdate(
+        my $Color = $ColorByState{ $State{Name} } || $ColorByStateType{ $State{TypeName} } // '#000000',
+
+            $StateObject->StateUpdate(
             %State,
-            Color  => $ColorByState{ $State{Name} } // '#FFFFFF',
+            Color  => $Color,
             UserID => 1,
-        );
+            );
     }
 
     return 1;

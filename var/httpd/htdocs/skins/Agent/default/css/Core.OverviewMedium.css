@@ -322,14 +322,5 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         display: block;
         padding-bottom: var(--padding-sm);
     }
-    
-    .EmptyMessage {
-        padding: var(--padding-md);
-        border: var(--border-width) var(--border-solid) var(--border-color);
-        background: var(--white);
-        min-height: 10vh;
-        border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
-        border-top: 0;
-    }
 
 } /* end @media */

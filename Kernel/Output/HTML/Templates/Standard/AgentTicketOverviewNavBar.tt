@@ -9,7 +9,15 @@
 
 [% RenderBlockStart("OverviewNavBar") %]
 <div class="OverviewBox ARIARoleMain [% Data.View | html %]">
-    <h1>[% Translate(Data.TitleName) | html %]: [% IF Env("Action") == 'AgentTicketQueue' %][% Data.TitleValue %][% ELSE %][% Translate(Data.TitleValue) | html %][% END %]</h1>
+    <h1>[% Translate(Data.TitleName) | html %]:
+        <div class="overview-breadcrumb">
+            [% IF Env("Action") == 'AgentTicketQueue' %]
+                [% Data.TitleValue %]
+            [% ELSE %]
+                [% Translate(Data.TitleValue) | html %]
+            [% END %]
+        </div>
+    </h1>
 
     [% Data.DataInTheMiddle %]
 

@@ -156,69 +156,77 @@
                     <a href="[% Env("Baselink") %]Action=[% Data.ActionHome | uri %];Subaction=Change;ID=[% Data.ID | uri %]">[% Data.Name | html %]</a>
                 </h2>
             </div>
-            <div class="Content ">
-                <form action="[% Env("CGIHandle") %]" method="post" name="matrix">
+            <div class="Content">
+# ---
+# Forwwward
+# ---
+# - added 'no-padding' class and fieldset wrapper
+                <form class="no-padding" action="[% Env("CGIHandle") %]" method="post" name="matrix">
                     <input type="hidden" name="Action" value="[% Env("Action") %]"/>
                     <input type="hidden" name="Subaction" value="Change[% Data.Type | html %]"/>
                     <input type="hidden" name="ID" value="[% Data.ID | html %]"/>
                     <input type="hidden" name="Search" value="[% Data.Search | html %]" />
                     <input type="hidden" name="ContinueAfterSave" id="ContinueAfterSave" value=""/>
-                    <div class="DataTable scroll-bar-styled bar-no-left-border">
-                        <table class="DataTable VariableWidth" id="[% Data.VisibleNeType | html %]">
-                            <thead>
-                                <tr>
-                                    <th>[% Translate(Data.VisibleNeType) | html %]
+
+                    <fieldset>
+                        <div class="DataTable scroll-bar-styled bar-no-left-border">
+                            <table class="DataTable VariableWidth" id="[% Data.VisibleNeType | html %]">
+                                <thead>
+                                    <tr>
+                                        <th>[% Translate(Data.VisibleNeType) | html %]
 [% RenderBlockStart("ChangeItemCount") %]
-                                        ([% Data.ItemCount | html %])
+                                            ([% Data.ItemCount | html %])
 [% RenderBlockEnd("ChangeItemCount") %]
 [% RenderBlockStart("ChangeItemCountLimit") %]
-                                        (<Span class="Error">[% Data.ItemCount | html %]</span>)
+                                            (<Span class="Error">[% Data.ItemCount | html %]</span>)
 [% RenderBlockEnd("ChangeItemCountLimit") %]
-                                    </th>
+                                        </th>
 [% RenderBlockStart("ChangeHeader") %]
-                                    <th class="[% Data.Mark | html %]">
-                                        <input type="checkbox" id="SelectAllItemsSelected" name="ItemsSelected" title="[% Translate("Toggle active state for all") | html %]" value="" />
-                                        [% Translate("Active") | html %]
-                                    </th>
+                                        <th class="[% Data.Mark | html %]">
+                                            <input type="checkbox" id="SelectAllItemsSelected" name="ItemsSelected" title="[% Translate("Toggle active state for all") | html %]" value="" />
+                                            [% Translate("Active") | html %]
+                                        </th>
 [% RenderBlockEnd("ChangeHeader") %]
-                                </tr>
-                            </thead>
-                            <tbody>
+                                    </tr>
+                                </thead>
+                                <tbody>
 [% RenderBlockStart("NoDataFoundMsgList") %]
-                                <tr>
-                                    <td colspan="[% Data.ColSpan | html %]">
-                                        [% Translate("No data found.") | html %]
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td colspan="[% Data.ColSpan | html %]">
+                                            [% Translate("No data found.") | html %]
+                                        </td>
+                                    </tr>
 [% RenderBlockEnd("NoDataFoundMsgList") %]
 [% RenderBlockStart("ChangeRow") %]
-                                <tr>
-                                    <td><a href="[% Env("Baselink") %]Action=[% Data.ActionHome | uri %];Subaction=Change;ID=[% Data.ID | uri %]">[% Data.Name | html %]</a></td>
-                                    <td class="[% Data.Mark | html %]">
-                                        <input type="checkbox" name="ItemsSelected" title="[% Translate("Toggle active state for %s", Data.Name) | html %]" value="[% Data.ID | html %]" [% Data.Selected %]/>
-                                        <input type="hidden" name="ItemsAll" value="[% Data.ID | html %]"/>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td><a href="[% Env("Baselink") %]Action=[% Data.ActionHome | uri %];Subaction=Change;ID=[% Data.ID | uri %]">[% Data.Name | html %]</a></td>
+                                        <td class="[% Data.Mark | html %]">
+                                            <input type="checkbox" name="ItemsSelected" title="[% Translate("Toggle active state for %s", Data.Name) | html %]" value="[% Data.ID | html %]" [% Data.Selected %]/>
+                                            <input type="hidden" name="ItemsAll" value="[% Data.ID | html %]"/>
+                                        </td>
+                                    </tr>
 [% RenderBlockEnd("ChangeRow") %]
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="field-wrapper form-button-actions">
-                        <div class="Field buttons-field">
-                            <a href="[% Env("Baselink") %]Action=[% Env("Action") %]" class="btn-cancel-ghost btn-main btn-width-md">[% Translate("Cancel") | html %]</a>
-
-                            <button class="btn-primary-ghost btn-main btn-width-md" id="Submit" type="submit" value="[% Translate("Save") | html %]">
-                                <span>[% Translate("Save and finish") | html %]</span>
-                            </button>
-
-                            <button class="btn-primary btn-main btn-width-md" id="SubmitAndContinue" type="button" value="[% Translate("Save") | html %]">
-                                <span>[% Translate("Save") | html %]</span>
-                            </button>
-
+                                </tbody>
+                            </table>
                         </div>
-                    </div>
+
+                        <div class="field-wrapper form-button-actions">
+                            <div class="Field buttons-field">
+                                <a href="[% Env("Baselink") %]Action=[% Env("Action") %]" class="btn-cancel-ghost btn-main btn-width-md">[% Translate("Cancel") | html %]</a>
+
+                                <button class="btn-primary-ghost btn-main btn-width-md" id="Submit" type="submit" value="[% Translate("Save") | html %]">
+                                    <span>[% Translate("Save and finish") | html %]</span>
+                                </button>
+
+                                <button class="btn-primary btn-main btn-width-md" id="SubmitAndContinue" type="button" value="[% Translate("Save") | html %]">
+                                    <span>[% Translate("Save") | html %]</span>
+                                </button>
+
+                            </div>
+                        </div>
+                    </fieldset>
                 </form>
+# ---
             </div>
 [% RenderBlockEnd("Change") %]
         </div>

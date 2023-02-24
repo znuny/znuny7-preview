@@ -242,7 +242,7 @@
                 <div class="field-wrapper">
                     <label for="DescShort">[% Translate("Description (short)") | html %]:</label>
                     <div class="Field">
-                        <input type="text" name="DescShort" id="DescShort" value="" maxlength="70"/>
+                        <input type="text" name="DescShort" id="DescShort" value=""/>
                     </div>
                 </div>
 

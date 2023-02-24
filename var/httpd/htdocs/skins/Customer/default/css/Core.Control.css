@@ -198,6 +198,91 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     color: var(--primary-color);
 }
 
+
+@media only screen and (max-width: 1024px) {
+    #Navigation {
+        position: fixed;
+        height: 100%;
+        left: -300px;
+        width: 300px;
+        z-index: 998;
+        top: 0px;
+        overflow: auto;
+        padding: var(--padding-xl) 0 0;
+    }
+
+    #Navigation > ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #Navigation > ul > li {
+        display: flex;
+        flex-direction: column;
+        padding: 0 var(--padding-md) 0 0;
+    }
+
+    #Navigation ul li a {
+        font-weight: normal;
+        padding: var(--padding-md);
+        line-height: 20px;
+        transition: var(--main-transition);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        display: flex;
+        width: 100%;
+        border-radius: 0 var(--border-radius-menu-mobile) var(--border-radius-menu-mobile) 0;
+    }
+
+    #Navigation > ul > li > a::after {
+        width: 0;
+        height: 0;
+        border-radius: 0;
+    }
+
+    #Navigation > ul > .Selected a, 
+    #Navigation > ul > li:focus a, 
+    #Navigation > ul > li:hover a {
+        background: var(--primary-color);
+        color: var(--white);
+    }
+
+    #Navigation .Selected + li {
+        margin: 0;
+    }
+
+    #Navigation .Selected + li a {
+        padding: var(--padding-md);
+    }
+
+    #Navigation > ul > li > ul {
+        display: flex;
+        position: relative;
+        top: unset;
+        left: unset;
+        z-index: 99;
+        background: transparent;
+        min-width: 100%;
+        box-shadow: none;
+        padding: var(--padding-sm);
+        border-radius: var(--border-radius-xs);
+    }
+    
+    .RTL #Navigation > ul > li > ul {
+        right: 1px;
+    }
+    
+    #Navigation > ul > li > ul > li {
+        font-size: 11px;
+        line-height: 11px;
+        margin-top: 0;
+        position: relative;
+        white-space: nowrap;
+      }
+}
+
+
 /**
  * @subsection  Action Row / MessageBox (Notification)
  */
@@ -212,6 +297,28 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     border: var(--border-width) var(--border-solid) var(--border-color);
     padding: 0;
     flex: 1;
+    width: 100%;
+    max-width: 800px;
+    align-self: center;
+}
+
+.FormScreen .ActionRow {
+    padding: 0 var(--padding-lg);
+}
+
+.ActionRow.ActionRow-full-width {
+    max-width: 100%;
+}
+
+@media only screen and (min-width: 1400px) {
+    .FormScreen .ActionRow {
+        max-width: 100%;
+        padding: 0 var(--padding-sm);
+    }
+}
+
+.ActionRow.tabs-overview {
+    max-width: 100%;
 }
 
 .MessageBox {
@@ -223,20 +330,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 .Content .MessageBox {
     border: 1px solid #ddd;
-}
-
-.MessageBox.Notice {
-    background: #F7AE40;
-    border: 0px;
-}
-
-.MessageBox.Error {
-    background: #F25C5C;
-}
-
-.MessageBox.Success {
-    background-color: #d4edda;
-    border-bottom: 1px solid #c3e6cb;
 }
 
 .RTL .MessageBox p {

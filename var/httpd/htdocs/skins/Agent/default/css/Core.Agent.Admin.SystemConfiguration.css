@@ -329,6 +329,7 @@ h2.SearchResults {
 #DialogDeployment + .ContentFooter .ButtonsFinish,
 #DialogDeployment + .ContentFooter .ButtonsTryAgain {
     display: none;
+    gap: var(--padding-lg);
 }
 
 .WidgetSimple .Warning {

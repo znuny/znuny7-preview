@@ -68,7 +68,7 @@ run all or some tests located in C<scripts/test/**/*.t> and print the result.
         SOPMFile               => ['ITSMCore.sopm'],            # optional, execute all test files which are defined in these sopm.
         Verbose                => 1,                            # optional (default 0), only show result details for all tests, not just failing
         SubmitURL              => $URL,                         # optional, send results to unit test result server
-        SubmitAuth             => '0abc86125f0fd37baae'         # optional authentication string for unit test result server
+        SubmitAuth             => $SubmitAuth,                  # optional authentication string for unit test result server
         SubmitResultAsExitCode => 1,                            # optional, specify if exit code should not indicate if tests were ok/not ok, but if submission was successful instead
         JobID                  => 12,                           # optional job ID for unit test submission to server
         Scenario               => 'Znuny 6 git',                # optional scenario identifier for unit test submission to server
@@ -97,7 +97,12 @@ sub Run {
     my $Product = $ConfigObject->Get('Product') . " " . $ConfigObject->Get('Version');
     my $Home    = $ConfigObject->Get('Home');
 
+    # Replace ".t" at the end for every "--test"-option to support commands like this:
+    # ./bin/otrs.Console.pl Dev::UnitTest::Run --verbose --test scripts/test/Mentions/MentionsPermissionCheck.t
     my @TestsToExecute = @{ $Param{Tests} // [] };
+
+    # Search and replace ".t" but if not found return $_ that tests without ".t" get inserted into the array again.
+    @TestsToExecute = map { $_ =~ s{\.t\z}{}; $_ } @TestsToExecute;    ## no critic
 
     my $UnitTestBlacklist = $ConfigObject->Get('UnitTest::Blacklist');
     my @BlacklistedTests;

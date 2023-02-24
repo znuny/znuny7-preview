@@ -71,6 +71,9 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 .OverviewControl.OverviewAgenda .ControlRow + .ActionRow {
     padding: var(--padding-sm);
+    background: var(--white);
+    border-left: var(--border-width) var(--border-solid) var(--border-color);
+    border-right: var(--border-width) var(--border-solid) var(--border-color);
 }
 
 .OverviewControl .ActionRow .Pagination{
@@ -177,6 +180,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     border: var(--border-width) var(--border-solid) var(--border-color);
     background: transparent;
     transition: var(--main-transition);
+    font-size: var(--font-size-sm);
 }
 
 .OverviewZoom li.Active a,
@@ -303,6 +307,10 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     padding-right: 0;
 }
 
+#CustomerTickets #OverviewBody.Overview.TicketList {
+    padding: 0;
+  }
+
 /**
  * Filter Dropdown
  */
@@ -356,6 +364,20 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 .Overview.TicketList table tbody tr.DateDivider td {
     padding: var(--padding-xs) var(--padding-sm);
+}
+
+/**
+ *  Message
+ */
+
+.EmptyMessage,
+#EmptyMessageSmall {
+    font-size: var(--main-font-size);
+    padding: var(--padding-md);
+    border: var(--border-width) var(--border-solid) var(--border-color);
+    background: var(--white);
+    border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+    border-top: 0;
 }
 
 

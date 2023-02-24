@@ -531,6 +531,7 @@ sub LoadDefaults {
 #    $Self->{'AuthSyncModule::LDAP::Host'} = 'ldap.example.com';
 #    $Self->{'AuthSyncModule::LDAP::BaseDN'} = 'dc=example,dc=com';
 #    $Self->{'AuthSyncModule::LDAP::UID'} = 'uid';
+#    $Self->{'AuthSyncModule::LDAP::GroupDN'} = 'cn=otrsallow,ou=posixGroups,dc=example,dc=com';
 
     # The following is valid but would only be necessary if the
     # anonymous user do NOT have permission to read from the LDAP tree
@@ -720,15 +721,8 @@ sub LoadDefaults {
     # agent interface notification module to check the admin user id
     # (don't work with user id 1 notification)
     $Self->{'Frontend::NotifyModule'} = {
-        '1100-OTRSBusiness' => {
-            Group  => 'admin',
-            Module => 'Kernel::Output::HTML::Notification::AgentOTRSBusiness',
-        },
         '2000-UID-Check' => {
             Module => 'Kernel::Output::HTML::Notification::UIDCheck',
-        },
-        '2500-AgentSessionLimit' => {
-          'Module' => 'Kernel::Output::HTML::Notification::AgentSessionLimit',
         },
         '5000-SystemConfigurationIsDirty-Check' => {
             Group  => 'admin',
@@ -1819,7 +1813,7 @@ via the Preferences button after logging in.
         NavBarName => 'Admin',
         Title      => 'System Log',
     };
-    $Self->{'Loader::Module::AdminLog'}->{'000-Defaults'} = {
+    $Self->{'Loader::Module::AdminLog'}->{'001-Framework'} = {
         JavaScript => [
           'Core.Agent.Admin.Log.js'
         ],
@@ -1844,7 +1838,7 @@ via the Preferences button after logging in.
         Title        => 'System Configuration',
         NavBarName   => 'Admin',
     };
-    $Self->{'Loader::Module::AdminSystemConfiguration'}->{'000-Defaults'} = {
+    $Self->{'Loader::Module::AdminSystemConfiguration'}->{'001-Framework'} = {
         CSS => [
             'Core.Agent.Admin.SystemConfiguration.css',
         ],

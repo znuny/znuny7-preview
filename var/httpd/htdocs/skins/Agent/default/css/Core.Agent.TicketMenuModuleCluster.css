@@ -22,12 +22,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     overflow: visible;
 }
 
-.ClusterLink,
-.ClusterLink:hover {
-    cursor: pointer;
-    border: var(--border-width) var(--border-solid) transparent !important;
-}
-
 /*.Cluster ul li a,
 .Cluster ul li span {
     padding: var(--padding-xs) var(--padding-sm);
@@ -61,6 +55,21 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     border: var(--border-width) var(--border-solid) var(--border-color);
     border-radius: var(--border-radius-xs);
 }
+
+@media only screen and (max-width: 1024px) {
+    .Cluster ul ul {
+        display: flex;
+        position: relative;
+        top: 0;
+        min-width: 100%;
+        opacity: 1;
+        box-shadow: unset;
+        padding: 0;
+        border: unset;
+        border-radius: unset;
+    }
+}
+
 
 .Cluster ul ul::before {
     content: '';
@@ -142,6 +151,19 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 .Cluster > ul > li {
     position: relative;
+}
+
+.ClusterLink,
+.ClusterLink:hover {
+    cursor: pointer;
+    border: var(--border-width) var(--border-solid) transparent !important;
+}
+
+@media only screen and (max-width: 1024px) {
+    .ClusterLink,
+    .ClusterLink:hover {
+        font-size: var(--font-size-sm);
+    }
 }
 
 } /* end @media */

@@ -226,11 +226,20 @@ select.ArticleFreeKey {
     display: block;
 } */
 
+.Form {
+    display: flex;
+    flex-direction: column;
+}
+
 fieldset {
     display: flex;
     flex-direction: column;
     flex: 1;
     gap: var(--gap-md);
+
+    width: 100%;
+    max-width: 800px;
+    align-self: center;
 }
 
 
@@ -248,6 +257,11 @@ fieldset h2 + p.Description {
 
 fieldset h2 + div {
 
+/* TODO FORWWWARD Denny
+ fa1fe0cd58... Sector Nord AG: Fixed popup description long were cut off in Customer Interface. (#331)
+*/
+    padding-top: 13px;
+    border-top: 1px solid #FFF;
 }
 
 fieldset p {
@@ -370,6 +384,8 @@ fieldset .field-wrapper {
 .card-item form {
     display: flex;
     flex: 1;
+    align-items: flex-start;
+    flex-direction: column;
 }
 
 
@@ -499,7 +515,7 @@ textarea[readonly] {
 * @note         Validation
 */
 form label.Mandatory {
-    color: black !important;
+    color: var(--black) !important;
 }
 
 form label.Mandatory span.Marker {

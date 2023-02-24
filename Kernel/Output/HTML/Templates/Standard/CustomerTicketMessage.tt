@@ -12,8 +12,8 @@
     <div class="ContentWrapper flex-column">
         <h1 class="PageTitle">[% Translate("New Ticket") | html %]</h1>
         <div class="Content card flex-center">
-            <form action="[% Env(" CGIHandle") %]" method="post" name="compose" id="NewCustomerTicket" enctype="multipart/form-data" class="Form Validate PreventMultipleSubmits">
-                <input type="hidden" name="Action" value="[% Env(" Action") %]" />
+            <form action="[% Env("CGIHandle") %]" method="post" name="compose" id="NewCustomerTicket" enctype="multipart/form-data" class="Form Validate PreventMultipleSubmits">
+                <input type="hidden" name="Action" value="[% Env("Action") %]" />
                 <input type="hidden" name="Subaction" value="StoreNew" />
                 <input type="hidden" name="Expand" id="Expand" value="" />
                 <input type="hidden" name="FormID" value="[% Data.FormID | html %]" />

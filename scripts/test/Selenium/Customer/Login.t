@@ -37,10 +37,8 @@ $Selenium->RunTest(
         $Selenium->delete_all_cookies();
 
         # Check Secure::DisableBanner functionality.
-        my $Product          = $ConfigObject->Get('Product');
-        my $Version          = $ConfigObject->Get('Version');
-        my $STORMInstalled   = $Kernel::OM->Get('Kernel::System::OTRSBusiness')->OTRSSTORMIsInstalled();
-        my $CONTROLInstalled = $Kernel::OM->Get('Kernel::System::OTRSBusiness')->OTRSCONTROLIsInstalled();
+        my $Product = $Kernel::OM->Get('Kernel::Config')->Get('Product');
+        my $Version = $Kernel::OM->Get('Kernel::Config')->Get('Version');
 
         for my $Disabled ( reverse 0 .. 1 ) {
             $HelperObject->ConfigSettingChange(
@@ -50,80 +48,23 @@ $Selenium->RunTest(
             $Selenium->VerifiedRefresh();
 
             if ($Disabled) {
-
-                if ($STORMInstalled) {
-
-                    my $STORMFooter = 0;
-
-                    if ( $Selenium->get_page_source() =~ m{ ^ [ ]+ STORM \s powered }xms ) {
-                        $STORMFooter = 1;
-                    }
-
-                    $Self->False(
-                        $STORMFooter,
-                        'Footer banner hidden',
-                    );
-                }
-                elsif ($CONTROLInstalled) {
-
-                    my $CONTROLFooter = 0;
-
-                    if ( $Selenium->get_page_source() =~ m{ ^ [ ]+ CONTROL \s powered }xms ) {
-                        $CONTROLFooter = 1;
-                    }
-
-                    $Self->False(
-                        $CONTROLFooter,
-                        'Footer banner hidden',
-                    );
-                }
-                else {
-                    $Self->False(
-                        index( $Selenium->get_page_source(), 'Powered' ) > -1,
-                        'Footer banner hidden',
-                    );
-                }
+                $Self->False(
+                    index( $Selenium->get_page_source(), 'Powered' ) > -1,
+                    'Footer banner hidden',
+                );
             }
             else {
 
-                if ($STORMInstalled) {
+                $Self->True(
+                    index( $Selenium->get_page_source(), 'Powered' ) > -1,
+                    'Footer banner shown',
+                );
 
-                    my $STORMFooter = 0;
-
-                    if ( $Selenium->get_page_source() =~ m{ ^ [ ]+ STORM \s powered }xms ) {
-                        $STORMFooter = 1;
-                    }
-
-                    $Self->True(
-                        $STORMFooter,
-                        'Footer banner hidden',
-                    );
-                }
-                elsif ($CONTROLInstalled) {
-
-                    my $CONTROLFooter = 0;
-
-                    if ( $Selenium->get_page_source() =~ m{ ^ [ ]+ CONTROL \s powered }xms ) {
-                        $CONTROLFooter = 1;
-                    }
-
-                    $Self->True(
-                        $CONTROLFooter,
-                        'Footer banner hidden',
-                    );
-                }
-                else {
-                    $Self->True(
-                        index( $Selenium->get_page_source(), 'Powered' ) > -1,
-                        'Footer banner shown',
-                    );
-
-                    # Prevent version information disclosure on login page.
-                    $Self->False(
-                        index( $Selenium->get_page_source(), "$Product $Version" ) > -1,
-                        "No version information disclosure ($Product $Version)",
-                    );
-                }
+                # Prevent version information disclosure on login page.
+                $Self->False(
+                    index( $Selenium->get_page_source(), "$Product $Version" ) > -1,
+                    "No version information disclosure ($Product $Version)",
+                );
             }
         }
 

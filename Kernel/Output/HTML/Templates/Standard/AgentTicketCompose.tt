@@ -7,8 +7,8 @@
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
 [% TicketFrontendConfig = Config("Ticket::Frontend::" _ Env("Action") ) %]
-<form action="[% Env(" CGIHandle") %]" method="post" enctype="multipart/form-data" name="compose" id="ComposeTicket" class="Validate PreventMultipleSubmits">
-    <input type="hidden" name="Action" value="[% Env(" Action") %]" />
+<form action="[% Env("CGIHandle") %]" method="post" enctype="multipart/form-data" name="compose" id="ComposeTicket" class="Validate PreventMultipleSubmits">
+    <input type="hidden" name="Action" value="[% Env("Action") %]" />
     <input type="hidden" name="Subaction" value="SendEmail" />
     <input type="hidden" name="TicketID" value="[% Data.TicketID | html %]" />
     <input type="hidden" name="Email" value="[% Data.Email | html %]" />

@@ -98,8 +98,13 @@
                             <th>[% Translate("Name") | html %]</th>
                             <th>[% Translate("Last run") | html %]</th>
                             <th>[% Translate("Validity") | html %]</th>
-                            <th>[% Translate("Delete") | html %]</th>
-                            <th>[% Translate("Run Now!") | html %]</th>
+# ---
+# Forwwward
+# ---
+# - Added "Center" class, replaced "Run Now!" text with "Run"
+                            <th class="Center">[% Translate("Delete") | html %]</th>
+                            <th class="Center">[% Translate("Run") | html %]</th>
+# ---
                         </tr>
                     </thead>
                     <tbody>
@@ -121,16 +126,23 @@
                             <td>[% Translate(Data.ShownValid) | html %]</td>
                             <td class="Center">
                                 <a class="TrashCan table-icon-hover-md" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Delete;Profile=[% Data.Name | uri %];[% Env("ChallengeTokenParam") | html %]" title="[% Translate("Delete this task") | html %]">
-                                    <i class="fa fa-trash-o"></i> [% Translate("Delete") | html %]
+                                    <i class="fa fa-trash-o"></i>
+#                                    [% Translate("Delete") | html %]
                                 </a>
                             </td>
-                            <td>
+# ---
+# Forwwward
+# ---
+# - Added "Center" class, added "table-icon-hover-md" class and <i> element, hid "Run this task" message and added it as a <a> title
+                            <td class="Center">
                                 [% IF Data.Valid == 1 %]
-                                <a class="AsBlock table-actions-button" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Run;Profile=[% Data.Name | uri %];[% Env("ChallengeTokenParam") | html %]">
-                                    [% Translate("Run this task") | html %]
+                                <a class="AsBlock table-actions-button table-icon-hover-md" title="[% Translate("Run this task") | html %]" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Run;Profile=[% Data.Name | uri %];[% Env("ChallengeTokenParam") | html %]">
+                                    <i class="fa fa-caret-square-o-right"></i>
+#                                    [% Translate("Run this task") | html %]
                                 </a>
                                 [% END %]
                             </td>
+# ---
                         </tr>
 [% RenderBlockEnd("Row") %]
                         <tr class="FilterMessage Hidden">
@@ -156,7 +168,7 @@
                     [% END %]
                     <fieldset class="TableLike">
                         <div>
-                            <label for="Profile" class="Mandatory"><span class="Marker">*</span> [% Translate("Job name") | html %]:</label>
+                            <label for="Profile" class="Mandatory"><span class="Marker">*</span> [% Translate("Job name") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="Profile" id="Profile" class="Validate_Required W50pc [% Data.ProfileInvalid | html %]" value="[% Data.Profile | html %]" />
                                 <div id="ProfileError" class="TooltipErrorMessage">
@@ -172,7 +184,7 @@
                         </div>
 
                         <div>
-                            <label for="Valid">[% Translate("Validity") | html %]:</label>
+                            <label for="Valid">[% Translate("Validity") | html %]</label>
                             <div class="Field">
                                 [% Data.ValidOption %]
                             </div>
@@ -237,7 +249,7 @@
                 <div class="Content">
                     <fieldset class="TableLike">
 
-                        <label for="EventsTable">[% Translate("Event Triggers") | html %]:</label>
+                        <label for="EventsTable">[% Translate("Event Triggers") | html %]</label>
                         <div class="Field W50pc">
                             <table class="DataTable ClearNone SpacingBottomSmall" id="EventsTable" summary="[% Translate("List of all configured events") | html %]">
                                 <thead>
@@ -296,7 +308,7 @@
                         </div>
 
                         <div class="Field HideOnChange">
-                            <label class="HideOnChange" for="EventType">[% Translate("Add Event Trigger") | html %]:</label>
+                            <label class="HideOnChange" for="EventType">[% Translate("Add Event Trigger") | html %]</label>
                             <div>
 [% RenderBlockStart("EventTypeStrg") %]
                                 <span>
@@ -326,8 +338,8 @@
                 </div>
                 <div class="Content">
                     <fieldset class="TableLike">
-                        <div>
-                            <label for="TicketNumber">[% Config("Ticket::Hook") %]:</label>
+                        <div class="field-wrapper">
+                            <label for="TicketNumber">[% Config("Ticket::Hook") %]</label>
                             <div class="Field">
                                 <input type="text" name="TicketNumber" id="TicketNumber" size="30" value="[% Data.TicketNumber | html %]"/>
                                 <p class="FieldExplanation">
@@ -336,15 +348,15 @@
                             </div>
                         </div>
 
-                        <div>
-                            <label for="Title">[% Translate("Title") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="Title">[% Translate("Title") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="Title" id="Title" class="W33pc" value="[% Data.Title | html %]"/>
                             </div>
                         </div>
 
-                        <div>
-                            <label for="CustomerID">[% Translate("Customer ID") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="CustomerID">[% Translate("Customer ID") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="CustomerID" id="CustomerID" class="W33pc" value="[% Data.CustomerID | html %]"/>
                                 <p class="FieldExplanation">
@@ -353,8 +365,8 @@
                             </div>
                         </div>
 
-                        <div>
-                            <label for="CustomerUserLogin">[% Translate("Customer user ID") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="CustomerUserLogin">[% Translate("Customer user ID") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="CustomerUserLogin" id="CustomerUserLogin" class="W33pc" value="[% Data.CustomerUserLogin | html %]"/>
                                 <p class="FieldExplanation">
@@ -363,15 +375,15 @@
                             </div>
                         </div>
 [% RenderBlockStart("TicketType") %]
-                        <div>
-                            <label for="TypeIDs">[% Translate("Type") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="TypeIDs">[% Translate("Type") | html %]</label>
                             <div class="Field">
                                 [% Data.TypesStrg %]
                             </div>
                         </div>
 [% RenderBlockEnd("TicketType") %]
-                        <div>
-                            <label for="MIMEBase_From">[% Translate("From") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="MIMEBase_From">[% Translate("From") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="MIMEBase_From" id="MIMEBase_From" class="W30pc [% Data.MIMEBase_FromInvalid | html %]" value="[% Data.MIMEBase_From | html %]"/>
                                 <p class="FieldExplanation">
@@ -383,8 +395,8 @@
                             </div>
                         </div>
 
-                        <div>
-                            <label for="MIMEBase_To">[% Translate("To") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="MIMEBase_To">[% Translate("To") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="MIMEBase_To" id="MIMEBase_To" class="W33pc [% Data.MIMEBase_ToInvalid | html %]" value="[% Data.MIMEBase_To | html %]"/>
                                 <p class="FieldExplanation">
@@ -396,8 +408,8 @@
                             </div>
                         </div>
 
-                        <div>
-                            <label for="MIMEBase_Cc">[% Translate("Cc") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="MIMEBase_Cc">[% Translate("Cc") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="MIMEBase_Cc" id="MIMEBase_Cc" class="W33pc [% Data.MIMEBase_CcInvalid | html %]" value="[% Data.MIMEBase_Cc | html %]"/>
                                 <p class="FieldExplanation">
@@ -409,8 +421,8 @@
                             </div>
                         </div>
 
-                        <div>
-                            <label for="MIMEBase_Subject">[% Translate("Subject") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="MIMEBase_Subject">[% Translate("Subject") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="MIMEBase_Subject" id="MIMEBase_Subject" class="W33pc [% Data.MIMEBase_SubjectInvalid | html %]" value="[% Data.MIMEBase_Subject | html %]"/>
                                 <p class="FieldExplanation">
@@ -422,8 +434,8 @@
                             </div>
                         </div>
 
-                        <div>
-                            <label for="MIMEBase_Body">[% Translate("Text") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="MIMEBase_Body">[% Translate("Text") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="MIMEBase_Body" id="MIMEBase_Body" class="W33pc [% Data.MIMEBase_BodyInvalid | html %]" value="[% Data.MIMEBase_Body | html %]"/>
                                 <p class="FieldExplanation">
@@ -435,59 +447,59 @@
                             </div>
                         </div>
 [% RenderBlockStart("TicketService") %]
-                        <div>
-                            <label for="ServiceIDs">[% Translate("Service") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="ServiceIDs">[% Translate("Service") | html %]</label>
                             <div class="Field">
                                 [% Data.ServicesStrg %]
                             </div>
                         </div>
 
-                        <div>
-                            <label for="SLAIDs">[% Translate("Service Level Agreement") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="SLAIDs">[% Translate("Service Level Agreement") | html %]</label>
                             <div class="Field">
                                 [% Data.SLAsStrg %]
                             </div>
                         </div>
 [% RenderBlockEnd("TicketService") %]
 
-                        <div>
-                            <label for="PriorityIDs">[% Translate("Priority") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="PriorityIDs">[% Translate("Priority") | html %]</label>
                             <div class="Field">
                                 [% Data.PrioritiesStrg %]
                             </div>
                         </div>
 
-                        <div>
-                            <label for="QueueIDs">[% Translate("Queue") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="QueueIDs">[% Translate("Queue") | html %]</label>
                             <div class="Field">
                                 [% Data.QueuesStrg %]
                             </div>
                         </div>
 
-                        <div>
-                            <label for="StateIDs">[% Translate("State") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="StateIDs">[% Translate("State") | html %]</label>
                             <div class="Field">
                                 [% Data.StatesStrg %]
                             </div>
                         </div>
 
-                        <div>
-                            <label for="OwnerIDs">[% Translate("Agent") | html %]/[% Translate("Owner") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="OwnerIDs">[% Translate("Agent") | html %]/[% Translate("Owner") | html %]</label>
                             <div class="Field">
                                 [% Data.OwnerStrg %]
                             </div>
                         </div>
 [% RenderBlockStart("TicketResponsible") %]
-                        <div>
-                            <label for="ResponsibleIDs">[% Translate("Agent") | html %]/[% Translate("Responsible") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="ResponsibleIDs">[% Translate("Agent") | html %]/[% Translate("Responsible") | html %]</label>
                             <div class="Field">
                                 [% Data.ResponsibleStrg %]
                             </div>
                         </div>
 [% RenderBlockEnd("TicketResponsible") %]
 
-                        <div>
-                            <label for="LockIDs">[% Translate("Ticket lock") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="LockIDs">[% Translate("Ticket lock") | html %]</label>
                             <div class="Field">
                                 [% Data.LockOption %]
                             </div>
@@ -497,8 +509,8 @@
                         <label class="card-title">[% Translate("Dynamic fields") | html %]</label>
                     </div>
 [% RenderBlockStart("AddDynamicFields") %]
-                            <div>
-                                <label>[% Translate("Add dynamic field") | html %]:</label>
+                            <div class="field-wrapper">
+                                <label>[% Translate("Add dynamic field") | html %]</label>
                                 <div class="Field" data-widget="Select">
                                     [% Data.DynamicFieldsStrg %]
                                 </div>
@@ -507,7 +519,7 @@
 
                         <fieldset id="SelectedDynamicFields" class="TableLike">
 [% RenderBlockStart("SelectedDynamicFields") %]
-                            <div>
+                            <div class="field-wrapper">
                                 [% Data.Label %]
                                 <div class="Field" data-id="[% Data.ID %]">
                                     [% Data.Field %]
@@ -516,8 +528,8 @@
 [% RenderBlockEnd("SelectedDynamicFields") %]
                         </fieldset>
 
-                        <div>
-                            <label for="TimeSearchTypeNone">[% Translate("Create times") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="TimeSearchTypeNone">[% Translate("Create times") | html %]</label>
                             <div class="Field CheckboxContainer">
                                 <input class="RadioRound" type="radio" name="TimeSearchType" id="TimeSearchTypeNone" value="" [% Data.item("TimeSearchType::None") %]/>
                                 [% Translate("No create time settings.") | html %]
@@ -549,8 +561,8 @@
                             </div>
                         </div>
 
-                        <div>
-                            <label for="LastChangeTimeSearchTypeNone">[% Translate("Last changed times") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="LastChangeTimeSearchTypeNone">[% Translate("Last changed times") | html %]</label>
                             <div class="Field CheckboxContainer">
                                 <input class="RadioRound" type="radio" name="LastChangeTimeSearchType" id="LastChangeTimeSearchTypeNone" value="" [% Data.item("LastChangeTimeSearchType::None") %]/>
                                 [% Translate("No last changed time settings.") | html %]
@@ -582,8 +594,8 @@
                             </div>
                         </div>
 
-                        <div>
-                            <label for="ChangeTimeSearchTypeNone">[% Translate("Change times") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="ChangeTimeSearchTypeNone">[% Translate("Change times") | html %]</label>
                             <div class="Field CheckboxContainer">
                                 <input class="RadioRound" type="radio" name="ChangeTimeSearchType" id="ChangeTimeSearchTypeNone" value="" [% Data.item("ChangeTimeSearchType::None") %]/>
                                 [% Translate("No change time settings.") | html %]
@@ -614,8 +626,8 @@
                             </div>
                         </div>
 
-                        <div>
-                            <label for="LastCloseTimeSearchTypeNone">[% Translate("Last close times") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="LastCloseTimeSearchTypeNone">[% Translate("Last close times") | html %]</label>
                             <div class="Field CheckboxContainer">
                                 <input class="RadioRound" type="radio" name="LastCloseTimeSearchType" id="LastCloseTimeSearchTypeNone" value="" [% Data.item("LastCloseTimeSearchType::None") %]/>
                                 [% Translate("No last close time settings.") | html %]
@@ -647,8 +659,8 @@
                             </div>
                         </div>
 
-                        <div>
-                            <label for="CloseTimeSearchTypeNone">[% Translate("Close times") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="CloseTimeSearchTypeNone">[% Translate("Close times") | html %]</label>
                             <div class="Field CheckboxContainer">
                                 <input class="RadioRound" type="radio" name="CloseTimeSearchType" id="CloseTimeSearchTypeNone" value="" [% Data.item("CloseTimeSearchType::None") %]/>
                                 [% Translate("No close time settings.") | html %]
@@ -679,8 +691,8 @@
                             </div>
                         </div>
 
-                        <div>
-                            <label for="TimePendingSearchTypeNone">[% Translate("Pending times") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="TimePendingSearchTypeNone">[% Translate("Pending times") | html %]</label>
                             <div class="Field CheckboxContainer">
                                 <input class="RadioRound" type="radio" name="TimePendingSearchType" id="TimePendingSearchTypeNone" value="" [% Data.item("TimePendingSearchType::None") %]/>
                                 [% Translate("No pending time settings.") | html %]
@@ -711,8 +723,8 @@
                             </div>
                         </div>
 
-                        <div>
-                            <label for="EscalationTimeSearchTypeNone">[% Translate("Escalation times") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="EscalationTimeSearchTypeNone">[% Translate("Escalation times") | html %]</label>
                             <div class="Field CheckboxContainer">
                                 <input class="RadioRound" type="radio" name="EscalationTimeSearchType" id="EscalationTimeSearchTypeNone" value="" [% Data.item("EscalationTimeSearchType::None") %]/>
                                 [% Translate("No escalation time settings.") | html %]
@@ -743,8 +755,8 @@
                             </div>
                         </div>
 
-                        <div>
-                            <label for="EscalationResponseTimeSearchTypeNone">[% Translate("Escalation - first response time") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="EscalationResponseTimeSearchTypeNone">[% Translate("Escalation - first response time") | html %]</label>
                             <div class="Field CheckboxContainer">
                                 <input class="RadioRound" type="radio" name="EscalationResponseTimeSearchType" id="EscalationResponseTimeSearchTypeNone" value="" [% Data.item("EscalationResponseTimeSearchType::None") %]/>
                                 [% Translate("No escalation time settings.") | html %]
@@ -775,8 +787,8 @@
                             </div>
                         </div>
 
-                        <div>
-                            <label for="EscalationUpdateTimeSearchTypeNone">[% Translate("Escalation - update time") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="EscalationUpdateTimeSearchTypeNone">[% Translate("Escalation - update time") | html %]</label>
                             <div class="Field CheckboxContainer">
                                 <input class="RadioRound" type="radio" name="EscalationUpdateTimeSearchType" id="EscalationUpdateTimeSearchTypeNone" value="" [% Data.item("EscalationUpdateTimeSearchType::None") %]/>
                                 [% Translate("No escalation time settings.") | html %]
@@ -807,8 +819,8 @@
                             </div>
                         </div>
 
-                        <div>
-                            <label for="EscalationSolutionTimeSearchTypeNone">[% Translate("Escalation - solution time") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="EscalationSolutionTimeSearchTypeNone">[% Translate("Escalation - solution time") | html %]</label>
                             <div class="Field CheckboxContainer">
                                 <input class="RadioRound" type="radio" name="EscalationSolutionTimeSearchType" id="EscalationSolutionTimeSearchTypeNone" value="" [% Data.item("EscalationSolutionTimeSearchType::None") %]/>
                                 [% Translate("No escalation time settings.") | html %]
@@ -839,8 +851,8 @@
                             </div>
                         </div>
 [% RenderBlockStart("SearchInArchive") %]
-                        <div>
-                            <label for="SearchInArchive">[% Translate("Archive search option") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="SearchInArchive">[% Translate("Archive search option") | html %]</label>
                             <div class="Field">
                                 [% Data.SearchInArchiveStrg %]
                             </div>
@@ -860,95 +872,95 @@
                 <div class="Content">
                     <fieldset class="TableLike">
 [% RenderBlockStart("NewTicketService") %]
-                        <div>
-                            <label for="NewServiceID">[% Translate("Set new service") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewServiceID">[% Translate("Set new service") | html %]</label>
                             <div class="Field">
                                 [% Data.NewServicesStrg %]
                             </div>
                         </div>
 
-                        <div>
-                            <label for="NewSLAID">[% Translate("Set new Service Level Agreement") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewSLAID">[% Translate("Set new Service Level Agreement") | html %]</label>
                             <div class="Field">
                                 [% Data.NewSLAsStrg %]
                             </div>
                         </div>
 [% RenderBlockEnd("NewTicketService") %]
 
-                        <div>
-                            <label for="NewPriorityID">[% Translate("Set new priority") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewPriorityID">[% Translate("Set new priority") | html %]</label>
                             <div class="Field">
                                 [% Data.NewPrioritiesStrg %]
                             </div>
                         </div>
 
-                        <div>
-                            <label for="NewQueueID">[% Translate("Set new queue") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewQueueID">[% Translate("Set new queue") | html %]</label>
                             <div class="Field">
                                 [% Data.NewQueuesStrg %]
                             </div>
                         </div>
 
-                        <div>
-                            <label for="NewStateID">[% Translate("Set new state") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewStateID">[% Translate("Set new state") | html %]</label>
                             <div class="Field">
                                 [% Data.NewStatesStrg %]
                             </div>
                         </div>
 
-                        <div>
-                            <label for="NewPendingTime">[% Translate("Pending date") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewPendingTime">[% Translate("Pending date") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="NewPendingTime" id="NewPendingTime" value="[% Data.NewPendingTime | html %]" class="W10pc"/>
                                 [% Data.NewPendingTimeTypeStrg %]
                             </div>
                         </div>
 
-                        <div>
-                            <label for="NewOwnerID">[% Translate("Set new agent") | html %]/[% Translate("new owner") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewOwnerID">[% Translate("Set new agent") | html %]/[% Translate("new owner") | html %]</label>
                             <div class="Field">
                                 [% Data.NewOwnerStrg %]
                             </div>
                         </div>
 [% RenderBlockStart("NewTicketResponsible") %]
-                        <div>
-                            <label for="NewResponsibleID">[% Translate("Set new agent") | html %]/[% Translate("new responsible") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewResponsibleID">[% Translate("Set new agent") | html %]/[% Translate("new responsible") | html %]</label>
                             <div class="Field">
                                 [% Data.NewResponsibleStrg %]
                             </div>
                         </div>
 [% RenderBlockEnd("NewTicketResponsible") %]
 
-                        <div>
-                            <label for="NewLockID">[% Translate("Set new ticket lock") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewLockID">[% Translate("Set new ticket lock") | html %]</label>
                             <div class="Field">
                                 [% Data.NewLockOption %]
                             </div>
                         </div>
 
-                        <div>
-                            <label for="NewCustomerUserLogin">[% Translate("New customer user ID") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewCustomerUserLogin">[% Translate("New customer user ID") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="NewCustomerUserLogin" id="NewCustomerUserLogin" value="[% Data.NewCustomerUserLogin | html %]" class="W33pc"/>
                             </div>
                         </div>
 
-                        <div>
-                            <label for="NewCustomerID">[% Translate("New customer ID") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewCustomerID">[% Translate("New customer ID") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="NewCustomerID" id="NewCustomerID" value="[% Data.NewCustomerID | html %]" class="W33pc"/>
                             </div>
                         </div>
 
-                        <div>
-                            <label for="NewTitle">[% Translate("New title") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewTitle">[% Translate("New title") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="NewTitle" id="NewTitle" class="W33pc" value="[% Data.NewTitle | html %]"/>
                             </div>
                         </div>
 [% RenderBlockStart("NewTicketType") %]
-                        <div>
-                            <label for="NewTypeID">[% Translate("New type") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewTypeID">[% Translate("New type") | html %]</label>
                             <div class="Field">
                                 [% Data.NewTypesStrg %]
                             </div>
@@ -959,8 +971,8 @@
                             <label class="card-title">[% Translate("Dynamic fields") | html %]</label>
 [% RenderBlockStart("AddNewDynamicFields") %]
                             <fieldset class="TableLike top-container-wrapper">
-                                <div>
-                                    <label>[% Translate("Add dynamic field") | html %]:</label>
+                                <div class="field-wrapper">
+                                    <label>[% Translate("Add dynamic field") | html %]</label>
                                     <div class="Field" data-widget="Update">
                                         [% Data.NewDynamicFieldsStrg %]
                                     </div>
@@ -970,7 +982,7 @@
 
                             <fieldset id="SelectedNewDynamicFields" class="TableLike new-field-wrapper">
 [% RenderBlockStart("SelectedNewDynamicFields") %]
-                                <div>
+                                <div class="field-wrapper">
                                     [% Data.Label %]
                                     <div class="Field flex-row" data-id="[% Data.ID %]">
                                         [% Data.Field %]
@@ -980,8 +992,8 @@
                             </fieldset>
                         </div>
 [% RenderBlockStart("NewArchiveFlag") %]
-                        <div>
-                            <label for="NewArchiveFlag">[% Translate("Archive selected tickets") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewArchiveFlag">[% Translate("Archive selected tickets") | html %]</label>
                             <div class="Field">
                                 [% Data.NewArchiveFlagStrg %]
                             </div>
@@ -999,24 +1011,24 @@
                 </div>
                 <div class="Content">
                     <fieldset class="TableLike">
-                        <div>
-                            <label for="NewNoteFrom">[% Translate("From") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewNoteFrom">[% Translate("From") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="NewNoteFrom" id="NewNoteFrom" value="[% Data.NewNoteFrom | html %]" class="W50pc [% Data.NewNoteFromServerError | html %]" maxlength="200"/>
                                 <div id="NewNoteFromServerError" class="TooltipErrorMessage"><p>[% Translate("This field must have less then 200 characters.") | html %]</p></div>
                             </div>
                         </div>
 
-                        <div>
-                            <label for="NewNoteSubject">[% Translate("Subject") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewNoteSubject">[% Translate("Subject") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="NewNoteSubject" id="NewNoteSubject" value="[% Data.NewNoteSubject | html %]" size="60" [% IF Data.NewNoteSubjectServerError == 'ServerError' %]class="[% Data.NewNoteSubjectServerError | html %]"[% END %] maxlength="200"/>
                                 <div id="NewNoteSubjectServerError" class="TooltipErrorMessage"><p>[% Translate("This field must have less then 200 characters.") | html %]</p></div>
                             </div>
                         </div>
 
-                        <div>
-                            <label for="NewNoteBody">[% Translate("Text") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewNoteBody">[% Translate("Text") | html %]</label>
                             <div class="Field">
                                 <textarea name="NewNoteBody" id="NewNoteBody" class="Validate_MaxLength [% Data.NewNoteBodyServerError | html %]" rows="7" cols="60" data-maxlength="200">[% Data.NewNoteBody | html %]</textarea>
                                 <div id="NewNoteBodyError" class="TooltipErrorMessage"><p>[% Translate("This field must have less then 200 characters.") | html %]</p></div>
@@ -1026,11 +1038,11 @@
 
                         <div class="Field CheckboxContainer">
                             <input name="NewNoteIsVisibleForCustomer" id="NewNoteIsVisibleForCustomer" type="checkbox" [% IF Data.NewNoteIsVisibleForCustomer %] checked="checked"[% END %] />
-                            <label for="NewNoteIsVisibleForCustomer">[% Translate("Visible for customer") | html %]:</label>
+                            <label for="NewNoteIsVisibleForCustomer">[% Translate("Visible for customer") | html %]</label>
                         </div>
 
-                        <div>
-                            <label for="NewNoteTimeUnits">[% Translate("Time units") | html %] [% Translate(Config("Ticket::Frontend::TimeUnits")) | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewNoteTimeUnits">[% Translate("Time units") | html %] [% Translate(Config("Ticket::Frontend::TimeUnits")) | html %]</label>
                             <div class="Field">
                                 <input type="text" name="NewNoteTimeUnits" id="NewNoteTimeUnits" value="[% Data.NewNoteTimeUnits | html %]" class="W20pc"/>
                             </div>
@@ -1047,15 +1059,15 @@
                 </div>
                 <div class="Content">
                     <fieldset class="TableLike">
-                        <div>
-                            <label for="NewSendNoNotification">[% Translate("Send agent/customer notifications on changes") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewSendNoNotification">[% Translate("Send agent/customer notifications on changes") | html %]</label>
                             <div class="Field">
                                 [% Data.SendNoNotificationOption %]
                             </div>
                         </div>
 
-                        <div>
-                            <label for="NewDelete">[% Translate("Delete tickets") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewDelete">[% Translate("Delete tickets") | html %]</label>
                             <div class="Field">
                                 [% Data.DeleteOption %]
                             </div>
@@ -1077,76 +1089,76 @@
                 </div>
                 <div class="Content">
                     <fieldset class="TableLike">
-                        <div>
-                            <label for="NewModule">[% Translate("Module") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewModule">[% Translate("Module") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="NewModule" id="NewModule" value="[% Data.NewModule | html %]" size="45"/>
                             </div>
                         </div>
 
-                        <div>
-                            <label for="NewParamKey1">[% Translate("Param %s key", "1") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewParamKey1">[% Translate("Param %s key", "1") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="NewParamKey1" id="NewParamKey1" value="[% Data.NewParamKey1 | html %]" class="W20pc"/>
                             </div>
                         </div>
-                        <div>
-                            <label for="NewParamValue1"> [% Translate("Param %s value", "1") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewParamValue1"> [% Translate("Param %s value", "1") | html %]</label>
                             <input type="text" name="NewParamValue1" id="NewParamValue1" value="[% Data.NewParamValue1 | html %]" class="W20pc"/>
                         </div>
 
-                        <div>
-                            <label for="NewParamKey2">[% Translate("Param %s key", "2") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewParamKey2">[% Translate("Param %s key", "2") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="NewParamKey2" id="NewParamKey2" value="[% Data.NewParamKey2 | html %]" class="W20pc"/>
                             </div>
                         </div>
-                        <div>
-                            <label for="NewParamValue2"> [% Translate("Param %s value", "2") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewParamValue2"> [% Translate("Param %s value", "2") | html %]</label>
                             <input type="text" name="NewParamValue2" id="NewParamValue2" value="[% Data.NewParamValue2 | html %]" class="W20pc"/>
                         </div>
 
-                        <div>
-                            <label for="NewParamKey3">[% Translate("Param %s key", "3") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewParamKey3">[% Translate("Param %s key", "3") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="NewParamKey3" id="NewParamKey3" value="[% Data.NewParamKey3 | html %]" class="W20pc"/>
                             </div>
                         </div>
-                        <div>
-                            <label for="NewParamValue3">[% Translate("Param %s value", "3") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewParamValue3">[% Translate("Param %s value", "3") | html %]</label>
                             <input type="text" name="NewParamValue3" id="NewParamValue3" value="[% Data.NewParamValue3 | html %]" class="W20pc"/>
                         </div>
 
-                        <div>
-                            <label for="NewParamKey4">[% Translate("Param %s key", "4") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewParamKey4">[% Translate("Param %s key", "4") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="NewParamKey4" id="NewParamKey4" value="[% Data.NewParamKey4 | html %]" class="W20pc"/>
                             </div>
                         </div>
-                        <div>
-                            <label for="NewParamValue4"> [% Translate("Param %s value", "4") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewParamValue4"> [% Translate("Param %s value", "4") | html %]</label>
                             <input type="text" name="NewParamValue4" id="NewParamValue4" value="[% Data.NewParamValue4 | html %]" class="W20pc"/>
                         </div>
 
-                        <div>
-                            <label for="NewParamKey5">[% Translate("Param %s key", "5") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewParamKey5">[% Translate("Param %s key", "5") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="NewParamKey5" id="NewParamKey5" value="[% Data.NewParamKey5 | html %]" class="W20pc"/>
                             </div>
                         </div>
-                        <div>
-                            <label for="NewParamValue5"> [% Translate("Param %s value", "5") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewParamValue5"> [% Translate("Param %s value", "5") | html %]</label>
                             <input type="text" name="NewParamValue5" id="NewParamValue5" value="[% Data.NewParamValue5 | html %]" class="W20pc"/>
                         </div>
 
-                        <div>
-                            <label for="NewParamKey6">[% Translate("Param %s key", "6") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewParamKey6">[% Translate("Param %s key", "6") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="NewParamKey6" id="NewParamKey6" value="[% Data.NewParamKey6 | html %]" class="W20pc"/>
                             </div>
                         </div>
-                        <div>
-                            <label for="NewParamValue6"> [% Translate("Param %s value", "6") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="NewParamValue6"> [% Translate("Param %s value", "6") | html %]</label>
                             <input type="text" name="NewParamValue6" id="NewParamValue6" value="[% Data.NewParamValue6 | html %]" class="W20pc"/>
                         </div>
                     </fieldset>

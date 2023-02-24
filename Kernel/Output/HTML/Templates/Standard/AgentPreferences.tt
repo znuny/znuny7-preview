@@ -233,12 +233,9 @@
                 </form>
             </li>
 [% RenderBlockEnd("Item") %]
-            [% IF Data.SettingList.size() %]
-                [% INCLUDE "AgentPreferences/SettingsList.tt" %]
-            [% END %]
         </ul>
 
-        [% IF !global.ClassicPreferenceCounter && !Data.SettingList.size() %]
+        [% IF !global.ClassicPreferenceCounter %]
         <div class="WidgetSimple">
             <div class="Content">
             [% IF !Data.RootNavigation %]

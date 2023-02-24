@@ -37,13 +37,6 @@ $Selenium->RunTest(
             Value => 1,
         );
 
-        # make sure to enable cloud services
-        $HelperObject->ConfigSettingChange(
-            Valid => 1,
-            Key   => 'CloudServices::Disabled',
-            Value => 0,
-        );
-
         # enable SMIME in config
         $HelperObject->ConfigSettingChange(
             Valid => 1,
@@ -104,7 +97,6 @@ $Selenium->RunTest(
             AdminLog
             AdminMailAccount
             AdminNotificationEvent
-            AdminOTRSBusiness
             AdminPGP
             AdminPackageManager
             AdminPerformanceLog
@@ -144,10 +136,7 @@ $Selenium->RunTest(
             $Selenium->VerifiedGet("${ScriptAlias}index.pl?Action=$AdminModule");
 
             # Check if needed frontend module is registered in sysconfig.
-            # Skip test for unregistered modules (e.g. OTRS Business)
             if ( !$FrontendModules->{$AdminModule} ) {
-
-                next ADMINMODULE if $AdminModule eq 'AdminOTRSBusiness';
                 $Self->True(
                     index(
                         $Selenium->get_page_source(),

@@ -806,10 +806,14 @@ Core.Agent.Dashboard = (function (TargetNS) {
     function InitWidgetContainerPref (Params) {
 
         var WidgetContainer = Core.Config.Get('WidgetContainer' + Params.NameForm),
-            FilterSelected, FilterCount;
+            FilterSelected,
+            FilterCount = 0;
+
         if (WidgetContainer && typeof WidgetContainer['FilterSelected'] !== 'undefined' && WidgetContainer['FilterSelected'] != 'undefined' && typeof WidgetContainer['Filter'] !== 'undefined' && WidgetContainer['Filter'] !== 'undefined'){
             FilterSelected = WidgetContainer['FilterSelected'] || 'All';
-            FilterCount = WidgetContainer.Filter[FilterSelected].Count;
+            if(WidgetContainer.Filter[FilterSelected] && WidgetContainer.Filter[FilterSelected].Count){
+                FilterCount = WidgetContainer.Filter[FilterSelected].Count;
+            }
             $('#Dashboard' + Core.App.EscapeSelector(Params.Name) + '-box').find('.FilterCount').text(FilterCount);
         }
 

@@ -1038,6 +1038,19 @@ sub Run {
         );
     }
 
+    # show only owned tickets if we have the filter
+    if ( $TicketSearchSummary{Owned} ) {
+        $LayoutObject->Block(
+            Name => 'ContentLargeTicketGenericFilterOwned',
+            Data => {
+                %Param,
+                %{ $Self->{Config} },
+                Name => $Self->{Name},
+                %{$Summary},
+            },
+        );
+    }
+
     # add page nav bar
     my $Total = $Summary->{ $Self->{Filter} } || 0;
 
@@ -2577,6 +2590,10 @@ sub _SearchParamsGet {
         Locked => {
             OwnerIDs => $TicketSearch{OwnerIDs} // [ $Self->{UserID}, ],
             LockIDs  => [ $LockName2ID{lock}, $LockName2ID{tmp_lock} ],
+        },
+        Owned => {
+            OwnerIDs => [ $Self->{UserID}, ],
+            LockIDs  => $TicketSearch{LockIDs} // undef,
         },
         Watcher => {
             WatchUserIDs => [ $Self->{UserID}, ],
