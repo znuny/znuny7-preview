@@ -175,8 +175,12 @@
 
                     <span class="Pagination">
 [% RenderBlockStart("OverviewNavBarPageNavBar") %]
-                        [% Data.ResultLong %]
-                        [% Data.SiteNavBarLong %]
+                        <ul>
+                            <li>
+                                <span>[% Data.ResultLong %]</span>
+                            </li>
+                            <li class="page-links">[% Data.SiteNavBarLong %]</li>
+                        </ul>
 [% RenderBlockEnd("OverviewNavBarPageNavBar") %]
                     </span>
 

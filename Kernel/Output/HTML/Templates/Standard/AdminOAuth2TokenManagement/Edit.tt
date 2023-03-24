@@ -57,109 +57,126 @@
                 </div>
                 <div class="Content">
                     <fieldset class="TableLike">
-                        <label class="Mandatory" for="Name">
-                            <span class="Marker">*</span> [% Translate("Name") | html %]:
-                        </label>
-                        <div class="Field">
-                            <input type="text" id="Name" name="Name" value="[% Data.Name | html %]" class="W33pc Validate_Required [% Data.NameInvalid | html %]" maxlength="250" />
-                            <div id="NameError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="NameServerError" class="TooltipErrorMessage">
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="Name">
+                                <span class="Marker">*</span> [% Translate("Name") | html %]
+                            </label>
+                            <div class="Field">
+                                <input type="text" id="Name" name="Name" value="[% Data.Name | html %]" class="W33pc Validate_Required [% Data.NameInvalid | html %]" maxlength="250" />
+                                <div id="NameError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="NameServerError" class="TooltipErrorMessage">
 [% RenderBlockStart("NameRequiredServerError") %]
-                                <p>[% Translate("This field is required.") | html %]</p>
+                                    <p>[% Translate("This field is required.") | html %]</p>
 [% RenderBlockEnd("NameRequiredServerError") %]
 [% RenderBlockStart("NameExistsServerError") %]
-                                <p>[% Translate("An OAuth2 token configuration with this name already exists.") | html %]</p>
+                                    <p>[% Translate("An OAuth2 token configuration with this name already exists.") | html %]</p>
 [% RenderBlockEnd("NameExistsServerError") %]
+                                </div>
                             </div>
                         </div>
 
-                        <label class="Mandatory" for="ClientID">
-                            <span class="Marker">*</span> [% Translate("Client ID") | html %]:
-                        </label>
-                        <div class="Field">
-                            <input type="text" id="ClientID" name="ClientID" value="[% Data.ClientID | html %]" class="W33pc Validate_Required [% Data.ClientIDInvalid | html %]" />
-                            <div id="ClientIDError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="ClientIDServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                        </div>
-
-                        <label class="Mandatory" for="ClientSecret">
-                            <span class="Marker">*</span> [% Translate("Client secret") | html %]:
-                        </label>
-                        <div class="Field">
-                            <input type="text" id="ClientSecret" name="ClientSecret" value="[% Data.ClientSecret | html %]" class="W33pc Validate_Required [% Data.ClientSecretInvalid | html %]" />
-                            <div id="ClientSecretError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="ClientSecretServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="ClientID">
+                                <span class="Marker">*</span> [% Translate("Client ID") | html %]
+                            </label>
+                            <div class="Field">
+                                <input type="text" id="ClientID" name="ClientID" value="[% Data.ClientID | html %]" class="W33pc Validate_Required [% Data.ClientIDInvalid | html %]" />
+                                <div id="ClientIDError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="ClientIDServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
                             </div>
                         </div>
 
-                        <label class="Mandatory" for="AuthorizationCodeRequestURL">
-                            <span class="Marker">*</span> [% Translate("URL for authorization code") | html %]:
-                        </label>
-                        <div class="Field">
-                            <input type="text" id="AuthorizationCodeRequestURL" name="AuthorizationCodeRequestURL" value="[% Data.AuthorizationCodeRequestURL | html %]" class="W33pc Validate_Required [% Data.AuthorizationCodeRequestURLInvalid | html %]" />
-                            <div id="AuthorizationCodeRequestURLError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="AuthorizationCodeRequestURLServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                        </div>
-
-                        <label class="Mandatory" for="TokenByAuthorizationCodeRequestURL">
-                            <span class="Marker">*</span> [% Translate("URL for token by authorization code") | html %]:
-                        </label>
-                        <div class="Field">
-                            <input type="text" id="TokenByAuthorizationCodeRequestURL" name="TokenByAuthorizationCodeRequestURL" value="[% Data.TokenByAuthorizationCodeRequestURL | html %]" class="W33pc Validate_Required [% Data.TokenByAuthorizationCodeRequestURLInvalid | html %]" />
-                            <div id="TokenByAuthorizationCodeRequestURLError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="TokenByAuthorizationCodeRequestURLServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="ClientSecret">
+                                <span class="Marker">*</span> [% Translate("Client secret") | html %]
+                            </label>
+                            <div class="Field">
+                                <input type="text" id="ClientSecret" name="ClientSecret" value="[% Data.ClientSecret | html %]" class="W33pc Validate_Required [% Data.ClientSecretInvalid | html %]" />
+                                <div id="ClientSecretError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="ClientSecretServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
                             </div>
                         </div>
 
-                        <label class="Mandatory" for="TokenByRefreshTokenRequestURL">
-                            <span class="Marker">*</span> [% Translate("URL for token by refresh token") | html %]:
-                        </label>
-                        <div class="Field">
-                            <input type="text" id="TokenByRefreshTokenRequestURL" name="TokenByRefreshTokenRequestURL" value="[% Data.TokenByRefreshTokenRequestURL | html %]" class="W33pc Validate_Required [% Data.TokenByRefreshTokenRequestURLInvalid | html %]" />
-                            <div id="TokenByRefreshTokenRequestURLError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="TokenByRefreshTokenRequestURLServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="AuthorizationCodeRequestURL">
+                                <span class="Marker">*</span> [% Translate("URL for authorization code") | html %]
+                            </label>
+                            <div class="Field">
+                                <input type="text" id="AuthorizationCodeRequestURL" name="AuthorizationCodeRequestURL" value="[% Data.AuthorizationCodeRequestURL | html %]" class="W33pc Validate_Required [% Data.AuthorizationCodeRequestURLInvalid | html %]" />
+                                <div id="AuthorizationCodeRequestURLError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="AuthorizationCodeRequestURLServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
                             </div>
                         </div>
 
-                        <label for="Scope">
-                            [% Translate("Access token scope") | html %]:
-                        </label>
-                        <div class="Field">
-                            <input type="text" id="Scope" name="Scope" value="[% Data.Scope | html %]" class="W33pc" />
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="TokenByAuthorizationCodeRequestURL">
+                                <span class="Marker">*</span> [% Translate("URL for token by authorization code") | html %]
+                            </label>
+                            <div class="Field">
+                                <input type="text" id="TokenByAuthorizationCodeRequestURL" name="TokenByAuthorizationCodeRequestURL" value="[% Data.TokenByAuthorizationCodeRequestURL | html %]" class="W33pc Validate_Required [% Data.TokenByAuthorizationCodeRequestURLInvalid | html %]" />
+                                <div id="TokenByAuthorizationCodeRequestURLError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="TokenByAuthorizationCodeRequestURLServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                            </div>
                         </div>
 
-                        <label class="Mandatory" for="ValidID"><span class="Marker">*</span> [% Translate("Validity") | html %]:</label>
-                        <div class="Field">
-                            [% Data.ValidIDSelection %]
-                            <div id="ValidIDError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="TokenByRefreshTokenRequestURL">
+                                <span class="Marker">*</span> [% Translate("URL for token by refresh token") | html %]
+                            </label>
+                            <div class="Field">
+                                <input type="text" id="TokenByRefreshTokenRequestURL" name="TokenByRefreshTokenRequestURL" value="[% Data.TokenByRefreshTokenRequestURL | html %]" class="W33pc Validate_Required [% Data.TokenByRefreshTokenRequestURLInvalid | html %]" />
+                                <div id="TokenByRefreshTokenRequestURLError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="TokenByRefreshTokenRequestURLServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
                             </div>
-                            <div id="ValidIDServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
+                        </div>
+
+                        <div class="field-wrapper">
+                            <label for="Scope">
+                                [% Translate("Access token scope") | html %]
+                            </label>
+                            <div class="Field">
+                                <input type="text" id="Scope" name="Scope" value="[% Data.Scope | html %]" class="W33pc" />
+                            </div>
+                        </div>
+
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="ValidID"><span class="Marker">*</span> [% Translate("Validity") | html %]</label>
+                            <div class="Field">
+                                [% Data.ValidIDSelection %]
+                                <div id="ValidIDError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="ValidIDServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
                             </div>
                         </div>
 
                         [% IF Data.TemplateName %]
-                            <label>[% Translate("Template") | html %]:</label>
+                            <div class="field-wrapper">
+                                <label>[% Translate("Template") | html %]</label>
                                 <p class="Value">
                                     [% Data.TemplateName | html %]
                                     <br />
@@ -167,6 +184,7 @@
                                         [% Translate("This is the template that was used to create this OAuth2 token configuration.") | html %]
                                     </span>
                                 </p>
+                            </div>
                         [% END %]
                     </fieldset>
                 </div>
@@ -178,20 +196,24 @@
                 </div>
                 <div class="Content">
                     <fieldset class="TableLike">
-                        <label for="NotifyOnExpiredToken">[% Translate("Expired token") | html %]:</label>
-                        <div class="Field">
-                            <input type="checkbox" name="NotifyOnExpiredToken" id="NotifyOnExpiredToken" value="1" [% Data.NotifyOnExpiredToken ? 'checked="checked"' : '' %] />
-                            <p class="FieldExplanation">
-                                [% Translate("Shows a notification for admins below the top menu if the OAuth2 token has expired.") | html %]
-                            </p>
+                        <div class="field-wrapper">
+                            <label for="NotifyOnExpiredToken">[% Translate("Expired token") | html %]</label>
+                            <div class="Field">
+                                <input type="checkbox" name="NotifyOnExpiredToken" id="NotifyOnExpiredToken" value="1" [% Data.NotifyOnExpiredToken ? 'checked="checked"' : '' %] />
+                                <p class="FieldExplanation">
+                                    [% Translate("Shows a notification for admins below the top menu if the OAuth2 token has expired.") | html %]
+                                </p>
+                            </div>
                         </div>
 
-                        <label for="NotifyOnExpiredRefreshToken">[% Translate("Expired refresh token") | html %]:</label>
-                        <div class="Field">
-                            <input type="checkbox" name="NotifyOnExpiredRefreshToken" id="NotifyOnExpiredRefreshToken" value="1" [% Data.NotifyOnExpiredRefreshToken ? 'checked="checked"' : '' %] />
-                            <p class="FieldExplanation">
-                                [% Translate("Shows a notification for admins below the top menu if the OAuth2 refresh token has expired.") | html %]
-                            </p>
+                        <div class="field-wrapper">
+                            <label for="NotifyOnExpiredRefreshToken">[% Translate("Expired refresh token") | html %]</label>
+                            <div class="Field">
+                                <input type="checkbox" name="NotifyOnExpiredRefreshToken" id="NotifyOnExpiredRefreshToken" value="1" [% Data.NotifyOnExpiredRefreshToken ? 'checked="checked"' : '' %] />
+                                <p class="FieldExplanation">
+                                    [% Translate("Shows a notification for admins below the top menu if the OAuth2 refresh token has expired.") | html %]
+                                </p>
+                            </div>
                         </div>
                     </fieldset>
                 </div>

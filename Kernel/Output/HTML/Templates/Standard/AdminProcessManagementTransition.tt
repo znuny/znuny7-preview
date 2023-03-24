@@ -54,8 +54,8 @@
                     </div>
                     <div class="Content">
                         <fieldset class="TableLike">
-                            <div>
-                                <label class="Mandatory" for="Name"><span class="Marker">*</span> [% Translate("Transition Name") | html %]:</label>
+                            <div class="field-wrapper">
+                                <label class="Mandatory" for="Name"><span class="Marker">*</span> [% Translate("Transition Name") | html %]</label>
                                 <div class="Field">
                                     <input type="text" name="Name" id="Name" value="[% Data.Name | html %]" class="Validate_Required [% Data.NameServerError | html %]" maxlength="70"/>
                                     <div id="NameError" class="TooltipErrorMessage">
@@ -67,8 +67,8 @@
                                 </div>
                             </div>
 
-                            <div>
-                                <label for="Scope">[% Translate("Scope") | html %]:</label>
+                            <div class="field-wrapper">
+                                <label for="Scope">[% Translate("Scope") | html %]</label>
                                 <div class="Field">
                                     [% Data.ScopeSelection %]
                                     <div id="ScopeError" class="TooltipErrorMessage">
@@ -77,8 +77,8 @@
                                 </div>
                             </div>
 
-                            <div>
-                                <label class="Mandatory" for="ScopeEntityID"><span class="Marker">*</span> [% Translate("Scope Entity ID") | html %]:</label>
+                            <div class="field-wrapper">
+                                <label class="Mandatory" for="ScopeEntityID"><span class="Marker">*</span> [% Translate("Scope Entity ID") | html %]</label>
                                 <div class="Field">
                                     [% Data.ScopeEntityIDSelection %]
                                     <div id="ScopeEntityIDError" class="TooltipErrorMessage">
@@ -105,8 +105,8 @@
                                 </span>
                             </div>
 
-                            <div>
-                                <label for="OverallConditionLinking">[% Translate("Type of Linking between Conditions") | html %]:</label>
+                            <div class="field-wrapper">
+                                <label for="OverallConditionLinking">[% Translate("Type of Linking between Conditions") | html %]</label>
                                 <div class="Field">
                                     [% Data.OverallConditionLinking %]
                                 </div>
@@ -126,8 +126,8 @@
                                     <div class="Field ConditionField">
                                         <div class="Condition">
                                             <fieldset class="TableLike FixedLabelSmall">
-                                                <div>
-                                                    <label for="ConditionLinking[[% Data.Index | html %]]">[% Translate("Type of Linking") | html %]:</label>
+                                                <div class="field-wrapper">
+                                                    <label for="ConditionLinking[[% Data.Index | html %]]">[% Translate("Type of Linking") | html %]</label>
                                                     <div class="Field">
                                                         [% Data.ConditionLinking %]
                                                     </div>
@@ -147,18 +147,18 @@
 [% RenderBlockStart("ConditionItemEditRowField") %]
 
                                                         <fieldset class="TableLike">
-                                                            <div>
-                                                                <label for="ConditionFieldName[[% Data.Index | html %]][[% Data.FieldIndex | html %]]">[% Translate("Name") | html %]:</label>
+                                                            <div class="field-wrapper">
+                                                                <label for="ConditionFieldName[[% Data.Index | html %]][[% Data.FieldIndex | html %]]">[% Translate("Name") | html %]</label>
                                                                 <input type="text" name="ConditionFieldName[[% Data.Index | html %]][[% Data.FieldIndex | html %]]" class="Validate_Required Validate_NotEqual Validate_NotEqual_ConditionFieldName" value="[% Data.FieldIndex | html %]" id="ConditionFieldName[[% Data.Index | html %]][[% Data.FieldIndex | html %]]" />
                                                             </div>
 
-                                                            <div>
-                                                                <label for="ConditionFieldType[[% Data.Index | html %]][[% Data.FieldIndex | html %]]">[% Translate("Type") | html %]:</label>
+                                                            <div class="field-wrapper">
+                                                                <label for="ConditionFieldType[[% Data.Index | html %]][[% Data.FieldIndex | html %]]">[% Translate("Type") | html %]</label>
                                                                 [% Data.ConditionFieldType %]
                                                             </div>
 
-                                                            <div>
-                                                                <label for="ConditionFieldValue[[% Data.Index | html %]][[% Data.FieldIndex | html %]]">[% Translate("Value") | html %]:</label>
+                                                            <div class="field-wrapper">
+                                                                <label for="ConditionFieldValue[[% Data.Index | html %]][[% Data.FieldIndex | html %]]">[% Translate("Value") | html %]</label>
                                                                 <input type="text" name="ConditionFieldValue[[% Data.Index | html %]][[% Data.FieldIndex | html %]]" class="Validate_Required" value="[% Data.Match | html %]" id="ConditionFieldValue[[% Data.Index | html %]][[% Data.FieldIndex | html %]]" />
                                                             </div>
 
@@ -193,8 +193,8 @@
                                         <div class="Condition">
                                             <fieldset class="TableLike FixedLabelSmall">
 
-                                                <div>
-                                                    <label for="ConditionLinking[1]">[% Translate("Type of Linking") | html %]:</label>
+                                                <div class="field-wrapper">
+                                                    <label for="ConditionLinking[1]">[% Translate("Type of Linking") | html %]</label>
                                                     <div class="Field">
                                                         [% Data.ConditionLinking %]
                                                     </div>
@@ -212,18 +212,18 @@
                                                     </div>
                                                     <div class="Content">
                                                         <fieldset class="TableLike">
-                                                            <div>
-                                                                <label for="ConditionFieldName[1][1]">[% Translate("Name") | html %]:</label>
+                                                            <div class="field-wrapper">
+                                                                <label for="ConditionFieldName[1][1]">[% Translate("Name") | html %]</label>
                                                                 <input type="text" name="ConditionFieldName[1][1]" class="Validate_Required Validate_NotEqual Validate_NotEqual_ConditionFieldName" id="ConditionFieldName[1][1]" />
                                                             </div>
 
-                                                            <div>
-                                                                <label for="ConditionFieldType[1][1]">[% Translate("Type") | html %]:</label>
+                                                            <div class="field-wrapper">
+                                                                <label for="ConditionFieldType[1][1]">[% Translate("Type") | html %]</label>
                                                                 [% Data.ConditionFieldType %]
                                                             </div>
 
-                                                            <div>
-                                                                <label for="ConditionFieldValue[1][1]">[% Translate("Value") | html %]:</label>
+                                                            <div class="field-wrapper">
+                                                                <label for="ConditionFieldValue[1][1]">[% Translate("Value") | html %]</label>
                                                                 <input type="text" name="ConditionFieldValue[1][1]"  class="Validate_Required" id="ConditionFieldValue[1][1]" />
                                                             </div>
 
@@ -270,8 +270,8 @@
                         <div class="Field ConditionField">
                             <div class="Condition">
                                 <fieldset class="TableLike FixedLabelSmall">
-                                    <div>
-                                        <label for="ConditionLinking[_INDEX_]">[% Translate("Type of Linking") | html %]:</label>
+                                    <div class="field-wrapper">
+                                        <label for="ConditionLinking[_INDEX_]">[% Translate("Type of Linking") | html %]</label>
                                         <div class="Field">
                                             [% Data.FreshConditionLinking %]
                                         </div>
@@ -289,18 +289,18 @@
                                         </div>
                                         <div class="Content">
                                             <fieldset class="TableLike">
-                                                <div>
-                                                    <label for="ConditionFieldName[_INDEX_][1]">[% Translate("Name") | html %]:</label>
+                                                <div class="field-wrapper">
+                                                    <label for="ConditionFieldName[_INDEX_][1]">[% Translate("Name") | html %]</label>
                                                     <input type="text" name="ConditionFieldName[_INDEX_][1]" class="Validate_Required Validate_NotEqual Validate_NotEqual_ConditionFieldName" id="ConditionFieldName[_INDEX_][1]" />
                                                 </div>
 
-                                                <div>
-                                                    <label for="ConditionFieldType[_INDEX_][1]">[% Translate("Type") | html %]:</label>
+                                                <div class="field-wrapper">
+                                                    <label for="ConditionFieldType[_INDEX_][1]">[% Translate("Type") | html %]</label>
                                                     [% Data.FreshConditionFieldType %]
                                                 </div>
 
-                                                <div>
-                                                    <label for="ConditionFieldValue[_INDEX_][1]">[% Translate("Value") | html %]:</label>
+                                                <div class="field-wrapper">
+                                                    <label for="ConditionFieldValue[_INDEX_][1]">[% Translate("Value") | html %]</label>
                                                     <input type="text" name="ConditionFieldValue[_INDEX_][1]" class="Validate_Required" id="ConditionFieldValue[_INDEX_][1]" />
                                                 </div>
 
@@ -326,18 +326,18 @@
             </div>
             <div id="ConditionFieldContainer" style="display:none;">
                 <fieldset class="TableLike">
-                    <div>
-                        <label for="ConditionFieldName[_INDEX_][_FIELDINDEX_]">[% Translate("Name") | html %]:</label>
+                    <div class="field-wrapper">
+                        <label for="ConditionFieldName[_INDEX_][_FIELDINDEX_]">[% Translate("Name") | html %]</label>
                         <input type="text" name="ConditionFieldName[_INDEX_][_FIELDINDEX_]" class="Validate_Required Validate_NotEqual Validate_NotEqual_ConditionFieldName" id="ConditionFieldName[_INDEX_][_FIELDINDEX_]" />
                     </div>
 
-                    <div>
-                        <label for="ConditionFieldType[_INDEX_][_FIELDINDEX_]">[% Translate("Type") | html %]:</label>
+                    <div class="field-wrapper">
+                        <label for="ConditionFieldType[_INDEX_][_FIELDINDEX_]">[% Translate("Type") | html %]</label>
                         [% Data.FreshConditionFieldType %]
                     </div>
 
-                    <div>
-                        <label for="ConditionFieldValue[_INDEX_][_FIELDINDEX_]">[% Translate("Value") | html %]:</label>
+                    <div class="field-wrapper">
+                        <label for="ConditionFieldValue[_INDEX_][_FIELDINDEX_]">[% Translate("Value") | html %]</label>
                         <input type="text" name="ConditionFieldValue[_INDEX_][_FIELDINDEX_]" class="Validate_Required" id="ConditionFieldValue[_INDEX_][_FIELDINDEX_]" />
                     </div>
 

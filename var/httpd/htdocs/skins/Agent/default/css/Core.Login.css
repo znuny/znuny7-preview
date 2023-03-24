@@ -80,44 +80,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     padding-left: 0px;
 }
 
-#Footer a {
-    color: #999;
-    font-size: 11px;
-    display: inline-block;
-    position: relative;
-    padding-left: 18px;
-    margin-bottom: 5px;
-    transition: all ease 0.4s;
-    text-transform: none;
-}
-
-#Footer a span {
-    display: block;
-    width: 20px;
-    height: 20px;
-    background: url(../img/signet_small_bw.png);
-    background-size: cover;
-    margin: 0px auto 10px auto;
-    opacity: 0.3;
-    transition: all ease 0.4s;
-}
-
-#Footer a:hover {
-    text-decoration: none;
-    color: #555;
-}
-
-#Footer a:hover span {
-    opacity: 1;
-    width: 20px;
-    height: 20px;
-    background: url(../img/signet_small_bw_closed.png);
-    background-size: cover;
-    animation-name: ZnunyEat;
-    animation-duration: 0.7s;
-    animation-iteration-count: infinite
-}
-
 .LoginBox,
 #PasswordBox {
     width: 100%;
@@ -149,6 +111,15 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 #PasswordBox .CallForAction.Fullsize span {
     padding: 7px 10px;
 }
+
+/**
+ * @subsection  Login Footer
+ */
+
+.LoginScreen #Footer {
+    background: transparent;
+}
+
 
 /**
  * @subsection  Customizable logos

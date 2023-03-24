@@ -30,18 +30,14 @@
 
 [% RenderBlockStart("Actions") %]
         <div id="HeaderToolBar" class="Actions">
+            <div class="logo-navbar-mobile"></div>
             <div class="UserAvatar">
                 <a href="#">
                     <img src="//www.gravatar.com/avatar/98c188b4d137054757d5659a26994c81?s=100&amp;d=mp">
                 </a>
                 <div class="UserAvatar_submenu">
                     <ul>
-[% RenderBlockStart("ChatRequests") %]
-                        <li class="ChatRequests [% Data.Class | html %]">
-                            <a href="[% Env('Baselink') %]Action=CustomerChat;Subaction=ChatOverview;Filter=IncomingChatRequests;" title="[% Translate('Incoming Chat Requests') | html %]"><i class="fa fa-comments-o"></i> (<span class="Counter">[% Data.Count | html %]</span>)</a>
-                        </li>
-[% RenderBlockEnd("ChatRequests") %]
-[% RenderBlockStart("Preferences") %]
+                        [% RenderBlockStart("Preferences") %]
                         <li class="[% Data.Class | html %]">
                             <label>Account</label>
                             <a href="[% Env('Baselink') %]Action=CustomerPreferences" title="[% Translate('Edit personal preferences') | html %]">

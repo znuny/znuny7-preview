@@ -180,7 +180,8 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     }
 
     .LayoutFixedSidebar.SidebarLast > .SidebarColumn,
-    .LayoutFixedSidebar.SidebarFirst > .ContentColumn .InnerMainBoxContent .InnerSidebarColumn {
+    .LayoutFixedSidebar.SidebarFirst > .ContentColumn .InnerMainBoxContent .InnerSidebarColumn,
+    .InnerMainBoxContent .InnerSidebarColumn .Content {
         display: flex;
         flex-direction: column;
         gap: var(--gap-md);
@@ -289,12 +290,12 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     }
 
     .Size1of3 {
-        width: 33.333%;
+        width: 33%;
         overflow: auto;
     }
 
     .LayoutGrid > .Size2of3 {
-        width: 66.666%;
+        width: 64%;
     }
 
     .LayoutGrid > .Size1of4 {
@@ -1289,13 +1290,23 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     div.Field.SaveButtons:only-child {
         padding: 0;
     }
+
+
+    /**
+    * @subsection  Widgets Wrapper
+    */
+    .widget-content-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-md);
+    }
+
+
+    
 } /* end @media */
 
 
 
-/***********************************************************************/
-/*    Moved from Core.Reset.Forwwward.css                              */
-/***********************************************************************/
 
 @media (min-width: 1600px) {
     /******************/
@@ -1456,22 +1467,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-/***********************************************************************/
-/*    Moved from Core.Reset.Forwwward.css                              */
-/***********************************************************************/
-
 @media (min-width: 1600px) {
 
     div.CustomerContainer, 
@@ -1569,7 +1564,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     .FormScreen .ContentColumn > form,
     .FormScreen .ContentColumn .Content.card > form {
         width: 100%;
-        max-width: 800px;
+        max-width: 100%;
         display: flex;
     }
 
@@ -1626,20 +1621,85 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     }
 }
 
-@media (min-width: 1025px) and (max-width: 1200px) {
 
-    .Popup .WidgetSimple .Content,
-    .LayoutPopup > .Content.card fieldset {
-        width: 100%;
-        max-width: 800px;
-        align-self: center;
-        flex-flow: column;
-        align-items: center;
-    }
+
+
+
+
+
+
+.Popup .WidgetSimple .Content,
+.LayoutPopup > .Content.card fieldset,
+.WidgetSimple .Content fieldset.TableLike,
+.FormScreen .Content fieldset.TableLike {
+    width: 100%;
+    max-width: 800px;
+    gap: var(--gap-md);
+    margin: auto;
+    align-self: center;
+    flex-flow: column;
+    /*align-items: center;*/
+}
+
+.Popup form > .LayoutPopup > .Content.card fieldset.no-card-item,
+.RealPopup .LayoutPopup.AgentTicketCustomer form fieldset,
+.RealPopup .LayoutPopup.AgentTicketCustomer form fieldset > .card-item,
+.RealPopup .LayoutPopup.ticketMerge .TableLike > .card-item,
+.RealPopup .LayoutPopup.manageLinks .TableLike > .card-item {
+    width: 100%;
+    max-width: 800px;
 }
 
 
+@media only screen and (max-width: 991px) {
 
+    .Popup form > .LayoutPopup > .Content.card fieldset.no-card-item,
+    .RealPopup .LayoutPopup.AgentTicketCustomer form fieldset,
+    .RealPopup .LayoutPopup.AgentTicketCustomer form fieldset > .card-item,
+    .RealPopup .LayoutPopup.ticketMerge .TableLike > .card-item,
+    .RealPopup .LayoutPopup.manageLinks .TableLike > .card-item,
+    .WidgetSimple .Content fieldset.TableLike {
+        max-width: 100%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+
+    .Popup form > .LayoutPopup > .Content.card fieldset.no-card-item,
+    .Popup .WidgetSimple .Content,
+    .LayoutPopup > .Content.card fieldset,
+    .WidgetSimple .Content fieldset.TableLike,
+    .FormScreen .Content fieldset.TableLike {
+        max-width: 800px;
+    }
+
+    .LayoutPopup > .Content.card fieldset.card-item-wrapper,
+    .WidgetSimple .Content fieldset.TableLike.card-item-wrapper,
+    .FormScreen .Content fieldset.TableLike.card-item-wrapper {
+        max-width: 100%;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+
+    .Popup form > .LayoutPopup > .Content.card fieldset.no-card-item,
+    .RealPopup .LayoutPopup.AgentTicketCustomer form fieldset,
+    .RealPopup .LayoutPopup.AgentTicketCustomer form fieldset > .card-item,
+    .RealPopup .LayoutPopup.ticketMerge .TableLike > .card-item,
+    .RealPopup .LayoutPopup.manageLinks .TableLike > .card-item,
+    .Popup .WidgetSimple .Content,
+    .LayoutPopup > .Content.card fieldset,
+    .WidgetSimple .Content fieldset.TableLike,
+    .FormScreen .Content fieldset.TableLike {
+        max-width: 1200px;
+    }
+
+    .LayoutPopup > .Content.card fieldset.card-item-wrapper,
+    .WidgetSimple .Content fieldset.TableLike.card-item-wrapper,
+    .FormScreen .Content fieldset.TableLike.card-item-wrapper {
+        max-width: 100%;
+    }
+}
 
 
 

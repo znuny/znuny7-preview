@@ -94,13 +94,13 @@ sub _UpdateStateEntries {
         );
         next STATEID if !%State;
 
-        my $Color = $ColorByState{ $State{Name} } || $ColorByStateType{ $State{TypeName} } // '#000000',
+        my $Color = $ColorByState{ $State{Name} } || $ColorByStateType{ $State{TypeName} } // '#000000';
 
-            $StateObject->StateUpdate(
+        $StateObject->StateUpdate(
             %State,
             Color  => $Color,
             UserID => 1,
-            );
+        );
     }
 
     return 1;

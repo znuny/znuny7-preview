@@ -99,10 +99,11 @@
 
         <div class="WidgetSimple">
 [% RenderBlockStart("OverviewResult") %]
-            <div class="Header">
+            <div class="Header filter-items">
                 <h2>[% Translate("List") | html %]</h2>
-                <a href="#" class="icon-hover" id="ValidFilter" title="[% Translate("Filter") | html %]">
-                    <i class="fa fa-filter"></i>
+                <a href="#" id="ValidFilter" title="[% Translate("Filter") | html %]">
+                    <span class="show-valid">Show Valid</span>
+                    <span class="show-all">Show All</span>
                 </a>
             </div>
             <div class="Content">
@@ -116,13 +117,8 @@
                             <th>[% Translate("Validity") | html %]</th>
                             <th>[% Translate("Changed") | html %]</th>
                             <th>[% Translate("Created") | html %]</th>
-# ---
-# Forwwward
-# ---
-# - Added "Center" class, replaced "Run Now!" text with "Run"
-                            <th class="Center">[% Translate("Delete") | html %]</th>
                             <th class="Center">[% Translate("Run") | html %]</th>
-# ---
+                            <th class="Center">[% Translate("Delete") | html %]</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -151,12 +147,14 @@
                             <td>[% Data.ChangeTime | Localize("TimeShort") %]</td>
                             <td>[% Data.CreateTime | Localize("TimeShort") %]</td>
                             <td class="Center">
-                                <a class="TrashCan MailAccountDelete table-icon-hover-md" href="#" data-query-string="Action=AdminMailAccount;Subaction=Delete;ID=[% Data.ID | uri %];[% Env("ChallengeTokenParam") | html %]" title="[% Translate("Delete account") | html %]">[% Translate("Delete account") | html %]
-                                    <i class="fa fa-trash-o"></i>
+                                <a class="AsBlock table-actions-button table-icon-hover-md" title="[% Translate("Fetch mail") | html %]" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Run;ID=[% Data.ID | uri %];[% Env("ChallengeTokenParam") | html %]">
+                                    <i class="fa fa-caret-square-o-right"></i>
                                 </a>
                             </td>
                             <td class="Center">
-                                <a class="AsBlock table-actions-button" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Run;ID=[% Data.ID | uri %];[% Env("ChallengeTokenParam") | html %]">[% Translate("Fetch mail") | html %]</a>
+                                <a class="TrashCan MailAccountDelete table-icon-hover-md" href="#" data-query-string="Action=AdminMailAccount;Subaction=Delete;ID=[% Data.ID | uri %];[% Env("ChallengeTokenParam") | html %]" title="[% Translate("Delete account") | html %]">[% Translate("Delete account") | html %]
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
                             </td>
                         </tr>
 [% RenderBlockEnd("OverviewResultRow") %]
@@ -169,7 +167,6 @@
             <div class="Hidden" id="DeleteMailAccountDialogContainer">
                 <div id ="DeleteMailAccountDialog" class="InnerContent GenericInterfaceDialog">
                     <p class="Center Spacing">[% Translate("Do you really want to delete this mail account?") | html %]</p>
-                    <div class="SpacingTop"></div>
                 </div>
             </div>
 [% RenderBlockEnd("OverviewResult") %]
@@ -182,30 +179,34 @@
                     <input type="hidden" id="Action" name="Action" value="[% Env("Action") %]"/>
                     <input type="hidden" id="Subaction" name="Subaction" value="AddAction"/>
                     <fieldset class="TableLike">
-                        <label class="Mandatory" for="TypeAdd"><span class="Marker">*</span> [% Translate("Type") | html %]:</label>
-                        <div class="Field">
-                            [% Data.TypeOptionAdd %]
-                            <div id="TypeAddError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="TypeAddServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                        </div>
-
-                        <label class="Mandatory" for="AuthenticationType"><span class="Marker">*</span> [% Translate("Authentication type") | html %]:</label>
-                        <div class="Field">
-                            [% Data.AuthenticationTypeSelection %]
-                            <div id="AuthenticationTypeError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="AuthenticationTypeServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="TypeAdd"><span class="Marker">*</span> [% Translate("Type") | html %]</label>
+                            <div class="Field">
+                                [% Data.TypeOptionAdd %]
+                                <div id="TypeAddError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="TypeAddServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="Row Row_Login">
-                            <label class="Mandatory" for="LoginAdd"><span class="Marker">*</span> [% Translate("Username") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="AuthenticationType"><span class="Marker">*</span> [% Translate("Authentication type") | html %]</label>
+                            <div class="Field">
+                                [% Data.AuthenticationTypeSelection %]
+                                <div id="AuthenticationTypeError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="AuthenticationTypeServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field-wrapper Row_Login">
+                            <label class="Mandatory" for="LoginAdd"><span class="Marker">*</span> [% Translate("Username") | html %]</label>
                             <div class="Field">
                                 <input type="text" class="W50pc Validate_Required [% Data.LoginAddInvalid | html %]" name="Login" id="LoginAdd" value="[% Data.Login | html %]" maxlength="200" autocomplete="off" />
                                 <div id="LoginAddError" class="TooltipErrorMessage">
@@ -217,8 +218,8 @@
                             </div>
                         </div>
 
-                        <div class="Row Row_Password">
-                            <label class="Mandatory" for="PasswordAdd"><span class="Marker">*</span> [% Translate("Password") | html %]:</label>
+                        <div class="field-wrapper Row_Password">
+                            <label class="Mandatory" for="PasswordAdd"><span class="Marker">*</span> [% Translate("Password") | html %]</label>
                             <div class="Field">
                                 <input type="password" class="W50pc Validate_Required [% Data.PasswordAddInvalid | html %]" name="Password" id="PasswordAdd" value="" maxlength="200" autocomplete="new-password" />
                                 <div id="PasswordAddError" class="TooltipErrorMessage">
@@ -230,8 +231,8 @@
                             </div>
                         </div>
 
-                        <div class="Row Row_OAuth2TokenConfigID Hidden">
-                            <label class="Mandatory" for="OAuth2TokenConfigID"><span class="Marker">*</span> [% Translate("OAuth2 token configuration") | html %]:</label>
+                        <div class="field-wrapper Row_OAuth2TokenConfigID Hidden">
+                            <label class="Mandatory" for="OAuth2TokenConfigID"><span class="Marker">*</span> [% Translate("OAuth2 token configuration") | html %]</label>
                             <div class="Field">
                                 [% Data.OAuth2TokenConfigSelection %]
                             </div>
@@ -242,58 +243,67 @@
                                 <p>[% Translate("This field is required.") | html %]</p>
                             </div>
                         </div>
-
-                        <label class="Mandatory" for="HostAdd"><span class="Marker">*</span> [% Translate("Host") | html %]:</label>
-                        <div class="Field">
-                            <input type="text" class="W50pc Validate_Required [% Data.HostAddInvalid | html %]" name="Host" id="HostAdd" value="[% Data.Host | html %]" maxlength="200"/>
-                            <div id="HostAddError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="HostAdd"><span class="Marker">*</span> [% Translate("Host") | html %]</label>
+                            <div class="Field">
+                                <input type="text" class="W50pc Validate_Required [% Data.HostAddInvalid | html %]" name="Host" id="HostAdd" value="[% Data.Host | html %]" maxlength="200"/>
+                                <div id="HostAddError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="HostAddServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <p class="FieldExplanation">[% Translate("Example: mail.example.com") | html %]</p>
                             </div>
-                            <div id="HostAddServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <p class="FieldExplanation">[% Translate("Example: mail.example.com") | html %]</p>
                         </div>
 
-                        <div class="Row Row_IMAPFolder Hidden">
-                            <label for="IMAPFolder">[% Translate("IMAP Folder") | html %]:</label>
+                        <div class="field-wrapper Row_IMAPFolder Hidden">
+                            <label for="IMAPFolder">[% Translate("IMAP Folder") | html %]</label>
                             <div class="Field">
                                 <input type="text" class="W50pc" name="IMAPFolder" id="IMAPFolder" value="INBOX" maxlength="250"/>
                                 <p class="FieldExplanation">[% Translate("Only modify this if you need to fetch mail from a different folder than INBOX.") | html %]</p>
                             </div>
                         </div>
 
-                        <label class="Mandatory" for="Trusted"><span class="Marker">*</span> [% Translate("Trusted") | html %]:</label>
-                        <div class="Field">
-                            [% Data.TrustedOption %]
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="Trusted"><span class="Marker">*</span> [% Translate("Trusted") | html %]</label>
+                            <div class="Field">
+                                [% Data.TrustedOption %]
+                            </div>
                         </div>
 
-                        <label class="Mandatory" for="DispatchingBy"><span class="Marker">*</span> [% Translate("Dispatching") | html %]:</label>
-                        <div class="Field">
-                            [% Data.DispatchingOption %]
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="DispatchingBy"><span class="Marker">*</span> [% Translate("Dispatching") | html %]</label>
+                            <div class="Field">
+                                [% Data.DispatchingOption %]
+                            </div>
                         </div>
 
-                        <div class="Row Row_Queue Hidden">
-                            <label class="Mandatory" for="QueueID"><span class="Marker">*</span> [% Translate("Queue") | html %]:</label>
+                        <div class="field-wrapper Row_Queue Hidden">
+                            <label class="Mandatory" for="QueueID"><span class="Marker">*</span> [% Translate("Queue") | html %]</label>
                             <div class="Field">
                                 [% Data.QueueOption %]
                             </div>
                         </div>
 
-                        <label class="Mandatory" for="ValidID"><span class="Marker">*</span> [% Translate("Validity") | html %]:</label>
-                        <div class="Field">
-                            [% Data.ValidOption %]
-                            <div id="ValidIDError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="ValidIDServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="ValidID"><span class="Marker">*</span> [% Translate("Validity") | html %]</label>
+                            <div class="Field">
+                                [% Data.ValidOption %]
+                                <div id="ValidIDError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="ValidIDServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
                             </div>
                         </div>
 
-                        <label for="Comment">[% Translate("Comment") | html %]:</label>
-                        <div class="Field">
-                            <input type="text" class="W50pc" name="Comment" id="Comment" value="[% Data.Comment | html %]" maxlength="250"/>
+                        <div class="field-wrapper">
+                            <label for="Comment">[% Translate("Comment") | html %]</label>
+                            <div class="Field">
+                                <input type="text" class="W50pc" name="Comment" id="Comment" value="[% Data.Comment | html %]" maxlength="250"/>
+                            </div>
                         </div>
 
                         <div class="field-wrapper form-button-actions">
@@ -319,30 +329,34 @@
                         <input type="hidden" name="ContinueAfterSave" id="ContinueAfterSave" value=""/>
                     [% END %]
                     <fieldset class="TableLike">
-                        <label class="Mandatory" for="Type"><span class="Marker">*</span> [% Translate("Type") | html %]:</label>
-                        <div class="Field">
-                            [% Data.TypeOption %]
-                            <div id="TypeError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="TypeServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                        </div>
-
-                        <label class="Mandatory" for="AuthenticationType"><span class="Marker">*</span> [% Translate("Authentication type") | html %]:</label>
-                        <div class="Field">
-                            [% Data.AuthenticationTypeSelection %]
-                            <div id="AuthenticationTypeError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="AuthenticationTypeServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="Type"><span class="Marker">*</span> [% Translate("Type") | html %]</label>
+                            <div class="Field">
+                                [% Data.TypeOption %]
+                                <div id="TypeError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="TypeServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="Row Row_Login">
-                            <label class="Mandatory" for="LoginEdit"><span class="Marker">*</span> [% Translate("Username") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="AuthenticationType"><span class="Marker">*</span> [% Translate("Authentication type") | html %]</label>
+                            <div class="Field">
+                                [% Data.AuthenticationTypeSelection %]
+                                <div id="AuthenticationTypeError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="AuthenticationTypeServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field-wrapper Row_Login">
+                            <label class="Mandatory" for="LoginEdit"><span class="Marker">*</span> [% Translate("Username") | html %]</label>
                             <div class="Field">
                                 <input type="text" class="W50pc Validate_Required [% Data.LoginEditInvalid | html %]" name="Login" id="LoginEdit" value="[% Data.Login | html %]" maxlength="200" autocomplete="off" />
                                 <div id="LoginEditError" class="TooltipErrorMessage">
@@ -354,8 +368,8 @@
                             </div>
                         </div>
 
-                        <div class="Row Row_Password">
-                            <label class="Mandatory" for="PasswordEdit"><span class="Marker">*</span> [% Translate("Password") | html %]:</label>
+                        <div class="field-wrapper Row_Password">
+                            <label class="Mandatory" for="PasswordEdit"><span class="Marker">*</span> [% Translate("Password") | html %]</label>
                             <div class="Field">
                                 <input type="password" class="W50pc Validate_Required [% Data.PasswordEditInvalid | html %]" name="Password" id="PasswordEdit" value="[% IF Data.Password && Data.AuthenticationType == 'password' %]dummy-password-placeholder[% END %]" maxlength="200" autocomplete="off" />
                                 <div id="PasswordEditError" class="TooltipErrorMessage">
@@ -367,8 +381,8 @@
                             </div>
                         </div>
 
-                        <div class="Row Row_OAuth2TokenConfigID Hidden">
-                            <label class="Mandatory" for="OAuth2TokenConfigID"><span class="Marker">*</span> [% Translate("OAuth2 token configuration") | html %]:</label>
+                        <div class="field-wrapper Row_OAuth2TokenConfigID Hidden">
+                            <label class="Mandatory" for="OAuth2TokenConfigID"><span class="Marker">*</span> [% Translate("OAuth2 token configuration") | html %]</label>
                             <div class="Field">
                                 [% Data.OAuth2TokenConfigSelection %]
                             </div>
@@ -380,50 +394,56 @@
                             </div>
                         </div>
 
-                        <label class="Mandatory" for="HostEdit"><span class="Marker">*</span> [% Translate("Host") | html %]:</label>
-                        <div class="Field">
-                            <input type="text" class="W50pc Validate_Required [% Data.HostEditInvalid | html %]" name="Host" id="HostEdit" value="[% Data.Host | html %]" maxlength="200"/>
-                            <div id="HostEditError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="HostEdit"><span class="Marker">*</span> [% Translate("Host") | html %]</label>
+                            <div class="Field">
+                                <input type="text" class="W50pc Validate_Required [% Data.HostEditInvalid | html %]" name="Host" id="HostEdit" value="[% Data.Host | html %]" maxlength="200"/>
+                                <div id="HostEditError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="HostEditServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <p class="FieldExplanation">[% Translate("Example: mail.example.com") | html %]</p>
                             </div>
-                            <div id="HostEditServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <p class="FieldExplanation">[% Translate("Example: mail.example.com") | html %]</p>
                         </div>
 
-                        <div class="Row Row_IMAPFolder Hidden">
-                            <label for="IMAPFolder">[% Translate("IMAP Folder") | html %]:</label>
+                        <div class="field-wrapper Row_IMAPFolder Hidden">
+                            <label for="IMAPFolder">[% Translate("IMAP Folder") | html %]</label>
                             <div class="Field">
                                 <input type="text" class="W50pc" name="IMAPFolder" id="IMAPFolder" value="[% Data.IMAPFolder | html %]" maxlength="250"/>
                                 <p class="FieldExplanation">[% Translate("Only modify this if you need to fetch mail from a different folder than INBOX.") | html %]</p>
                             </div>
                         </div>
 
-                        <label class="Mandatory" for="Trusted"><span class="Marker">*</span> [% Translate("Trusted") | html %]:</label>
-                        <div class="Field">
-                            [% Data.TrustedOption %]
-                            <div id="TrustedError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="TrustedServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                        </div>
-
-                        <label class="Mandatory" for="DispatchingBy"><span class="Marker">*</span> [% Translate("Dispatching") | html %]:</label>
-                        <div class="Field">
-                            [% Data.DispatchingOption %]
-                            <div id="DispatchingByError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="DispatchingByServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="Trusted"><span class="Marker">*</span> [% Translate("Trusted") | html %]</label>
+                            <div class="Field">
+                                [% Data.TrustedOption %]
+                                <div id="TrustedError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="TrustedServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="Row Row_Queue Hidden">
-                            <label class="Mandatory" for="QueueID"><span class="Marker">*</span> [% Translate("Queue") | html %]:</label>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="DispatchingBy"><span class="Marker">*</span> [% Translate("Dispatching") | html %]</label>
+                            <div class="Field">
+                                [% Data.DispatchingOption %]
+                                <div id="DispatchingByError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="DispatchingByServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field-wrapper Row_Queue Hidden">
+                            <label class="Mandatory" for="QueueID"><span class="Marker">*</span> [% Translate("Queue") | html %]</label>
                             <div class="Field">
                                 [% Data.QueueOption %]
                                 <div id="QueueIDError" class="TooltipErrorMessage">
@@ -435,21 +455,26 @@
                             </div>
                         </div>
 
-                        <label class="Mandatory" for="ValidID"><span class="Marker">*</span> [% Translate("Validity") | html %]:</label>
-                        <div class="Field">
-                            [% Data.ValidOption %]
-                            <div id="ValidIDError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="ValidIDServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="ValidID"><span class="Marker">*</span> [% Translate("Validity") | html %]</label>
+                            <div class="Field">
+                                [% Data.ValidOption %]
+                                <div id="ValidIDError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="ValidIDServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
                             </div>
                         </div>
 
-                        <label for="Comment">[% Translate("Comment") | html %]:</label>
-                        <div class="Field">
-                            <input type="text" class="W50pc" name="Comment" id="Comment" value="[% Data.Comment | html %]" maxlength="250"/>
+                        <div class="field-wrapper">
+                            <label for="Comment">[% Translate("Comment") | html %]</label>
+                            <div class="Field">
+                                <input type="text" class="W50pc" name="Comment" id="Comment" value="[% Data.Comment | html %]" maxlength="250"/>
+                            </div>
                         </div>
+
                         <div class="field-wrapper form-button-actions">
                             <div class="Field buttons-field">
                                 <a href="[% Env("Baselink") %]Action=[% Env("Action") %]" class="btn-cancel-ghost btn-main btn-width-md">[% Translate("Cancel") | html %]</a>

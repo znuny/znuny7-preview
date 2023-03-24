@@ -85,10 +85,11 @@
         [% INCLUDE "Breadcrumb.tt" Path = BreadcrumbPath %]
 [% RenderBlockStart("Overview") %]
         <div class="WidgetSimple">
-            <div class="Header">
+            <div class="Header filter-items">
                 <h2>[% Translate("List") | html %]</h2>
-                <a href="#" class="icon-hover" id="ValidFilter" title="[% Translate("Filter") | html %]">
-                    <i class="fa fa-filter"></i>
+                <a href="#" id="ValidFilter" title="[% Translate("Filter") | html %]">
+                    <span class="show-valid">Show Valid</span>
+                    <span class="show-all">Show All</span>
                 </a>
             </div>
             <div class="Content">
@@ -98,13 +99,8 @@
                             <th>[% Translate("Name") | html %]</th>
                             <th>[% Translate("Last run") | html %]</th>
                             <th>[% Translate("Validity") | html %]</th>
-# ---
-# Forwwward
-# ---
-# - Added "Center" class, replaced "Run Now!" text with "Run"
                             <th class="Center">[% Translate("Delete") | html %]</th>
                             <th class="Center">[% Translate("Run") | html %]</th>
-# ---
                         </tr>
                     </thead>
                     <tbody>
@@ -127,22 +123,15 @@
                             <td class="Center">
                                 <a class="TrashCan table-icon-hover-md" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Delete;Profile=[% Data.Name | uri %];[% Env("ChallengeTokenParam") | html %]" title="[% Translate("Delete this task") | html %]">
                                     <i class="fa fa-trash-o"></i>
-#                                    [% Translate("Delete") | html %]
                                 </a>
                             </td>
-# ---
-# Forwwward
-# ---
-# - Added "Center" class, added "table-icon-hover-md" class and <i> element, hid "Run this task" message and added it as a <a> title
                             <td class="Center">
                                 [% IF Data.Valid == 1 %]
                                 <a class="AsBlock table-actions-button table-icon-hover-md" title="[% Translate("Run this task") | html %]" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Run;Profile=[% Data.Name | uri %];[% Env("ChallengeTokenParam") | html %]">
                                     <i class="fa fa-caret-square-o-right"></i>
-#                                    [% Translate("Run this task") | html %]
                                 </a>
                                 [% END %]
                             </td>
-# ---
                         </tr>
 [% RenderBlockEnd("Row") %]
                         <tr class="FilterMessage Hidden">
@@ -167,7 +156,7 @@
                         <input type="hidden" name="ContinueAfterSave" id="ContinueAfterSave" value=""/>
                     [% END %]
                     <fieldset class="TableLike">
-                        <div>
+                        <div class="field-wrapper">
                             <label for="Profile" class="Mandatory"><span class="Marker">*</span> [% Translate("Job name") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="Profile" id="Profile" class="Validate_Required W50pc [% Data.ProfileInvalid | html %]" value="[% Data.Profile | html %]" />
@@ -183,7 +172,7 @@
                             </div>
                         </div>
 
-                        <div>
+                        <div class="field-wrapper">
                             <label for="Valid">[% Translate("Validity") | html %]</label>
                             <div class="Field">
                                 [% Data.ValidOption %]
@@ -203,7 +192,7 @@
                 <div class="Content">
                     <fieldset class="TableLike">
                         <div class="Field">
-                            <table class="DataTable VariableWidth" summary="[% Translate("Execution Schedule") | html %]">
+                            <table class="DataTable" summary="[% Translate("Execution Schedule") | html %]">
                                 <thead>
                                     <tr>
                                         <th><label for="ScheduleMinutes">[% Translate("Schedule minutes") | html %]</label></th>
@@ -250,8 +239,8 @@
                     <fieldset class="TableLike">
 
                         <label for="EventsTable">[% Translate("Event Triggers") | html %]</label>
-                        <div class="Field W50pc">
-                            <table class="DataTable ClearNone SpacingBottomSmall" id="EventsTable" summary="[% Translate("List of all configured events") | html %]">
+                        <div class="Field">
+                            <table class="DataTable ClearNone" id="EventsTable" summary="[% Translate("List of all configured events") | html %]">
                                 <thead>
                                     <tr>
                                         <th>[% Translate("Type") | html %]</th>
@@ -268,8 +257,8 @@
                                     </tr>
 [% RenderBlockEnd("NoDataFoundMsgEvent") %]
                                     <tr class="EventRowTemplate Hidden">
-                                        <td class="AsBlock EventType">EventType</td>
-                                        <td class="EventName" >EventName</td>
+                                        <td class="EventType">EventType</td>
+                                        <td class="EventName">EventName</td>
                                         <td class="EventDelete Center">
                                             <a id="DeleteEvent" class="TrashCan DeleteEvent table-icon-hover-md" href="#" title="[% Translate("Delete this event") | html %]">
                                                 [% Translate("Delete this event") | html %]
@@ -309,7 +298,7 @@
 
                         <div class="Field HideOnChange">
                             <label class="HideOnChange" for="EventType">[% Translate("Add Event Trigger") | html %]</label>
-                            <div>
+                            <div class="full-width">
 [% RenderBlockStart("EventTypeStrg") %]
                                 <span>
                                     [% Data.EventTypeStrg %]
@@ -505,8 +494,8 @@
                             </div>
                         </div>
 
-                    <div>
-                        <label class="card-title">[% Translate("Dynamic fields") | html %]</label>
+                    <div class="field-wrapper">
+                        <label class="card-title title">[% Translate("Dynamic fields") | html %]</label>
                     </div>
 [% RenderBlockStart("AddDynamicFields") %]
                             <div class="field-wrapper">
@@ -967,8 +956,8 @@
                         </div>
 [% RenderBlockEnd("NewTicketType") %]
 
-                        <div>
-                            <label class="card-title">[% Translate("Dynamic fields") | html %]</label>
+                        <div class="field-wrapper">
+                            <label class="card-title title">[% Translate("Dynamic fields") | html %]</label>
 [% RenderBlockStart("AddNewDynamicFields") %]
                             <fieldset class="TableLike top-container-wrapper">
                                 <div class="field-wrapper">
@@ -1095,71 +1084,82 @@
                                 <input type="text" name="NewModule" id="NewModule" value="[% Data.NewModule | html %]" size="45"/>
                             </div>
                         </div>
-
-                        <div class="field-wrapper">
-                            <label for="NewParamKey1">[% Translate("Param %s key", "1") | html %]</label>
-                            <div class="Field">
-                                <input type="text" name="NewParamKey1" id="NewParamKey1" value="[% Data.NewParamKey1 | html %]" class="W20pc"/>
+                        <div class="single-row-inputs">
+                            <div class="field-wrapper flex-column">
+                                <label for="NewParamKey1">[% Translate("Param %s key", "1") | html %]</label>
+                                <div class="Field full-width">
+                                    <input type="text" name="NewParamKey1" id="NewParamKey1" value="[% Data.NewParamKey1 | html %]" class="W20pc"/>
+                                </div>
+                            </div>
+                            <div class="field-wrapper flex-column">
+                                <label for="NewParamValue1"> [% Translate("Param %s value", "1") | html %]</label>
+                                <input type="text" name="NewParamValue1" id="NewParamValue1" value="[% Data.NewParamValue1 | html %]" class="W20pc"/>
                             </div>
                         </div>
-                        <div class="field-wrapper">
-                            <label for="NewParamValue1"> [% Translate("Param %s value", "1") | html %]</label>
-                            <input type="text" name="NewParamValue1" id="NewParamValue1" value="[% Data.NewParamValue1 | html %]" class="W20pc"/>
-                        </div>
 
-                        <div class="field-wrapper">
-                            <label for="NewParamKey2">[% Translate("Param %s key", "2") | html %]</label>
-                            <div class="Field">
-                                <input type="text" name="NewParamKey2" id="NewParamKey2" value="[% Data.NewParamKey2 | html %]" class="W20pc"/>
+                        <div class="single-row-inputs">
+                            <div class="field-wrapper flex-column">
+                                <label for="NewParamKey2">[% Translate("Param %s key", "2") | html %]</label>
+                                <div class="Field full-width">
+                                    <input type="text" name="NewParamKey2" id="NewParamKey2" value="[% Data.NewParamKey2 | html %]" class="W20pc"/>
+                                </div>
+                            </div>
+                            <div class="field-wrapper flex-column">
+                                <label for="NewParamValue2"> [% Translate("Param %s value", "2") | html %]</label>
+                                <input type="text" name="NewParamValue2" id="NewParamValue2" value="[% Data.NewParamValue2 | html %]" class="W20pc"/>
                             </div>
                         </div>
-                        <div class="field-wrapper">
-                            <label for="NewParamValue2"> [% Translate("Param %s value", "2") | html %]</label>
-                            <input type="text" name="NewParamValue2" id="NewParamValue2" value="[% Data.NewParamValue2 | html %]" class="W20pc"/>
-                        </div>
 
-                        <div class="field-wrapper">
-                            <label for="NewParamKey3">[% Translate("Param %s key", "3") | html %]</label>
-                            <div class="Field">
-                                <input type="text" name="NewParamKey3" id="NewParamKey3" value="[% Data.NewParamKey3 | html %]" class="W20pc"/>
+                        <div class="single-row-inputs">
+                            <div class="field-wrapper flex-column">
+                                <label for="NewParamKey3">[% Translate("Param %s key", "3") | html %]</label>
+                                <div class="Field full-width">
+                                    <input type="text" name="NewParamKey3" id="NewParamKey3" value="[% Data.NewParamKey3 | html %]" class="W20pc"/>
+                                </div>
+                            </div>
+                            <div class="field-wrapper flex-column">
+                                <label for="NewParamValue3">[% Translate("Param %s value", "3") | html %]</label>
+                                <input type="text" name="NewParamValue3" id="NewParamValue3" value="[% Data.NewParamValue3 | html %]" class="W20pc"/>
                             </div>
                         </div>
-                        <div class="field-wrapper">
-                            <label for="NewParamValue3">[% Translate("Param %s value", "3") | html %]</label>
-                            <input type="text" name="NewParamValue3" id="NewParamValue3" value="[% Data.NewParamValue3 | html %]" class="W20pc"/>
-                        </div>
 
-                        <div class="field-wrapper">
-                            <label for="NewParamKey4">[% Translate("Param %s key", "4") | html %]</label>
-                            <div class="Field">
-                                <input type="text" name="NewParamKey4" id="NewParamKey4" value="[% Data.NewParamKey4 | html %]" class="W20pc"/>
+                        <div class="single-row-inputs">
+                            <div class="field-wrapper flex-column">
+                                <label for="NewParamKey4">[% Translate("Param %s key", "4") | html %]</label>
+                                <div class="Field full-width">
+                                    <input type="text" name="NewParamKey4" id="NewParamKey4" value="[% Data.NewParamKey4 | html %]" class="W20pc"/>
+                                </div>
+                            </div>
+                            <div class="field-wrapper flex-column">
+                                <label for="NewParamValue4"> [% Translate("Param %s value", "4") | html %]</label>
+                                <input type="text" name="NewParamValue4" id="NewParamValue4" value="[% Data.NewParamValue4 | html %]" class="W20pc"/>
                             </div>
                         </div>
-                        <div class="field-wrapper">
-                            <label for="NewParamValue4"> [% Translate("Param %s value", "4") | html %]</label>
-                            <input type="text" name="NewParamValue4" id="NewParamValue4" value="[% Data.NewParamValue4 | html %]" class="W20pc"/>
-                        </div>
 
-                        <div class="field-wrapper">
-                            <label for="NewParamKey5">[% Translate("Param %s key", "5") | html %]</label>
-                            <div class="Field">
-                                <input type="text" name="NewParamKey5" id="NewParamKey5" value="[% Data.NewParamKey5 | html %]" class="W20pc"/>
+                        <div class="single-row-inputs">
+                            <div class="field-wrapper flex-column">
+                                <label for="NewParamKey5">[% Translate("Param %s key", "5") | html %]</label>
+                                <div class="Field full-width">
+                                    <input type="text" name="NewParamKey5" id="NewParamKey5" value="[% Data.NewParamKey5 | html %]" class="W20pc"/>
+                                </div>
+                            </div>
+                            <div class="field-wrapper flex-column">
+                                <label for="NewParamValue5"> [% Translate("Param %s value", "5") | html %]</label>
+                                <input type="text" name="NewParamValue5" id="NewParamValue5" value="[% Data.NewParamValue5 | html %]" class="W20pc"/>
                             </div>
                         </div>
-                        <div class="field-wrapper">
-                            <label for="NewParamValue5"> [% Translate("Param %s value", "5") | html %]</label>
-                            <input type="text" name="NewParamValue5" id="NewParamValue5" value="[% Data.NewParamValue5 | html %]" class="W20pc"/>
-                        </div>
 
-                        <div class="field-wrapper">
-                            <label for="NewParamKey6">[% Translate("Param %s key", "6") | html %]</label>
-                            <div class="Field">
-                                <input type="text" name="NewParamKey6" id="NewParamKey6" value="[% Data.NewParamKey6 | html %]" class="W20pc"/>
+                        <div class="single-row-inputs">
+                            <div class="field-wrapper flex-column">
+                                <label for="NewParamKey6">[% Translate("Param %s key", "6") | html %]</label>
+                                <div class="Field full-width">
+                                    <input type="text" name="NewParamKey6" id="NewParamKey6" value="[% Data.NewParamKey6 | html %]" class="W20pc"/>
+                                </div>
                             </div>
-                        </div>
-                        <div class="field-wrapper">
-                            <label for="NewParamValue6"> [% Translate("Param %s value", "6") | html %]</label>
-                            <input type="text" name="NewParamValue6" id="NewParamValue6" value="[% Data.NewParamValue6 | html %]" class="W20pc"/>
+                            <div class="field-wrapper flex-column">
+                                <label for="NewParamValue6"> [% Translate("Param %s value", "6") | html %]</label>
+                                <input type="text" name="NewParamValue6" id="NewParamValue6" value="[% Data.NewParamValue6 | html %]" class="W20pc"/>
+                            </div>
                         </div>
                     </fieldset>
                 </div>
@@ -1204,9 +1204,9 @@
                 <h2>[% Translate("Results") | html %]</h2>
             </div>
             <div class="Content">
-                <p>
+                <h2>
                     [% Translate("%s Tickets affected! What do you want to do?", Data.AffectedIDs) | html %]
-                </p>
+                </h2>
 [% RenderBlockStart("DeleteWarning") %]
                 <p class="Error">
                     [% Translate("Warning: You used the DELETE option. All deleted tickets will be lost!") | html %]

@@ -66,8 +66,8 @@
                     </div>
                     <div class="Content">
                         <fieldset class="TableLike">
-                            <div>
-                                <label class="Mandatory" for="Name"><span class="Marker">*</span> [% Translate("Activity dialog Name") | html %]:</label>
+                            <div class="field-wrapper">
+                                <label class="Mandatory" for="Name"><span class="Marker">*</span> [% Translate("Activity dialog Name") | html %]</label>
                                 <div class="Field">
                                     <input type="text" name="Name" id="Name" value="[% Data.Name | html %]" class="Validate_Required [% Data.NameServerError | html %]" maxlength="70"/>
                                     <div id="NameError" class="TooltipErrorMessage">
@@ -79,15 +79,15 @@
                                 </div>
                             </div>
 
-                            <div>
-                                <label class="Mandatory" for="Interface">[% Translate("Available in") | html %]:</label>
+                            <div class="field-wrapper">
+                                <label class="Mandatory" for="Interface">[% Translate("Available in") | html %]</label>
                                 <div class="Field">
                                     [% Data.InterfaceSelection %]
                                 </div>
                             </div>
 
-                            <div>
-                                <label class="Mandatory" for="DescriptionShort"><span class="Marker">*</span> [% Translate("Description (short)") | html %]:</label>
+                            <div class="field-wrapper">
+                                <label class="Mandatory" for="DescriptionShort"><span class="Marker">*</span> [% Translate("Description (short)") | html %]</label>
                                 <div class="Field">
                                     <input type="text" name="DescriptionShort" id="DescriptionShort" value="[% Data.DescriptionShort | html %]" class="Validate_Required [% Data.DescriptionShortServerError | html %]" maxlength="70"/>
                                     <div id="DescriptionShortError" class="TooltipErrorMessage">
@@ -99,15 +99,15 @@
                                 </div>
                             </div>
 
-                            <div>
-                                <label for="DescriptionLong">[% Translate("Description (long)") | html %]:</label>
+                            <div class="field-wrapper">
+                                <label for="DescriptionLong">[% Translate("Description (long)") | html %]</label>
                                 <div class="Field">
                                     <textarea name="DescriptionLong" id="DescriptionLong" rows="10" cols="20">[% Data.DescriptionLong | html %]</textarea>
                                 </div>
                             </div>
 
-                            <div>
-                                <label for="Permission">[% Translate("Permission") | html %]:</label>
+                            <div class="field-wrapper">
+                                <label for="Permission">[% Translate("Permission") | html %]</label>
                                 <div class="Field">
                                     [% Data.PermissionSelection %]
                                 </div>
@@ -116,8 +116,8 @@
                                 </div>
                             </div>
 
-                            <div>
-                                <label for="RequiredLock">[% Translate("Required Lock") | html %]:</label>
+                            <div class="field-wrapper">
+                                <label for="RequiredLock">[% Translate("Required Lock") | html %]</label>
                                 <div class="Field">
                                     [% Data.RequiredLockSelection %]
                                 </div>
@@ -126,15 +126,15 @@
                                 </div>
                             </div>
 
-                            <div>
-                                <label for="Scope">[% Translate("Scope") | html %]:</label>
+                            <div class="field-wrapper">
+                                <label for="Scope">[% Translate("Scope") | html %]</label>
                                 <div class="Field">
                                     [% Data.ScopeSelection %]
                                 </div>
                             </div>
 
-                            <div>
-                                <label class="Mandatory" for="ScopeEntityID"><span class="Marker">*</span> [% Translate("Scope Entity ID") | html %]:</label>
+                            <div class="field-wrapper">
+                                <label class="Mandatory" for="ScopeEntityID"><span class="Marker">*</span> [% Translate("Scope Entity ID") | html %]</label>
                                 <div class="Field">
                                     [% Data.ScopeEntityIDSelection %]
                                     <div id="ScopeEntityIDError" class="TooltipErrorMessage">
@@ -143,15 +143,15 @@
                                 </div>
                             </div>
 
-                            <div>
-                                <label for="SubmitAdviceText">[% Translate("Submit Advice Text") | html %]:</label>
+                            <div class="field-wrapper">
+                                <label for="SubmitAdviceText">[% Translate("Submit Advice Text") | html %]</label>
                                 <div class="Field">
                                     <input type="text" name="SubmitAdviceText" id="SubmitAdviceText" value="[% Data.SubmitAdviceText | html %]" maxlength="70"/>
                                 </div>
                             </div>
 
-                            <div>
-                                <label for="SubmitButtonText">[% Translate("Submit Button Text") | html %]:</label>
+                            <div class="field-wrapper">
+                                <label for="SubmitButtonText">[% Translate("Submit Button Text") | html %]</label>
                                 <div class="Field">
                                     <input type="text" name="SubmitButtonText" id="SubmitButtonText" value="[% Data.SubmitButtonText | html %]" maxlength="70"/>
                                 </div>
@@ -240,33 +240,33 @@
         <div>
             <fieldset class="TableLike">
                 <div class="field-wrapper">
-                    <label for="DescShort">[% Translate("Description (short)") | html %]:</label>
+                    <label for="DescShort">[% Translate("Description (short)") | html %]</label>
                     <div class="Field">
                         <input type="text" name="DescShort" id="DescShort" value=""/>
                     </div>
                 </div>
 
                 <div class="field-wrapper">
-                    <label for="DescLong">[% Translate("Description (long)") | html %]:</label>
+                    <label for="DescLong">[% Translate("Description (long)") | html %]</label>
                     <div class="Field">
                         <textarea name="DescLong" id="DescLong"></textarea>
                     </div>
                 </div>
 
                 <div class="field-wrapper">
-                    <label for="DefaultValue">[% Translate("Default value") | html %]:</label>
+                    <label for="DefaultValue">[% Translate("Default value") | html %]</label>
                     <div class="Field">
                         <input type="text" name="DefaultValue" id="DefaultValue" value="" />
                     </div>
                 </div>
 [% RenderBlockStart("ArticleContainer") %]
                 <div class="field-wrapper">
-                    <label for="Subject">[% Translate("Subject") | html %]:</label>
+                    <label for="Subject">[% Translate("Subject") | html %]</label>
                     <div class="Field ArticleContainer">
                         <input type="text" name="Subject" id="Subject" value="" />
                     </div>
                     <div class="Clear"></div>
-                    <label for="Body">[% Translate("Body") | html %]:</label>
+                    <label for="Body">[% Translate("Body") | html %]</label>
                     <div id="ArticleBodyContainer" class="RichTextField">
                         <textarea id="Body" name="Body" class="RichTextInDialog" rows="10" cols="40">[% Data.Body | html %]</textarea>
                     </div>
@@ -274,28 +274,28 @@
 [% RenderBlockEnd("ArticleContainer") %]
 
                 <div class="field-wrapper">
-                    <label for="CommunicationChannel">[% Translate("Communication Channel") | html %]:</label>
+                    <label for="CommunicationChannel">[% Translate("Communication Channel") | html %]</label>
                     <div class="Field" id="CommunicationChannelContainer" class='Hidden'>
                         [% Data.CommunicationChannelSelection %]
                     </div>
                 </div>
 
                 <div class="field-wrapper">
-                    <label for="IsVisibleForCustomer">[% Translate("Is visible for customer") | html %]:</label>
+                    <label for="IsVisibleForCustomer">[% Translate("Is visible for customer") | html %]</label>
                     <div class="Field" id="IsVisibleForCustomerContainer" class='Hidden'>
                         <input type="checkbox" name="IsVisibleForCustomer" id="IsVisibleForCustomer"/>
                     </div>
                 </div>
 [% RenderBlockStart("StandardTemplateContainer") %]
                 <div class="field-wrapper">
-                    <label for="StandardTemplateID">[% Translate("Text Template") | html %]:</label>
+                    <label for="StandardTemplateID">[% Translate("Text Template") | html %]</label>
                     <div class="Field" id="StandardTemplateContainer">
                         [% Data.StandardTemplateSelection %]
                     </div>
                 </div>
 
                 <div class="field-wrapper">
-                    <label for="StandardTemplateAutoFill">[% Translate("Auto fill") | html %]:</label>
+                    <label for="StandardTemplateAutoFill">[% Translate("Auto fill") | html %]</label>
                     <div class="Field" id="StandardTemplateAutoFillContainer">
                         <input type="checkbox" name="StandardTemplateAutoFill" id="StandardTemplateAutoFill"/>
                     </div>
@@ -303,7 +303,7 @@
 [% RenderBlockEnd("StandardTemplateContainer") %]
 [% RenderBlockStart("TimeUnitsContainer") %]
                 <div class="field-wrapper">
-                    <label for="TimeUnits">[% Translate("Time units") | html %]:</label>
+                    <label for="TimeUnits">[% Translate("Time units") | html %]</label>
                     <div class="Field" id="TimeUnitsContainer" class="Hidden">
                         [% Data.TimeUnitsSelection %]
                     </div>
@@ -311,7 +311,7 @@
 [% RenderBlockEnd("TimeUnitsContainer") %]
 
                 <div class="field-wrapper">
-                    <label for="Display">[% Translate("Display") | html %]:</label>
+                    <label for="Display">[% Translate("Display") | html %]</label>
                     <div class="Field">
                         [% Data.DisplaySelection %]
                     </div>

@@ -166,12 +166,13 @@ Core.Customer.TicketZoom = (function (TargetNS) {
      *      This function always load given article in iframe.
      */
     function ToggleMessage($Message){
+        var ActiveScreenSize;
 
         $('#Messages li').removeClass('Visible');
         $Message.addClass('Visible');
         LoadMessage($Message);
 
-        var ActiveScreenSize = Core.Config.Get('ActiveScreenSize');
+        ActiveScreenSize = Core.Config.Get('ActiveScreenSize');
         if (ActiveScreenSize && ActiveScreenSize !== 'ScreenXL'){
             $('#FollowUp').detach().appendTo('.Visible');
         }

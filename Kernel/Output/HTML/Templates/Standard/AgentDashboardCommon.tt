@@ -50,10 +50,10 @@
                     <input type="hidden" name="CustomerID" value="[% Data.CustomerID | html %]" />
                     <input type="hidden" name="CustomerUserID" value="[% Data.CustomerUserID | html %]" />
 
-                    <span>
-                        <input type="text" id="FilterAvailableWidgets" name="FilterAvailableWidgets"  class="FilterAvailableWidgets" value="" title="[% Translate("Filter available widgets") | html %]" placeholder="[% Translate("Filter available widgets") | html %]..."/>
-                            <ul class="dropdown-search-menu scroll-bar-styled"></ul>
-                    </span>
+                    <div class="search-wrapper">
+                        <input type="text" id="FilterAvailableWidgets" name="FilterAvailableWidgets"  class="FilterAvailableWidgets" value="" title="[% Translate("Search inactive widgets") | html %]" placeholder="[% Translate("Search inactive widgets") | html %]"/>
+                        <ul class="dropdown-search-menu scroll-bar-styled"></ul>
+                    </div>
 
                     <label id="ActiveWidgetsLabel" class="title uppercase">[% Translate('Active Widgets') | html %]</label>
                     <ul class="active-widgets-list">
@@ -69,12 +69,12 @@
 [% RenderBlockEnd("ContentSettings") %]
                     </ul>
 
-                    <span>
+                    <div>
                         <button class="btn-main btn-primary" accesskey="g" title="[% Translate(" Save changes") | html %]
                             (g)" type="submit" value="[% Translate(" Save") | html %]">
                             <span>[% Translate("Save changes") | html %]</span>
                         </button>
-                    </span>
+                    </div>
                 </form>
             </div>
         </div>

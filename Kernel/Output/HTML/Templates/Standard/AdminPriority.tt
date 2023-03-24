@@ -83,10 +83,11 @@
         [% INCLUDE "Breadcrumb.tt" Path = BreadcrumbPath %]
         <div class="WidgetSimple">
 [% RenderBlockStart("OverviewResult") %]
-            <div class="Header">
+            <div class="Header filter-items">
                 <h2>[% Translate("List") | html %]</h2>
-                <a href="#" class="icon-hover" id="ValidFilter" title="[% Translate("Filter") | html %]">
-                    <i class="fa fa-filter"></i>
+                <a href="#" id="ValidFilter" title="[% Translate("Filter") | html %]">
+                    <span class="show-valid">Show Valid</span>
+                    <span class="show-all">Show All</span>
                 </a>
             </div>
             <div class="Content">
@@ -150,44 +151,49 @@
                         <input type="hidden" name="ContinueAfterSave" id="ContinueAfterSave" value=""/>
                     [% END %]
                     <fieldset class="TableLike">
-                        <label class="Mandatory" for="Name"><span class="Marker">*</span> [% Translate("Name") | html %]:</label>
-                        <div class="Field">
-                            <input type="text" name="Name" id="Name" value="[% Data.Name | html %]" class="Validate_Required [% Data.NameInvalid | html %]" maxlength="200"/>
-                            <div id="NameError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="NameServerError" class="TooltipErrorMessage">
-                                <p>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="Name"><span class="Marker">*</span> [% Translate("Name") | html %]</label>
+                            <div class="Field">
+                                <input type="text" name="Name" id="Name" value="[% Data.Name | html %]" class="Validate_Required [% Data.NameInvalid | html %]" maxlength="200"/>
+                                <div id="NameError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="NameServerError" class="TooltipErrorMessage">
+                                    <p>
 [% RenderBlockStart("RequiredNameServerError") %]
-                                    [% Translate("This field is required.") | html %]
+                                        [% Translate("This field is required.") | html %]
 [% RenderBlockEnd("RequiredNameServerError") %]
 [% RenderBlockStart("InSettingNameServerError") %]
-                                    [% Translate("This priority is present in a SysConfig setting, confirmation for updating settings to point to the new priority is needed!") | html %]
+                                        [% Translate("This priority is present in a SysConfig setting, confirmation for updating settings to point to the new priority is needed!") | html %]
 [% RenderBlockEnd("InSettingNameServerError") %]
-                                </p>
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
-                        [% Data.ColorPicker %]
+                        <div class="field-wrapper">
+                            [% Data.ColorPicker %]
+                        </div>
 
-                        <label class="Mandatory" for="ValidID"><span class="Marker">*</span> [% Translate("Validity") | html %]:</label>
-                        <div class="Field">
-                            [% Data.ValidOptionStrg %]
-                            <div id="ValidIDError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="ValidIDServerError" class="TooltipErrorMessage">
-                                <p>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="ValidID"><span class="Marker">*</span> [% Translate("Validity") | html %]</label>
+                            <div class="Field">
+                                [% Data.ValidOptionStrg %]
+                                <div id="ValidIDError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="ValidIDServerError" class="TooltipErrorMessage">
+                                    <p>
 [% RenderBlockStart("RequiredValidOptionServerError") %]
-                                    [% Translate("This field is required.") | html %]
+                                        [% Translate("This field is required.") | html %]
 [% RenderBlockEnd("RequiredValidOptionServerError") %]
 [% RenderBlockStart("InSettingValidOptionServerError") %]
-                                    [% Translate("Is not possible to invalidate this entry, all config settings have to be changed beforehand.") | html %]
+                                        [% Translate("Is not possible to invalidate this entry, all config settings have to be changed beforehand.") | html %]
 [% RenderBlockEnd("InSettingValidOptionServerError") %]
-                                </p>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-
                         <div class="field-wrapper form-button-actions">
                             <div class="Field buttons-field">
 

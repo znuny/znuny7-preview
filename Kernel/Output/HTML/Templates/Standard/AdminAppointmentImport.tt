@@ -68,7 +68,7 @@
                     <input type="hidden" name="FormID" value="[% Data.FormID | html %]"/>
                     <fieldset class="TableLike">
                         <div class="field-wrapper">
-                            <label for="FileUpload" class="Mandatory"><span class="Marker">*</span>[% Translate("Upload") | html %]:</label>
+                            <label for="FileUpload" class="Mandatory"><span class="Marker">*</span>[% Translate("Upload") | html %]</label>
                             <div class="Field">
                                 <input name="FileUpload" id="FileUpload" type="file" size="18" class="Fixed W100pc Validate_Required [% Data.FileUploadInvalid | html %]"/>
                                 <div id="FileUploadError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
@@ -77,7 +77,7 @@
                         </div>
 
                         <div class="field-wrapper">
-                            <label for="CalendarID" class="Mandatory"><span class="Marker">*</span>[% Translate("Calendar") | html %]:</label>
+                            <label for="CalendarID" class="Mandatory"><span class="Marker">*</span>[% Translate("Calendar") | html %]</label>
                             <div class="Field">
                                 [% Data.Calendar %]
                                 <div id="CalendarIDError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>

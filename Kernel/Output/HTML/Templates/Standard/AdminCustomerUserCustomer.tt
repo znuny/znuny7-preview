@@ -157,10 +157,6 @@
                 </h2>
             </div>
             <div class="Content">
-# ---
-# Forwwward
-# ---
-# - added 'no-padding' class and fieldset wrapper
                 <form class="no-padding" action="[% Env("CGIHandle") %]" method="post" name="matrix">
                     <input type="hidden" name="Action" value="[% Env("Action") %]"/>
                     <input type="hidden" name="Subaction" value="Change[% Data.Type | html %]"/>
@@ -226,7 +222,6 @@
                         </div>
                     </fieldset>
                 </form>
-# ---
             </div>
 [% RenderBlockEnd("Change") %]
         </div>

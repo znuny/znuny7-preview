@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="Content">
-                    <div class="LayoutGrid ColumnsWithSpacing">
+                    <div class="LayoutGrid ColumnsWithSpacing no-padding">
                         <div class="Size1of2">
                             <fieldset class="TableLike">
                                 <div class="field-wrapper">

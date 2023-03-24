@@ -16,7 +16,7 @@
 [% RenderBlockEnd("Head") %]
 
         <div class="Content card">
-            <div class="TableLike">
+            <div class="TableLike card-item-wrapper">
 [% RenderBlockStart("Item") %]
                 <div class="card-item col-desktop-50 col-wide-33">
                     <form action="[% Env("CGIHandle") %]" enctype="multipart/form-data" method="post" class="Validate">

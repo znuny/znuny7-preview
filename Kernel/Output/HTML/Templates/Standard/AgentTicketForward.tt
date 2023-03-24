@@ -39,7 +39,7 @@
         </div>
         <div class="Content card">
             [% INCLUDE "FormElements/DraftNotifications.tt" %]
-            <fieldset class="TableLike FixedLabel">
+            <fieldset class="TableLike FixedLabel card-item-wrapper">
                 <div class="card-item col-desktop-100 col-wide-100">
                     <h2 class="card-title">[% Translate("Ticket Data") | html %]</h2>
                     <div>

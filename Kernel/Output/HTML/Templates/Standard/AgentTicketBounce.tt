@@ -32,7 +32,7 @@
         </div>
 
         <div class="Content card">
-            <fieldset class="TableLike FixedLabel">
+            <fieldset class="TableLike FixedLabel card-item-wrapper">
                 <div class="card-item col-desktop-100 col-wide-100">
                     <div>
                         <label class="Mandatory" for="BounceTo">

@@ -66,7 +66,7 @@
             </div>
             <div class="Content">
                 <div class="ColumnsWithSpacing">
-                    <div class="W75pc">
+                    <div>
                         <div id="WebserviceListContainer" class="ListContainer">
                             <table class="DataTable" id="WebserviceList">
                                 <thead>
@@ -82,31 +82,29 @@
                                 </tbody>
                             </table>
                         </div>
-                        <p class="FieldExplanation">[% Translate("Select a single configuration version to see its details.") | html %]</p>
                     </div>
-                    <div class="Clear"></div>
                 </div>
             </div>
         </div>
-
+        <p class="FieldExplanation">[% Translate("Select a single configuration version to see its details.") | html %]</p>
         <div class="WidgetSimple Hidden" id="WebserviceHistoryDetails">
             <div class="ControlRow"></div>
             <div class="LightRow Bottom">
-                <ul class="Actions">
-                    <li id="ExportButton">
-                        <span>[% Translate("Export web service configuration") | html %]</span>
+                <ul class="Actions flex-row">
+                    <li id="ExportButton" class="flex-row">
+                        <a>[% Translate("Export web service configuration") | html %]</a>
                     </li>
-                    <li id="RollbackButton">
-                        <span>[% Translate("Restore web service configuration") | html %]</span>
+                    <li id="RollbackButton" class="flex-row">
+                        <a>[% Translate("Restore web service configuration") | html %]</a>
                     </li>
                 </ul>
-                <div class="ClearLeft"></div>
             </div>
             <div class="Content ConfigCode">
-                <pre></pre>
+                <div class="code-container">
+                    <pre></pre>
+                </div>
             </div>
         </div>
-
         <div class="Hidden" id="RollbackDialogContainer">
             <p id="RollbackDialog" class="Warning">
                 [% Translate("Do you really want to restore this version of the web service configuration?") | html %]
@@ -123,5 +121,4 @@
             </form>
         </div>
     </div>
-    <div class="Clear"></div>
 </div>

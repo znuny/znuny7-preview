@@ -52,19 +52,20 @@
         </div>
 [% RenderBlockEnd("ActionList") %]
 
-        <div class="WidgetSimple">
-            <div class="Header">
-                <h2>[% Translate("Hint") | html %]</h2>
-            </div>
-            <div class="Content">
-                <p class="FieldExplanation">
-                    [% Translate("Agents will be needed to handle tickets.") | html %]
-                </p>
-                <p>
-                    [% Translate("Attention") | html %]: [% Translate("Don't forget to add a new agent to groups and/or roles!") | html %]
-                </p>
-            </div>
-        </div>
+
+#        <div class="WidgetSimple">
+#            <div class="Header">
+#                <h2>[% Translate("Hint") | html %]</h2>
+#            </div>
+#            <div class="Content">
+#                <p class="FieldExplanation">
+#                    [% Translate("Agents will be needed to handle tickets.") | html %]
+#                </p>
+#                <p>
+#                    [% Translate("Attention") | html %]: [% Translate("Don't forget to add a new agent to groups and/or roles!") | html %]
+#                </p>
+#            </div>
+#        </div>
 
         <div class='WidgetSimple'>
             <div class='Header'>
@@ -131,9 +132,9 @@
             </div>
 
             <div class="ContentColumn">
-                <div class="WidgetSimple card">
+                <div class="WidgetSimple">
 [% RenderBlockStart("OverviewHeader") %]
-                    <div class="Header">
+                    <div class="Header filter-items">
                         <h2>
                             [% IF Data.ListAll && Data.Limit && Data.ListAll > Data.Limit %]
                                 [% Translate("List (only %s shown - more available)", Data.SearchListSize) | html %]
@@ -141,8 +142,9 @@
                                 [% Translate("List (%s total)", Data.ListAll) | html %]
                             [% END %]
                         </h2>
-                        <a href="#" class="icon-hover" id="ValidFilter" title="[% Translate("Filter") | html %]">
-                            <i class="fa fa-filter"></i>
+                        <a href="#" id="ValidFilter" title="[% Translate("Filter") | html %]">
+                            <span class="show-valid">Show Valid</span>
+                            <span class="show-all">Show All</span>
                         </a>
                     </div>
 [% RenderBlockEnd("OverviewHeader") %]
@@ -217,15 +219,15 @@
                                 <input type="hidden" name="ContinueAfterSave" id="ContinueAfterSave" value=""/>
                             [% END %]
                             <fieldset class="TableLike">
-                                <div>
-                                    <label for="UserTitle">[% Translate("Title or salutation") | html %]:</label>
+                                <div class="field-wrapper">
+                                    <label for="UserTitle">[% Translate("Title or salutation") | html %]</label>
                                     <div class="Field">
                                         <input type="text" name="UserTitle" id="UserTitle" value="[% Data.UserTitle | html %]" class="W50pc" maxlength="50"/>
                                     </div>
                                 </div>
 
-                                <div>
-                                    <label class="Mandatory" for="UserFirstname"><span class="Marker">*</span> [% Translate("Firstname") | html %]:</label>
+                                <div class="field-wrapper">
+                                    <label class="Mandatory" for="UserFirstname"><span class="Marker">*</span> [% Translate("Firstname") | html %]</label>
                                     <div class="Field">
                                         <input type="text" name="UserFirstname" id="UserFirstname" value="[% Data.UserFirstname | html %]" class="W50pc Validate_Required [% Data.UserFirstnameInvalid | html %]" maxlength="100"/>
                                         <div id="UserFirstnameError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
@@ -233,8 +235,8 @@
                                     </div>
                                 </div>
 
-                                <div>
-                                    <label class="Mandatory" for="UserLastname"><span class="Marker">*</span> [% Translate("Lastname") | html %]:</label>
+                                <div class="field-wrapper">
+                                    <label class="Mandatory" for="UserLastname"><span class="Marker">*</span> [% Translate("Lastname") | html %]</label>
                                     <div class="Field">
                                         <input type="text" name="UserLastname" id="UserLastname" value="[% Data.UserLastname | html %]" class="W50pc Validate_Required [% Data.UserLastnameInvalid | html %]" maxlength="100"/>
                                         <div id="UserLastnameError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
@@ -242,8 +244,8 @@
                                     </div>
                                 </div>
 
-                                <div>
-                                    <label class="Mandatory" for="UserLogin"><span class="Marker">*</span> [% Translate("Username") | html %]:</label>
+                                <div class="field-wrapper">
+                                    <label class="Mandatory" for="UserLogin"><span class="Marker">*</span> [% Translate("Username") | html %]</label>
                                     <div class="Field">
                                         <input type="text" name="UserLogin" id="UserLogin" value="[% Data.UserLogin | html %]" class="W50pc Validate_Required [% Data.UserLoginInvalid | html %]" maxlength="200" autocomplete="off" />
                                         <div id="UserLoginError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
@@ -258,7 +260,7 @@
                                     </div>
                                 </div>
 
-                                <div>
+                                <div class="field-wrapper">
                                     <label for="UserPw">
                                         [% Translate("Password") | html %]:
                                     </label>
@@ -272,8 +274,8 @@
                                     </div>
                                 </div>
 
-                                <div>
-                                    <label class="Mandatory" for="UserEmail"><span class="Marker">*</span> [% Translate("Email") | html %]:</label>
+                                <div class="field-wrapper">
+                                    <label class="Mandatory" for="UserEmail"><span class="Marker">*</span> [% Translate("Email") | html %]</label>
                                     <div class="Field">
                                         <input type="[% Env("EmailFieldType") | html %]" name="UserEmail" id="UserEmail" value="[% Data.UserEmail | html %]" class="W50pc Validate_Email Validate_Required [% Data.UserEmailInvalid | html %]" maxlength="250"/>
                                         <div id="UserEmailError" class="TooltipErrorMessage"><p>[% Translate("This field is required and needs to be a valid email address.") | html %]</p></div>
@@ -295,20 +297,19 @@
                                     </div>
                                 </div>
 
-                                <div>
-                                    <label for="UserMobile">[% Translate("Mobile") | html %]:</label>
+                                <div class="field-wrapper">
+                                    <label for="UserMobile">[% Translate("Mobile") | html %]</label>
                                     <div class="Field">
                                         <input type="text" name="UserMobile" id="UserMobile" value="[% Data.UserMobile | html %]" class="W50pc" maxlength="50"/>
                                     </div>
                                 </div>
 
-                                <div>
-                                    <label for="ValidID">[% Translate("Validity") | html %]:</label>
+                                <div class="field-wrapper">
+                                    <label for="ValidID">[% Translate("Validity") | html %]</label>
                                     <div class="Field">
                                         [% Data.ValidOption %]
                                     </div>
                                 </div>
-
                                 <div class="field-wrapper form-button-actions">
                                     <div class="Field buttons-field">
                                         <a href="[% Env("Baselink") %]Action=[% Env("Action") %]" class="btn-cancel-ghost btn-main btn-width-md">[% Translate("Cancel") | html %]</a>

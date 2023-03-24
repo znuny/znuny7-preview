@@ -18,10 +18,12 @@
                 <ul class="ActionList">
 [% RenderBlockStart("ActionAddDynamicField") %]
                     <li>
-                        <h4><label for="[% Data.SelectName | html %]">[% Translate( Data.ObjectTypeName ) | html %]</label></h4>
-                        [% Data.AddDynamicFieldStrg %]
-                        <div class="FieldExplanation">
-                            <p>[% Translate("Add new field for object") | html %]: [% Translate(Data.ObjectType) | html %]</p>
+                        <div>
+                            <h4><label for="[% Data.SelectName | html %]">[% Translate( Data.ObjectTypeName ) | html %]</label></h4>
+                            [% Data.AddDynamicFieldStrg %]
+                            <div class="FieldExplanation">
+                                <p>[% Translate("Add new field for object") | html %]: [% Translate(Data.ObjectType) | html %]</p>
+                            </div>
                         </div>
                     </li>
 [% RenderBlockEnd("ActionAddDynamicField") %]
@@ -141,19 +143,20 @@
 
         [% INCLUDE "Breadcrumb.tt" Path = BreadcrumbPath %]
         <div class="WidgetSimple">
-            <div class="Header">
+            <div class="Header filter-items">
                 <h2>[% Translate("Dynamic Fields List") | html %]</h2>
 [% RenderBlockStart("ContextSettings") %]
                 <ul class="ContextFunctions">
                     <li class="ContextSettings">
-                        <a href="#" class="icon-hover" id="ShowContextSettingsDialog" title="[% Translate("Settings") | html %]">
-                            <i class="fa fa-cog"></i>
-                            <span>[% Translate("Settings") | html %]</span>
+                        <a href="#" id="ValidFilter" title="[% Translate("Filter") | html %]">
+                            <span class="show-valid">Show Valid</span>
+                            <span class="show-all">Show All</span>
                         </a>
                     </li>
                     <li class="ContextSettings">
-                        <a href="#" class="icon-hover" id="ValidFilter" title="[% Translate("Filter") | html %]">
-                            <i class="fa fa-filter"></i>
+                        <a href="#" class="icon-hover" id="ShowContextSettingsDialog" title="[% Translate("Settings") | html %]">
+                            <i class="fa fa-cog"></i>
+                            <span>[% Translate("Settings") | html %]</span>
                         </a>
                     </li>
                 </ul>

@@ -40,7 +40,7 @@ Core.Customer.Responsive = (function (TargetNS) {
             $(SidebarElem + ', #Navigation').wrap('<div class="ResponsiveSidebarContainer" />');
         }
 
-        $('#HeaderToolBar').detach().prependTo('.ResponsiveSidebarContainer');
+        $('#HeaderToolBar').detach().prependTo('#Navigation');
 
         // make sure the relevant sidebar is being collapsed on clicking
         // on the background

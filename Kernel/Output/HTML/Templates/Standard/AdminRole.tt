@@ -100,10 +100,11 @@
 
         <div class="WidgetSimple">
 [% RenderBlockStart("OverviewHeader") %]
-            <div class="Header">
+            <div class="Header filter-items">
                 <h2>[% Translate("List") | html %] ([% Data.AllItemsCount | html %] [% Translate("total") | html %])</h2>
-                <a href="#" class="icon-hover" id="ValidFilter" title="[% Translate("Filter") | html %]">
-                    <i class="fa fa-filter"></i>
+                <a href="#" id="ValidFilter" title="[% Translate("Filter") | html %]">
+                    <span class="show-valid">Show Valid</span>
+                    <span class="show-all">Show All</span>
                 </a>
             </div>
 [% RenderBlockEnd("OverviewHeader") %]
@@ -158,26 +159,31 @@
                         <input type="hidden" name="ContinueAfterSave" id="ContinueAfterSave" value=""/>
                     [% END %]
                     <fieldset class="TableLike">
-
-                        <label class="Mandatory" for="Name"><span class="Marker">*</span> [% Translate("Name") | html %]:</label>
-                        <div class="Field">
-                            <input type="text" name="Name" id="Name" value="[% Data.Name | html %]" class="W50pc Validate_Required [% Data.NameInvalid | html %]" maxlength="200"/>
-                            <div id="NameError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="NameServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="Name"><span class="Marker">*</span> [% Translate("Name") | html %]</label>
+                            <div class="Field">
+                                <input type="text" name="Name" id="Name" value="[% Data.Name | html %]" class="W50pc Validate_Required [% Data.NameInvalid | html %]" maxlength="200"/>
+                                <div id="NameError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="NameServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
                             </div>
                         </div>
 
-                        <label class="Mandatory" for="ValidID"><span class="Marker">*</span> [% Translate("Validity") | html %]:</label>
-                        <div class="Field">
-                            [% Data.ValidOption %]
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="ValidID"><span class="Marker">*</span> [% Translate("Validity") | html %]</label>
+                            <div class="Field">
+                                [% Data.ValidOption %]
+                            </div>
                         </div>
 
-                        <label for="Comment">[% Translate("Comment") | html %]:</label>
-                        <div class="Field">
-                            <input type="text" name="Comment" id="Comment" value="[% Data.Comment | html %]" class="W50pc" maxlength="250"/>
+                        <div class="field-wrapper">
+                            <label for="Comment">[% Translate("Comment") | html %]</label>
+                            <div class="Field">
+                                <input type="text" name="Comment" id="Comment" value="[% Data.Comment | html %]" class="W50pc" maxlength="250"/>
+                            </div>
                         </div>
 
                         <div class="field-wrapper form-button-actions">

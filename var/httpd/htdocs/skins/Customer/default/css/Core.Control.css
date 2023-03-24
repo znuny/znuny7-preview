@@ -27,6 +27,10 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     background: var(--white);
 }
 
+#Navigation #HeaderToolBar .logo-navbar-mobile {
+    display: none;
+}
+
 #Navigation > ul {
     display: flex;
 }
@@ -207,22 +211,44 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         width: 300px;
         z-index: 998;
         top: 0px;
-        overflow: auto;
-        padding: var(--padding-xl) 0 0;
+        padding: 0;
+        flex-direction: column;
     }
 
-    #Navigation > ul {
+    #Navigation #HeaderToolBar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        padding: var(--padding-md);
+        border-bottom: var(--border-width) var(--border-solid) var(--border-color);
+        align-items: center;
+    }
+
+    #Navigation #HeaderToolBar .logo-navbar-mobile {
+        width: 120px;
+        height: 27px;
+        background: url(../img/znuny-logo-black.svg) no-repeat;
+        background-size: auto;
+        background-size: contain;
+        position: relative;
+        display: flex;
+    }
+
+    #Navigation > ul.menuItems {
         flex-direction: column;
         width: 100%;
+        padding: var(--padding-md) 0 0;
+        overflow: auto;
     }
 
-    #Navigation > ul > li {
+    #Navigation > ul.menuItems > li {
         display: flex;
         flex-direction: column;
         padding: 0 var(--padding-md) 0 0;
     }
 
-    #Navigation ul li a {
+    #Navigation ul.menuItems li a {
         font-weight: normal;
         padding: var(--padding-md);
         line-height: 20px;
@@ -235,15 +261,15 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         border-radius: 0 var(--border-radius-menu-mobile) var(--border-radius-menu-mobile) 0;
     }
 
-    #Navigation > ul > li > a::after {
+    #Navigation > ul.menuItems > li > a::after {
         width: 0;
         height: 0;
         border-radius: 0;
     }
 
-    #Navigation > ul > .Selected a, 
-    #Navigation > ul > li:focus a, 
-    #Navigation > ul > li:hover a {
+    #Navigation > ul.menuItems > .Selected a, 
+    #Navigation > ul.menuItems > li:focus a, 
+    #Navigation > ul.menuItems > li:hover a {
         background: var(--primary-color);
         color: var(--white);
     }
@@ -256,7 +282,12 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         padding: var(--padding-md);
     }
 
-    #Navigation > ul > li > ul {
+    #Navigation .Selected > a,
+    #Navigation > ul > li:hover > a {
+        color: var(--white);
+    }
+
+    #Navigation > ul.menuItems > li > ul {
         display: flex;
         position: relative;
         top: unset;
@@ -269,11 +300,11 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         border-radius: var(--border-radius-xs);
     }
     
-    .RTL #Navigation > ul > li > ul {
+    .RTL #Navigation > ul.menuItems > li > ul {
         right: 1px;
     }
     
-    #Navigation > ul > li > ul > li {
+    #Navigation > ul.menuItems > li > ul > li {
         font-size: 11px;
         line-height: 11px;
         margin-top: 0;
@@ -284,10 +315,11 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 
 /**
- * @subsection  Action Row / MessageBox (Notification)
+ * @subsection  Action Row
  */
 
-.ActionRow {
+.ActionRow,
+#BottomActionRow.ActionRow {
     position: relative;
     display: flex;
     align-items: center;
@@ -300,13 +332,20 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     width: 100%;
     max-width: 800px;
     align-self: center;
+    gap: var(--gap-sm);
+}
+
+#BottomActionRow.ActionRow {
+    border: 0;
+    border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
 }
 
 .FormScreen .ActionRow {
     padding: 0 var(--padding-lg);
 }
 
-.ActionRow.ActionRow-full-width {
+.ActionRow.ActionRow-full-width,
+#BottomActionRow.ActionRow.ActionRow-full-width {
     max-width: 100%;
 }
 
@@ -321,62 +360,18 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     max-width: 100%;
 }
 
-.MessageBox {
-    display: flex;
-    padding: var(--padding-sm) var(--padding-xl);
-    align-items: center;
-    gap: var(--gap-sm);
-}
-
-.Content .MessageBox {
-    border: 1px solid #ddd;
-}
-
-.RTL .MessageBox p {
-    padding: 1px 20px 1px 0;
-}
-
-.MessageBox i,
-.MessageBox p {
-    color: var(--black);
-}
-
-.MessageBox a {
-    display: none;
-}
-
 #BottomActionRow {
     display: flex;
     justify-content: flex-end;
 }
 
-#BottomActionRow.ActionRow {
-    border: 0;
-}
-/*
-@media (min-width: 1401px) {
-    #BottomActionRow.ActionRow {
-        padding-right: var(--padding-sm);
-        padding-top: var(--padding-sm);
-    }
-}
-*/
-.TicketView #BottomActionRow,
-.RTL .TicketView #BottomActionRow {
-    padding: 0;
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
-}
 
-#BottomActionRow span {
-    padding: 0 5px;
-}
 
-.RTL #BottomActionRow span {
-    padding-left: 0;
-    padding-right: 5px;
-}
+
+
+/**
+ * @subsection  Filter
+ */
 
 .Filter {
     display: flex;
@@ -447,7 +442,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 .Sortable #BottomActionRow {
     padding-bottom: 0;
-    border-bottom: 1px solid #B8BBBB;
 }
 
 /**

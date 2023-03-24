@@ -27,8 +27,6 @@ $Selenium->RunTest(
         my $StandardTemplateObject = $Kernel::OM->Get('Kernel::System::StandardTemplate');
         my $TicketObject           = $Kernel::OM->Get('Kernel::System::Ticket');
         my $UserObject             = $Kernel::OM->Get('Kernel::System::User');
-        my $HelperObject           = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
-        my $ConfigObject           = $Kernel::OM->Get('Kernel::Config');
 
         my $IsITSMIncidentProblemManagementInstalled
             = $Kernel::OM->Get('Kernel::System::Util')->IsITSMIncidentProblemManagementInstalled();

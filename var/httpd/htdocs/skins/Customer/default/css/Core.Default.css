@@ -299,6 +299,34 @@ div.Headline h1 {
     border-radius: var(--border-radius-xs);
   }
 
+  @media only screen and (max-width: 1024px) {
+    .UserAvatar .UserAvatar_submenu {
+        left: 300px;
+        top: 0;
+        border-radius: 0;
+        height: 100vh;
+        min-width: 225px;
+        padding: var(--padding-md) var(--padding-sm) var(--padding-sm) var(--padding-sm);
+      }
+
+      .ShowDropDown .UserAvatar .UserAvatar_submenu {
+        display: flex;
+      }
+
+      .UserAvatar .UserAvatar_submenu ul li.Selected a {
+        color: var(--white);
+        background: var(--primary-color);
+      }
+
+      .UserAvatar .UserAvatar_submenu ul li.Selected a i {
+        color: var(--white);
+      }
+
+      .UserAvatar .UserAvatar_submenu ul li a {
+        justify-content: flex-start;
+      }
+  }
+
   .UserAvatar:hover .UserAvatar_submenu {
     display: flex;
   }
@@ -724,82 +752,6 @@ form select.Error {
     font-size: 12px;
     padding: 10px;
 }*/
-
-/**
- * @subsection  Chat
- */
-
-.ArticleChat .Name {
-    font-weight: bold;
-    white-space: nowrap;
-}
-
-.ArticleChat .Time {
-    padding-right: 5px;
-    color: #888;
-}
-
-.ArticleChat .SystemGenerated .Name {
-    display: none;
-}
-
-.ArticleChat .SystemGenerated .Text {
-    font-style: italic;
-    color: #888;
-}
-
-.ArticleChat .Own .Name {
-    color: red;
-}
-
-.ArticleChat > div {
-    display: table;
-}
-
-.ArticleChat > div > div {
-    display: table-row;
-}
-
-.ArticleChat > div > div > span {
-    display: table-cell;
-}
-
-.ChatTooltip {
-    background: #B83850;
-    color: #fff;
-    left: 50%;
-    margin-left: -80px;
-    padding: 10px;
-    position: absolute;
-    text-align: center;
-    top: 39px;
-    width: 140px;
-    z-index: 900;
-    display: none;
-}
-
-.ChatTooltip:after {
-    bottom: 100%;
-    left: 50%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-    border-color: rgba(184, 56, 80, 0);
-    border-bottom-color: #B83850;
-    border-width: 10px;
-    margin-left: -10px;
-}
-/* Chat */
-.ChatProtocol {
-    border: 1px solid #ccc !important;
-    padding: 2px;
-    overflow-y: auto;
-    max-height: 150px;
-    width: 617px;
-}
 
 /**
 * @subsection  Bread crumb

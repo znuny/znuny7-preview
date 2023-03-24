@@ -441,6 +441,10 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     }
 
     /********************************* NEW STYLES *********************************/
+
+    .CalendarWidget > .Content {
+        z-index: unset;
+    }
     
     .CalendarWidget .Header {
         border-bottom: var(--border-width) var(--border-solid) var(--border-color);
@@ -632,7 +636,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         position: absolute;
         z-index: 501;
         right: 170px;
-        top: 80px !important;
+        /*top: 27px !important;*/
         left: initial !important;
     }
 

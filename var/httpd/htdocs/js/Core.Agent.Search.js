@@ -406,7 +406,8 @@ Core.Agent.Search = (function (TargetNS) {
                 $('#SearchProfileAddBlock').hide();
 
                 // hide save changes in template block
-                $('#SaveProfile').parent().hide().prev().hide().prev().hide();
+                $('label[for="SaveProfile"]').hide();
+                $('#SaveProfile').parent().hide();
 
                 // search profile is selected
                 if ($('#SearchProfile').val() && $('#SearchProfile').val() !== 'last-search') {
@@ -418,7 +419,8 @@ Core.Agent.Search = (function (TargetNS) {
                     $('#SearchProfileAsLink').show();
 
                     // show save changes in template block
-                    $('#SaveProfile').parent().show().prev().show().prev().show();
+                    $('label[for="SaveProfile"]').show();
+                    $('#SaveProfile').parent().show();
 
                     // set SaveProfile to 0
                     $('#SaveProfile').prop('checked', false);

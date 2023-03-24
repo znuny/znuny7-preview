@@ -24,7 +24,7 @@
                     <h3><span class="Warning">[% Translate("SMIME support is disabled") | html %]</span></h3>
                     <fieldset>
                         <p class="FieldExplanation">
-                            [% Translate("To be able to use SMIME in OTRS, you have to enable it first.") | html %]
+                            [% Translate("To be able to use SMIME in Znuny, you have to enable it first.") | html %]
                         </p>
                         <div class="Field">
                             <button class="CallForAction btn-main btn-primary-ghost" type="submit" value="[% Translate("Enable it here!") | html %]">
@@ -188,12 +188,12 @@
                         <tr [% IF Data.Expired %] class="Error" title="Expired"[% END %]>
                             <td>
 [% RenderBlockStart("CertificateRelationAdd") %]
-                                <a class="CertificateRelationAdd" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=SignerRelations;CertificateID=[% Data.CertificateID %]" title="[% Translate("Handle related certificates") | html %]">
+                                <a class="CertificateRelationAdd table-actions-button" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=SignerRelations;CertificateID=[% Data.CertificateID %]" title="[% Translate("Handle related certificates") | html %]">
                                     [% Translate("Handle related certificates") | html %]
                                 </a>
 [% RenderBlockEnd("CertificateRelationAdd") %]
 [% RenderBlockStart("CertificateRead") %]
-                                <a class="CertificateRead" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Read;Type=[% Data.Type | uri %];Filename=[% Data.Filename | uri %]" title="[% Translate("Read certificate") | html %]">
+                                <a class="CertificateRead table-actions-button" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Read;Type=[% Data.Type | uri %];Filename=[% Data.Filename | uri %]" title="[% Translate("Read certificate") | html %]">
                                     [% Translate("Read certificate") | html %]
                                 </a>
 [% RenderBlockEnd("CertificateRead") %]
@@ -233,11 +233,13 @@
                 <input type="hidden" name="Action" value="[% Env("Action") %]"/>
                 <input type="hidden" name="Subaction" value="AddCertificate"/>
                 <fieldset class="TableLike">
-                    <label class="Mandatory" for="File"><span class="Marker">*</span> [% Translate("File") | html %]:</label>
-                    <div class="Field">
-                        <input type="file" size="30" name="FileUpload" id="FileUpload" class="Validate_Required [% Data.FileUploadInvalid | html %]"/>
-                        <div id="FileUploadError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
-                        <div id="FileUploadServerError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
+                    <div class="field-wrapper">
+                        <label class="Mandatory" for="File"><span class="Marker">*</span> [% Translate("File") | html %]</label>
+                        <div class="Field">
+                            <input type="file" size="30" name="FileUpload" id="FileUpload" class="Validate_Required [% Data.FileUploadInvalid | html %]"/>
+                            <div id="FileUploadError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
+                            <div id="FileUploadServerError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
+                        </div>
                     </div>
                     <div class="field-wrapper form-button-actions">
                         <div class="Field buttons-field">
@@ -260,17 +262,21 @@
                 <input type="hidden" name="Action" value="[% Env("Action") %]"/>
                 <input type="hidden" name="Subaction" value="AddPrivate"/>
                 <fieldset class="TableLike">
-                    <label class="Mandatory" for="File"><span class="Marker">*</span> [% Translate("File") | html %]:</label>
-                    <div class="Field">
-                        <input type="file" size="5" name="FileUpload" id="FileUpload" class="Validate_Required [% Data.FileUploadInvalid | html %]"/>
-                        <div id="FileUploadError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
-                        <div id="FileUploadServerError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
+                    <div class="field-wrapper">
+                        <label class="Mandatory" for="File"><span class="Marker">*</span> [% Translate("File") | html %]</label>
+                        <div class="Field">
+                            <input type="file" size="5" name="FileUpload" id="FileUpload" class="Validate_Required [% Data.FileUploadInvalid | html %]"/>
+                            <div id="FileUploadError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
+                            <div id="FileUploadServerError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
+                        </div>
                     </div>
 
-                    <label class="Mandatory" for="Secret"><span class="Marker">*</span> [% Translate("Secret") | html %]:</label>
-                    <div class="Field">
-                        <input class="W50pc Validate_Required" type="password" name="Secret" id="Secret" value="[% Data.Secret | html %]" maxlength="50" autocomplete="new-password"/>
-                        <div id="SecretError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
+                    <div class="field-wrapper">
+                        <label class="Mandatory" for="Secret"><span class="Marker">*</span> [% Translate("Secret") | html %]</label>
+                        <div class="Field">
+                            <input class="W50pc Validate_Required" type="password" name="Secret" id="Secret" value="[% Data.Secret | html %]" maxlength="50" autocomplete="new-password"/>
+                            <div id="SecretError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
+                        </div>
                     </div>
 
                     <div class="field-wrapper form-button-actions">
@@ -341,7 +347,7 @@
         </div>
         <div class="Content">
             <fieldset>
-                <label for="FilterSMIMECerts">[% Translate("Filter") | html %]: </label>
+                <label for="FilterSMIMECerts">[% Translate("Filter") | html %]</label>
                 <input type="text" id="FilterSMIMECerts" class="W50pc" name="FilterSMIME" value="" title="[% Translate("Filter for S/MIME certs") | html %]" />
             </fieldset>
             <table class="DataTable" id="AvailableCerts">
@@ -389,5 +395,6 @@
         </div>
     </div>
 [% RenderBlockEnd("SignerCertificates") %]
+</div>
 </div>
 [% RenderBlockEnd("Overview") %]

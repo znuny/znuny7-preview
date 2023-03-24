@@ -266,7 +266,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         display: flex;
         flex-flow: column;
         align-items: center;
-        padding: var(--padding-lg) 0;
+        padding: var(--padding-lg);
         width: 100%;
         z-index: 0;
     }
@@ -297,7 +297,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
     #NewProcessTicket .TableLike > div {
         width: 100%;
-        max-width: 550px;
+        max-width: 800px;
     }
 
     @media only screen and (max-width: 1024px) {
@@ -362,6 +362,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         display: flex;
         flex-flow: column;
         align-items: center;
+        width: 100%;
     }
 
     @media only screen and (max-width: 1024px) {
@@ -372,7 +373,8 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
     #ActivityDialogContent .ContentColumn .Content > fieldset,
     #ActivityDialogContent .ContentColumn .Content + div {
-        width: 550px;
+        width: 100%;
+        max-width: 800px;
         box-sizing: border-box;
         display: flex;
         flex-flow: column;
@@ -383,13 +385,13 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     @media only screen and (max-width: 1024px) {
         #ActivityDialogContent .ContentColumn .Content > fieldset,
         #ActivityDialogContent .ContentColumn .Content + div {
-            width: 100%;
+            max-width: 100%;
         }
     }
 
     .LayoutPopup #ActivityDialogContent .ContentColumn .Content > fieldset,
     .LayoutPopup #ActivityDialogContent .ContentColumn .Content + div {
-        max-width: 550px;
+        max-width: 800px;
         min-width: unset;
         border: 0;
     }

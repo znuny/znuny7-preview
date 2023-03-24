@@ -162,10 +162,11 @@
 
 [% RenderBlockStart("Overview") %]
         <div class="WidgetSimple">
-            <div class="Header">
+            <div class="Header filter-items">
                 <h2>[% Translate(Data.Title) | html %]</h2>
-                <a href="#" class="icon-hover" id="ValidFilter" title="[% Translate("Filter") | html %]">
-                    <i class="fa fa-filter"></i>
+                <a href="#" id="ValidFilter" title="[% Translate("Filter") | html %]">
+                    <span class="show-valid">Show Valid</span>
+                    <span class="show-all">Show All</span>
                 </a>
             </div>
             <div class="Content">
@@ -262,7 +263,7 @@
                         <div class="field-wrapper">
                             <label for="CalendarName" class="Mandatory">
                                 <span class="Marker">*</span>
-                                [% Translate("Calendar name") | html %]:
+                                [% Translate("Calendar name") | html %]
                             </label>
                             <div class="Field">
                                 <input type="text" id="CalendarName" name="CalendarName" value="[% Data.CalendarName | html %]"
@@ -283,7 +284,7 @@
                         <div class="field-wrapper">
                             <label for="GroupID" class="Mandatory">
                                 <span class="Marker">*</span>
-                                [% Translate("Permission group") | html %]:
+                                [% Translate("Permission group") | html %]
                             </label>
                             <div class="Field">
                                 [% Data.GroupID %]
@@ -293,7 +294,7 @@
                         <div class="field-wrapper">
                             <label for="ValidID" class="Mandatory">
                                 <span class="Marker">*</span>
-                                [% Translate("Validity") | html %]:
+                                [% Translate("Validity") | html %]
                             </label>
                             <div class="Field">
                                 [% Data.ValidID %]
@@ -328,7 +329,7 @@
 
                         <div class="field-wrapper">
                             <label for="StartDate_[% Data.RuleID | html %]">
-                                [% Translate("Start date") | html %]:
+                                [% Translate("Start date") | html %]
                             </label>
                             <div class="Field">
                                 [% Data.StartDateStrg %]
@@ -337,7 +338,7 @@
 
                         <div class="field-wrapper">
                             <label for="EndDate_[% Data.RuleID | html %]">
-                                [% Translate("End date") | html %]:
+                                [% Translate("End date") | html %]
                             </label>
                             <div class="Field">
                                 [% Data.EndDateStrg %]
@@ -353,7 +354,7 @@
                         <div class="field-wrapper">
                             <label for="QueueID_[% Data.RuleID | html %]" class="Mandatory">
                                 <span class="Marker">*</span>
-                                [% Translate("Queues") | html %]:
+                                [% Translate("Queues") | html %]
                             </label>
                             <div class="Field">
                                 [% Data.QueueIDStrg %]
@@ -364,7 +365,7 @@
 
                         <div class="field-wrapper">
                             <label for="SearchParams_[% Data.RuleID | html %]">
-                                [% Translate("Search attributes") | html %]:
+                                [% Translate("Search attributes") | html %]
                             </label>
                             <div class="Field SearchParamsContainer">
                                 <div class="top-container-wrapper">
@@ -378,7 +379,7 @@
                                 <div class="Field">
                                     <label for="SearchParam_[% Data.RuleID | html %]_[% Data.ParamName | html %]" class="Mandatory">
                                         <span class="Marker">*</span>
-                                        [% Translate(Config("AppointmentCalendar::TicketAppointmentSearchParam").${Data.ParamName}) | html %]:
+                                        [% Translate(Config("AppointmentCalendar::TicketAppointmentSearchParam").${Data.ParamName}) | html %]
                                     </label>
                                     [% IF Data.ParamStrg %]
                                     [% Data.ParamStrg %]

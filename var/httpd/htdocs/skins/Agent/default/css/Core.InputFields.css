@@ -77,6 +77,7 @@ div.InputField_InputContainer {
     height: 100%;
     display: flex;
     align-items: center;
+    z-index: 100;
 }
 
 .InputField_Search:focus + i {
@@ -991,6 +992,7 @@ a.cke_button:hover {
 th > input[type=checkbox] {
     display: inline-block;
     vertical-align: middle;
+    margin-top: 0;
 }
 
 input[type=checkbox] {
@@ -1024,8 +1026,7 @@ input[type=checkbox]:checked + label {
     color: var(--black);
 }
 
-input[type=checkbox]::after,
-input[type=radio]::after {
+input[type=checkbox]::after {
     position: absolute;
     z-index: 10000;
     content: '';
@@ -1080,11 +1081,13 @@ input[type=radio]:checked::after {
     border-right: 2px solid var(--gray-dark);
 }
 
+input[type=radio]:checked::after,
 input[type=radio].RadioRound:checked::after {
     border-bottom: 2px solid var(--success-color);
     border-right: 2px solid var(--success-color);
 }
 
+input[type="radio"], 
 input[type="radio"].RadioRound {
     -webkit-appearance: none;
     appearance: none;
@@ -1104,10 +1107,12 @@ input[type="radio"].RadioRound {
     max-height: 16px;
 }
 
+input[type="radio"]:checked,
 input[type="radio"].RadioRound:checked {
     border: var(--border-width-md) var(--border-solid) var(--success-color);
 }
 
+input[type="radio"]::before,
 input[type="radio"].RadioRound::before {
     content: "";
     width: 8px;
@@ -1118,10 +1123,13 @@ input[type="radio"].RadioRound::before {
     box-shadow: inset 1em 1em var(--success-color);
 }
 
+input[type="radio"]:checked::before,
 input[type="radio"].RadioRound:checked::before {
     transform: scale(1);
 }
 
+input[type="radio"]::after,
+input[type="radio"]:checked::after,
 input[type="radio"].RadioRound::after,
 input[type="radio"].RadioRound:checked::after {
     display: none;

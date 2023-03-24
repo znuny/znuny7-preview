@@ -53,8 +53,8 @@
                     </div>
                     <div class="Content">
                         <fieldset class="TableLike">
-                            <div>
-                                <label class="Mandatory" for="Name"><span class="Marker">*</span> [% Translate("Activity Name") | html %]:</label>
+                            <div class="field-wrapper">
+                                <label class="Mandatory" for="Name"><span class="Marker">*</span> [% Translate("Activity Name") | html %]</label>
                                 <div class="Field">
                                     <input type="text" name="Name" id="Name" value="[% Data.Name | html %]" class="Validate_Required [% Data.NameServerError | html %]" maxlength="70"/>
                                     <div id="NameError" class="TooltipErrorMessage">
@@ -63,8 +63,8 @@
                                 </div>
                             </div>
 
-                            <div>
-                                <label for="Scope">[% Translate("Scope") | html %]:</label>
+                            <div class="field-wrapper">
+                                <label for="Scope">[% Translate("Scope") | html %]</label>
                                 <div class="Field">
                                     [% Data.ScopeSelection %]
                                     <div id="ScopeError" class="TooltipErrorMessage">
@@ -73,8 +73,8 @@
                                 </div>
                             </div>
 
-                            <div>
-                                <label class="Mandatory" for="ScopeEntityID"><span class="Marker">*</span> [% Translate("Scope Entity ID") | html %]:</label>
+                            <div class="field-wrapper">
+                                <label class="Mandatory" for="ScopeEntityID"><span class="Marker">*</span> [% Translate("Scope Entity ID") | html %]</label>
                                 <div class="Field">
                                     [% Data.ScopeEntityIDSelection %]
                                     <div id="ScopeEntityIDError" class="TooltipErrorMessage">

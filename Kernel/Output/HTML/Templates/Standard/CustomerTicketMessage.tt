@@ -17,8 +17,7 @@
                 <input type="hidden" name="Subaction" value="StoreNew" />
                 <input type="hidden" name="Expand" id="Expand" value="" />
                 <input type="hidden" name="FormID" value="[% Data.FormID | html %]" />
-                <input type="hidden" name="FromChatID" value="[% Data.FromChatID | html %]" />
-                <fieldset class="TableLike">
+                <fieldset class="TableLike card-item-wrapper">
                     <div class="card-item col-wide-33 col-desktop-100 col-tablet-100">
                         <h2 class="card-title">[% Translate("Team Data") | html %]</h2>
                         <div class="active-inner-cols">
@@ -159,19 +158,7 @@
                                 [% INCLUDE "FormElements/AttachmentList.tt" %]
                             </div>
                         </div>
-[% RenderBlockStart("ChatArticlePreview") %]
-                        <div class="field-wrapper">
-                            <label>[% Translate("Chat protocol") | html %]:</label>
-                            <div class="Field">
-                                <div class="ChatProtocol">
-                                    [% INCLUDE "ArticleContent/Chat.tt" %]
-                                </div>
-                                <p class="FieldExplanation">[% Translate('The chat will be appended as a separate article.') | html %]
-                            </div>
-                        </div>
                     </div>
-[% RenderBlockEnd("ChatArticlePreview") %]
-        </div>
 # example of how to use fixed dynamic field blocks for customizations
 # Note: Field1 and Field2 are the names of the fields and had to be replaced with the actual
 # field names

@@ -102,14 +102,14 @@
         [% INCLUDE "Breadcrumb.tt" Path = BreadcrumbPath %]
         <div class="WidgetSimple">
 [% RenderBlockStart("OverviewResult") %]
-            <div class="Header">
+            <div class="Header filter-items">
                 <h2>[% Translate("List") | html %]</h2>
-                <a href="#" class="icon-hover" id="ValidFilter" title="[% Translate("Filter") | html %]">
-                    <i class="fa fa-filter"></i>
+                <a href="#" id="ValidFilter" title="[% Translate("Filter") | html %]">
+                    <span class="show-valid">Show Valid</span>
+                    <span class="show-all">Show All</span>
                 </a>
             </div>
             <div class="Content">
-
                 <table class="DataTable" id="States">
                     <thead>
                         <tr>
@@ -234,7 +234,6 @@
                                 <input type="text" name="Comment" id="Comment" value="[% Data.Comment | html %]" class="W50pc" maxlength="250"/>
                             </div>
                         </div>
-
                         <div class="field-wrapper form-button-actions">
                             <div class="Field buttons-field">
                                 <a href="[% Env("Baselink") %]Action=[% Env("Action") %]" class="btn-cancel-ghost btn-main btn-width-md">[% Translate("Cancel") | html %]</a>

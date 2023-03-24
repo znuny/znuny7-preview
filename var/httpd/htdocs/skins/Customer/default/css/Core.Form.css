@@ -123,7 +123,7 @@ input[type=email],
 input[type=password],
 textarea,
 select[multiple=multiple] {
-    border: var(--border-width) var(--border-solid) var(--border-color);
+    border: var(--border-width) var(--border-solid) var(--border-input-color);
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     background: var(--white);
     -webkit-box-shadow: none;
@@ -335,7 +335,7 @@ fieldset .field-wrapper {
     flex-direction: column;
     gap: var(--gap-sm);
     width: 100%;
-} 
+}
 
 .field-wrapper {
     position: relative;
@@ -403,7 +403,7 @@ fieldset .field-wrapper {
 @media (min-width: 1025px) and (max-width: 1400px) {
     .Card .Form {
         max-width: 800px;
-    }  
+    }
 }
 
 .Card .Form fieldset {
@@ -692,26 +692,6 @@ fieldset .ShowTreeSelection {
     margin: -10px -15px;
 }
 
-/**
- * @subsection Chat
- */
-
-.ArticleChat {
-    padding: 2px 5px;
-    font-size: 11px;
-    max-height: 100px;
-    overflow: auto;
-    background: #fff;
-    border: 1px solid #eee;
-}
-
-.ArticleMailContent .ArticleChat {
-    max-height: none;
-    font-size: 12px;
-    padding: 10px;
-}
-
-
 /*
 .AttachmentListContainer {
     position: relative;
@@ -724,7 +704,7 @@ fieldset .ShowTreeSelection {
 
 .AttachmentListContainer table:empty {
     margin: 0;
-} 
+}
 .AttachmentListContainer .Busy {
     position: absolute;
     left: 0px;
@@ -1009,8 +989,8 @@ div.TooltipErrorMessage {
 }
 
 
-.ui-datepicker .ui-datepicker-days-cell-over .ui-state-default, 
-.ui-datepicker .ui-datepicker-days-cell-over .ui-widget-content .ui-state-default, 
+.ui-datepicker .ui-datepicker-days-cell-over .ui-state-default,
+.ui-datepicker .ui-datepicker-days-cell-over .ui-widget-content .ui-state-default,
 .ui-datepicker .ui-datepicker-days-cell-over .ui-widget-header .ui-state-default,
 .ui-datepicker .ui-datepicker-days-cell-over .ui-state-highlight{
     color: var(--white) !important;

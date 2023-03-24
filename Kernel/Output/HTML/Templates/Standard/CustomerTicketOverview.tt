@@ -31,7 +31,9 @@
                 [% END %]
                 </ul>
                 <div class="Tabs Pagination">
-                    [% Data.SiteNavBar %]
+                    <ul>
+                        <li class="page-links">[% Data.SiteNavBar %]</li>
+                    </ul>
                 </div>
             </div>
             <div class="Content outerTable">
@@ -175,7 +177,7 @@
                 </table>
             </div>
 [% RenderBlockStart("FilterFooter") %]
-            <div id="BottomActionRow" class="ActionRow BigButtons">
+            <div id="BottomActionRow" class="ActionRow ActionRow-full-width">
                 <ul class="Tabs Filter">
 [% RenderBlockStart("FilterFooterItem") %]
                     <li class="[% Data.ClassLI | html %]">
@@ -184,16 +186,15 @@
                         </a>
                     </li>
 [% RenderBlockEnd("FilterFooterItem") %]
-                    <li class="Clear"></li>
                 </ul>
                 <div class="Tabs Pagination">
-                    [% Data.SiteNavBar %]
+                    <ul>
+                        <li class="page-links">[% Data.SiteNavBar %]</li>
+                    </ul>
                 </div>
-                <div class="Clear"></div>
             </div>
 [% RenderBlockEnd("FilterFooter") %]
-        </div>
-    </div>
+
     [% WRAPPER JSOnDocumentComplete %]
     <script type="text/javascript">
         $('#CustomerIDs').on('change.CustomerIDs', function (Event) {
@@ -215,9 +216,10 @@
         });
     </script>
     [% END %]
+
 [% RenderBlockEnd("Filled") %]
 [% RenderBlockStart("Empty") %]
-        <div class="Placeholder">
+            <div class="Placeholder">
 [% RenderBlockStart("EmptyDefault") %]
                 <h2>[% Translate("Welcome!") | html %]</h2>
 [% RenderBlockStart("EmptyDefaultButton") %]
@@ -232,6 +234,9 @@
                 <a class="btn-primary btn-main btn-width-lg" href="[% Env("Baselink") %]Action=CustomerTicketMessage">[% Translate(Data.Button) | html %]</a>
 [% RenderBlockEnd("EmptyCustomButton") %]
 [% RenderBlockEnd("EmptyCustom") %]
-        </div>
+            </div>
 [% RenderBlockEnd("Empty") %]
+
+        </div>
+    </div>
 </div>

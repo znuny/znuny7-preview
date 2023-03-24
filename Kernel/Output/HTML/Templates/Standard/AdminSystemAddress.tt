@@ -93,10 +93,11 @@
 
         <div class="WidgetSimple">
 [% RenderBlockStart("OverviewResult") %]
-            <div class="Header">
+            <div class="Header filter-items">
                 <h2>[% Translate("List") | html %]</h2>
-                <a href="#" class="icon-hover" id="ValidFilter" title="[% Translate("Filter") | html %]">
-                    <i class="fa fa-filter"></i>
+                <a href="#" id="ValidFilter" title="[% Translate("Filter") | html %]">
+                    <span class="show-valid">Show Valid</span>
+                    <span class="show-all">Show All</span>
                 </a>
             </div>
             <div class="Content">
@@ -153,84 +154,94 @@
                         <input type="hidden" name="ContinueAfterSave" id="ContinueAfterSave" value=""/>
                     [% END %]
                     <fieldset class="TableLike">
-                        <label class="Mandatory" for="Name"><span class="Marker">*</span> [% Translate("Email address") | html %]:</label>
-                        <div class="Field">
-                            <input type="[% Env("EmailFieldType") | html %]" name="Name" id="Name" value="[% Data.Name | html %]" class="W50pc Validate_Email Validate_Required [% Data.NameInvalid | html %]" maxlength="200"/>
-                            <div id="NameError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required and needs to be a valid email address.") | html %]</p>
-                            </div>
-                            <div id="NameServerError" class="TooltipErrorMessage">
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="Name"><span class="Marker">*</span> [% Translate("Email address") | html %]</label>
+                            <div class="Field">
+                                <input type="[% Env("EmailFieldType") | html %]" name="Name" id="Name" value="[% Data.Name | html %]" class="W50pc Validate_Email Validate_Required [% Data.NameInvalid | html %]" maxlength="200"/>
+                                <div id="NameError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required and needs to be a valid email address.") | html %]</p>
+                                </div>
+                                <div id="NameServerError" class="TooltipErrorMessage">
 [% RenderBlockStart("RequiredFieldServerErrorMsg") %]
-                                <p>[% Translate("This field is required.") | html %]</p>
+                                    <p>[% Translate("This field is required.") | html %]</p>
 [% RenderBlockEnd("RequiredFieldServerErrorMsg") %]
 [% RenderBlockStart("EmailInvalidConfigServerErrorMsg") %]
-                                <p>[% Translate("This email address is not allowed due to the system configuration.") | html %]</p>
+                                    <p>[% Translate("This email address is not allowed due to the system configuration.") | html %]</p>
 [% RenderBlockEnd("EmailInvalidConfigServerErrorMsg") %]
 [% RenderBlockStart("EmailInvalidMXServerErrorMsg") %]
-                                <p>[% Translate("This email address failed MX check.") | html %]</p>
+                                    <p>[% Translate("This email address failed MX check.") | html %]</p>
 [% RenderBlockEnd("EmailInvalidMXServerErrorMsg") %]
 [% RenderBlockStart("EmailInvalidDNSServerErrorMsg") %]
-                                <p>[% Translate("DNS problem, please check your configuration and the error log.") | html %]</p>
+                                    <p>[% Translate("DNS problem, please check your configuration and the error log.") | html %]</p>
 [% RenderBlockEnd("EmailInvalidDNSServerErrorMsg") %]
 [% RenderBlockStart("EmailInvalidSyntaxServerErrorMsg") %]
-                                <p>[% Translate("The syntax of this email address is incorrect.") | html %]</p>
+                                    <p>[% Translate("The syntax of this email address is incorrect.") | html %]</p>
 [% RenderBlockEnd("EmailInvalidSyntaxServerErrorMsg") %]
 [% RenderBlockStart("EmailAlreadyUsedServerErrorMsg") %]
                                 <p>[% Translate("This email address is already used as system email address.") | html %]</p>
 [% RenderBlockEnd("EmailAlreadyUsedServerErrorMsg") %]
-                            </div>
-                        </div>
-
-                        <label class="Mandatory" for="Realname"><span class="Marker">*</span> [% Translate("Display name") | html %]:</label>
-                        <div class="Field">
-                            <input type="text" name="Realname" id="Realname" value="[% Data.Realname | html %]" class="W50pc Validate_Required [% Data.RealnameInvalid | html %]" maxlength="200"/>
-                            <div id="RealnameError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="RealnameServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <p class="FieldExplanation">
-                                [% Translate("The display name and email address will be shown on mail you send.") | html %]
-                            </p>
-                        </div>
-
-                        <label class="Mandatory" for="QueueID"><span class="Marker">*</span> [% Translate("Queue") | html %]:</label>
-                        <div class="Field">
-                            [% Data.QueueOption %]
-                            <div id="QueueIDError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="QueueIDServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                        </div>
-
-                        <label class="Mandatory" for="ValidID"><span class="Marker">*</span> [% Translate("Validity") | html %]:</label>
-                        <div class="Field">
-                            [% Data.ValidOption %]
-                            <div id="ValidIDError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            [% IF Data.Errors.SystemAddressIsUsed %]
-                                <div id="ValidIDServerError" class="TooltipErrorMessage">
-                                    <p>[% Translate("This system address cannot be set to invalid.") | html %]</p>
                                 </div>
-                            [% ELSE %]
-                                <div id="ValidIDServerError" class="TooltipErrorMessage">
+                            </div>
+                        </div>
+
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="Realname"><span class="Marker">*</span> [% Translate("Display name") | html %]</label>
+                            <div class="Field">
+                                <input type="text" name="Realname" id="Realname" value="[% Data.Realname | html %]" class="W50pc Validate_Required [% Data.RealnameInvalid | html %]" maxlength="200"/>
+                                <div id="RealnameError" class="TooltipErrorMessage">
                                     <p>[% Translate("This field is required.") | html %]</p>
                                 </div>
-                            [% END %]
-                            [% IF Data.SystemAddressIsUsed %]
+                                <div id="RealnameServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
                                 <p class="FieldExplanation">
-                                    [% Translate("This system address cannot be set to invalid, because it is used in one or more queue(s) or auto response(s).") | html %]
+                                    [% Translate("The display name and email address will be shown on mail you send.") | html %]
                                 </p>
-                            [% END %]
+                            </div>
                         </div>
 
-                        <label for="Comment">[% Translate("Comment") | html %]:</label>
-                        <div class="Field">
-                            <input type="text" name="Comment" id="Comment" value="[% Data.Comment | html %]" class="W50pc" maxlength="250"/>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="QueueID"><span class="Marker">*</span> [% Translate("Queue") | html %]</label>
+                            <div class="Field">
+                                [% Data.QueueOption %]
+                                <div id="QueueIDError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="QueueIDServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="ValidID"><span class="Marker">*</span> [% Translate("Validity") | html %]</label>
+                            <div class="Field">
+                                [% Data.ValidOption %]
+                                <div id="ValidIDError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                [% IF Data.Errors.SystemAddressIsUsed %]
+                                    <div id="ValidIDServerError" class="TooltipErrorMessage">
+                                        <p>[% Translate("This system address cannot be set to invalid.") | html %]</p>
+                                    </div>
+                                [% ELSE %]
+                                    <div id="ValidIDServerError" class="TooltipErrorMessage">
+                                        <p>[% Translate("This field is required.") | html %]</p>
+                                    </div>
+                                [% END %]
+                                [% IF Data.SystemAddressIsUsed %]
+                                    <p class="FieldExplanation">
+                                        [% Translate("This system address cannot be set to invalid, because it is used in one or more queue(s) or auto response(s).") | html %]
+                                    </p>
+                                [% END %]
+                            </div>
+                        </div>
+
+                        <div class="field-wrapper">
+                            <label for="Comment">[% Translate("Comment") | html %]</label>
+                            <div class="Field">
+                                <input type="text" name="Comment" id="Comment" value="[% Data.Comment | html %]" class="W50pc" maxlength="250"/>
+                            </div>
                         </div>
 
                         <div class="field-wrapper form-button-actions">

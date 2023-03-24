@@ -34,7 +34,7 @@ $Selenium->RunTest(
         my $DBObject                = $Kernel::OM->Get('Kernel::System::DB');
 
         my $Home           = $ConfigObject->Get('Home');
-        my $Daemon         = $Home . '/bin/otrs.Daemon.pl';
+        my $Daemon         = $Home . '/bin/znuny.Daemon.pl';
         my $DaemonExitCode = 1;
 
         my $RevertDeamonStatus = sub {

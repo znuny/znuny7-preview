@@ -89,9 +89,18 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         border-bottom: 0 !important;
     }
 
+    div.no-border-top,
+    span.no-border-top {
+        border-top: 0;
+    }
+
     div.border-bottom,
     span.border-bottom {
         border-bottom: var(--border-width) var(--border-solid) var(--border-color);
+    }
+
+    .border {
+        border: var(--border-width) var(--border-solid) var(--border-color);
     }
 
     div.row-reverse,
@@ -154,8 +163,16 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         padding: 0 !important;
     }
 
+    .no-margin {
+        margin: 0 !important;
+    }
+
     .padding-lg {
         padding: var(--padding-lg);
+    }
+
+    .padding-md {
+        padding: var(--padding-md);
     }
 
 }

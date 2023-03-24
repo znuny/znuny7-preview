@@ -92,14 +92,14 @@
 
         <div class="WidgetSimple">
 [% RenderBlockStart("OverviewResult") %]
-            <div class="Header">
+            <div class="Header filter-items">
                 <h2>[% Translate("List") | html %]</h2>
-                <a href="#" class="icon-hover" id="ValidFilter" title="[% Translate("Filter") | html %]">
-                    <i class="fa fa-filter"></i>
+                <a href="#" id="ValidFilter" title="[% Translate("Filter") | html %]">
+                    <span class="show-valid">Show Valid</span>
+                    <span class="show-all">Show All</span>
                 </a>
             </div>
             <div class="Content">
-
                 <table class="DataTable" id="Attachments">
                     <thead>
                         <tr>
@@ -133,8 +133,7 @@
                             <td>[% Data.ChangeTime | Localize("TimeShort") %]</td>
                             <td>[% Data.CreateTime | Localize("TimeShort") %]</td>
                             <td class="Center">
-                                <a class="TrashCan AttachmentDelete icon-hover-sm" href="#" data-id="[% Data.ID %]" title="[% Translate("Delete this attachment") | html %]">
-#                                    [% Translate("Delete this attachment") | html %]
+                                <a class="TrashCan AttachmentDelete table-icon-hover-md" href="#" data-id="[% Data.ID %]" title="[% Translate("Delete this attachment") | html %]">
                                     <i class="fa fa-times"></i>
                                 </a>
                             </td>
@@ -171,69 +170,74 @@
                     [% END %]
 
                     <fieldset class="TableLike">
-                        <label class="Mandatory" for="Name"><span class="Marker">*</span> [% Translate("Name") | html %]:</label>
-                        <div class="Field">
-                            <input type="text" name="Name" id="Name" value="[% Data.Name | html %]" class="Validate_Required [% Data.NameInvalid | html %]" maxlength="200"/>
-                            <div id="NameError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="NameServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                        </div>
-
-                        [% IF Data.Action == 'Add' %]
-                            <label class="Mandatory" for="FileUpload"><span class="Marker">*</span> [% Translate("Attachment") | html %]:</label>
-                        [% ELSE %]
-                            <label for="FileUpload">[% Translate("Attachment") | html %]:</label>
-                        [% END %]
-                        <div class="Field">
-                            <input name="FileUpload" id="FileUpload" type="file" class="[% Data.ValidateContent | html %] [% Data.FileUploadInvalid | html %]"/>
-                            <div id="FileUploadError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="FileUploadServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                        </div>
-
-                        <label class="Mandatory" for="ValidID"><span class="Marker">*</span> [% Translate("Validity") | html %]:</label>
-                        <div class="Field">
-                            [% Data.ValidOption %]
-                            <div id="ValidIDError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="ValidIDServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                        </div>
-
-                        <label for="Comment">[% Translate("Comment") | html %]:</label>
-                        <div class="Field">
-                            <input type="text" name="Comment" id="Comment" value="[% Data.Comment | html %]" maxlength="250"/>
-                        </div>
-
-                        <div class="Content">
-                            <div class="field-wrapper form-button-actions">
-                                <div class="Field buttons-field">
-                                    <a href="[% Env("Baselink") %]Action=[% Env("Action") %]" class="btn-cancel-ghost btn-main btn-width-md">
-                                        <span>[% Translate("Cancel") | html %]</span>
-                                    </a>
-
-                                    [% IF Data.Action == 'Change' %]
-                                        <button class="btn-primary-ghost btn-main  btn-width-md" id="Submit" type="submit" value="[% Translate("Save") | html %]">
-                                            <span>[% Translate("Save and finish") | html %]</span>
-                                        </button>
-
-                                        <button class="btn-primary btn-main  btn-width-md" id="SubmitAndContinue" type="button" value="[% Translate("Save") | html %]">
-                                            <span>[% Translate("Save") | html %]</span>
-                                        </button>
-                                    [% ELSE %]
-                                        <button class="btn-primary btn-main  btn-width-md" id="Submit" type="submit" value="[% Translate("Save") | html %]">
-                                            <span>[% Translate("Save") | html %]</span>
-                                        </button>
-                                    [% END %]
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="Name"><span class="Marker">*</span> [% Translate("Name") | html %]</label>
+                            <div class="Field">
+                                <input type="text" name="Name" id="Name" value="[% Data.Name | html %]" class="Validate_Required [% Data.NameInvalid | html %]" maxlength="200"/>
+                                <div id="NameError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
                                 </div>
+                                <div id="NameServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field-wrapper">
+                            [% IF Data.Action == 'Add' %]
+                                <label class="Mandatory" for="FileUpload"><span class="Marker">*</span> [% Translate("Attachment") | html %]</label>
+                            [% ELSE %]
+                                <label for="FileUpload">[% Translate("Attachment") | html %]</label>
+                            [% END %]
+                            <div class="Field">
+                                <input name="FileUpload" id="FileUpload" type="file" class="[% Data.ValidateContent | html %] [% Data.FileUploadInvalid | html %]"/>
+                                <div id="FileUploadError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="FileUploadServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="ValidID"><span class="Marker">*</span> [% Translate("Validity") | html %]</label>
+                            <div class="Field">
+                                [% Data.ValidOption %]
+                                <div id="ValidIDError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="ValidIDServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field-wrapper">
+                            <label for="Comment">[% Translate("Comment") | html %]</label>
+                            <div class="Field">
+                                <input type="text" name="Comment" id="Comment" value="[% Data.Comment | html %]" maxlength="250"/>
+                            </div>
+                        </div>
+                        <div class="field-wrapper form-button-actions">
+                            <div class="Field buttons-field">
+                                <a href="[% Env("Baselink") %]Action=[% Env("Action") %]" class="btn-cancel-ghost btn-main btn-width-md">
+                                    <span>[% Translate("Cancel") | html %]</span>
+                                </a>
+
+                                [% IF Data.Action == 'Change' %]
+                                    <button class="btn-primary-ghost btn-main  btn-width-md" id="Submit" type="submit" value="[% Translate("Save") | html %]">
+                                        <span>[% Translate("Save and finish") | html %]</span>
+                                    </button>
+
+                                    <button class="btn-primary btn-main  btn-width-md" id="SubmitAndContinue" type="button" value="[% Translate("Save") | html %]">
+                                        <span>[% Translate("Save") | html %]</span>
+                                    </button>
+                                [% ELSE %]
+                                    <button class="btn-primary btn-main  btn-width-md" id="Submit" type="submit" value="[% Translate("Save") | html %]">
+                                        <span>[% Translate("Save") | html %]</span>
+                                    </button>
+                                [% END %]
                             </div>
                         </div>
                     </fieldset>

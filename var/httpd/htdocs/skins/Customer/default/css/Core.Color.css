@@ -85,6 +85,10 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
     --color-icon-favorite: #F2BD0E;
 
+    /* Forms */
+    --border-color: #E2E2EA;
+    --border-input-color: #BBBBC4;
+
     /* Sections */
     --main-bg-color: #FAFAFB;
     --input-field-bg-color: var(--white);

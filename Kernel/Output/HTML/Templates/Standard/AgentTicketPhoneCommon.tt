@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="ContentColumn card">
-                    <fieldset class="TableLike FixedLabel">
+                    <fieldset class="TableLike FixedLabel card-item-wrapper">
 
                         [% IF TicketFrontendConfig.State %]
                         <div class="card-item col-wide-100 col-desktop-100 col-tablet-100">

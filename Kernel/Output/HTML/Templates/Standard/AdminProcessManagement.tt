@@ -41,7 +41,7 @@
                 <p class="FieldExplanation">
                     [% Translate("Here you can upload a configuration file to import a process to your system. The file needs to be in .yml format as exported by process management module.") | html %]
                 </p>
-                <ul class="ActionList SpacingTop">
+                <ul class="ActionList">
                     <li>
                         <form action="[% Env("CGIHandle") %]" method="post" enctype="multipart/form-data" class="Validate PreventMultipleSubmits">
                             <input type="hidden" name="Action" value="[% Env("Action") %]"/>
@@ -71,7 +71,7 @@
                 <p class="FieldExplanation">
                     [% Translate("Here you can activate Ready2Adopt processes showcasing our best practices. Please note that some additional configuration may be required.") | html %]
                 </p>
-                <ul class="ActionList SpacingTop">
+                <ul class="ActionList">
                     <li>
                         <form action="[% Env("CGIHandle") %]" method="post" enctype="multipart/form-data" class="Validate PreventMultipleSubmits">
                             <input type="hidden" name="Action" value="[% Env("Action") %]"/>
@@ -112,7 +112,7 @@
                 <h2>[% Translate('Related Actions') | html %]</h2>
             </div>
             <div class='Content'>
-                <ul class='ActionList SpacingTop'>
+                <ul class='ActionList'>
                     <li>
                         <a href='[% Env("Baselink") %]Action=AdminACL' class='CallForAction btn-main btn-primary-ghost'>
                             <span>
@@ -160,10 +160,11 @@
     [% INCLUDE "Breadcrumb.tt" Path = BreadcrumbPath %]
 
         <div class="WidgetSimple">
-            <div class="Header">
+            <div class="Header filter-items">
                 <h2>[% Translate("Processes") | html %]</h2>
-                <a href="#" class="icon-hover" id="ValidFilter" title="[% Translate("Filter") | html %]">
-                    <i class="fa fa-filter"></i>
+                <a href="#" id="ValidFilter" title="[% Translate("Filter") | html %]">
+                    <span class="show-valid">Show Valid</span>
+                    <span class="show-all">Show All</span>
                 </a>
             </div>
             <div class="Content scroll-bar-styled">

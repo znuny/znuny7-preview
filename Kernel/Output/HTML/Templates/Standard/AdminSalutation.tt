@@ -83,10 +83,11 @@
         [% INCLUDE "Breadcrumb.tt" Path = BreadcrumbPath %]
 [% RenderBlockStart("OverviewResult") %]
         <div class="WidgetSimple">
-            <div class="Header">
+            <div class="Header filter-items">
                 <h2>[% Translate("List") | html %]</h2>
-                <a href="#" class="icon-hover" id="ValidFilter" title="[% Translate("Filter") | html %]">
-                    <i class="fa fa-filter"></i>
+                <a href="#" id="ValidFilter" title="[% Translate("Filter") | html %]">
+                    <span class="show-valid">Show Valid</span>
+                    <span class="show-all">Show All</span>
                 </a>
             </div>
             <div class="Content">

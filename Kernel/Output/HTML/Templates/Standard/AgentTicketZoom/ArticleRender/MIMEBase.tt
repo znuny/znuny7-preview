@@ -233,31 +233,38 @@ function CheckIFrameHeight(IFrameID) {
                     [% END %]
 
                     [% IF Data.Attachments && Data.Attachments.size() %]
+
                         <ul class="ArticleAttachments">
                             [% FOREACH Attachment IN Data.Attachments %]
                                 <li title="[% Attachment.Filename | html %]">
-                                    <h5>[% Attachment.Filename | truncate( Config("Ticket::Frontend::AgentTicketZoom::DisplayedAttachmentFilenameMaxLength") ) | html %]</h5>
-                                    [% IF Attachment.ContentType.match('image') %]
-                                        [% Translate("Image") | html %]
-                                    [% ELSIF Attachment.ContentType == "application/pdf" %]
-                                        [% Translate("PDF") | html %]
-                                    [% ELSE %]
-                                        [% Translate("Unknown") | html %]
-                                    [% END %]
-                                    &ndash;
-                                    [% Attachment.FilesizeRaw | Localize("Filesize") %]
-                                    <div>
-                                    [% FOREACH Item IN Attachment.Links %]
-                                        [% IF Item.Action == "Download" %]
-                                        <a class="[% Item.Class %]" href="[% Item.Link %]" title="[% Translate("Download") | html %] [% Attachment.Filename | html %]" [% Item.Target %]>
-                                            <i class="fa fa-download"></i>
-                                        </a>
-                                        [% ELSIF Item.Link %]
-                                        <a class="[% Item.Class %]" href="[% Item.Link %]" title="[% Translate("View") | html %] [% Attachment.Filename | html %]" [% Item.Target %]>
-                                            <i class="fa fa-search"></i>
-                                        </a>
+                                    <div class="inner-content">
+                                        <div class="file-info">
+                                            <span class="file-name">
+                                                [% Attachment.Filename | truncate( Config("Ticket::Frontend::AgentTicketZoom::DisplayedAttachmentFilenameMaxLength") ) | html %]
+                                            </span>
+                                            <span class="file-weight">
+                                                [% IF Attachment.ContentType.match('image') %]
+                                                    [% Translate("Image") | html %]
+                                                [% ELSIF Attachment.ContentType == "application/pdf" %]
+                                                    [% Translate("PDF") | html %]
+                                                [% ELSE %]
+                                                    [% Translate("Unknown") | html %]
+                                                [% END %]
+
+                                                [% Attachment.FilesizeRaw | Localize("Filesize") %]
+                                            </span>
+                                        </div>
+                                        [% FOREACH Item IN Attachment.Links %]
+                                            [% IF Item.Action == "Download" %]
+                                            <a class="[% Item.Class %] file-icon" href="[% Item.Link %]" title="[% Translate("Download") | html %] [% Attachment.Filename | html %]" [% Item.Target %]>
+                                                <i class="fa fa-download"></i>
+                                            </a>
+                                            [% ELSIF Item.Link %]
+                                            <a class="[% Item.Class %] file-icon" href="[% Item.Link %]" title="[% Translate("View") | html %] [% Attachment.Filename | html %]" [% Item.Target %]>
+                                                <i class="fa fa-search"></i>
+                                            </a>
+                                            [% END %]
                                         [% END %]
-                                    [% END %]
                                     </div>
                                 </li>
                             [% END %]

@@ -183,7 +183,7 @@
 [% RenderBlockStart("ContextSettings") %]
                 <div class="ActionMenu">
                     <div class="WidgetAction Settings">
-                        <a href="#" id="ShowContextSettingsDialog" title="[% Translate("Settings") | html %]">
+                        <a href="#" class="icon-hover" id="ShowContextSettingsDialog" title="[% Translate("Settings") | html %]">
                             <i class="fa fa-cog"></i>
                         </a>
                     </div>
@@ -225,8 +225,12 @@
                 <div class="CommunicationPagination">
                     <span class="Pagination">
 [% RenderBlockStart("OverviewNavBarPageNavBar") %]
-                        [% Data.ResultLong %]
-                        [% Data.SiteNavBarLong %]
+                            <ul>
+                                <li>
+                                    <span>[% Data.ResultLong %]</span>
+                                </li>
+                                <li class="page-links">[% Data.SiteNavBarLong %]</li>
+                            </ul>
 [% RenderBlockEnd("OverviewNavBarPageNavBar") %]
                     </span>
                 </div>

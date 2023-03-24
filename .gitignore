@@ -18,6 +18,7 @@
 Kernel/Config/Backups/
 Kernel/Config/Files/ZZZ*.pm
 Kernel/Config/Files/User/*
+Kernel/Config/Defaults.pm
 Kernel/Config/GenericAgent.pm
 Kernel/Config.pm
 Kernel/Language/*.old
@@ -25,6 +26,8 @@ bin/cgi-bin/.htaccess
 scripts/apache2-perl-startup2.pl
 var/virtualfs
 var/run
+var/etc
+var/etc/*
 var/log/*
 var/log/*.log
 var/log/Daemon/*.log
@@ -44,6 +47,13 @@ var/cron/*
 .ssh
 .viminfo
 .bash*
+
+# Packages
+.mysql_history
+doc/en/
+doc/de/
+development/
+development/webservices
 
 # Fred
 Fred.sopm
@@ -66,17 +76,11 @@ var/httpd/htdocs/skins/Customer/default/css/*Fred*css
 # NYTProf
 nytprof*.out
 
+# coverage
+cover_db/
+
 # ITSM
 var/stats/*.xml.installed
-
-# todo delete me
-# GUI-Redesign
-Kernel/Config/Defaults.pm
-.mysql_history
-doc/en/
-doc/de/
-development/
-development/webservices
 
 # FAQ
 FAQ.sopm
@@ -430,6 +434,7 @@ var/httpd/htdocs/js/ITSM.Agent.Service.js
 var/httpd/htdocs/js/ITSM.Agent.ServiceZoom.js
 var/httpd/htdocs/js/ITSM.Agent.SLA.js
 var/httpd/htdocs/js/ITSM.Agent.SLAZoom.js
+var/httpd/htdocs/js/ITSM.Agent.UserSearch.js
 var/httpd/htdocs/js/ITSM.Agent.Zoom.js
 var/httpd/htdocs/skins/Agent/default/css/ITSM.Agent.Default.css
 var/httpd/htdocs/skins/Agent/default/css/ITSM.Agent.Detail.css
@@ -441,12 +446,11 @@ var/packagesetup/ITSMCore.pm
 # ITSMConfigurationManagement
 ITSMConfigurationManagement.sopm
 i18n/ITSMConfigurationManagement/
-ITSMConfigurationManagement.sopm
 doc/itsm-configuration-management-database.dia
 doc/itsm-configuration-management-database.png
 Kernel/Config/Files/XML/ITSMConfigItem.xml
-Kernel/Config/Files/XML/ITSMConfigItemGenericInterface.xml
-Kernel/Config/Files/XML/ITSMConfigItemTicketLink.xml
+Kernel/GenericInterface/Event/ObjectType/ITSMConfigItem.pm
+Kernel/GenericInterface/Invoker/ITSMConfigItem/Generic.pm
 Kernel/GenericInterface/Operation/ConfigItem/Common.pm
 Kernel/GenericInterface/Operation/ConfigItem/ConfigItemCreate.pm
 Kernel/GenericInterface/Operation/ConfigItem/ConfigItemDelete.pm
@@ -502,10 +506,14 @@ Kernel/Language/uk_ITSMConfigurationManagement.pm
 Kernel/Language/vi_VN_ITSMConfigurationManagement.pm
 Kernel/Language/zh_CN_ITSMConfigurationManagement.pm
 Kernel/Language/zh_TW_ITSMConfigurationManagement.pm
+Kernel/Modules/AJAXDynamicFieldConfigItem.pm
+Kernel/Modules/AdminDynamicFieldConfigItem.pm
 Kernel/Modules/AdminITSMConfigItem.pm
 Kernel/Modules/AgentITSMConfigItem.pm
 Kernel/Modules/AgentITSMConfigItemAdd.pm
+Kernel/Modules/AgentITSMConfigItemAttachment.pm
 Kernel/Modules/AgentITSMConfigItemBulk.pm
+Kernel/Modules/AgentITSMConfigItemCustomerCIsWidget.pm
 Kernel/Modules/AgentITSMConfigItemDelete.pm
 Kernel/Modules/AgentITSMConfigItemEdit.pm
 Kernel/Modules/AgentITSMConfigItemHistory.pm
@@ -513,6 +521,11 @@ Kernel/Modules/AgentITSMConfigItemPrint.pm
 Kernel/Modules/AgentITSMConfigItemSearch.pm
 Kernel/Modules/AgentITSMConfigItemZoom.pm
 Kernel/Output/HTML/Dashboard/ITSMConfigItemGeneric.pm
+Kernel/Output/HTML/FilterElementPost/AgentITSMConfigItemCustomerCIs.pm
+Kernel/Output/HTML/ITSMConfigItem/LayoutBaseSelectable.pm
+Kernel/Output/HTML/ITSMConfigItem/LayoutCI.pm
+Kernel/Output/HTML/ITSMConfigItem/LayoutCIAttachment.pm
+Kernel/Output/HTML/ITSMConfigItem/LayoutCISimple.pm
 Kernel/Output/HTML/ITSMConfigItem/LayoutCustomer.pm
 Kernel/Output/HTML/ITSMConfigItem/LayoutCustomerCompany.pm
 Kernel/Output/HTML/ITSMConfigItem/LayoutDate.pm
@@ -520,15 +533,27 @@ Kernel/Output/HTML/ITSMConfigItem/LayoutDateTime.pm
 Kernel/Output/HTML/ITSMConfigItem/LayoutDummy.pm
 Kernel/Output/HTML/ITSMConfigItem/LayoutGeneralCatalog.pm
 Kernel/Output/HTML/ITSMConfigItem/LayoutInteger.pm
+Kernel/Output/HTML/ITSMConfigItem/LayoutPriority.pm
+Kernel/Output/HTML/ITSMConfigItem/LayoutQueue.pm
+Kernel/Output/HTML/ITSMConfigItem/LayoutSLA.pm
+Kernel/Output/HTML/ITSMConfigItem/LayoutService.pm
+Kernel/Output/HTML/ITSMConfigItem/LayoutState.pm
 Kernel/Output/HTML/ITSMConfigItem/LayoutText.pm
 Kernel/Output/HTML/ITSMConfigItem/LayoutTextArea.pm
+Kernel/Output/HTML/ITSMConfigItem/LayoutTextLink.pm
+Kernel/Output/HTML/ITSMConfigItem/LayoutType.pm
+Kernel/Output/HTML/ITSMConfigItem/LayoutUser.pm
 Kernel/Output/HTML/ITSMConfigItem/MenuGeneric.pm
 Kernel/Output/HTML/ITSMConfigItem/OverviewSmall.pm
 Kernel/Output/HTML/Layout/ITSMConfigItem.pm
 Kernel/Output/HTML/LinkObject/ITSMConfigItem.pm
+Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldConfigItem.tt
+Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldConfigItem/Config.tt
 Kernel/Output/HTML/Templates/Standard/AdminITSMConfigItem.tt
+Kernel/Output/HTML/Templates/Standard/AgentDashboardITSMConfigItemGeneric.tt
 Kernel/Output/HTML/Templates/Standard/AgentITSMConfigItemAdd.tt
 Kernel/Output/HTML/Templates/Standard/AgentITSMConfigItemBulk.tt
+Kernel/Output/HTML/Templates/Standard/AgentITSMConfigItemCustomerCIsWidget.tt
 Kernel/Output/HTML/Templates/Standard/AgentITSMConfigItemDelete.tt
 Kernel/Output/HTML/Templates/Standard/AgentITSMConfigItemEdit.tt
 Kernel/Output/HTML/Templates/Standard/AgentITSMConfigItemHistory.tt
@@ -536,23 +561,31 @@ Kernel/Output/HTML/Templates/Standard/AgentITSMConfigItemOverviewNavBar.tt
 Kernel/Output/HTML/Templates/Standard/AgentITSMConfigItemOverviewSmall.tt
 Kernel/Output/HTML/Templates/Standard/AgentITSMConfigItemSearch.tt
 Kernel/Output/HTML/Templates/Standard/AgentITSMConfigItemZoom.tt
-Kernel/Output/HTML/Templates/Standard/AgentDashboardITSMConfigItemGeneric.tt
-Kernel/System/ITSMConfigItem.pm
-Kernel/System/Console/Command/Admin/ITSM/Configitem/ListDuplicates.pm
 Kernel/System/Console/Command/Admin/ITSM/Configitem/Delete.pm
+Kernel/System/Console/Command/Admin/ITSM/Configitem/ListDuplicates.pm
 Kernel/System/Console/Command/Admin/ITSM/IncidentState/Recalculate.pm
 Kernel/System/Console/Command/Maint/ITSM/Configitem/DefinitionPerl2YAML.pm
-Kernel/System/ImportExport/ObjectBackend/ITSMConfigItem.pm
+Kernel/System/DynamicField/ConfigItem.pm
+Kernel/System/DynamicField/Driver/ConfigItem.pm
+Kernel/System/DynamicField/Driver/ConfigItemDropdown.pm
+Kernel/System/DynamicField/Driver/ConfigItemMultiselect.pm
+Kernel/System/ITSMConfigItem.pm
+Kernel/System/ITSMConfigItem/CIAttachment.pm
 Kernel/System/ITSMConfigItem/Definition.pm
+Kernel/System/ITSMConfigItem/Event/CIAttachment.pm
+Kernel/System/ITSMConfigItem/Event/DoHistory.pm
 Kernel/System/ITSMConfigItem/History.pm
 Kernel/System/ITSMConfigItem/Number.pm
-Kernel/System/ITSMConfigItem/Permission.pm
-Kernel/System/ITSMConfigItem/Version.pm
-Kernel/System/ITSMConfigItem/XML.pm
-Kernel/System/ITSMConfigItem/Event/DoHistory.pm
 Kernel/System/ITSMConfigItem/Number/AutoIncrement.pm
+Kernel/System/ITSMConfigItem/Permission.pm
 Kernel/System/ITSMConfigItem/Permission/ClassGroupCheck.pm
 Kernel/System/ITSMConfigItem/Permission/ItemClassGroupCheck.pm
+Kernel/System/ITSMConfigItem/Version.pm
+Kernel/System/ITSMConfigItem/XML.pm
+Kernel/System/ITSMConfigItem/XML/Type/BaseSelectable.pm
+Kernel/System/ITSMConfigItem/XML/Type/CI.pm
+Kernel/System/ITSMConfigItem/XML/Type/CIAttachment.pm
+Kernel/System/ITSMConfigItem/XML/Type/CISimple.pm
 Kernel/System/ITSMConfigItem/XML/Type/Customer.pm
 Kernel/System/ITSMConfigItem/XML/Type/CustomerCompany.pm
 Kernel/System/ITSMConfigItem/XML/Type/Date.pm
@@ -560,16 +593,46 @@ Kernel/System/ITSMConfigItem/XML/Type/DateTime.pm
 Kernel/System/ITSMConfigItem/XML/Type/Dummy.pm
 Kernel/System/ITSMConfigItem/XML/Type/GeneralCatalog.pm
 Kernel/System/ITSMConfigItem/XML/Type/Integer.pm
+Kernel/System/ITSMConfigItem/XML/Type/Priority.pm
+Kernel/System/ITSMConfigItem/XML/Type/Queue.pm
+Kernel/System/ITSMConfigItem/XML/Type/SLA.pm
+Kernel/System/ITSMConfigItem/XML/Type/Service.pm
+Kernel/System/ITSMConfigItem/XML/Type/State.pm
 Kernel/System/ITSMConfigItem/XML/Type/Text.pm
 Kernel/System/ITSMConfigItem/XML/Type/TextArea.pm
+Kernel/System/ITSMConfigItem/XML/Type/TextLink.pm
+Kernel/System/ITSMConfigItem/XML/Type/Type.pm
+Kernel/System/ITSMConfigItem/XML/Type/User.pm
+Kernel/System/ITSMConfigItemCustomerCIs.pm
+Kernel/System/ITSMConfigItemInvoker.pm
+Kernel/System/ImportExport/ObjectBackend/ITSMConfigItem.pm
+Kernel/System/LinkObject/ITSMConfigItem.pm
 Kernel/System/LinkObject/ITSMConfigItem.pm
 Kernel/System/Stats/Dynamic/ITSMConfigItem.pm
+Kernel/System/Ticket/Event/DynamicFieldConfigItemAdditionalDFStorage.pm
+Kernel/System/Ticket/Event/DynamicFieldConfigItemTicketLink.pm
+Kernel/System/Ticket/Event/ITSMConfigItemCustomerCIs.pm
 Kernel/System/Ticket/Event/TicketStatusLink.pm
-scripts/test/GenericInterface/Operation/ConfigItem/ConfigItemCreate.t
-scripts/test/GenericInterface/Operation/ConfigItem/ConfigItemDelete.t
-scripts/test/GenericInterface/Operation/ConfigItem/ConfigItemGet.t
-scripts/test/GenericInterface/Operation/ConfigItem/ConfigItemSearch.t
+scripts/test/Console/Command/Admin/ITSM/Configitem/Delete.t
+scripts/test/Console/Command/Admin/ITSM/Configitem/ListDuplicates.t
+scripts/test/Console/Command/Admin/ITSM/IncidentState/Recalculate.t
+scripts/test/Console/Command/Maint/ITSM/Configitem/DefinitionPerl2YAML.t
+scripts/test/DynamicField/ConfigItem.t
+scripts/test/GenericInterface/Invoker/ITSMConfigItem/Generic.t
 scripts/test/GenericInterface/Operation/ConfigItem/ConfigItemUpdate.t
+scripts/test/GenericInterface/Operation/ConfigItem/ConfigItemSearch.t
+scripts/test/GenericInterface/Operation/ConfigItem/ConfigItemGet.t
+scripts/test/GenericInterface/Operation/ConfigItem/ConfigItemDelete.t
+scripts/test/GenericInterface/Operation/ConfigItem/ConfigItemCreate.t
+scripts/test/ITSMConfigItem.t
+scripts/test/ITSMConfigItem/CIAttachment.t
+scripts/test/ITSMConfigItem/Definition/DefinitionAdd.t
+scripts/test/ITSMConfigItem/Definition/DefinitionGet.t
+scripts/test/ITSMConfigItem/Definition/DefinitionList.t
+scripts/test/ITSMConfigItem/Event/CIAttachment.t
+scripts/test/ITSMConfigItemLinkTest.t
+scripts/test/ITSMConfigItemUniqueCIName.t
+scripts/test/ImportExportObjectITSMConfigItem.t
 scripts/test/Layout/ITSMConfigItem.t
 scripts/test/Selenium/Agent/Admin/AdminITSMConfigItem.t
 scripts/test/Selenium/Agent/ITSMConfigurationManagement/AgentITSMConfigItem.t
@@ -582,32 +645,35 @@ scripts/test/Selenium/Agent/ITSMConfigurationManagement/AgentITSMConfigItemPrint
 scripts/test/Selenium/Agent/ITSMConfigurationManagement/AgentITSMConfigItemSearch.t
 scripts/test/Selenium/Agent/ITSMConfigurationManagement/AgentITSMConfigItemZoom.t
 scripts/test/Selenium/Agent/ITSMConfigurationManagement/AgentLinkObject.t
+scripts/test/Selenium/Agent/ITSMConfigurationManagement/DashboardITSMConfigItemGeneric.t
+scripts/test/System/ITSMConfigItemCustomerCIs.t
+scripts/test/System/ITSMConfigItemInvoker.t
+scripts/test/System/ITSMConfigItemInvokerReadableValue.t
+scripts/test/System/Ticket/Event/ITSMConfigItemCustomerCIs.t
+scripts/test/Ticket/Event/DynamicFieldConfigItemAdditionalDFStorage.t
+scripts/test/Ticket/Event/DynamicFieldConfigItemTicketLink.t
 scripts/webservices/GenericConfigItemConnectorSOAP.yml
-scripts/test/ImportExportObjectITSMConfigItem.t
-scripts/test/ITSMConfigItem/Definition/DefinitionAdd.t
-scripts/test/ITSMConfigItem/Definition/DefinitionList.t
-scripts/test/ITSMConfigItem/Definition/DefinitionGet.t
-scripts/test/ITSMConfigItem.t
-scripts/test/ITSMConfigItemLinkTest.t
-scripts/test/ITSMConfigItemUniqueCIName.t
-scripts/test/Console/Command/Admin/ITSM/Configitem/ListDuplicates.t
-scripts/test/Console/Command/Admin/ITSM/Configitem/Delete.t
-scripts/test/Console/Command/Admin/ITSM/IncidentState/Recalculate.t
-scripts/test/Console/Command/Maint/ITSM/Configitem/DefinitionPerl2YAML.t
-var/httpd/htdocs/js/ITSM.Agent.ConfigItem.CustomerSearch.js
-var/httpd/htdocs/js/ITSM.Agent.ConfigItem.Search.js
+var/httpd/htdocs/js/Core.Agent.Admin.DynamicFieldConfigItem.js
 var/httpd/htdocs/js/ITSM.Agent.ConfigItem.Add.js
+var/httpd/htdocs/js/ITSM.Agent.ConfigItem.CustomerCIsWidget.js
+var/httpd/htdocs/js/ITSM.Agent.ConfigItem.CustomerSearch.js
+var/httpd/htdocs/js/ITSM.Agent.ConfigItem.CustomerSearch.js
+var/httpd/htdocs/js/ITSM.Agent.ConfigItem.Dashboard.js
 var/httpd/htdocs/js/ITSM.Agent.ConfigItem.Edit.js
 var/httpd/htdocs/js/ITSM.Agent.ConfigItem.History.js
-var/httpd/htdocs/js/ITSM.Agent.ConfigItem.Zoom.js
 var/httpd/htdocs/js/ITSM.Agent.ConfigItem.Overview.js
+var/httpd/htdocs/js/ITSM.Agent.ConfigItem.Search.js
+var/httpd/htdocs/js/ITSM.Agent.ConfigItem.Search.js
+var/httpd/htdocs/js/ITSM.Agent.ConfigItem.UserSearch.js
+var/httpd/htdocs/js/ITSM.Agent.ConfigItem.Zoom.js
 var/httpd/htdocs/js/ITSM.UI.ConfigItemActionRow.js
-var/httpd/htdocs/js/ITSM.Agent.ConfigItem.Dashboard.js
+var/httpd/htdocs/js/ITSM.UI.ConfigItemActionRow.js
+var/httpd/htdocs/js/Znuny.DynamicField.ConfigItem.js
 var/httpd/htdocs/skins/Agent/default/css/ITSM.Agent.ConfigItem.Edit.css
 var/packagesetup/ITSMConfigurationManagement.pm
-scripts/test/Selenium/Agent/ITSMConfigurationManagement/DashboardITSMConfigItemGeneric.t
 
 # ITSMChangeManagement
+ITSMChangeManagement.sopm
 doc/itsm-change-management-database.dia
 doc/itsm-change-management-database.png
 Kernel/Config/Files/XML/ITSMChangeManagement.xml
@@ -910,6 +976,7 @@ var/httpd/htdocs/skins/Customer/default/img/flag_shadow.png
 var/packagesetup/ITSMChangeManagement.pm
 
 # Survey
+Survey.sopm
 doc/survey-database.png
 Kernel/Config/Files/XML/Survey.xml
 Kernel/Language/bg_Survey.pm

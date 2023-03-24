@@ -60,21 +60,6 @@
                 <a href="[% Env("Baselink") %]Action=AgentCustomerUserInformationCenter;CustomerUserID=[% Data.CustomerKey | uri %]" class="MasterActionLink">
                     [% Data.CustomerKey | html %]
                 </a>
-[% RenderBlockStart("ContentLargeCustomerUserListRowChatIcons") %]
-                <span class="UserChatIcons Hidden">
-                    <a href="#" title="[% Translate("Start chat") | html %]" type="button" class="UserChatStart table-icon-hover-md" data-user-type="Customer" data-user-id="[% Data.UserID | html %]" data-user-fullname="[% Data.UserFullname | html %]">
-                        <i class="fa fa-comments"></i>
-                    </a>
-                    [% IF Data.VideoChatEnabled %]
-                    <a href="#" title="[% Translate("Video call") | html %]" type="button" class="table-icon-hover-md UserVideoCallStart[% IF !Data.VideoChatAvailable %] Unavailable[% END %][% IF !Data.VideoChatSupport %] Unsupported[% END %]" data-user-id="[% Data.UserID | html %]" data-user-type="Customer" data-user-fullname="[% Data.UserFullname | html %]">
-                        <i class="fa fa-video-camera"></i>
-                    </a>
-                    <a href="#" title="[% Translate("Audio call") | html %]" type="button" class="table-icon-hover-md UserAudioCallStart[% IF !Data.VideoChatAvailable %] Unavailable[% END %][% IF !Data.VideoChatSupport %] Unsupported[% END %]" data-user-id="[% Data.UserID | html %]" data-user-type="Customer" data-user-fullname="[% Data.UserFullname | html %]">
-                        <i class="fa fa-microphone"></i>
-                    </a>
-                    [% END %]
-                </span>
-[% RenderBlockEnd("ContentLargeCustomerUserListRowChatIcons") %]
             </td>
             <td>
                 [% Data.CustomerListEntry | html %]
@@ -130,4 +115,5 @@
 [% RenderBlockEnd("ContentLargeCustomerUserListNone") %]
     </tbody>
 </table>
+
 [% RenderBlockEnd("ContentCustomerUserList") %]

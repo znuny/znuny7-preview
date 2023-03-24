@@ -48,8 +48,7 @@
 [% RenderBlockEnd("HeaderAgentTicketResponsible") %]
                     &mdash; [% Data.Title | html %]
                 </h1>
-                <p class="AsteriskExplanation">
-                </p>
+#                <p class="AsteriskExplanation"></p>
             </div>
 
 [% RenderBlockStart("TicketBack") %]
@@ -81,7 +80,7 @@
                     <h2>[% Translate("Ticket Settings") | html %]</h2>
                 </div>
                 <div class="Content">
-                    <fieldset class="TableLike FixedLabel">
+                    <fieldset class="TableLike FixedLabel card-item-wrapper">
                         [% IF Config('Ticket::Service') && TicketFrontendConfig.Service %]
                         <div class="card-item col-wide-33 col-desktop-50 col-tablet-50">
                             <h2 class="card-title">[% Translate("Service") | html %]</h2>
@@ -327,9 +326,10 @@
                         <h2>[% Translate("Add Article") | html %]</h2>
                     </div>
                     <div class="Content">
-                        <fieldset class="TableLike FixedLabel">
+                        <fieldset class="TableLike FixedLabel card-item-wrapper">
+                            <div class="card-item col-wide-100 col-desktop-100 col-tablet-100">
                             [% IF TicketFrontendConfig.InformAgent || TicketFrontendConfig.InvolvedAgent %]
-                            <div class="card-item col-wide-33 col-desktop-100 col-tablet-100">
+
                                 <h2 class="card-title">[% Translate("Inform") | html %]</h2>
 [% RenderBlockStart("InformAdditionalAgents") %]
 [% RenderBlockStart("InformAgent") %]
@@ -364,10 +364,9 @@
                                     </div>
                                 </div>
 [% RenderBlockEnd("InformAgentsWithoutSelection") %]
-                            </div>
+
                             [% END %]
 
-                            <div class="card-item col-wide-adapt-elem col-desktop-100 col-tablet-100">
                                 <h2 class="card-title">[% Translate("Communications") | html %]</h2>
                                 [% IF Data.WidgetStatus == 'Expanded' %]
                                     <input type="hidden" id="CreateArticle" name="CreateArticle" value="1" />

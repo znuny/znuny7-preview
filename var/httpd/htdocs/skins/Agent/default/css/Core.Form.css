@@ -21,7 +21,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         flex-flow: column;
         gap: var(--gap-md);
     }
-    
+
     /**
     * @subsection  Input focus
     * @note        Does not work in IE6, only partially in IE7 (no focus)
@@ -33,7 +33,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     input[type=email],
     textarea,
     select[multiple=multiple] {
-        border: var(--border-width) var(--border-solid) var(--border-color);
+        border: var(--border-width) var(--border-solid) var(--border-input-color);
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         /* Opera 10.5 has per default a grey background */
         background: var(--white);
@@ -102,6 +102,10 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     input[readonly] {
         background: var(--disabled-input);
         color: var(--disabled-text);
+    }
+
+    input#ConfigFile {
+        border-radius: var(--border-radius-sm);
     }
 
     .outer-select-date {
@@ -554,14 +558,14 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         background: url(../img/filter_add_hover.png) no-repeat center;
     }*/
 
-    button.CertificateRelationAdd,
+    /*button.CertificateRelationAdd,
     a.CertificateRelationAdd {
         background: url(../img/icons/certificate-plus.png) no-repeat center;
     }
 
     a.CertificateRead {
         background: url(../img/icons/certificate.png) no-repeat center;
-    }
+    }*/
 
     /*button.Remove,
     a.Remove {
@@ -834,12 +838,12 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     .RealPopup .LayoutPopup.AgentTicketCustomer form {
         display: flex;
         justify-content: center;
+        align-items: center;
     }
 
-    .RealPopup .LayoutPopup.AgentTicketCustomer form fieldset {
-        padding: var(--padding-md) 65px;
+    .RealPopup .LayoutPopup.AgentTicketCustomer .Content .ContentColumn fieldset.TableLike {
+        padding: var(--padding-md);
         width: 100%;
-        max-width: 680px;
     }
 
     .RealPopup .LayoutPopup.AgentTicketCustomer form fieldset > .card-item {
@@ -852,8 +856,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         margin: 0;
         background: 0;
         border: 0;
-        width: 100%;
-        max-width: 550px;
     }
 
     .RealPopup .LayoutPopup.AgentTicketCustomer form fieldset > .card-item:after {
@@ -885,6 +887,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     }
 
     fieldset div.Field {
+        position: relative;
         padding: 0;
         gap: var(--gap-xs);
         display: flex;
@@ -951,12 +954,12 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         font-size: var(--font-size-md);
     }
 
-    form fieldset > p.NoValue {
+    /*form fieldset > p.NoValue {
         padding: 5px 0px 5px 30%;
         text-indent: 8px;
-    }
+    }*/
 
-    .WidgetSimple .Content p {
+    .WidgetSimple .Content p:not(.ErrorBox):not(.SuccessBox) {
         color: var(--table-text-color);
         margin: 0;
         padding: 0;
@@ -977,7 +980,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         width: 100%;
     }
 
-    .ContentColumn .FieldExplanation, 
+    .ContentColumn .FieldExplanation,
     .ContentColumn .WidgetSimple .Content p.FieldExplanation {
         display: flex;
     }
@@ -992,12 +995,12 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     }
 
     p.FieldExplanation:last-child,
-    div.WidgetSimple div.Content p:last-child{
+    div.WidgetSimple div.Content p:last-child:not(.ErrorBox):not(.SuccessBox){
         padding-bottom: 0;
     }
 
     .DataTable.DashboardUser p,
-    .ActionsSideBarComp .FieldExplanation, 
+    .ActionsSideBarComp .FieldExplanation,
     .ActionsSideBarComp .WidgetSimple .Content p {
         padding: 0;
     }
@@ -1094,8 +1097,8 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         transform: translateY(-50%);
     }
 
-    .CustomerContainerField .SpacingTopSmall input[type="text"], 
-    .CustomerContainerField .SpacingTopSmall input[type="password"], 
+    .CustomerContainerField .SpacingTopSmall input[type="text"],
+    .CustomerContainerField .SpacingTopSmall input[type="password"],
     .CustomerContainerField .SpacingTopSmall input[type="email"] {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -1160,7 +1163,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         display: flex;
         flex-direction: column;
         gap: var(--gap-sm);
-    } 
+    }
 
     .outer-label-wrapper {
         display: flex;
@@ -1174,13 +1177,13 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         align-items: center;
         gap: var(--gap-xs);
     }
-    
+
     .label-wrapper label {
         display: flex;
         align-items: center;
         gap: var(--gap-xs);
     }
-    
+
     form label[for],
     form label,
     .TableLike label {
@@ -1498,7 +1501,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     .composeAnswer .Footer .CallForAction:first-child span{
         color: #696974;
         font-weight: var(--semi-bold);
-        
+
     }
 
     .RTL fieldset.TableLike.FixedLabel > .Field,
@@ -1650,9 +1653,9 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 
 
-    
 
-    .field-wrapper {
+
+    .field-wrapper:not(.Hidden) {
         display: flex;
         flex-direction: column;
         gap: var(--gap-sm);
@@ -1670,6 +1673,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         line-height: normal;
         letter-spacing: 0.1px;
         padding: 0;
+        padding-top: var(--padding-sm);
     }
 
     .WidgetSimple .field-wrapper > .Field,
@@ -1701,7 +1705,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         flex-direction: column;
         padding: var(--padding-lg) 0;
     }
-    
+
     div.dynamic-field-col.card-item {
         display: flex;
         flex-flow: row;

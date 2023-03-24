@@ -28,6 +28,17 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         border: 0;
     }
 
+    .tablelike-wrapper {
+        display: flex;
+        flex-flow: column;
+        gap: var(--gap-sm);
+    }
+
+    .tablelike-wrapper ul.Tablelike {
+        border-radius: var(--border-radius-sm);
+        overflow: hidden;
+    }
+
     ul.Tablelike:first-child {
         /*disturbing column width in modal window
         /*margin-right: 8px;*/
@@ -213,7 +224,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     }
 
     /* This is a duplicate -> .WidgetSimple > .Content {*/
-        
+
         /*padding: 0;
         overflow: auto;*/
         /*border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);*/
@@ -561,7 +572,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
     }
 
-    .WidgetSubmit .Content fieldset, 
+    .WidgetSubmit .Content fieldset,
     .WidgetSave .Content fieldset {
         display: flex;
     }
@@ -582,7 +593,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     }
     */
 
-    
+
     /**
     * @subsection Widget Calendar Import
     */
@@ -603,6 +614,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
     .WidgetNotice.WidgetSimple {
         border: 0;
+        overflow: hidden;
     }
 
     .WidgetNotice .Content {
@@ -750,7 +762,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         height: 30px;
         margin-left: var(--margin-sm);
     }
-        
+
     .ActionMenu .Btn-Menu-Vertical span {
         display: flex;
         width: 100%;
@@ -762,20 +774,20 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         transition: var(--main-transition);
         cursor: pointer;
     }
-        
+
     .ActionMenu .Btn-Menu-Vertical:hover span {
         background: var(--gray-light);
     }
-        
+
     .ActionMenu .Btn-Menu-Vertical span i {
         font-size: var(--icon-main-size);
         color: var(--gray-dark);;
     }
-        
+
     .ActionMenu:hover .ActionMenuList  {
         display: flex;
     }
-        
+
     /*     ActionMenu > ActionMenuList    */
     .ActionMenu .ActionMenuList{
         display: none;
@@ -791,7 +803,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         padding: var(--padding-sm);
         border-radius: var(--border-radius-xs);
     }
-        
+
     .ActionMenu .ActionMenuList li,
     ul.WidgetTooltip li {
         height: auto;
@@ -808,14 +820,14 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         cursor: pointer;
         border-radius: var(--border-radius-xs);
     }
-        
+
     .ActionMenu .ActionMenuList li:hover,
     ul.WidgetTooltip li:hover {
         color: var(--menu-font);
         background: var(--gray-light);
         border-radius: var(--border-radius-xs);
     }
-        
+
     /*     ActionMenu > ActionMenuList > WidgetAction    */
     .ActionMenu .ActionMenuList li .WidgetAction,
     ul.WidgetTooltip li {
@@ -832,14 +844,14 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         font-size: var(--main-font-size);
         transition: var(--main-transition);
     }
-        
+
     .ActionMenu .ActionMenuList li .WidgetAction a,
     ul.WidgetTooltip li a {
         display: flex;
         height: auto;
         justify-content: space-between;
     }
-        
+
     .ActionMenu .ActionMenuList li .WidgetAction a .iconWrapper,
     ul.WidgetTooltip li a i {
         display: flex;
@@ -852,14 +864,14 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         justify-content: center;
         align-items: center;
     }
-        
+
     .ActionMenu .ActionMenuList li .WidgetAction a .iconWrapper i,
     .ActionMenu .ActionMenuList li .WidgetAction:hover a .iconWrapper i,
     ul.WidgetTooltip li a i {
         color: var(--gray-dark);
         font-size: var(--main-font-size);
     }
-        
+
     .ActionMenu .ActionMenuList li .WidgetAction a .textWrapper,
     ul.WidgetTooltip li a {
         display: flex;
@@ -1035,7 +1047,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         position: absolute;
         top: 30px;
         right: 0;
-        
+
         min-width: 160px;
         width: auto;
         background: var(--menu-bg);
@@ -1459,9 +1471,9 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         border: none;
     }
 
-    #ACLForm .WidgetSimple{
+    /*#ACLForm .WidgetSimple{
         border-radius: var(--border-radius-lg);
-    }
+    }*/
 
     .WidgetDescription{
         border-radius: 20px;
@@ -1702,29 +1714,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         color: #2D6F9E;
     }
 
-    /**
-    * @subsection      Chat icons
-    */
-
-    .UserChatIcons {
-        float: right;
-    }
-
-    .UserChatIcons.Block {
-        float: none;
-        margin-top: 2px;
-    }
-
-    .UserChatIcons i {
-        color: #999;
-        margin-right: 3px;
-    }
-
-    .UserChatIcons .Unavailable i,
-    .UserChatIcons .Unsupported i {
-        opacity: 0.4;
-    }
-
     .UserStatusIcon {
         cursor: default;
         margin-right: 3px;
@@ -1820,6 +1809,11 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         font-size: 14px;
         letter-spacing: .1px;
         font-weight: var(--normal);
+    }
+
+    .SidebarColumn .WidgetSimple.Tabs > .Header a {
+        min-width: 120px;
+        font-size: 11px;
     }
 
     .WidgetSimple.Tabs > .Header a.Disabled {
@@ -2053,7 +2047,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         position: absolute;
         top: 30px;
         right: 0;
-        
+
         min-width: 160px;
         background: var(--menu-bg);
         margin-top: 0;
@@ -2133,7 +2127,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
     /*
     ##################################################################################################
-                                                Forwwward Styles                              
+                                                Forwwward Styles
     ##################################################################################################
     */
 
@@ -2190,7 +2184,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         border: 0;
     }
 
-    .WidgetSimple > .Content{
+    .WidgetSimple > .Content {
         transition: var(--main-transition);
         padding: 0;
         min-height: 0;
@@ -2199,6 +2193,13 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         position: relative;
         z-index: 5;
         /*overflow: hidden;*/ /* overflow hidden will break the horizontal scroll */
+    }
+
+    .WidgetSimple > .Content.padding {
+        padding: var(--padding-lg);
+        display: flex;
+        flex-flow: column;
+        gap: var(--gap-md);
     }
 
     .WidgetSimple.Collapsed .ArticleMailHeader {
@@ -2259,6 +2260,10 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         max-width: unset;
     }
 
+    .WidgetSimple > .Header .FieldExplanation {
+        display: inline;
+    }
+
     .TicketZoom .WidgetSimple > .Header h2 {
         width: calc(100% - 65px);
     }
@@ -2270,7 +2275,8 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         padding: var(--padding-md) var(--padding-lg);
     }
 
-    .AdminManagement .ContentColumn .WidgetSimple > .Content > :not(table):not(.Size1of2):not(.Size1of3):not(.SettingWrapper):not(.LayoutGrid):not(form>table):not(form.PreventMultipleSubmits):not(.ACLNote):not(.SearchBox):not(i):not(span):not(#TransitionForm .WidgetSimple .WidgetSimple):not(#TransitionForm .WidgetSimple .TableLike),
+    /* TO DO - remove this line */
+    .AdminManagement .ContentColumn .WidgetSimple > .Content > :not(table):not(.Size1of2):not(.Size1of3):not(.SettingWrapper):not(.LayoutGrid):not(form>table):not(form.PreventMultipleSubmits):not(.ACLNote):not(.SearchBox):not(i):not(span):not(#TransitionForm .WidgetSimple .WidgetSimple):not(#TransitionForm .WidgetSimple .TableLike):not(.ControlRow):not(.CommunicationPagination):not(.InnerSidebarColumn p),
     .ImportExport {
         padding: var(--padding-lg);
     }
@@ -2292,28 +2298,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         z-index: 1;
     }
 
-    /*.AdminManagement .Content fieldset.TableLike - edited by beatriz on 09/01/2023 */
-    .WidgetSimple .Content fieldset.TableLike,
-    .FormScreen .Content fieldset.TableLike {
-        width: 100%;
-        max-width: 600px;
-        gap: var(--gap-md);
-        margin: auto;
-    }
-
-    @media only screen and (max-width: 991px) {
-        .WidgetSimple .Content fieldset.TableLike {
-            max-width: 100%;
-        }
-    }
-
-    @media only screen and (min-width: 1200px) {
-        .LayoutPopup .WidgetSimple .Content fieldset.TableLike {
-            max-width: 100%;
-        }
-    }
-    
-
     .AdminManagement .WidgetSimple > .Content .TableLike > div.Field {
         display: flex;
         /*flex-flow: row; .Field should be flex-column by default - needs a special class for row exception*/
@@ -2334,7 +2318,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         max-width: 33%;
     }
 
-    .AdminManagement .WidgetSimple.card, 
+    .AdminManagement .WidgetSimple.card,
     .AdminManagement .WidgetSimple.card > .Content {
         padding: 0;
     }
@@ -2396,7 +2380,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     }
 
     .WidgetSimple .Header .RemoveFilters > a:hover,
-    .RemoveFilters > a:hover, 
+    .RemoveFilters > a:hover,
     .ContextFunctions .ContextSettings a:not(.icon-hover):hover {
         color: var(--primary-color-darker);
         background: unset;
@@ -2416,8 +2400,11 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         padding-right: var(--padding-sm);
     }*/
 
-
-
+    .WidgetSimple .Header .ContextFunctions {
+        display: flex;
+        gap: var(--gap-xs);
+        align-items: center;
+    }
 
     /**********************************/
     /*          SidebarColumn         */
@@ -2458,9 +2445,10 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     .SettingsWidget form {
         display: flex;
         flex-flow: column;
+        gap: 0;
     }
 
-    .SettingsWidget form>span {
+    .SettingsWidget form > div {
         padding: var(--padding-md);
         display: flex;
         flex-flow: column;
@@ -2468,6 +2456,27 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
     .SettingsWidget input[type=checkbox].active-widget-checkbox {
         display: none;
+    }
+
+    .SettingsWidget .search-wrapper {
+        position: relative;
+    }
+
+    .SettingsWidget .search-wrapper input {
+        padding-right: var(--padding-xl);
+    }
+
+    .SettingsWidget .search-wrapper i.fa {
+        position: absolute;
+        font-size: var(--font-size-lg);
+        right: 25px;
+        top: 23px;
+        color: var(--gray-dark);
+        transition: var(--main-transition);
+    }
+
+    .SettingsWidget .animate {
+        transform: rotate(180deg);
     }
 
 
@@ -2540,7 +2549,19 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         font-size: var(--main-font-size);
     }
 
-    .SidebarColumn .WidgetSimple:first-child form span input:focus + ul.dropdown-search-menu,
+    ul.dropdown-search-menu li {
+        position: relative;
+    }
+
+    ul.dropdown-search-menu li::after {
+        font: normal normal normal 14px/1 FontAwesome;
+        content: "\f0fe";
+        position: absolute;
+        right: 10px;
+        color: var(--gray-semi-dark);
+    }
+
+    .SidebarColumn .WidgetSimple:first-child form input:focus + ul.dropdown-search-menu,
     ul.dropdown-search-menu:hover {
         display: flex;
         height: auto;
@@ -2550,7 +2571,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     ul.dropdown-search-menu:empty {
         padding: 0;
     }
-        
+
 
     ul.dropdown-search-menu .dropdown-item {
         padding: 0;
@@ -2576,9 +2597,9 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 
     /*
-        
+
     !!!! To resolve: replace "CallForAction" with "btn-main" !!!!
-        
+
     */
 
 
@@ -2626,10 +2647,19 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         color: var(--primary-color);
     }
 
-    .ContentColumn div.DataTable.scroll-bar-styled {
+    .ContentColumn .DataTable tbody tr:hover > td > a {
+        color: var(--primary-color-darker);
+    }
+
+    .ContentColumn form div.DataTable {
         overflow: auto;
         border: var(--border-width) var(--border-solid) var(--border-color);
         border-radius: var(--border-radius-sm);
+        overflow: hidden;
+    }
+
+    .ContentColumn form .DataTable .DataTable {
+        border: 0;
     }
 
     .ContentColumn div.DataTable.scroll-bar-styled > table {
@@ -2683,7 +2713,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         justify-content: space-between;
         min-width: unset;
     }
-        
+
     .WidgetSettingsForm fieldset .row-wrapper .Field .InputField_InputContainer i,
     .WidgetSettingsForm fieldset .Field .InputField_InputContainer i{
         right: 15px;
@@ -2772,8 +2802,8 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         padding: 0 var(--padding-md);
         cursor: move;
         cursor: -webkit-grab;
-        cursor:    -moz-grab; 
-        cursor:         grab; 
+        cursor:    -moz-grab;
+        cursor:         grab;
     }
 
     .WidgetSettingsForm fieldset .row-wrapper .Field .Size1of2 .AllocationList li:nth-child(even) {
@@ -2782,7 +2812,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
     /* Widget - Ticket Settings */
     .ContentColumn .WidgetSimple .Content {
-            
+
     }
 
     /************************/
@@ -2794,7 +2824,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         background: var(--main-bg-color);
         border-top-left-radius: var(--border-radius-sm);
         border-top-right-radius: var(--border-radius-sm);
-        padding: var(--padding-md) var(--padding-lg); 
+        padding: var(--padding-md) var(--padding-lg);
     }
 
     /* Article Overview Content */
@@ -2962,9 +2992,9 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     }
 
     .Calendars table#Calendars tbody,
-    .Calendars table#Calendars thead tr { 
+    .Calendars table#Calendars thead tr {
         width: 100%;
-        display: inline-block; 
+        display: inline-block;
     }
 
     .Calendars table#Calendars tbody {
@@ -2983,7 +3013,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         width: 100%; /* 140px + 16px scrollbar width */
     }
 
-    .Calendars table#Calendars thead tr th { 
+    .Calendars table#Calendars thead tr th {
         height: 30px;
         line-height: 30px;
         /*text-align: left;*/
@@ -3029,7 +3059,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         width: 100%;
         padding-top: 0;
     }
-    
+
     form.WidgetSettingsForm fieldset.TableLike.FixedLabelSmall label {
         text-align: left;
         font-size: 14px;
@@ -3039,34 +3069,34 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         color: var(--gray-semi-dark);
         min-width: 120px;
     }
-    
+
     form.WidgetSettingsForm ul.Tablelike .Header {
         border-bottom: 0;
         background: var(--modal-header-bg);
     }
-    
+
     form.WidgetSettingsForm ul.Tablelike:first-child {
         border-top-left-radius: var(--border-radius-sm);
         border-top-right-radius: var(--border-radius-sm);
         background: var(--modal-header-bg);
         border-bottom: 0;
     }
-    
+
     form.WidgetSettingsForm ul.Tablelike:last-child,
     form.WidgetSettingsForm ul.Tablelike:last-child li:last-child {
         border-bottom-left-radius: var(--border-radius-sm);
         border-bottom-right-radius: var(--border-radius-sm);
     }
-    
+
     form.WidgetSettingsForm ul.Tablelike:last-child {
         max-height: calc(40 * 6px);
         overflow: auto;
     }
-    
+
     form.WidgetSettingsForm .Size1of2 ul.Tablelike:last-child {
         max-height: 285px;
     }
-    
+
     /******************************* Message Container *******************************/
     div.message-container,
     span.message-container {
@@ -3078,12 +3108,12 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         border-radius: var(--border-radius-xxs);
         margin: var(--margin-lg) 0;
     }
-    
+
     div.message-container:empty,
     span.message-container:empty {
         display: none;
     }
-    
+
     div.message-container p,
     span.message-container p {
         color: var(--black);
@@ -3106,7 +3136,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         padding-bottom: var(--padding-md);
         border-bottom: var(--border-width) var(--border-solid) var(--border-color);
     }
-    
+
     .search-profile-widget .Content .buttons-wrapper {
         display: flex;
         gap: var(--gap-sm);

@@ -12,8 +12,6 @@
 <div class="MainBox ARIARoleMain FormScreen">
     [% IF Data.TicketID %]
     <h1>[% Translate("Split Into New Phone Ticket") | html %]</h1>
-    [% ELSIF Data.FromChatID %]
-    <h1>[% Translate("Save Chat Into New Phone Ticket") | html %]</h1>
     [% ELSE %]
     <h1>[% Translate("Create New Phone Ticket") | html %]</h1>
     [% END %]
@@ -44,9 +42,8 @@
                 <input type="hidden" name="SelectedCustomerUser" id="SelectedCustomerUser" value="[% Data.CustomerUser | html %]"/>
                 <input type="hidden" name="TicketID" value="[% Data.TicketID | html %]"/>
                 <input type="hidden" name="LinkTicketID" value="[% Data.LinkTicketID | html %]"/>
-                <input type="hidden" name="FromChatID" value="[% Data.FromChatID | html %]"/>
 
-                <fieldset class="TableLike">
+                <fieldset class="TableLike card-item-wrapper">
 
 # example template for customizations, see hidden form at the end of the file
 #                    <label>[% Translate("Templates") | html %]:</label>
@@ -323,17 +320,7 @@
                 [% INCLUDE "FormElements/AttachmentList.tt" %]
             </div>
         </div>
-[% RenderBlockStart("ChatArticlePreview") %]
-            <div>
-                <label>[% Translate("Chat protocol") | html %]:</label>
-                <div class="Field">
-                    <div class="ChatProtocol">
-                        [% INCLUDE "ArticleContent/Chat.tt" %]
-                    </div>
-                    <p class="FieldExplanation">[% Translate('The chat will be appended as a separate article.') | html %]
-                </div>
-            </div>
-[% RenderBlockEnd("ChatArticlePreview") %]
+
 [% RenderBlockStart("TimeUnits") %]
             <div>
                 [% Data.TimeUnitsBlock %]

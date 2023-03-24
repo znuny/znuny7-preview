@@ -39,7 +39,7 @@
                         <p class="FieldExplanation">
                             [% Translate("Just use this feature if you want to log each request.") | html %]
                         </p>
-                        <p class="FieldExplanation">
+                        <p class="FieldExplanation SpacingBottomMedium">
                             [% Translate("Activating this feature might affect your system performance!") | html %]
                         </p>
                         <div class="Field">
@@ -59,7 +59,7 @@
                         <p class="FieldExplanation">
                             [% Translate("Just use this feature if you want to log each request.") | html %]
                         </p>
-                        <p class="FieldExplanation">
+                        <p class="FieldExplanation SpacingBottomMedium">
                             [% Translate("Activating this feature might affect your system performance!") | html %]
                         </p>
                         <div class="Field">
@@ -121,9 +121,9 @@
                 <h2>[% Translate("Overview") | html %]</h2>
             </div>
 [% RenderBlockStart("OverviewTable") %]
-            <h3 class="Spacing">[% Translate("Range") | html %] ([% Translate("last") | html %] [% Data.Age | html %])</h3>
-            <div class="Content">
 
+            <h3 class="no-margin padding-md">[% Translate("Range") | html %] ([% Translate("last") | html %] [% Data.Age | html %])</h3>
+            <div class="Content">
                 <table class="DataTable">
                     <thead>
                         <tr>
@@ -175,11 +175,13 @@
                 <h2>[% Translate("Range") | html %] ([% Translate("last") | html %] [% Data.Age | html %])</h2>
             </div>
             <div class="Content">
-                <p>
-                    <strong>[% Translate("Interface") | html %]:</strong> [% Data.Interface | html %],
-                    <strong>[% Translate("Module") | html %]:</strong> [% Data.Module | html %],
-                    <strong>[% Translate("Period") | html %]:</strong> [% Data.Period | html %] [% Translate("minutes") | html %]
-                </p>
+                <div class="padding-md">
+                    <p>
+                        <strong>[% Translate("Interface") | html %]:</strong> [% Data.Interface | html %],&nbsp;&nbsp;
+                        <strong>[% Translate("Module") | html %]:</strong> [% Data.Module | html %],&nbsp;&nbsp;
+                        <strong>[% Translate("Period") | html %]:</strong> [% Data.Period | html %] [% Translate("minutes") | html %]
+                    </p>
+                </div>
                 <table class="DataTable AdminPerformanceLog">
                     <thead>
                         <tr>
@@ -199,7 +201,11 @@
                             <td><em>[% Data.Min | html %]s</em></td>
                             <td><em>[% Data.Max | html %]s</em></td>
                             <td><em>[% Data.Average | html %]s</em></td>
-                            <td><div class="Progressbar" style="width:[% Data.Width | html %];">&nbsp;</div></td>
+                            <td>
+                                <div class="Progressbar">
+                                    <span style="width:[% Data.Width | html %];"></span>
+                                </div>
+                            </td>
                         </tr>
 [% RenderBlockEnd("ViewRow") %]
                     </tbody>

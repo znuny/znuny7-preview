@@ -43,6 +43,15 @@ a.Print span {
     margin-left: 5px;
 }
 
+.Icon.icon-hover,
+.Icon.icon-hover-md,
+.Icon.icon-hover-sm {
+    margin: auto;
+    width: 25px;
+    height: 25px;
+    display: flex;
+}
+
 .AvailableIn {
     background-color: var(--gray-dark);
     color: var(--white);
@@ -204,9 +213,9 @@ ul#ProcessElements li.AccordionElement div.Content ul li > span a {
     align-items: center;
 }
 
-ul#ProcessElements li.AccordionElement div.Content ul li > span a:hover i {
+/*ul#ProcessElements li.AccordionElement div.Content ul li > span a:hover i {
     color: var(--gray-darker);
-}
+}*/
 
 .EntityDrag {
     display: block;
@@ -609,7 +618,8 @@ em.EntityID:after {
 
 #TransitionForm .WidgetSimple.FieldWidget fieldset > .RemoveButton,
 #TransitionForm .WidgetSimple #ConfigParams fieldset > .RemoveButton {
-    top: 11px;
+    /*top: 11px;*/
+    align-self: end;
     position: relative;
 }
 
@@ -942,7 +952,7 @@ div.AJAXWaiting {
 ul#ProcessElements .fa-globe,
 ul#ProcessElements > li a > i {
     font-size: var(--main-font-size);
-    color: var(--gray-semi-dark);
+    /*color: var(--gray-semi-dark);*/
 }
 
 }/* end @media */

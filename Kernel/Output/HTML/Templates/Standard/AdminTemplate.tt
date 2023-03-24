@@ -109,10 +109,11 @@
         [% INCLUDE "Breadcrumb.tt" Path = BreadcrumbPath %]
 [% RenderBlockStart("OverviewResult") %]
         <div class="WidgetSimple">
-            <div class="Header">
+            <div class="Header filter-items">
                 <h2>[% Translate("List") | html %]</h2>
-                <a href="#" class="icon-hover" id="ValidFilter" title="[% Translate("Filter") | html %]">
-                    <i class="fa fa-filter"></i>
+                <a href="#" id="ValidFilter" title="[% Translate("Filter") | html %]">
+                    <span class="show-valid">Show Valid</span>
+                    <span class="show-all">Show All</span>
                 </a>
             </div>
             <div class="Content">
@@ -188,55 +189,69 @@
                         <input type="hidden" name="ContinueAfterSave" id="ContinueAfterSave" value=""/>
                     [% END %]
                     <fieldset class="TableLike">
-                        <label class="Mandatory" for="TemplateType"><span class="Marker">*</span> [% Translate("Type") | html %]:</label>
-                        <div class="Field">
-                            [% Data.TemplateTypeString %]
-                            <div id="TemplateTypeError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="TemplateTypeServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="TemplateType"><span class="Marker">*</span> [% Translate("Type") | html %]</label>
+                            <div class="Field">
+                                [% Data.TemplateTypeString %]
+                                <div id="TemplateTypeError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="TemplateTypeServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
                             </div>
                         </div>
-                        <label class="Mandatory" for="Name"><span class="Marker">*</span> [% Translate("Name") | html %]:</label>
-                        <div class="Field">
-                            <input type="text" name="Name" id="Name" value="[% Data.Name | html %]" class="W50pc Validate_Required [% Data.NameInvalid | html %]" maxlength="200"/>
-                            <div id="NameError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="NameServerError" class="TooltipErrorMessage">
+
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="Name"><span class="Marker">*</span> [% Translate("Name") | html %]</label>
+                            <div class="Field">
+                                <input type="text" name="Name" id="Name" value="[% Data.Name | html %]" class="W50pc Validate_Required [% Data.NameInvalid | html %]" maxlength="200"/>
+                                <div id="NameError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="NameServerError" class="TooltipErrorMessage">
 [% RenderBlockStart("NameServerError") %]
-                                <p>[% Translate("This field is required.") | html %]</p>
+                                    <p>[% Translate("This field is required.") | html %]</p>
 [% RenderBlockEnd("NameServerError") %]
 [% RenderBlockStart("ExistNameServerError") %]
-                                <p>[% Translate("A standard template with this name already exists!") | html %]</p>
+                                    <p>[% Translate("A standard template with this name already exists!") | html %]</p>
 [% RenderBlockEnd("NameServerError") %]
-                            </div>
-                        </div>
-                        <label for="RichText">[% Translate("Template") | html %]:</label>
-                        <div class="RichTextField">
-                            <textarea id="RichText" class="RichText" rows="10" cols="60" name="Template">[% Data.Template | html %]</textarea>
-                        </div>
-
-                        <label for="IDs">[% Translate("Attachments") | html %]:</label>
-                        <div class="Field">
-                            [% Data.AttachmentOption %]
-                        </div>
-
-                        <label class="Mandatory" for="ValidID"><span class="Marker">*</span> [% Translate("Validity") | html %]:</label>
-                        <div class="Field">
-                            [% Data.ValidOption %]
-                            <div id="ValidIDError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="ValidIDServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
                             </div>
                         </div>
 
-                        <label for="Comment">[% Translate("Comment") | html %]:</label>
-                        <div class="Field">
-                            <input type="text" name="Comment" id="Comment" value="[% Data.Comment | html %]" class="W50pc" maxlength="250"/>
+                        <div class="field-wrapper">
+                            <label for="RichText">[% Translate("Template") | html %]</label>
+                            <div class="RichTextField">
+                                <textarea id="RichText" class="RichText" rows="10" cols="60" name="Template">[% Data.Template | html %]</textarea>
+                            </div>
+                        </div>
+
+                        <div class="field-wrapper">
+                            <label for="IDs">[% Translate("Attachments") | html %]</label>
+                            <div class="Field">
+                                [% Data.AttachmentOption %]
+                            </div>
+                        </div>
+
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="ValidID"><span class="Marker">*</span> [% Translate("Validity") | html %]</label>
+                            <div class="Field">
+                                [% Data.ValidOption %]
+                                <div id="ValidIDError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="ValidIDServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field-wrapper">
+                            <label for="Comment">[% Translate("Comment") | html %]</label>
+                            <div class="Field">
+                                <input type="text" name="Comment" id="Comment" value="[% Data.Comment | html %]" class="W50pc" maxlength="250"/>
+                            </div>
                         </div>
 
                         <div class="field-wrapper form-button-actions">

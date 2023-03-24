@@ -122,6 +122,19 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         background-color: var(--icon-hover-color-light);
     }
 
+    /* color exception for icons placed in lists */
+    ul:not(#HeaderToolBar) > li .icon-hover:hover,
+    ul:not(#HeaderToolBar) > li .icon-hover-sm:hover,
+    ul:not(#HeaderToolBar) > li .icon-hover-md:hover {
+        background-color: var(--primary-color);
+    }
+
+    ul > li .icon-hover:hover i,
+    ul > li .icon-hover-sm:hover i,
+    ul > li .icon-hover-md:hover i {
+        color: var(--white);
+    }
+
 
     /* **************************************** Cards **************************************** */
     div.card,
@@ -191,6 +204,10 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         line-height: normal;
     }
 
+    div.card-item > .Row {
+        align-items: flex-start;
+    }
+
     @media only screen and (max-width: 1599px) {
 
         div.card-item::after {
@@ -201,6 +218,11 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
             left: -100px;
             bottom: 0;
             background: var(--border-color);
+        }
+
+        .manageLinks div.card-item::after {
+            width: 0;
+            left: 0;
         }
     }
 
@@ -249,7 +271,6 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         border: 0;
         float: left;
         border-radius: var(--border-radius-xl);
-        text-transform: capitalize;
     }
 
 
@@ -454,6 +475,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         flex-direction: column;
         gap: var(--gap-md);
         align-items: center;
+        overflow: unset;
     }
 
     .voting .ArticleContent .voting-form  .RateButtons {
@@ -564,10 +586,10 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         transition: var(--main-transition);
     }
 
-    .ValueRemove:hover,
-    .AddValue:hover,
-    .AddButton:hover,
-    .RemoveButton:hover {
+    .ValueRemove:not(.btn-main):hover,
+    .AddValue:not(.btn-main):hover,
+    .AddButton:not(.btn-main):hover,
+    .RemoveButton:not(.btn-main):hover {
         cursor: pointer;
         background-color: var(--icon-hover-color-light);
     }
@@ -583,8 +605,8 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         height: 14px;
     }
 
-    .AddButton,
-    .RemoveButton {
+    .AddButton:not(.btn-main),
+    .RemoveButton:not(.btn-main) {
         color: var(--black);
         font-size: var(--main-font-size);
         vertical-align: middle;
@@ -702,7 +724,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         display: flex;
         flex-direction: column;
         background: var(--white);
-        border: var(--border-width) var(--border-solid) var(--border-color);
+        border: var(--border-width) var(--border-solid) var(--border-input-color);
         border-radius: var(--border-radius-sm);
         overflow: hidden;
         background: var(--white);
@@ -785,8 +807,8 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     }*/
 
     input.AjaxDnDUpload.Error + div.DnDUpload {
-        color: #ff505e;
-        border-color: #ff505e;
+        color: var(--alert-error-icon-color);
+        border-color: var(--alert-error-border-color)
     }
 
     div.DnDUpload.DragOver {
@@ -852,7 +874,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         overflow: hidden;
         white-space: pre;
         min-width: 125px;
-        max-width: 125px;
+        max-width: 300px;
     }
 
     table.AttachmentList tbody tr:nth-child(2n) td {
@@ -871,6 +893,14 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     table.AttachmentList tbody tr td {
         max-height: 50px;
         line-height: normal;
+    }
+
+    table.AttachmentList tbody tr td {
+        border-top: var(--border-width) var(--border-solid) var(--border-color);
+    }
+
+    table.AttachmentList tbody tr:first-child td {
+        border-top: none;
     }
 
     table.AttachmentList .Filename {
@@ -934,7 +964,26 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         flex-direction: row;
         justify-content: flex-end;
         gap: var(--padding-lg);
+        padding-top: var(--padding-lg);
     }
+
+    .Content > .field-wrapper.form-button-actions:only-child {
+        padding: var(--padding-lg);
+    }
+
+    .field-wrapper.form-button-actions:only-child .buttons-field {
+        padding: 0;
+    }
+
+    .form-button-actions .buttons-field .inner-output-field {
+        display: flex;
+        align-items: center;
+        gap: var(--gap-xs);
+    }
+
+    .form-button-actions .buttons-field .inner-output-field  span {
+        width: 100%;
+     }
 
     /* ******************************************* Table List ****************************************** */
 
@@ -942,6 +991,14 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         border-radius: var(--border-radius-sm);
         border: var(--border-width) var(--border-solid) var(--border-color);
         overflow: hidden;
+    }
+
+    .TableList.TableLikeOverflow {
+        overflow: auto;
+    }
+
+    .TableList thead tr th {
+        border-bottom: var(--border-width) var(--border-solid) var(--border-color);
     }
 
     .SidebarColumn .TableList tr:nth-child(1) td,
@@ -972,6 +1029,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         line-height: normal;
         letter-spacing: 0.2px;
         padding: var(--padding-lg);
+        overflow: auto;
     }
 
     .code-container:not(:only-child) {
@@ -1117,7 +1175,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 
     .main-search-component .search-ticket fieldset.TableLike .Field .new-tpl-input {
         position: relative;
-        padding-top: var(--padding-xl);
+        padding-top: 45px;
         display: flex;
         width: 100%;
     }
@@ -1152,7 +1210,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         gap: var(--gap-md) !important;
     }
 
-    .main-search-component .search-ticket fieldset.TableLike .Field input[type=text],
+    /* .main-search-component .search-ticket fieldset.TableLike .Field input[type=text],
     body .Dialog .Content .InnerContent.main-search-component .search-ticket fieldset.TableLike .Field .InputField_Search {
         border: 0;
         border-bottom: var(--border-width) var(--border-solid) var(--border-color);
@@ -1163,7 +1221,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         font-size: 14px;
         font-weight: var(--medium);
         min-width: auto;
-    }
+    } */
 
     .main-search-component .search-ticket .bottom-section fieldset.TableLike .Field .RemoveButton {
         margin: 0;
@@ -1172,26 +1230,57 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         font-size: var(--font-size-md);
     }
 
-    .main-search-component .search-ticket .bottom-section fieldset.TableLike:last-child {
-        margin-right: 0;
-    }
-
-
     /* SECTION Buttons */
 
     .Dialog > .Content > .ContentFooter.main-search-component-btns {
         justify-content: space-between;
     }
 
+    /* *************************************  Widget Simple - Has no items ********************************* */
+    .WidgetSimple.has-no-articles .Content {
+        padding: var(--padding-md);
+    }
+
+    .WidgetSimple.has-no-articles > .Content > p,
+    .WidgetSimple.has-no-articles > .Content > p:last-child:first-child  {
+        padding: 0;
+    }
+
     /* ************************************* Attachment Widget ********************************* */
+    .attachment-widget .message {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-left: var(--padding-md);
+        padding-bottom: var(--padding-md);
+    }
+
+    .attachment-widget .message .DownloadAttachment {
+        display: flex;
+        width: 33.3%;
+        padding-top: var(--padding-md);
+        padding-right: var(--padding-md);
+    }
+
     .attachment-widget .message .DownloadAttachment a {
         display: flex;
-        padding: var(--padding-lg) var(--padding-sm);
-        gap: var(--gap-md);
+        flex: 1;
+        flex-direction: row;
+        justify-content: space-between;
+        border-radius: var(--border-radius-sm);
+        border: var(--border-width) var(--border-solid) var(--border-color);
+        transition: var(--main-transition);
     }
 
     .attachment-widget .message .DownloadAttachment a:hover {
         background: var(--table-td-even-bg);
+    }
+
+    .attachment-widget .message .DownloadAttachment a .file-info {
+        display: flex;
+        flex-direction: column;
+        padding: var(--padding-md) var(--padding-xs) var(--padding-md) var(--padding-md);
+        gap: var(--gap-sm);
     }
 
     .attachment-widget .message .DownloadAttachment a .file-name {
@@ -1202,6 +1291,80 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         color: var(--gray-semi-dark);
     }
 
+    .attachment-widget .message .DownloadAttachment a .file-icon {
+        display: flex;
+        padding: var(--padding-md);
+        align-items: center;
+    }
+
+    .attachment-widget .message .DownloadAttachment a .file-icon i {
+        color: var(--gray-semi-dark);
+        font-size: 16px;
+    }
+
+    /* ************************************* Attachment List ********************************* */
+
+    .ArticleAttachments {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0;
+        margin-right: -15px;
+    }
+    
+    .Incoming .ArticleAttachments {
+        margin: 0;
+    }
+    
+    .ArticleAttachments li {
+        display: flex;
+        width: 33.3%;
+        padding-top: var(--padding-md);
+        padding-right: var(--padding-md);
+    }
+
+    .ArticleAttachments li .inner-content {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        justify-content: space-between;
+        border-radius: var(--border-radius-sm);
+        border: var(--border-width) var(--border-solid) var(--border-color);
+        transition: var(--main-transition);
+        overflow: hidden;
+    }
+    
+    .ArticleAttachments li .file-info {
+        display: flex;
+        flex-direction: column;
+        padding: var(--padding-md) var(--padding-xs) var(--padding-md) var(--padding-md);
+        gap: var(--gap-sm);
+    }
+
+    .ArticleAttachments li .file-name {
+        color: var(--primary-color);
+    }
+
+    .ArticleAttachments li .file-weight {
+        color: var(--gray-semi-dark);
+    }
+
+    .ArticleAttachments li .file-icon {
+        display: flex;
+        padding: var(--padding-md);
+        align-items: center;
+        transition: var(--main-transition);
+    }
+
+    .ArticleAttachments li .file-icon:hover {
+        background: var(--table-td-even-bg);
+    }
+
+    .ArticleAttachments li .file-icon i {
+        color: var(--gray-semi-dark);
+        font-size: 16px;
+    }
+
     /* ************************************* FAQ Related Articles Widget ********************************* */
 
     .FAQ-related-articles-widget {
@@ -1210,21 +1373,44 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 
     /* ************************************* WidgetSimple Valid Filter Active ********************************* */
 
-    .filter-items a{
-        color: var(--primary-color);
-        text-decoration: underline;
-    }
-
-    .filter-items a .show-valid,
-    .filter-items.ValidFilterActive a .show-all  {
-        display: flex;
-    }
-
-    .filter-items a .show-all,
-    .filter-items.ValidFilterActive a .show-valid {
+    .filter-items ul.ContextFunctions li.ContextHelp a span, 
+    .filter-items ul.ContextFunctions li.ContextSettings a span,
+    .filter-items ul.ContextFunctions li.ContextHelp a span, 
+    .filter-items ul.ContextFunctions li.ContextSettings a span {
         display: none;
     }
 
+    .filter-items a span,
+    .filter-items ul.ContextFunctions li.ContextSettings a span {
+        color: var(--primary-color);
+        text-decoration: underline;
+        font-size: var(--main-font-size);
+        font-weight: var(--normal);
+    }
+
+    .filter-items a .show-valid,
+    .filter-items.ValidFilterActive a .show-all,
+    .filter-items ul.ContextFunctions li.ContextSettings a .show-valid,
+    .filter-items ul.ContextFunctions li.ContextSettings.ValidFilterActive a .show-all {
+        display: flex;
+        position: relative;
+        left: unset;
+        top: unset;
+    }
+
+    .filter-items a .show-all,
+    .filter-items.ValidFilterActive a .show-valid,
+    .filter-items ul.ContextFunctions li.ContextSettings a .show-all,
+    .filter-items ul.ContextFunctions li.ContextSettings.ValidFilterActive a .show-valid {
+        display: none;
+        position: relative;
+        left: unset;
+        top: unset;
+    }
+
+    .filter-items ul.ContextFunctions li.ContextSettings a.icon-hover {
+        text-decoration: none;
+    }
 
     /* ************************************* Search Filter Admin Widget ********************************* */
 
@@ -1257,6 +1443,28 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         position: absolute;
         top: 0;
         right: 0;
+    }
+
+    /* ************************************* Widget Title Divider ********************************* */
+
+
+    @media only screen and (max-width: 1599px) {
+        .WidgetSimple.Widget-title-divider .Content fieldset.TableLike {
+            gap: 0;
+            padding: 0;
+        }
+
+        .WidgetSimple.Widget-title-divider .TableLike :nth-last-child(2):after {
+            background: transparent;
+        }
+
+        .WidgetSimple.Widget-title-divider .Content fieldset.TableLike .form-button-actions {
+            padding: 0 var(--padding-lg) var(--padding-lg);
+        }
+
+        .WidgetSimple.Widget-title-divider .Content fieldset.TableLike .form-button-actions .buttons-field {
+            padding-top: 0;
+        }
     }
 
     /* ************************************* Mini List Widget ********************************* */
@@ -1443,6 +1651,12 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         align-items: baseline;
     }
 
+    .single-row-inputs .checkbox-container,
+    .WidgetSimple .Content .single-row-inputs .checkbox-container {
+        flex: unset; /* auto width */
+        gap: var(--gap-sm);
+    }
+
     .single-row-inputs .field-wrapper label,
     .single-row-inputs > a {
         align-self: start;
@@ -1478,6 +1692,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     .LayoutPopup .inline-filter-field.card,
     .MainBox .inline-filter-field {
         background: var(--main-bg-color);
+        overflow: hidden;
     }
 
     .MainBox .inline-filter-field > .Header {
@@ -1522,8 +1737,11 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         margin-right: 0;
         font-size: var(--main-font-size);
         padding: var(--padding-sm) var(--padding-xl);
-        border-top: var(--border-width) var(--border-solid) var(--border-color);
         background: var(--white);
+    }
+
+    .Content > .Pagination:first-child {
+        border-top: 0;
     }
 
     .Pagination:empty {
@@ -1543,14 +1761,20 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         display: none;
     }
 
-    .Pagination ul{
+    .Pagination ul {
         display: flex;
         align-items: baseline;
         flex-flow: row;
-        gap: var(--padding-xs);
+        gap: var(--padding-md);
     }
 
-    .Pagination ul li a:first-child:before {
+    .Pagination ul li {
+        display: flex;
+        position: relative;
+        height: 26px;
+    }
+
+    .Pagination ul li:after {
         display: inline-block;
         content: "";
         position: absolute;
@@ -1558,16 +1782,13 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         height: 26px;
         top: 0;
         background-color: var(--gray-light);
-        left: -20px;
+        left: 0;
     }
 
-    .Pagination ul li a:first-child {
-        margin-left: 30px;
-        position: relative;
-    }
-
-    .Pagination ul li:first-child {
-        display: flex;
+    .Pagination ul li:first-child:after {
+        width: 0;
+        height: 0;
+        background-color: transparent;
     }
 
     .Pagination li, 
@@ -1575,6 +1796,11 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         align-self: center;
         font-size: var(--font-size-sm);
         color: var(--gray-semi-dark);
+    }
+
+    .Pagination ul li a:first-child {
+        margin-left: 0px;
+        position: relative;
     }
 
     .Pagination a {
@@ -1588,6 +1814,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     .Pagination .page-links {
         display: flex;
         flex-flow: row;
+        padding-left: var(--padding-xs);
     }
 
     .Pagination .page-links a {
@@ -1662,13 +1889,19 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         display: block;
     }
 
-    span.Pagination a.Selected {
+    .Pagination a.Selected {
         font-weight: bold;
+        color: var(--primary-color);
+        pointer-events: none;
+    }
+
+    .Pagination a.Selected:hover {
+        background-color: transparent;
         color: var(--primary-color);
     }
 
-    span.Pagination span.PaginationLimit {
-        color: #FF0000;
+    .Pagination .PaginationLimit {
+        color: var(--alert-error-icon-color);
     }
 
     .Pagination a span {
@@ -1750,12 +1983,15 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         width: 100%;
     }
 
-    span.TableFilterContainer > i {
+    span.TableFilterContainer > i,
+    span.TableFilterContainer > button {
         position: absolute;
         bottom: 25%;
         left: 10px;
         font-size: var(--font-size-md);
         color: var(--gray-semi-dark);
+        background: unset;
+        border: 0;
     }
 
 

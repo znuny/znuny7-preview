@@ -129,7 +129,7 @@
 
         <div class="WidgetSimple">
 [% RenderBlockStart("OverviewHeader") %]
-            <div class="Header">
+            <div class="Header filter-items">
                 <h2>
                     [% IF Data.ListAll && Data.Limit && Data.ListAll > Data.Limit %]
                         [% Translate("List (only %s shown - more available)", Data.SearchListSize) | html %]
@@ -137,8 +137,9 @@
                         [% Translate("List (%s total)", Data.ListAll) | html %]
                     [% END %]
                 </h2>
-                <a href="#" class="icon-hover" id="ValidFilter" title="[% Translate("Filter") | html %]">
-                    <i class="fa fa-filter"></i>
+                <a href="#" id="ValidFilter" title="[% Translate("Filter") | html %]">
+                    <span class="show-valid">Show Valid</span>
+                    <span class="show-all">Show All</span>
                 </a>
             </div>
 [% RenderBlockEnd("OverviewHeader") %]
@@ -228,44 +229,44 @@
                         </div>
 [% RenderBlockEnd("PreferencesGenericInputHidden") %]
 [% RenderBlockStart("PreferencesGenericInput") %]
-                        <div>
+                        <div class="field-wrapper">
                             <label class="[% Data.RequiredLabelClass | html %]" for="[% Data.Name | html %]">
-                                <span class="Marker">[% Data.RequiredLabelCharacter | html %]</span> [% Translate(Data.Item) | html %]:
+                                [% Translate(Data.Item) | html %] <span class="Marker">[% Data.RequiredLabelCharacter | html %]</span>
                             </label>
                             <div class="Field">
-                            <input type="[% IF Data.RequiredClass.match('Validate_Email') %]email[% ELSE %]text[% END %]" id="[% Data.Name | html %]" name="[% Data.Name | html %]" class="W50pc [% Data.RequiredClass | html %] [% Data.InvalidField | html %]" value="[% Data.Value | html %]"[% IF Data.ReadOnly %] readonly="readonly"[% END %]/>
-                        </div>
+                                <input type="[% IF Data.RequiredClass.match('Validate_Email') %]email[% ELSE %]text[% END %]" id="[% Data.Name | html %]" name="[% Data.Name | html %]" class="W50pc [% Data.RequiredClass | html %] [% Data.InvalidField | html %]" value="[% Data.Value | html %]"[% IF Data.ReadOnly %] readonly="readonly"[% END %]/>
 [% RenderBlockStart("PreferencesGenericErrorMsg") %]
-                        <div id="[% Data.Name | html %]Error" class="TooltipErrorMessage">
-                            <p>[% Translate("This field is required.") | html %]</p>
-                        </div>
+                                <div id="[% Data.Name | html %]Error" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
 [% RenderBlockEnd("PreferencesGenericErrorMsg") %]
 [% RenderBlockStart("PreferencesUserEmailErrorMsg") %]
-                        <div id="[% Data.Name | html %]Error" class="TooltipErrorMessage">
-                            <p>[% Translate("This field is required and needs to be a valid email address.") | html %]</p>
-                        </div>
+                                <div id="[% Data.Name | html %]Error" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required and needs to be a valid email address.") | html %]</p>
+                                </div>
 [% RenderBlockEnd("PreferencesUserEmailErrorMsg") %]
 [% RenderBlockStart("PreferencesGenericServerErrorMsg") %]
-                            <div id="[% Data.Name | html %]ServerError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
+                                <div id="[% Data.Name | html %]ServerError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
 [% RenderBlockEnd("PreferencesGenericServerErrorMsg") %]
 [% RenderBlockStart("PreferencesUserEmailInvalidConfigServerErrorMsg") %]
-                            <div id="[% Data.Name | html %]ServerError" class="TooltipErrorMessage"><p>[% Translate("This email address is not allowed due to the system configuration.") | html %]</p></div>
+                                <div id="[% Data.Name | html %]ServerError" class="TooltipErrorMessage"><p>[% Translate("This email address is not allowed due to the system configuration.") | html %]</p></div>
 [% RenderBlockEnd("PreferencesUserEmailInvalidConfigServerErrorMsg") %]
 [% RenderBlockStart("PreferencesUserEmailInvalidMXServerErrorMsg") %]
-                            <div id="[% Data.Name | html %]ServerError" class="TooltipErrorMessage"><p>[% Translate("This email address failed MX check.") | html %]</p></div>
+                                <div id="[% Data.Name | html %]ServerError" class="TooltipErrorMessage"><p>[% Translate("This email address failed MX check.") | html %]</p></div>
 [% RenderBlockEnd("PreferencesUserEmailInvalidMXServerErrorMsg") %]
 [% RenderBlockStart("PreferencesUserEmailInvalidDNSServerErrorMsg") %]
-                            <div id="[% Data.Name | html %]ServerError" class="TooltipErrorMessage"><p>[% Translate("DNS problem, please check your configuration and the error log.") | html %]</p></div>
+                                <div id="[% Data.Name | html %]ServerError" class="TooltipErrorMessage"><p>[% Translate("DNS problem, please check your configuration and the error log.") | html %]</p></div>
 [% RenderBlockEnd("PreferencesUserEmailInvalidDNSServerErrorMsg") %]
 [% RenderBlockStart("PreferencesUserEmailInvalidSyntaxServerErrorMsg") %]
-                            <div id="[% Data.Name | html %]ServerError" class="TooltipErrorMessage"><p>[% Translate("The syntax of this email address is incorrect.") | html %]</p></div>
+                                <div id="[% Data.Name | html %]ServerError" class="TooltipErrorMessage"><p>[% Translate("The syntax of this email address is incorrect.") | html %]</p></div>
 [% RenderBlockEnd("PreferencesUserEmailInvalidSyntaxServerErrorMsg") %]
+                            </div>
                         </div>
 [% RenderBlockEnd("PreferencesGenericInput") %]
 [% RenderBlockStart("PreferencesGenericPassword") %]
-                        <div>
+                        <div class="field-wrapper">
                             <label class="[% Data.RequiredLabelClass | html %]" for="[% Data.Name | html %]">
-                                <span class="Marker">[% Data.RequiredLabelCharacter | html %]</span> [% Translate(Data.Item) | html %]:
+                                [% Translate(Data.Item) | html %] <span class="Marker">[% Data.RequiredLabelCharacter | html %]</span>
                             </label>
                             <div class="Field">
                                 <input type="password" id="[% Data.Name | html %]" name="[% Data.Name | html %]" class="W50pc [% Data.RequiredClass | html %] [% Data.InvalidField | html %]" value="" maxlength="100" [% IF Data.ReadOnly %] readonly="readonly"[% END %] autocomplete="new-password" />
@@ -275,8 +276,8 @@
                         </div>
 [% RenderBlockEnd("PreferencesGenericPassword") %]
 [% RenderBlockStart("PreferencesGenericOption") %]
-                        <div>
-                            <label class="[% Data.RequiredLabelClass | html %]" for="[% Data.Name | html %]"><span class="Marker">[% Data.RequiredLabelCharacter | html %]</span> [% Translate(Data.Item) | html %]:</label>
+                        <div class="field-wrapper">
+                            <label class="[% Data.RequiredLabelClass | html %]" for="[% Data.Name | html %]">[% Translate(Data.Item) | html %] <span class="Marker">[% Data.RequiredLabelCharacter | html %]</span></label>
                             <div class="Field">
                                 [% Data.Option %]
                                 <div id="[% Data.Name | html %]Error" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
@@ -293,8 +294,8 @@
 [% RenderBlockEnd("PreferencesGeneric") %]
 [% RenderBlockStart("Item") %]
 [% RenderBlockStart("InputKey") %]
-                        <div>
-                            <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %]</label>
                             <div class="Field">
                                 <input id="[% Data.Name | html %]"type="text" name="[% Data.Name | html %]" class="W50pc" value="[% Data.SelectedID | html %]"/>
                                 <div class="FieldExplanation"> [% Translate(Data.Key) | html %] </div>
@@ -302,8 +303,8 @@
                         </div>
 [% RenderBlockEnd("InputKey") %]
 [% RenderBlockStart("Input") %]
-                        <div>
-                            <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %]:</label>
+                        <div class="field-wrapper">
+                            <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %]</label>
                             <div class="Field">
                                 <input id="[% Data.Name | html %]" type="text" name="[% Data.Name | html %]" class="W50pc" value="[% Data.SelectedID | html %]"/>
                                 <div class="FieldExplanation">[% Translate(Data.Desc) | html %][% Translate(Data.Key) | html %]</div>
@@ -311,8 +312,8 @@
                         </div>
 [% RenderBlockEnd("Input") %]
 [% RenderBlockStart("Option") %]
-                            <div>
-                                <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %]:</label>
+                            <div class="field-wrapper">
+                                <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %]</label>
                                 <div class="Field">
                                     [% Data.Option %]
                                     <div class="FieldExplanation">[% Translate(Data.Desc) | html %][% Translate(Data.Key) | html %]</div>
@@ -320,8 +321,8 @@
                             </div>
 [% RenderBlockEnd("Option") %]
 [% RenderBlockStart("Upload") %]
-                            <div>
-                                <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %]:</label>
+                            <div class="field-wrapper">
+                                <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %]</label>
                                 <div class="Field">
                                     <input id="[% Data.Name | html %]" name="[% Data.Name | html %]" type="file"/>
                                     <div class="FieldExplanation">[% Translate(Data.Desc) | html %][% Translate(Data.Key) | html %]</div>
@@ -329,8 +330,8 @@
                             </div>
 [% RenderBlockEnd("Upload") %]
 [% RenderBlockStart("Password") %]
-                            <div>
-                                <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %]:</label>
+                            <div class="field-wrapper">
+                                <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %]</label>
                                 <div class="Field">
                                     <input id="[% Data.Name | html %]" type="password" name="[% Data.Name | html %]" class="W50pc" value="[% Data.SelectedID | html %]" autocomplete="new-password" />
                                     <div>[% Translate(Data.Key) | html %]</div>
@@ -338,7 +339,7 @@
                             </div>
 [% RenderBlockEnd("Password") %]
 [% RenderBlockStart("DynamicField") %]
-                        <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                        <div class="field-wrapper Row Row_DynamicField_[% Data.Name | html %]">
                             [% Data.Label %]
                             <div class="Field">
                                 [% Data.Field %]
@@ -404,10 +405,10 @@
                                         <td><a href="[% Env("Baselink") %]Action=AdminGroup;Subaction=Change;ID=[% Data.ID | uri %]">[% Data.Name | html %]</a></td>
 [% RenderBlockStart("GroupPermissionMark") %]
 [% RenderBlockStart("GroupPermissionMarkOn") %]
-                                        <td class="[% Data.Highlight | html %]"><i class="fa fa-check" style="color: green;" /></td>
+                                        <td class="[% Data.Highlight | html %]"><i class="fa fa-check"/></td>
 [% RenderBlockEnd("GroupPermissionMarkOn") %]
 [% RenderBlockStart("GroupPermissionMarkOff") %]
-                                        <td class=" [% Data.Highlight | html %]"><i class="fa fa-times" style="color: lightgray;" /></td>
+                                        <td class=" [% Data.Highlight | html %]"><i class="fa fa-times"/></td>
 [% RenderBlockEnd("GroupPermissionMarkOff") %]
 [% RenderBlockEnd("GroupPermissionMark") %]
                                     </tr>
@@ -444,10 +445,10 @@
                                         <td><a href="[% Env("Baselink") %]Action=AdminCustomerCompany;Subaction=Change;CustomerID=[% Data.ID | uri %]">[% Data.Name | html %]</a></td>
 [% RenderBlockStart("CustomerAccessMark") %]
 [% RenderBlockStart("CustomerAccessMarkOn") %]
-                                        <td class="Center"><i class="fa fa-check" style="color: green;" /></td>
+                                        <td class="Center"><i class="fa fa-check"/></td>
 [% RenderBlockEnd("CustomerAccessMarkOn") %]
 [% RenderBlockStart("CustomerAccessMarkOff") %]
-                                        <td class="Center"><i class="fa fa-times" style="color: lightgray;" /></td>
+                                        <td class="Center"><i class="fa fa-times"/></td>
 [% RenderBlockEnd("CustomerAccessMarkOff") %]
 [% RenderBlockEnd("CustomerAccessMark") %]
                                     </tr>

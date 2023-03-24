@@ -210,12 +210,6 @@
                 </div>
 [% RenderBlockStart("TableComplexBlockFooterNormal") %]
 [% RenderBlockEnd("TableComplexBlockFooterNormal") %]
-
-# ---
-# Forwwward
-# ---
-# --- added <div class="inline-filter-field WidgetSimple"> and <div class="Content"> div wrappers,
-# --- added <span> wrappers and removed <div class='SpacingTopSmall'> parent
 [% RenderBlockStart("TableComplexBlockFooterAdd") %]
                 <div class="inline-filter-field WidgetSimple">
                     <div class="Content">
@@ -232,7 +226,6 @@
                     </div>
                 </div>
 [% RenderBlockEnd("TableComplexBlockFooterAdd") %]
-# ---
 [% RenderBlockStart("TableComplexBlockFooterDelete") %]
                 <div>
                     <button class="CallForAction btn-primary btn-main btn-width-md" type="submit" title="[% Translate("Delete links") | html %]">

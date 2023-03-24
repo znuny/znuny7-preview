@@ -141,9 +141,22 @@ table tr.MasterAction {
     line-height: 1;
 }
 
-.ContentColumn .DataTable thead th {
+tr th a, 
+tr th a:hover {
+    color: inherit;
+}
+
+.ContentColumn .DataTable:not(.TableList) thead th {
     border-top: var(--border-width) var(--border-solid) var(--border-color);
     border-bottom: var(--border-width) var(--border-solid) var(--border-color);
+}
+
+thead tr:not(:only-child):first-child th:last-child {
+    border: 0;
+}
+
+.ContentColumn .DataTable thead th:nth-child(2):last-child {
+    width: 10%;
 }
 
 .AdminManagement .ContentColumn .DataTable thead th,
@@ -298,7 +311,7 @@ table tr.MasterAction {
     background-color: #EEE;
 }*/
 
-.DataTable tr:nth-child(even) td {
+.DataTable tr:nth-child(even) td:not(:first-child:last-child) {
     background-color: var(--table-td-even-bg);
 }
 
@@ -321,6 +334,14 @@ table tr.MasterAction {
 .DataTable tr td a,
 .DataTable tr:hover td a {
     color: var(--main-font-color);
+}
+
+.DataTable tr td em a {
+    color: var(--primary-color);
+}
+
+.DataTable tr:hover td em a {
+    color: var(--primary-color-darker);
 }
 
 .DataTable td:first-child input {
@@ -1117,6 +1138,7 @@ td a:hover i {
     text-align: center;
     border-radius: var(--border-radius-xs);
     transition: var(--main-transition);
+    text-indent: -9999px;
 }
 
 .table-icon-hover-md i {
@@ -1126,6 +1148,7 @@ td a:hover i {
     right: 0;
     top: 22%;
     transition: var(--main-transition);
+    text-indent: initial;
 }
 
 .table-icon-hover-md:hover {

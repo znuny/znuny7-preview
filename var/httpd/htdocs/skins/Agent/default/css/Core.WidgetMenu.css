@@ -41,6 +41,13 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     padding-right: var(--padding-lg);
 }
 
+.WidgetSimple > .ControlRow {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    background-color: var(--table-th-bg);
+}
+
 /**
  * @subsection  Control Row Tabs
  */
@@ -181,15 +188,10 @@ ul.ContextFunctions li:last-child:hover > a {
  * @subsection  Control Row Headline
  */
 .ControlRow h2 {
-    padding-top: 1px;
-    margin-left: 8px;
-    height: 24px;
     font-size: 13px;
-    line-height: 24px;
-    font-weight: bold;
-    color: #000;
-    text-shadow: 0 1px 0 #D4D4D4;
-    margin-bottom: 2px;
+    padding: 0 var(--padding-md);
+    font-weight: var(--bold);
+    color: var(--black);
 }
 
 /**
@@ -208,7 +210,13 @@ ul.ContextFunctions li:last-child:hover > a {
 
 .Header > .AdditionalInformation {
     position: relative;
-    right: 20px;
+    /*right: 30px; - edit by b on mar/09/2023*/
+    right: 0;
+    z-index: 100;
+}
+
+.Header > .WidgetAction + .AdditionalInformation {
+    margin-right: var(--margin-xxl);
 }
 
 .AdditionalInformation.ControlRow {
@@ -465,6 +473,14 @@ ul.ContextFunctions li:last-child:hover > a {
     border-color: var(--primary-color);
     color: var(--primary-color);
 }*/
+
+#ticketDetails .Actions > li > form > label {
+    pointer-events: none;
+}
+
+#ticketDetails .Actions > li > form .InputField_Search {
+    background-color: var(--white);
+}
 
 .Actions li.NoHover:hover a {
     background: none;

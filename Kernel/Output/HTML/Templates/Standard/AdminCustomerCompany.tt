@@ -102,7 +102,7 @@
 
             <div class="WidgetSimple">
 [% RenderBlockStart("OverviewHeader") %]
-                <div class="Header">
+                <div class="Header filter-items">
                     <h2>
                         [% IF Data.ListAll && Data.Limit && Data.ListAll > Data.Limit %]
                             [% Translate("List (only %s shown - more available)", Data.SearchListSize) | html %]
@@ -110,8 +110,9 @@
                             ([% Data.ListAll | html %] [% Translate("total") | html %])
                         [% END %]
                     </h2>
-                    <a href="#" class="icon-hover" id="ValidFilter" title="[% Translate("Filter") | html %]">
-                        <i class="fa fa-filter"></i>
+                    <a href="#" id="ValidFilter" title="[% Translate("Filter") | html %]">
+                        <span class="show-valid">Show Valid</span>
+                        <span class="show-all">Show All</span>
                     </a>
                 </div>
 [% RenderBlockEnd("OverviewHeader") %]
@@ -243,13 +244,10 @@
                                 <div class="Field buttons-field">
                                     <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Nav=[% Data.Nav | uri %]" class="btn-cancel-ghost btn-main btn-width-md">[% Translate("Cancel") | html %]</a>
 
-#                                   <span class="text-divider">[% Translate("or") | html %]</span>
                                     [% IF Data.Action == 'Change' %]
                                         <button class="btn-primary-ghost btn-main btn-width-md" id="Submit" type="submit" value="[% Translate("Save") | html %]">
                                             <span>[% Translate("Save and finish") | html %]</span>
                                         </button>
-
-#                                       <span class="text-divider">[% Translate("or") | html %]</span>
 
                                         <button class="btn-primary btn-main  btn-width-md" id="SubmitAndContinue" type="button" value="[% Translate("Save") | html %]">
                                             <span>[% Translate("Save") | html %]</span>

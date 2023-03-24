@@ -148,7 +148,7 @@ Returns:
         ChangeTime               => "2016-05-29 11:04:04",
         ChangeBy                 => 1,
         DefaultValue             => 'Old default value',
-        OverriddenFileName        => '/opt/otrs/Kernel/Config/Files/ZZZ.pm',
+        OverriddenFileName        => '/opt/znuny/Kernel/Config/Files/ZZZ.pm',
     );
 
 =cut
@@ -1340,7 +1340,7 @@ Check if provided EffectiveValue matches structure defined in DefaultSetting. Al
             ],
         },
         StoreCache            => 1,               # (optional) Store result in the Cache. Default 0.
-        SettingUID            => 'Default1234'    # (required if StoreCache)
+        SettingUID            => 'Default1234',   # (required if StoreCache)
         NoValidation          => 1,               # (optional) no value type validation.
         CurrentSystemTime     => 1507894796935,   # (optional) Use provided 1507894796935, otherwise calculate
         ExpireTime            => 1507894896935,   # (optional) Use provided ExpireTime for cache, otherwise calculate
@@ -4289,7 +4289,7 @@ Returns a list of setting names.
 
     my @Result = $SysConfigObject->ConfigurationSearch(
         Search           => 'The search string', # (optional)
-        Category         => 'OTRS'               # (optional)
+        Category         => 'OTRS',              # (optional)
         IncludeInvisible => 1,                   # (optional) Default 0.
     );
 
@@ -5867,7 +5867,7 @@ Creates modified versions of dirty settings to deploy and removed the dirty flag
         NotDirty            => 1,                                         # optional - exclusive (1||0)
         AllSettings         => 1,                                         # optional - exclusive (1||0)
         DirtySettings       => [ 'SettingName1', 'SettingName2' ],        # optional - exclusive
-        DeploymentTimeStamp => 2017-12-12 12:00:00'
+        DeploymentTimeStamp => '2017-12-12 12:00:00',
         UserID              => 123,
     );
 

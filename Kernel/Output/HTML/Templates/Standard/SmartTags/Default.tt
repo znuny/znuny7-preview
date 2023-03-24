@@ -15,10 +15,6 @@
         <h2>[% Translate("Tag Reference") | html %]</h2>
     </div>
     <div class="Content">
-# ---
-# Forwwward
-# ---
-# - Added <div class="code-container"> containers
         <div class="code-container">
             <p>[% Translate("You can use the following tags") | html %]:</p>
             <dl>
@@ -68,6 +64,5 @@ See more details online: &lt;OTRS_CONFIG_HttpType&gt;://&lt;OTRS_CONFIG_FQDN&gt;
                 </div>
             </div>
         </div>
-# ---
     </div>
 </div>

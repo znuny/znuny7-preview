@@ -24,7 +24,6 @@ our @ObjectDependencies = (
     'Kernel::System::Activity',
     'Kernel::System::AuthSession',
     'Kernel::System::Cache',
-    'Kernel::System::Chat',
     'Kernel::System::CustomerGroup',
     'Kernel::System::CustomerUser',
     'Kernel::System::DateTime',
@@ -1403,15 +1402,6 @@ sub Header {
             $Self->ToolbarModules(
                 ToolBarModule => $ToolBarModule,
             );
-        }
-
-        if ( $Kernel::OM->Get('Kernel::System::Main')->Require( 'Kernel::System::Chat', Silent => 1 ) ) {
-            if ( $ConfigObject->Get('ChatEngine::Active') ) {
-                $Self->AddJSData(
-                    Key   => 'ChatEngine::Active',
-                    Value => $ConfigObject->Get('ChatEngine::Active')
-                );
-            }
         }
 
         # generate avatar
@@ -4320,35 +4310,6 @@ sub CustomerHeader {
                 Data => \%Param,
             );
         }
-
-        # Show open chat requests (if chat engine is active).
-        if ( $Kernel::OM->Get('Kernel::System::Main')->Require( 'Kernel::System::Chat', Silent => 1 ) ) {
-            if ( $ConfigObject->Get('ChatEngine::Active') ) {
-                my $ChatObject = $Kernel::OM->Get('Kernel::System::Chat');
-                my $Chats      = $ChatObject->ChatList(
-                    Status        => 'request',
-                    TargetType    => 'Customer',
-                    ChatterID     => $Self->{UserID},
-                    ChatterType   => 'Customer',
-                    ChatterActive => 0,
-                );
-
-                my $Count = scalar $Chats;
-
-                $Self->Block(
-                    Name => 'ChatRequests',
-                    Data => {
-                        Count => $Count,
-                        Class => ($Count) ? '' : 'Hidden',
-                    },
-                );
-
-                $Self->AddJSData(
-                    Key   => 'ChatEngine::Active',
-                    Value => $ConfigObject->Get('ChatEngine::Active')
-                );
-            }
-        }
     }
 
     # create & return output
@@ -4392,38 +4353,6 @@ sub CustomerFooter {
 
     my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
 
-    # Check if customer user has permission for chat.
-    my $CustomerChatPermission;
-    if ( $Kernel::OM->Get('Kernel::System::Main')->Require( 'Kernel::System::Chat', Silent => 1 ) ) {
-
-        my $CustomerChatConfig = $ConfigObject->Get('CustomerFrontend::Module')->{'CustomerChat'} || {};
-
-        if (
-            $Kernel::OM->Get('Kernel::Config')->Get('CustomerGroupSupport')
-            && (
-                IsArrayRefWithData( $CustomerChatConfig->{GroupRo} )
-                || IsArrayRefWithData( $CustomerChatConfig->{Group} )
-            )
-            )
-        {
-
-            my $CustomerGroupObject = $Kernel::OM->Get('Kernel::System::CustomerGroup');
-
-            GROUP:
-            for my $GroupName ( @{ $CustomerChatConfig->{GroupRo} }, @{ $CustomerChatConfig->{Group} } ) {
-                $CustomerChatPermission = $CustomerGroupObject->PermissionCheck(
-                    UserID    => $Self->{UserID},
-                    GroupName => $GroupName,
-                    Type      => 'ro',
-                );
-                last GROUP if $CustomerChatPermission;
-            }
-        }
-        else {
-            $CustomerChatPermission = 1;
-        }
-    }
-
     # AutoComplete-Config
     my $AutocompleteConfig = $ConfigObject->Get('AutoComplete::Customer');
 
@@ -4450,7 +4379,6 @@ sub CustomerFooter {
         InputFieldsActivated     => $ConfigObject->Get('ModernizeCustomerFormFields'),
         Autocomplete             => $AutocompleteConfig,
         WebMaxFileUpload         => $ConfigObject->Get('WebMaxFileUpload'),
-        CustomerChatPermission   => $CustomerChatPermission,
     );
 
     for my $Config ( sort keys %JSConfig ) {

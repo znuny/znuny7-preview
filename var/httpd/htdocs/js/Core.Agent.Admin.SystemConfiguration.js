@@ -61,14 +61,11 @@ Core.Agent.Admin = Core.Agent.Admin || {};
                         return false;
                     }
                 });
-// ---
-// FORWWWARD
-// ---
+
                 // close dialog on "cancel" button click
                 $('.ContentFooter #Cancel').on('click', function () {
                     Core.UI.Dialog.CloseDialog($('.Dialog:visible'));
                 });
-// ---
 
                 $('#SearchFormSubmit').off('click.StartSearch').on('click.StartSearch', function() {
 

@@ -41,7 +41,7 @@
 
         <div class="Content card">
             [% INCLUDE "FormElements/DraftNotifications.tt" %]
-            <fieldset class="TableLike FixedLabel">
+            <fieldset class="TableLike FixedLabel card-item-wrapper">
 
                 <div class="card-item col-wide-50 col-desktop-100 col-tablet-100">
                     <h2 class="card-title">[% Translate("Customer") | html %]</h2>

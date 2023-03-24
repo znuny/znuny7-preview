@@ -7,9 +7,8 @@
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
 
-<div class="MainBox ARIARoleMain LayoutFixedSidebar SidebarFirst AdminGenericInterfaceOperationDefault">
-    <h1 class="InvisibleText">[% Translate("GenericInterface Web Service Management") | html %]</h1>
-    <div class="SidebarColumn">
+<div class="MainBox ARIARoleMain LayoutFixedSidebar SidebarFirst AdminGenericInterfaceOperationDefault ActionsSideBar">
+    <div class="SidebarColumn ActionsSideBarComp">
         <div class="WidgetSimple">
             <div class="Header">
                 <h2>[% Translate("Actions") | html %]</h2>
@@ -40,6 +39,7 @@
     </div>
     <div class="ContentColumn">
 
+        <h1 class="InvisibleText">[% Translate("GenericInterface Web Service Management") | html %]</h1>
         [% USE BreadcrumbLink = String("AdminGenericInterfaceWebservice") %]
 
         [% BreadcrumbPath = [
@@ -79,76 +79,87 @@
                     [% END %]
 
                     <fieldset class="TableLike">
-                        <label for="Operation" class="Mandatory">
-                            <span class="Marker">*</span>
-                            [% Translate("Name") | html %]:
-                        </label>
-                        <div class="Field">
-                            <input type="text" class="W50pc RegisterChange Validate_Required [% Data.OperationServerError | html %]" maxlength="200" id="Operation" name="Operation" value="[% Data.NewOperation | html %]" />
-                            <input type="hidden" id="OldOperation" name="OldOperation" value="[% Data.Operation | html %]" />
-                            <p class="FieldExplanation">
-                                [% Translate("The name is typically used to call up this web service operation from a remote system.") | html %]
-                            </p>
-                            <div id="OperationError" class="TooltipErrorMessage">
-                                [% Translate("This field is required.") | html %] [% Translate("Please provide a unique name for this web service.") | html %]
+                        <div class="field-wrapper">
+                            <label for="Operation" class="Mandatory">
+                                <span class="Marker">*</span>
+                                [% Translate("Name") | html %]
+                            </label>
+                            <div class="Field">
+                                <input type="text" class="W50pc RegisterChange Validate_Required [% Data.OperationServerError | html %]" maxlength="200" id="Operation" name="Operation" value="[% Data.NewOperation | html %]" />
+                                <input type="hidden" id="OldOperation" name="OldOperation" value="[% Data.Operation | html %]" />
+                                <p class="FieldExplanation">
+                                    [% Translate("The name is typically used to call up this web service operation from a remote system.") | html %]
+                                </p>
+                                <div id="OperationError" class="TooltipErrorMessage">
+                                    [% Translate("This field is required.") | html %] [% Translate("Please provide a unique name for this web service.") | html %]
+                                </div>
+                                <div id="OperationServerError" class="TooltipErrorMessage">
+                                    [% Translate("The name you entered already exists.") | html %]
+                                </div>
                             </div>
-                            <div id="OperationServerError" class="TooltipErrorMessage">
-                                [% Translate("The name you entered already exists.") | html %]
+                        </div>
+
+                        <div class="field-wrapper">
+                            <label for="Description">
+                                [% Translate("Description") | html %]
+                            </label>
+                            <div class="Field">
+                                <input type="text" class="W50pc RegisterChange" maxlength="200" id="Description" name="Description" value="[% Data.Description | html %]" />
                             </div>
                         </div>
 
-
-                        <label for="Description">
-                            [% Translate("Description") | html %]:
-                        </label>
-                        <div class="Field">
-                            <input type="text" class="W50pc RegisterChange" maxlength="200" id="Description" name="Description" value="[% Data.Description | html %]" />
+                        <div class="field-wrapper">
+                            <label for="OperationTypeDisplay">[% Translate("Operation backend") | html %]</label>
+                            <div class="Field">
+                                <input type="text" readonly="readonly" class="W50pc" id="OperationTypeDisplay" value="[% Data.OperationType | html %]" />
+                                <p class="FieldExplanation">
+                                    [% Translate("This Znuny operation backend module will be called internally to process the request, generating data for the response.") | html %]
+                                </p>
+                            </div>
                         </div>
 
-
-                        <label for="OperationTypeDisplay">[% Translate("Operation backend") | html %]:</label>
-                        <div class="Field">
-                            <input type="text" readonly="readonly" class="W50pc" id="OperationTypeDisplay" value="[% Data.OperationType | html %]" />
-                            <p class="FieldExplanation">
-                                [% Translate("This OTRS operation backend module will be called internally to process the request, generating data for the response.") | html %]
-                            </p>
-                        </div>
-
-
-                        <label for="MappingInbound">[% Translate("Mapping for incoming request data") | html %]:</label>
-                        <div class="Field">
-                            [% Data.MappingInboundStrg %]
+                        <div class="field-wrapper">
+                            <label for="MappingInbound">[% Translate("Mapping for incoming request data") | html %]</label>
+                            <div class="Field single-row-inputs">
+                                <div class="field-wrapper">
+                                    [% Data.MappingInboundStrg %]
+                                </div>
 [% RenderBlockStart("MappingInboundConfigureButton") %]
-                            <input type="hidden" id="MappingInboundConfigDialog" value="[% Data.MappingInboundConfigDialog | html %]" />
-                            <button type="button" class="HideOnChange CallForAction Inline" id="MappingInboundConfigureButton" value="[% Translate("Configure") | html %]"><span>[% Translate("Configure") | html %]</span></button>
+                                <input type="hidden" id="MappingInboundConfigDialog" value="[% Data.MappingInboundConfigDialog | html %]" />
+                                <button type="button" class="HideOnChange CallForAction Inline btn-main btn-primary-ghost btn-width-md" id="MappingInboundConfigureButton" value="[% Translate("Configure") | html %]"><span>[% Translate("Configure") | html %]</span></button>
 [% RenderBlockEnd("MappingInboundConfigureButton") %]
-                            <p class="FieldExplanation">
-                                [% Translate("The request data will be processed by this mapping, to transform it to the kind of data OTRS expects.") | html %]
-                            </p>
+                                <p class="FieldExplanation">
+                                    [% Translate("The request data will be processed by this mapping, to transform it to the kind of data Znuny expects.") | html %]
+                                </p>
+                            </div>
                         </div>
 
-
-                        <label for="MappingOutbound">[% Translate("Mapping for outgoing response data") | html %]:</label>
-                        <div class="Field">
-                            [% Data.MappingOutboundStrg %]
+                        <div class="field-wrapper">
+                            <label for="MappingOutbound">[% Translate("Mapping for outgoing response data") | html %]</label>
+                            <div class="Field single-row-inputs">
+                                <div class="field-wrapper">
+                                    [% Data.MappingOutboundStrg %]
+                                </div>
 [% RenderBlockStart("MappingOutboundConfigureButton") %]
-                            <input type="hidden" id="MappingOutboundConfigDialog" value="[% Data.MappingOutboundConfigDialog | html %]" />
-                            <button type="button" class="HideOnChange CallForAction Inline" id="MappingOutboundConfigureButton" value="[% Translate("Configure") | html %]"><span>[% Translate("Configure") | html %]</span></button>
+                                <input type="hidden" id="MappingOutboundConfigDialog" value="[% Data.MappingOutboundConfigDialog | html %]" />
+                                <button type="button" class="HideOnChange CallForAction Inline btn-main btn-primary-ghost btn-width-md" id="MappingOutboundConfigureButton" value="[% Translate("Configure") | html %]"><span>[% Translate("Configure") | html %]</span></button>
 [% RenderBlockEnd("MappingOutboundConfigureButton") %]
-                            <p class="FieldExplanation">
-                                [% Translate("The response data will be processed by this mapping, to transform it to the kind of data the remote system expects.") | html %]
-                            </p>
+                                <p class="FieldExplanation">
+                                    [% Translate("The response data will be processed by this mapping, to transform it to the kind of data the remote system expects.") | html %]
+                                </p>
+                            </div>
                         </div>
 
                         [% IF Data.OperationType == 'Ticket::TicketCreate' || Data.OperationType == 'Ticket::TicketUpdate' %]
-                            <label for="IncludeTicketData">[% Translate("Include Ticket Data") | html %]:</label>
-                            <div class="Field">
-                                [% Data.IncludeTicketDataStrg %]
-                                <p class="FieldExplanation">[% Translate("Include ticket data in response.") | html %]</p>
+                            <div class="field-wrapper">
+                                <label for="IncludeTicketData">[% Translate("Include Ticket Data") | html %]</label>
+                                <div class="Field">
+                                    [% Data.IncludeTicketDataStrg %]
+                                    <p class="FieldExplanation">[% Translate("Include ticket data in response.") | html %]</p>
 
+                                </div>
                             </div>
                         [% END %]
-
                         <div class="field-wrapper form-button-actions">
                             <div class="Field buttons-field">
                                 <a class="btn-cancel-ghost btn-main btn-width-md" href="[% Env("Baselink") %]Action=AdminGenericInterfaceWebservice;Subaction=Change;WebserviceID=[% Data.WebserviceID | uri %]"><span>[% Translate("Cancel") | html %]</span></a>

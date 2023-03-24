@@ -153,48 +153,12 @@ Returns:
         },
     );
 
-    # Chat article example:
-
-    my $Success = $TicketArticleCreateActionObject->Run(
-        UserID => 123,
-        Ticket => {
-            TicketNumber => '20101027000001',
-            Title        => 'some title',
-            TicketID     => 123,
-            State        => 'some state',
-            # ... (all ticket properties, as the result from Kernel::System::Ticket::TicketGet)
-        },
-        ProcessEntityID            => 'P123',
-        ActivityEntityID           => 'A123',
-        SequenceFlowEntityID       => 'T123',
-        SequenceFlowActionEntityID => 'TA123',
-        Config                   => {
-            SenderType           => 'agent',
-            IsVisibleForCustomer => 1,
-            CommunicationChannel => 'Chat',
-
-            # Chat article data payload.
-            ChatMessageList => [
-                {
-                    ID              => 1,
-                    MessageText     => 'My chat message',
-                    CreateTime      => '2014-04-04 10:10:10',
-                    SystemGenerated => 0,
-                    ChatterID       => '123',
-                    ChatterType     => 'User',
-                    ChatterName     => 'John Doe',
-                },
-                # ...
-            ],
-            HistoryType    => 'Misc',
-            HistoryComment => 'Some free text!',
-        },
-    );
-
 =cut
 
 sub Run {
     my ( $Self, %Param ) = @_;
+
+    my $StdAttachmentObject = $Kernel::OM->Get('Kernel::System::StdAttachment');
 
     # Define a common message to output in case of any error.
     my $CommonMessage = "Process: $Param{ProcessEntityID} Activity: $Param{ActivityEntityID}"
@@ -287,9 +251,38 @@ sub Run {
         ChannelName => $Param{Config}->{CommunicationChannel}
     );
 
-    # check for selected Attachments
-    if ( $Param{Config}->{Attachments} ) {
+    # attachments
+    if ( $Param{Config}->{AttachmentsReuse} ) {
         $Param{Config}->{Attachment} = $Self->_GetAttachments(%Param);
+    }
+
+    if ( $Param{Config}->{Attachments} || $Param{Config}->{AttachmentIDs} ) {
+        my @AttachmentIDs = split /\s*,\s*/, ( $Param{Config}->{AttachmentIDs} || '' );
+
+        my @AttachmentNames = split /\s*,\s*/, ( $Param{Config}->{Attachments} || '' );
+        ATTACHMENT:
+        for my $Name (@AttachmentNames) {
+            my $ID = $StdAttachmentObject->StdAttachmentLookup(
+                StdAttachment => $Name,
+            );
+            next ATTACHMENT if !$ID;
+
+            push @AttachmentIDs, $ID;
+        }
+
+        ATTACHMENT:
+        for my $ID (@AttachmentIDs) {
+            my %Data = $StdAttachmentObject->StdAttachmentGet(
+                ID => $ID,
+            );
+            next ATTACHMENT if !%Data;
+
+            push @{ $Param{Config}->{Attachment} }, {
+                Content     => $Data{Content},
+                ContentType => $Data{ContentType},
+                Filename    => $Data{Filename},
+            };
+        }
     }
 
     my $ArticleID = $ArticleBackendObject->ArticleCreate(

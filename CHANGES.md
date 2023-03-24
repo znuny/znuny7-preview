@@ -27,7 +27,15 @@
  - 2022-08-08 Admin - Added counter of AdminSettingPages per widget and additional focus by filter.
  - 2022-07-15 Frontend::ToolBarModule - Refactored the Toolbar registration, position and view.
 
-# 6.5.1 2023-??-??
+# 6.5.2 2023-??-??
+ - 2023-03-16 Added Appointment::EventModulePost Entry in XML. Thanks to Kevin Janssen (@BuTzZ). [PR#315](https://github.com/znuny/Znuny/pull/315)
+ - 2023-03-10 Fixed notification about empty subject for article drafts in AgentTicketCompose and AgentTicketEmailOutbound.
+
+# 6.5.1 2023-03-09
+ - 2023-02-28 Added options tickets-created-before-date and tickets-created-before-days to console command Admin::Article::StorageSwitch.
+ - 2023-02-28 Fixed encoding of postmaster filter name in AdminPostMasterFilter.
+ - 2023-02-28 Fixed encoding of profile name in AdminGenericAgent.
+ - 2023-02-23 Fixed "Inline images in drafts will not display for more than 24 hours". [#309](https://github.com/znuny/Znuny/issues/309)
  - 2023-02-21 Fixed - Agent Calendar Import: Import of a calendar file does not work.
  - 2023-02-20 Removed maxlength for field short description in ActivityDialog (#335). Thanks to Sector Nord AG (@paulfolkers). [PR#335](https://github.com/znuny/Znuny/pull/335)
  - 2023-02-17 Moved code of ITSMIncidentProblemManagement to Znuny Framework that will only be executed if ITSM actually is installed.
@@ -43,6 +51,7 @@
  - 2023-01-20 Fixed hidden TicketOverview filters for Medium and Preview. Thanks to Tim Püttmanns (@tipue-dev), maxence. [PR#301](https://github.com/znuny/Znuny/pull/301)
  - 2023-01-20 Fixed uninitialized value warning in AdminSystemMaintenance. Thanks to Tim Püttmanns (@tipue-dev), maxence. [PR#298](https://github.com/znuny/Znuny/pull/298)
  - 2023-01-12 Fixed use of unavailable CKEditor autocomplete plugin when editor is in "CodeMirror" mode (e.g. web service XSLT configuration dialog).
+ - 2023-01-10 JavaScript code will now be removed from href attributes in function Kernel::System::HTMLUtils::ToAscii. Thanks for hints to Tim Püttmanns, maxence.
  - 2023-01-10 Sector Nord AG: Fixed popup description long were cut off in Customer Interface. Thanks to Sector Nord AG (@jsinagowitz). [PR#331](https://github.com/znuny/Znuny/pull/331)
  - 2023-01-09 Integrated package Znuny4OTRS-UserMaxArticlesPerPage.
  - 2023-01-06 Fixed 'ACL misbehaviour in processes' - ActivityEntityID is missing in AgentTicketProcess.pm. [#316](https://github.com/znuny/Znuny/issues/316)

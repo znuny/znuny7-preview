@@ -61,7 +61,7 @@
                     <h2>[% Translate("General") | html %]</h2>
                 </div>
                 <div class="Content">
-                    <div class="LayoutGrid ColumnsWithSpacing">
+                    <div class="LayoutGrid ColumnsWithSpacing no-padding">
                         <div class="Size1of2">
                             <fieldset class="TableLike">
                                 <div class="field-wrapper">
@@ -178,7 +178,7 @@
                             <div class="Field ValueInsert">
                                 <input type="hidden" name="ValueCounter" value="[% Data.ValueCounter | html %]" id="ValueCounter" class="ValueCounter" />
 [% RenderBlockStart("ValueRow") %]
-                                <div class="ValueRow single-row-inputs">
+                                <div class="ValueRow single-row-inputs full-width">
                                     <div class="field-wrapper">
                                         <label class="Mandatory" for="Key_[% Data.ValueCounter | html %]"><span class="Marker">*</span>[% Translate("Key") | html %]</label>
                                         <div class="Field">
@@ -200,7 +200,7 @@
                                 </div>
 [% RenderBlockEnd("ValueRow") %]
 [% RenderBlockStart("ValueTemplate") %]
-                                <div class="ValueTemplate Hidden single-row-inputs">
+                                <div class="ValueTemplate Hidden single-row-inputs full-width">
                                     <div class="field-wrapper">
                                         <label class="Mandatory" for="Key"><span class="Marker">*</span>[% Translate("Key") | html %]</label>
                                         <div class="Field">

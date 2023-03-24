@@ -10,7 +10,7 @@
     data-jscolor="[% Data.ColorPickerConfig | html %]">
 [% RenderBlockEnd("Input") %]
 [% RenderBlockStart("InputField") %]
-    <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %]:</label>
+    <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %]</label>
     <div class="Field">
         <input type="text" id="[% Data.ID | html %]" name="[% Data.Name | html %]" class="[% Data.Class | html %]" value="[% Data.Value | html %]"
         data-jscolor="[% Data.ColorPickerConfig | html %]">

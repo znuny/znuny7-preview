@@ -23,25 +23,25 @@
                     <div id="SearchProfileAddBlock" class="new-tpl-input">
                         <input type="text" name="Name" id="SearchProfileAddName"/>
                         <div class="create-tpm-btn">
-                            <button class="CallForAction btn-ghost-sm" type="button" title="[% Translate("Create Template") | html %]" id="SearchProfileAddAction">
+                            <button class="btn-main btn-ghost-sm" type="button" title="[% Translate("Create Template") | html %]" id="SearchProfileAddAction">
                                 <span>[% Translate("Add") | html %]</span>
                             </button>
                         </div>
                     </div>
                 </div>
                 <div class="Field create-tpm-btn">
-                    <button id="SearchProfileNew" class="btn-ghost-sm" value="[% Translate("Create New") | html %]">
+                    <button id="SearchProfileNew" class="btn-main btn-ghost-sm" value="[% Translate("Create New") | html %]">
                         <span>[% Translate("Create New") | html %]</span>
                     </button>
-                    <button id="SearchProfileDelete" class="Hidden btn-ghost-sm" value="[% Translate("Delete") | html %]">
+                    <button id="SearchProfileDelete" class="btn-main Hidden btn-ghost-sm" value="[% Translate("Delete") | html %]">
                         <span>[% Translate("Delete") | html %]</span>
                     </button>
-                    <button id="SearchProfileAsLink" class="Hidden btn-ghost-sm" value="[% Translate("Profile link") | html %]">
+                    <button id="SearchProfileAsLink" class="btn-main Hidden btn-ghost-sm" value="[% Translate("Profile link") | html %]">
                         <span>[% Translate("Profile link") | html %]</span>
                     </button>
                 </div>
 
-                <label>[% Translate("Save changes in template") | html %]</label>
+                <label for="SaveProfile">[% Translate("Save changes in template") | html %]</label>
                 <div class="Field align-item-left">
                     <input type="checkbox" name="SaveProfile" id="SaveProfile" value="1"/>
                 </div>

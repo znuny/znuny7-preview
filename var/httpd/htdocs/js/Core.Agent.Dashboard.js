@@ -919,10 +919,31 @@ Core.Agent.Dashboard = (function (TargetNS) {
             WidgetName,
             WidgetTitle;
 
+
         function LoadInactiveWidgetList() {
 
             $InactiveList = $('ul.dropdown-search-menu');
             $InactiveList.empty();
+
+            // Forwwward
+            $('.SettingsWidget').find('.search-wrapper').append('<i class="fa fa-caret-down"></i>');
+            $( '.search-wrapper' ).delegate( '*', 'focus blur', function() {
+                var elem = $( this );
+                var arrowIcon = $('.search-wrapper .fa');
+                setTimeout(function() {
+                    arrowIcon.toggleClass( "animate", elem.is( ":focus" ) );
+                }, 0 );
+            });
+
+                // $('.dropdown-search-menu .dropdown-item').on('click', function() {
+                //     console.log("test");
+                //     $('body').addClass('test');
+
+                //     $(".search-wrapper .FilterAvailableWidgets").focus();
+                // });
+
+            // Forwwward
+
 
             // load inactive widgets
             $('.SettingsWidget').find('input[type="checkbox"][name=Backend]').each(function() {

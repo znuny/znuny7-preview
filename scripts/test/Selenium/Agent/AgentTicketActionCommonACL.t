@@ -311,9 +311,6 @@ EOF
             UserID => 1,
         );
 
-        # Create some test services.
-        my $ServiceObject = $Kernel::OM->Get('Kernel::System::Service');
-
         my %ITSMSLA;
         my %ITSMService;
 

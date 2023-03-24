@@ -49,67 +49,82 @@
                     <input type="hidden" name="Subaction" value="Send"/>
 
                     <fieldset class="TableLike">
-                        <label class="Mandatory" for="From"><span class="Marker">*</span> [% Translate("From") | html %]:</label>
-                        <div class="Field">
-                            <input type="text" name="From" id="From" value="[% Config("AdminEmail") %]" class="W75pc Validate_Required [% Data.FromInvalid | html %]"/>
-                            <div id="FromError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="From"><span class="Marker">*</span> [% Translate("From") | html %]:</label>
+                            <div class="Field">
+                                <input type="text" name="From" id="From" value="[% Config("AdminEmail") %]" class="W75pc Validate_Required [% Data.FromInvalid | html %]"/>
+                                <div id="FromError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="FromServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
                             </div>
-                            <div id="FromServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
+                        </div>
+
+                        <div class="field-wrapper">
+                            <label for="UserIDs">[% Translate("Send message to users") | html %]:</label>
+                            <div class="Field">
+                                [% Data.UserOption %]
                             </div>
                         </div>
 
-                        <label for="UserIDs">[% Translate("Send message to users") | html %]:</label>
-                        <div class="Field">
-                            [% Data.UserOption %]
+                        <div class="field-wrapper">
+                            <label for="GroupIDs">[% Translate("Send message to group members") | html %]:</label>
+                            <div class="Field">
+                                [% Data.GroupOption %]
+                            </div>
                         </div>
 
-                        <label for="GroupIDs">[% Translate("Send message to group members") | html %]:</label>
-                        <div class="Field">
-                            [% Data.GroupOption %]
-                        </div>
-
-                        <label for="GroupPermissionRO">[% Translate("Group members need to have permission") | html %]:</label>
-                        <div class="Field CheckboxContainer">
-                            <input class="RadioRound" type="radio" name="GroupPermission" id="GroupPermissionRO" value="ro" checked="checked"/>
-                            <label for="GroupPermissionRO">[% Translate("ro") | html %]</label>
-                            <br/>
-                            <input class="RadioRound" type="radio" name="GroupPermission" id="GroupPermissionRW" value="rw"/>
-                            <label for="GroupPermissionRW">[% Translate("rw") | html %]</label>
+                        <div class="field-wrapper">
+                            <label for="GroupPermissionRO">[% Translate("Group members need to have permission") | html %]:</label>
+                            <div class="Field CheckboxContainer">
+                                <input class="RadioRound" type="radio" name="GroupPermission" id="GroupPermissionRO" value="ro" checked="checked"/>
+                                <label for="GroupPermissionRO">[% Translate("ro") | html %]</label>
+                                <br/>
+                                <input class="RadioRound" type="radio" name="GroupPermission" id="GroupPermissionRW" value="rw"/>
+                                <label for="GroupPermissionRW">[% Translate("rw") | html %]</label>
+                            </div>
                         </div>
 [% RenderBlockStart("RoleRecipients") %]
-                        <label for="RoleIDs">[% Translate("Send message to role members") | html %]:</label>
-                        <div class="Field">
-                            [% Data.RoleOption %]
+                        <div class="field-wrapper">
+                            <label for="RoleIDs">[% Translate("Send message to role members") | html %]:</label>
+                            <div class="Field">
+                                [% Data.RoleOption %]
+                            </div>
                         </div>
 [% RenderBlockEnd("RoleRecipients") %]
 [% RenderBlockStart("CustomerUserGroups") %]
-                        <label for="NotifyCustomerUsers">[% Translate("Also send to customers in groups") | html %]:</label>
-                        <div class="Field">
-                            <input type="checkbox" name="NotifyCustomerUsers" id="NotifyCustomerUsers" />
+                        <div class="field-wrapper">
+                            <label for="NotifyCustomerUsers">[% Translate("Also send to customers in groups") | html %]:</label>
+                            <div class="Field">
+                                <input type="checkbox" name="NotifyCustomerUsers" id="NotifyCustomerUsers" />
+                            </div>
                         </div>
 [% RenderBlockEnd("CustomerUserGroups") %]
-
-                        <label class="Mandatory" for="Subject"><span class="Marker">*</span> [% Translate("Subject") | html %]:</label>
-                        <div class="Field">
-                            <input type="text" name="Subject" id="Subject" class="W75pc Validate_Required [% Data.SubjectInvalid | html %]" value="[% Data.Subject | html %]" />
-                            <div id="SubjectError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="SubjectServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="Subject"><span class="Marker">*</span> [% Translate("Subject") | html %]:</label>
+                            <div class="Field">
+                                <input type="text" name="Subject" id="Subject" class="W75pc Validate_Required [% Data.SubjectInvalid | html %]" value="[% Data.Subject | html %]" />
+                                <div id="SubjectError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="SubjectServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
                             </div>
                         </div>
 
-                        <label class="Mandatory" for="RichText"><span class="Marker">*</span> [% Translate("Body") | html %]:</label>
-                        <div class="RichTextField">
-                            <textarea id="RichText" class="W100pc RichText Validate_RequiredRichText [% Data.RichTextInvalid | html %]" name="Body" rows="16" cols="78">[% Data.Body | html %]</textarea>
-                            <div id="RichTextError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="RichTextServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="RichText"><span class="Marker">*</span> [% Translate("Body") | html %]:</label>
+                            <div class="RichTextField">
+                                <textarea id="RichText" class="W100pc RichText Validate_RequiredRichText [% Data.RichTextInvalid | html %]" name="Body" rows="16" cols="78">[% Data.Body | html %]</textarea>
+                                <div id="RichTextError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="RichTextServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
                             </div>
                         </div>
 
@@ -118,7 +133,6 @@
                                 <button class="Primary CallForAction btn-main btn-primary btn-width-md" id="submitRichText" type="submit" value="[% Translate("Send") | html %]"><span>[% Translate("Send") | html %]</span></button>
                             </div>
                         </div>
-
                     </fieldset>
                 </form>
 [% RenderBlockEnd("Form") %]

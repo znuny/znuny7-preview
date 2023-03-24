@@ -58,7 +58,7 @@
                     <input type="hidden" name="Subaction" value="ACLNewAction"/>
                     <fieldset class="TableLike">
                         <div class="field-wrapper">
-                            <label class="Mandatory" for="Name"><span class="Marker">*</span> [% Translate("Name") | html %]:</label>
+                            <label class="Mandatory" for="Name"><span class="Marker">*</span> [% Translate("Name") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="Name" id="Name" value="[% Data.Name | html %]" class="Validate_Required [% Data.NameServerError | html %]" maxlength="70"/>
                                 <div id="NameError" class="TooltipErrorMessage">
@@ -71,14 +71,14 @@
                         </div>
 
                         <div class="field-wrapper">
-                            <label for="Comment">[% Translate("Comment") | html %]:</label>
+                            <label for="Comment">[% Translate("Comment") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="Comment" id="Comment" value="[% Data.Comment | html %]" class="[% Data.CommentServerError | html %]" maxlength="70"/>
                             </div>
                         </div>
 
                         <div class="field-wrapper">
-                            <label for="Description">[% Translate("Description") | html %]:</label>
+                            <label for="Description">[% Translate("Description") | html %]</label>
                             <div class="Field">
                                 <textarea name="Description" id="Description" class="[% Data.DescriptionServerError | html %]" rows="5" maxlength="200">[% Data.Description | html %]</textarea>
                             </div>
@@ -89,12 +89,12 @@
                                 <div class="Field">
                                     <input type="checkbox" name="StopAfterMatch" id="StopAfterMatch" value="1" [% Data.Checked %] />
                                 </div>
-                                <label for="StopAfterMatch">[% Translate("Stop after match") | html %]:</label>
+                                <label for="StopAfterMatch">[% Translate("Stop after match") | html %]</label>
                             </div>
                         </div>
 
                         <div class="field-wrapper">
-                            <label class="Mandatory" for="ValidID"><span class="Marker">*</span> [% Translate("Validity") | html %]:</label>
+                            <label class="Mandatory" for="ValidID"><span class="Marker">*</span> [% Translate("Validity") | html %]</label>
                             <div class="Field">
                                 [% Data.ValidOption %]
                                 <div id="ValidIDError" class="TooltipErrorMessage">

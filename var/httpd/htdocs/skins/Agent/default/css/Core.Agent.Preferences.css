@@ -99,6 +99,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         border-right: var(--border-width) var(--border-solid) var(--border-color);
         display: flex;
         align-self: stretch;
+        margin: 0;
     }
 
     .Preferences .PreferenceClassic .SettingWrapper > fieldset .PreferenceAvatar,

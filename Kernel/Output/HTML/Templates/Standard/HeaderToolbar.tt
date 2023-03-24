@@ -112,10 +112,12 @@
                     </div>
 [% RenderBlockStart("ToolBarSearchProfile") %]
                     <div class="search-dropdown-bottom">
-                        <div>
+                        <div class="title">
                             <label>Search profiles</label>
                         </div>
-                        [% Data.Link %]
+                        <div class="search-profiles-list">
+                            [% Data.Link %]
+                        </div>
                     </div>
 [% RenderBlockEnd("ToolBarSearchProfile") %]
                 </div>

@@ -98,10 +98,11 @@
 
         <div class="WidgetSimple">
 [% RenderBlockStart("OverviewList") %]
-            <div class="Header">
+            <div class="Header filter-items">
                 <h2>[% Translate("List") | html %]</h2>
-                <a href="#" class="icon-hover" id="ValidFilter" title="[% Translate("Filter") | html %]">
-                    <i class="fa fa-filter"></i>
+                <a href="#" id="ValidFilter" title="[% Translate("Filter") | html %]">
+                    <span class="show-valid">Show Valid</span>
+                    <span class="show-all">Show All</span>
                 </a>
             </div>
             <div class="Content">
@@ -159,7 +160,7 @@
 
                     <fieldset class="TableLike">
                         <div class="field-wrapper">
-                            <label class="Mandatory" for="Name"><span class="Marker">*</span> [% Translate("Service") | html %]:</label>
+                            <label class="Mandatory" for="Name"><span class="Marker">*</span> [% Translate("Service") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="Name" id="Name" value="[% Data.NameShort | html %]" class="W50pc Validate_Required [% Data.NameInvalid | html %]" maxlength="200"/>
                                 <div id="NameError" class="TooltipErrorMessage" ><p>[% Translate("This field is required.") | html %]</p></div>
@@ -172,7 +173,7 @@
                         </div>
 
                         <div class="field-wrapper">
-                            <label for="ParentID">[% Translate("Sub-service of") | html %]: </label>
+                            <label for="ParentID">[% Translate("Sub-service of") | html %]</label>
                             <div class="Field">
                                 [% Data.ParentOptionStrg %]
                             </div>
@@ -180,14 +181,14 @@
 
                         [% IF Data.IsITSMInstalled %]
                             <div class="field-wrapper">
-                                <label for="TypeID">[% Translate("Type") | html %]: </label>
+                                <label for="TypeID">[% Translate("Type") | html %]</label>
                                 <div class="Field">
                                     [% Data.TypeOptionStrg %]
                                 </div>
                             </div>
 
                             <div class="field-wrapper">
-                                <label for="Criticality">[% Translate("Criticality") | html %]: </label>
+                                <label for="Criticality">[% Translate("Criticality") | html %]</label>
                                 <div class="Field">
                                     [% Data.CriticalityOptionStrg %]
                                 </div>
@@ -195,14 +196,14 @@
                         [% END %]
 
                         <div class="field-wrapper">
-                            <label class="Mandatory" for="ValidID"><span class="Marker">*</span> [% Translate("Validity") | html %]:</label>
+                            <label class="Mandatory" for="ValidID"><span class="Marker">*</span> [% Translate("Validity") | html %]</label>
                             <div class="Field">
                                 [% Data.ValidOptionStrg %]
                             </div>
                         </div>
 
                         <div class="field-wrapper">
-                            <label for="Comment">[% Translate("Comment") | html %]: </label>
+                            <label for="Comment">[% Translate("Comment") | html %]</label>
                             <div class="Field">
                                 <input type="text" name="Comment" id="Comment" value="[% Data.Comment | html %]" class="W50pc" maxlength="250"/>
                             </div>
@@ -210,7 +211,7 @@
 [% RenderBlockStart("Item") %]
 [% RenderBlockStart("InputKey") %]
                         <div class="field-wrapper">
-                            <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %] [% Translate(Data.Key) | html %]: </label>
+                            <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %] [% Translate(Data.Key) | html %]</label>
                             <div class="Field">
                                 <input type="text" name="[% Data.Name | html %]" id="[% Data.Name | html %]" value="[% Data.SelectedID | html %]" class="W25pc"/>
                             </div>
@@ -218,7 +219,7 @@
 [% RenderBlockEnd("InputKey") %]
 [% RenderBlockStart("Input") %]
                         <div class="field-wrapper">
-                            <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %]: </label>
+                            <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %]</label>
                             <div class="Field">
                                 <input type="text" name="[% Data.Name | html %]" id="[% Data.Name | html %]" value="[% Data.SelectedID | html %]" class="W25pc"/>
                                 <p class="FieldExplanation">[% Translate(Data.Desc) | html %]</p>
@@ -227,7 +228,7 @@
 [% RenderBlockEnd("Input") %]
 [% RenderBlockStart("TextArea") %]
                         <div class="field-wrapper">
-                            <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %]: </label>
+                            <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %]</label>
                             <div class="Field">
                                 <textarea name="[% Data.Name | html %]" id="[% Data.Name | html %]" rows="[% Data.Rows | html %]" cols="[% Data.Cols | html %]">[% Data.SelectedID | html %]</textarea>
                                 <p class="FieldExplanation">[% Translate(Data.Desc) | html %]</p>
@@ -236,7 +237,7 @@
 [% RenderBlockEnd("TextArea") %]
 [% RenderBlockStart("Option") %]
                         <div class="field-wrapper">
-                            <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %] [% Translate(Data.Key) | html %]:</label>
+                            <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %] [% Translate(Data.Key) | html %]</label>
                             <div class="Field">
                                 [% Data.Option %]
                                 <p class="FieldExplanation">[% Translate(Data.Desc) | html %]</p>
@@ -254,7 +255,7 @@
 [% RenderBlockEnd("Upload") %]
 [% RenderBlockStart("Password") %]
                         <div class="field-wrapper">
-                            <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %] [% Translate(Data.Key) | html %]: </label>
+                            <label for="[% Data.Name | html %]">[% Translate(Data.Label) | html %] [% Translate(Data.Key) | html %]</label>
                             <div class="Field">
                                 <input type="password" class="W25pc" name="[% Data.Name | html %]" id="[% Data.Name | html %]" value="" />
                             </div>

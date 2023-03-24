@@ -285,7 +285,7 @@
                 <h2>[% Translate("Customer Default Groups:") | html %]</h2>
             </div>
             <div class="Content LayoutGrid ColumnsWithSpacing">
-                <div>
+                <div class="tablelike-wrapper">
                     <ul class="Tablelike" id="AlwaysGroups">
                         <li class="Header">[% Translate("Groups") | html %]</li>
 [% RenderBlockStart("AlwaysGroupsList") %]

@@ -23,7 +23,7 @@
                     <h3><span class="Warning">[% Translate("PGP support is disabled") | html %]</span></h3>
                     <fieldset>
                         <p class="FieldExplanation">
-                            [% Translate("To be able to use PGP in OTRS, you have to enable it first.") | html %]
+                            [% Translate("To be able to use PGP in Znuny, you have to enable it first.") | html %]
                         </p>
                         <div class="Field">
                             <button class="CallForAction btn-main btn-primary-ghost" type="submit" value="[% Translate("Enable it here!") | html %]">
@@ -61,10 +61,12 @@
 [% RenderBlockStart("ActionSearch") %]
                     <li>
                         <form class="SearchBox" action="[% Env("CGIHandle") %]" method="post">
-                            <input type="hidden" name="Action" value="[% Env("Action") %]"/>
-                            <input type="hidden" name="Subaction" value="Search"/>
-                            <input type="text" name="Search" id="Search" value="[% Data.Search | html %]" title="[% Translate("Search") | html %]"/>
-                            <button type="submit" value="[% Translate("Search") | html %]" title="[% Translate("Search") | html %]"><i class="fa fa-search"></i></button>
+                            <span class="TableFilterContainer">
+                                <input type="hidden" name="Action" value="[% Env("Action") %]"/>
+                                <input type="hidden" name="Subaction" value="Search"/>
+                                <input type="text" name="Search" id="Search" value="[% Data.Search | html %]" title="[% Translate("Search") | html %]"/>
+                                <button type="submit" value="[% Translate("Search") | html %]" title="[% Translate("Search") | html %]"><i class="fa fa-search"></i></button>
+                            </span>
                         </form>
                     </li>
 [% RenderBlockEnd("ActionSearch") %]
@@ -88,7 +90,7 @@
                     [% Translate("In this way you can directly edit the keyring configured in SysConfig.") | html %]
                 </p>
                 <p class="FieldExplanation">
-                    [% Translate("Description") | html %]:
+                    [% Translate("Description") | html %]
                     <a href="http://en.wikipedia.org/wiki/Pretty_Good_Privacy" target="_blank">
                         [% Translate("Introduction to PGP") | html %]
                     </a>
@@ -182,17 +184,18 @@
                     <input type="hidden" name="Action" value="[% Env("Action") %]"/>
                     <input type="hidden" name="Subaction" value="AddKey"/>
                     <fieldset class="TableLike">
-                        <label class="Mandatory" for="FileUpload"><span class="Marker">*</span> [% Translate("PGP key") | html %]:</label>
-                        <div class="Field">
-                            <input name="FileUpload" id="FileUpload" type="file" class="W50pc Validate_Required [% Data.FileUploadInvalid | html %]" size="30"/>
-                            <div id="FileUploadError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
-                            </div>
-                            <div id="FileUploadServerError" class="TooltipErrorMessage">
-                                <p>[% Translate("This field is required.") | html %]</p>
+                        <div class="field-wrapper">
+                            <label class="Mandatory" for="FileUpload"><span class="Marker">*</span> [% Translate("PGP key") | html %]</label>
+                            <div class="Field">
+                                <input name="FileUpload" id="FileUpload" type="file" class="W50pc Validate_Required [% Data.FileUploadInvalid | html %]" size="30"/>
+                                <div id="FileUploadError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
+                                <div id="FileUploadServerError" class="TooltipErrorMessage">
+                                    <p>[% Translate("This field is required.") | html %]</p>
+                                </div>
                             </div>
                         </div>
-
                         <div class="field-wrapper form-button-actions">
                             <div class="Field buttons-field">
                                 <a href="[% Env("Baselink") %]Action=[% Env("Action") %]" class="btn-cancel-ghost btn-main btn-width-md"><span>[% Translate("Cancel") | html %]</span></a>

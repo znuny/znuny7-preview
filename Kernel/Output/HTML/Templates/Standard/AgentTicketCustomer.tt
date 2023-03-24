@@ -38,7 +38,7 @@
                         <input type="hidden" name="Subaction" value="Update"/>
                         <input type="hidden" name="TicketID" value="[% Data.TicketID | html %]"/>
                         <input type="hidden" name="SelectedCustomerUser" id="SelectedCustomerUser" value="[% Data.SelectedCustomerUser | html %]"/>
-                        <fieldset class="TableLike FixedLabel">
+                        <fieldset class="TableLike FixedLabel card-item-wrapper">
 
                             <div class="card-item">
                                 <h2 class="card-title">[% Translate("Customer") | html %]</h2>

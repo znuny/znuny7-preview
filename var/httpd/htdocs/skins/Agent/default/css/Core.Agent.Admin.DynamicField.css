@@ -24,4 +24,8 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     overflow: auto;
 }
 
+.WidgetSimple > .DynamicFieldsPagination > .Pagination {
+    border-top: 0;
+}
+
 }/* end @media */
